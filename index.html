@@ -4088,9 +4088,9 @@
               {/* Left: UI */}
               <div className="shrink-0 h-full" style={{ width: leftPx }}>
                 <div className="bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[12px] overflow-hidden h-full flex flex-col">
-                  <div className="px-[24px] py-[16px] border-b border-[rgba(45,66,107,0.12)] flex items-center justify-between gap-[16px]">
-                    <div className="flex flex-col gap-[4px]">
-                      <div className="text-[#222727] text-lg font-bold">
+                  <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] flex items-start gap-[12px] flex-wrap">
+                    <div className="flex-1 min-w-0 flex flex-col gap-[2px]">
+                      <div className="text-[#222727] text-sm font-bold">
                         {activeComponentId === "smartSummary"
                           ? "智能摘要组件面板（UI）"
                           : activeComponentId === "formRecommend"
@@ -4099,15 +4099,15 @@
                               ? "AI输入框（UI）"
                               : "图标库（UI）"}
                       </div>
-                      <div className="text-[rgba(34,39,39,0.6)] text-sm">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
+                      <div className="text-[rgba(34,39,39,0.6)] text-xs">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
                     </div>
-                    <div className="flex items-center gap-[8px]">
+                    <div className="flex items-center gap-[8px] flex-none">
                       {activeComponentId === "smartSummary" ? (
                         <>
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
@@ -4118,7 +4118,7 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
@@ -4129,7 +4129,7 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] bg-black text-[#ffffff] rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
+                              "h-[32px] px-[12px] bg-black text-[#ffffff] text-[12px] font-semibold whitespace-nowrap rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setMode("loading")}
@@ -4142,7 +4142,7 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
@@ -4156,7 +4156,7 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
@@ -4171,7 +4171,7 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                               "outline-none focus:ring-1 focus:ring-black",
                             )}
