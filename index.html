@@ -11,10 +11,30 @@
     <script defer src="./vendor/babel.min.js"></script>
     <script defer src="./vendor/marked.min.js"></script>
     <style>
-      /* Tailwind CDN doesn't include arbitrary font families; keep it system-safe. */
+      /* ── Platform Design Tokens (遵循基础参数) ──────────────────────────────
+         颜色来源：基础参数色板
+           --ui-primary    = semi-color-black  (#000000) 主按钮 / 激活态
+           --ui-bg         = semi-bluegrey-0   (#FCFCFD) 页面底色
+           --ui-surface    = #FFFFFF            卡片白底
+           --ui-text       = semi-color-text-0 (#222727) 正文主色
+           --ui-radius-sm  = semi-border-radius-small  (6px)
+           --ui-radius-md  = semi-border-radius-medium (8px)
+           --ui-radius-lg  = semi-border-radius-large  (12px)
+      ────────────────────────────────────────────────────────────────────── */
+      :root {
+        --ui-primary:      #000000;
+        --ui-primary-text: #ffffff;
+        --ui-bg:           #f5f6f8;
+        --ui-surface:      #ffffff;
+        --ui-text:         #222727;
+        --ui-radius-sm:    6px;
+        --ui-radius-md:    8px;
+        --ui-radius-lg:    12px;
+        --ui-font: "PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      }
       html,
       body {
-        font-family: "PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        font-family: var(--ui-font);
       }
       @keyframes shimmer {
         0%   { background-position: 200% center; }
@@ -64,7 +84,7 @@
         padding: 4px 8px;
         background: rgba(83,96,143,0.06);
         border-radius: 6px;
-        border-left: 3px solid #1aa38a;
+        border-left: 3px solid #000000;
       }
       .md h3 {
         font-size: 11.5px;
@@ -92,8 +112,8 @@
       .md blockquote {
         margin: 6px 0;
         padding: 6px 10px;
-        border-left: 3px solid rgba(26,163,138,0.5);
-        background: rgba(26,163,138,0.05);
+        border-left: 3px solid rgba(0,0,0,0.25);
+        background: rgba(0,0,0,0.04);
         border-radius: 0 6px 6px 0;
       }
       .md blockquote p { margin: 0; color: rgba(34,39,39,0.72); font-size: 11.5px; }
@@ -158,8 +178,8 @@
         transition: background-color 120ms ease, box-shadow 120ms ease;
       }
       .md .md-token-active {
-        background: rgba(26,163,138,0.12);
-        box-shadow: 0 0 0 1px rgba(26,163,138,0.35) inset;
+        background: rgba(0,0,0,0.07);
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset;
       }
     </style>
   </head>
@@ -1530,7 +1550,7 @@
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="flex items-center gap-[6px] w-full h-[30px] px-[8px] bg-white border border-[rgba(45,66,107,0.12)] rounded-[7px] hover:border-[#1aa38a] transition-colors outline-none"
+              className="flex items-center gap-[6px] w-full h-[30px] px-[8px] bg-white border border-[rgba(45,66,107,0.12)] rounded-[7px] hover:border-black transition-colors outline-none"
             >
               {/* Swatch */}
               <div className="shrink-0 w-[16px] h-[16px] rounded-[3px] border border-[rgba(45,66,107,0.15)] overflow-hidden"
@@ -1565,7 +1585,7 @@
                         onClick={() => { onChange(sc.key); setOpen(false); }}
                         className={cx(
                           "w-[20px] h-[20px] rounded-[4px] border-[2px] transition-all",
-                          value === sc.key ? "border-[#1aa38a] scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(26,163,138,0.5)]",
+                          value === sc.key ? "border-black scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(0,0,0,0.3)]",
                         )}
                         style={{ background: sc.hex, outline: sc.hex === "#FFFFFF" ? "1px solid rgba(45,66,107,0.08)" : "none" }}
                       />
@@ -1585,7 +1605,7 @@
                         onClick={() => { onChange(t.key); setOpen(false); }}
                         className={cx(
                           "w-[20px] h-[20px] rounded-[4px] border-[2px] transition-all",
-                          value === t.key ? "border-[#1aa38a] scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(26,163,138,0.5)]",
+                          value === t.key ? "border-black scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(0,0,0,0.3)]",
                         )}
                         style={{ background: `rgba(34,39,39,${t.alpha})` }}
                       />
@@ -1611,7 +1631,7 @@
                               onClick={() => { onChange(tokenKey); setOpen(false); }}
                               className={cx(
                                 "w-[18px] h-[18px] rounded-[2px] border-[2px] transition-all",
-                                value === tokenKey ? "border-[#1aa38a] scale-110" : "border-transparent hover:border-[rgba(26,163,138,0.5)]",
+                                value === tokenKey ? "border-black scale-110" : "border-transparent hover:border-[rgba(0,0,0,0.3)]",
                               )}
                               style={{ background: hex }}
                             />
@@ -1629,7 +1649,7 @@
 
       function TokenField({ label, path, value, type, onChange, onHoverChange, palette }) {
         const inputBase =
-          "h-[30px] px-[8px] bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[7px] text-[#222727] outline-none focus:ring-1 focus:ring-[#1aa38a] w-full";
+          "h-[30px] px-[8px] bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[7px] text-[#222727] outline-none focus:ring-1 focus:ring-black w-full";
         const mono = "font-mono text-[11px]";
 
         // css-color: any CSS color string (hex, rgba, hsl, etc.) — shows swatch + text input
@@ -1689,7 +1709,7 @@
                 {typeof onReset === "function" ? (
                   <button
                     type="button"
-                    className="h-[28px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[12px] font-semibold text-[#222727] hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                    className="h-[28px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[12px] font-semibold text-[#222727] hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black"
                     onClick={onReset}
                   >
                     恢复初始值
@@ -2994,7 +3014,7 @@
                     className={cx(
                       "h-[24px] w-[24px] rounded-[6px] p-[4px] flex items-center justify-center transition-colors",
                       isInteractive && "hover:bg-[rgba(83,96,143,0.07)]",
-                      "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                      "outline-none focus:ring-1 focus:ring-black",
                       (!isInteractive || isBusy) && "pointer-events-none opacity-60",
                     )}
                     aria-label="复制摘要"
@@ -3011,7 +3031,7 @@
                     className={cx(
                       "h-[24px] w-[24px] rounded-[6px] p-[4px] flex items-center justify-center transition-colors",
                       isInteractive && "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                      "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                      "outline-none focus:ring-1 focus:ring-black",
                       (!isInteractive || isBusy) && "pointer-events-none opacity-60",
                     )}
                     aria-label="刷新摘要"
@@ -3082,7 +3102,7 @@
                       "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff]",
                       "text-[12px] font-semibold text-[#222727] transition-colors",
                       isInteractive && "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                      "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                      "outline-none focus:ring-1 focus:ring-black",
                       !isInteractive && "opacity-60 cursor-not-allowed",
                     )}
                     onClick={handleRetry}
@@ -3097,9 +3117,9 @@
                   <button
                     type="button"
                     className={cx(
-                      "h-[36px] px-[16px] rounded-[8px] bg-[#1aa38a] text-[#ffffff] text-[12px] font-semibold transition-opacity",
+                      "h-[36px] px-[16px] rounded-[8px] bg-black text-[#ffffff] text-[12px] font-semibold transition-opacity",
                       isInteractive && "hover:opacity-90 active:opacity-90",
-                      "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                      "outline-none focus:ring-1 focus:ring-black",
                       !isInteractive && "opacity-60 cursor-not-allowed",
                     )}
                     onClick={handleRefresh}
@@ -3162,7 +3182,7 @@
                           "h-[24px] w-[24px] rounded-[6px] p-[4px] flex items-center justify-center transition-colors",
                           isInteractive && "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                           feedback === "up" && "bg-[rgba(62,179,70,0.12)]",
-                          "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                          "outline-none focus:ring-1 focus:ring-black",
                           (!isInteractive || isBusy || state !== "ready") && "pointer-events-none opacity-60",
                         )}
                         aria-label="反馈：有帮助"
@@ -3177,7 +3197,7 @@
                           "h-[24px] w-[24px] rounded-[6px] p-[4px] flex items-center justify-center transition-colors",
                           isInteractive && "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
                           feedback === "down" && "bg-[rgba(247,67,49,0.12)]",
-                          "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                          "outline-none focus:ring-1 focus:ring-black",
                           (!isInteractive || isBusy || state !== "ready") && "pointer-events-none opacity-60",
                         )}
                         aria-label="反馈：无帮助"
@@ -3432,7 +3452,7 @@
                       {spacing.filter(s => s.value > 0).map(s => (
                         <div key={s.key} className="flex items-center gap-[10px]">
                           <div className="text-[10px] text-[rgba(34,39,39,0.5)] shrink-0" style={{ width: 72 }}>{s.label}</div>
-                          <div className="bg-[#1aa38a] rounded-[2px] shrink-0" style={{ height: 8, width: Math.min(s.value * 5, 180) }} />
+                          <div className="bg-black rounded-[2px] shrink-0" style={{ height: 8, width: Math.min(s.value * 5, 180) }} />
                           <div className="text-[10px] font-mono text-[rgba(34,39,39,0.5)]">{s.value}px</div>
                         </div>
                       ))}
@@ -3449,7 +3469,7 @@
                       {radius.map(r => (
                         <div key={r.key} className="flex flex-col items-center gap-[6px]">
                           <div
-                            className="border-[2px] border-[#1aa38a] bg-[rgba(26,163,138,0.08)]"
+                            className="border-[2px] border-black bg-[rgba(0,0,0,0.05)]"
                             style={{ width: 40, height: 40, borderRadius: r.value >= 9999 ? "50%" : r.value }}
                           />
                           <div className="text-[9px] text-[rgba(34,39,39,0.5)] text-center leading-tight">{r.label}</div>
@@ -3484,7 +3504,7 @@
                       type="button"
                       className={cx(
                         "px-[10px] py-[5px] rounded-[6px] text-[11px] font-medium transition-colors",
-                        midTab === tab.id ? "bg-[#1aa38a] text-white" : "text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.08)]",
+                        midTab === tab.id ? "bg-black text-white" : "text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.08)]",
                       )}
                       onClick={() => setMidTab(tab.id)}
                     >
@@ -3528,7 +3548,7 @@
                           <div className="flex items-center gap-[4px] shrink-0">
                             <input type="number" min={0} max={160} value={s.value}
                               onChange={e => setSpacing(prev => prev.map(x => x.key === s.key ? { ...x, value: Number(e.target.value) } : x))}
-                              className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-[#1aa38a]" />
+                              className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-black" />
                             <span className="text-[10px] text-[rgba(34,39,39,0.4)]">px</span>
                           </div>
                         </div>
@@ -3539,7 +3559,7 @@
                     <div className="flex flex-col gap-[6px]">
                       {radius.map(r => (
                         <div key={r.key} className="flex items-center gap-[8px] px-[8px] py-[7px] rounded-[6px] hover:bg-[rgba(83,96,143,0.04)]">
-                          <div className="border-[2px] border-[#1aa38a] bg-[rgba(26,163,138,0.1)] shrink-0"
+                          <div className="border-[2px] border-black bg-[rgba(0,0,0,0.06)] shrink-0"
                             style={{ width: 26, height: 26, borderRadius: r.value >= 9999 ? "50%" : r.value }} />
                           <div className="flex-1 min-w-0">
                             <div className="text-[11px] font-medium text-[#222727]">{r.label}</div>
@@ -3549,7 +3569,7 @@
                             <div className="flex items-center gap-[4px] shrink-0">
                               <input type="number" min={0} max={100} value={r.value}
                                 onChange={e => setRadius(prev => prev.map(x => x.key === r.key ? { ...x, value: Number(e.target.value) } : x))}
-                                className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-[#1aa38a]" />
+                                className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-black" />
                               <span className="text-[10px] text-[rgba(34,39,39,0.4)]">px</span>
                             </div>
                           ) : (
@@ -3961,7 +3981,7 @@
             onPointerDown={(e) => onDragStart(which, e)}
             title="\u62d6\u62fd\u8c03\u6574\u5bbd\u5ea6"
           >
-            <div className="absolute inset-y-[12px] left-[5px] w-[2px] rounded-[2px] bg-[rgba(45,66,107,0.15)] opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100 group-active:bg-[#1aa38a]" />
+            <div className="absolute inset-y-[12px] left-[5px] w-[2px] rounded-[2px] bg-[rgba(45,66,107,0.15)] opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100 group-active:bg-black" />
           </div>
         );
 
@@ -3982,7 +4002,7 @@
                     className={cx(
                       "px-[14px] py-[5px] rounded-[7px] text-[12px] font-semibold transition-colors outline-none",
                       mainView === tab.id
-                        ? "bg-[#1aa38a] text-white"
+                        ? "bg-black text-white"
                         : "text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.08)]",
                     )}
                   >
@@ -4008,7 +4028,7 @@
                       <div className="text-[#f74331] text-sm font-bold">运行时错误（导致页面无法交互）</div>
                       <button
                         type="button"
-                        className="h-[28px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-sm font-semibold hover:bg-[rgba(83,96,143,0.07)] outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                        className="h-[28px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-sm font-semibold hover:bg-[rgba(83,96,143,0.07)] outline-none focus:ring-1 focus:ring-black"
                         onClick={() => setRuntimeError(null)}
                       >
                         关闭
@@ -4037,16 +4057,16 @@
                           className={cx(
                             "w-full text-left px-[12px] py-[10px] rounded-[10px] border transition-colors",
                             active
-                              ? "bg-[rgba(26,163,138,0.10)] border-[rgba(26,163,138,0.28)]"
+                              ? "bg-[rgba(0,0,0,0.06)] border-[rgba(0,0,0,0.2)]"
                               : "bg-[#ffffff] border-[rgba(45,66,107,0.12)] hover:bg-[rgba(83,96,143,0.07)]",
-                            "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                            "outline-none focus:ring-1 focus:ring-black",
                           )}
                           onClick={() => {
                             setActiveComponentId(c.id);
                             setHoverTokenPath(null);
                           }}
                         >
-                          <div className={cx("text-sm font-semibold", active ? "text-[#1aa38a]" : "text-[#222727]")}>{c.name}</div>
+                          <div className={cx("text-sm font-semibold", active ? "text-black" : "text-[#222727]")}>{c.name}</div>
                           <div className="text-xs text-[rgba(34,39,39,0.6)] mt-[2px]">
                             {c.id === "smartSummary"
                               ? "可编辑 tokens + Design Skill"
@@ -4089,7 +4109,7 @@
                             className={cx(
                               "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setMode("error")}
                           >
@@ -4100,7 +4120,7 @@
                             className={cx(
                               "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setMode("empty")}
                           >
@@ -4109,8 +4129,8 @@
                           <button
                             type="button"
                             className={cx(
-                              "h-[36px] px-[16px] bg-[#1aa38a] text-[#ffffff] rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "h-[36px] px-[16px] bg-black text-[#ffffff] rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setMode("loading")}
                           >
@@ -4124,7 +4144,7 @@
                             className={cx(
                               "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setFormResetNonce((x) => x + 1)}
                           >
@@ -4138,7 +4158,7 @@
                             className={cx(
                               "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() =>
                               setAiValue(
@@ -4153,7 +4173,7 @@
                             className={cx(
                               "h-[36px] px-[16px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
                               "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setAiValue("")}
                           >
@@ -4172,7 +4192,7 @@
                         <label className="flex items-center gap-[8px] text-sm">
                           <input
                             type="checkbox"
-                            className="accent-[#1aa38a]"
+                            className="accent-black"
                             checked={disabled}
                             onChange={(e) => setDisabled(e.target.checked)}
                           />
@@ -4183,7 +4203,7 @@
                         <label className="flex items-center gap-[8px] text-sm">
                           <input
                             type="checkbox"
-                            className="accent-[#1aa38a]"
+                            className="accent-black"
                             checked={collapsed}
                             onChange={(e) => setCollapsed(e.target.checked)}
                           />
@@ -4200,7 +4220,7 @@
                           <label className="flex items-center gap-[8px] text-sm">
                             <input
                               type="checkbox"
-                              className="accent-[#1aa38a]"
+                              className="accent-black"
                               checked={showUpdatedAt}
                               onChange={(e) => setShowUpdatedAt(e.target.checked)}
                             />
@@ -4209,7 +4229,7 @@
                           <label className="flex items-center gap-[8px] text-sm">
                             <input
                               type="checkbox"
-                              className="accent-[#1aa38a]"
+                              className="accent-black"
                               checked={showTags}
                               onChange={(e) => setShowTags(e.target.checked)}
                             />
@@ -4222,7 +4242,7 @@
                           <div className="flex items-center gap-[8px] text-sm">
                             <span className="text-[rgba(34,39,39,0.6)]">交互场景：</span>
                             <select
-                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-black"
                               value={formScenario}
                               onChange={(e) => setFormScenario(e.target.value)}
                             >
@@ -4237,7 +4257,7 @@
                             type="button"
                             className={cx(
                               "h-[36px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black",
                             )}
                             onClick={() => setFormResetNonce((n) => n + 1)}
                           >
@@ -4250,7 +4270,7 @@
                           <div className="flex items-center gap-[8px] text-sm">
                             <span className="text-[rgba(34,39,39,0.6)]">回复推荐：</span>
                             <select
-                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-black"
                               value={aiRecoMode}
                               onChange={(e) => setAiRecoMode(e.target.value)}
                             >
@@ -4263,7 +4283,7 @@
                           <div className="flex items-center gap-[8px] text-sm">
                             <span className="text-[rgba(34,39,39,0.6)]">点击行为：</span>
                             <select
-                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-black"
                               value={aiRecoClick}
                               onChange={(e) => setAiRecoClick(e.target.value)}
                             >
@@ -4275,7 +4295,7 @@
                           <label className="flex items-center gap-[8px] text-sm">
                             <input
                               type="checkbox"
-                              className="accent-[#1aa38a]"
+                              className="accent-black"
                               checked={aiRecoHideAfterPick}
                               onChange={(e) => setAiRecoHideAfterPick(e.target.checked)}
                             />
@@ -4639,8 +4659,8 @@
                         <button
                           type="button"
                           className={cx(
-                            "h-[36px] px-[12px] rounded-[8px] border border-[rgba(26,163,138,0.35)] bg-[rgba(26,163,138,0.06)] text-[#1aa38a] text-sm font-semibold transition-colors flex items-center gap-[5px]",
-                            "hover:bg-[rgba(26,163,138,0.12)] active:opacity-90 outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                            "h-[36px] px-[12px] rounded-[8px] border border-[rgba(0,0,0,0.22)] bg-[rgba(0,0,0,0.04)] text-black text-sm font-semibold transition-colors flex items-center gap-[5px]",
+                            "hover:bg-[rgba(0,0,0,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black",
                           )}
                           onClick={() => setSandboxOpen(true)}
                         >
@@ -4652,7 +4672,7 @@
                         type="button"
                         className={cx(
                           "h-[36px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
-                          "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                          "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black",
                         )}
                         onClick={() => {
                           const blob = new Blob([designSkillMd], { type: "text/markdown;charset=utf-8" });
@@ -4676,8 +4696,8 @@
                       <button
                         type="button"
                         className={cx(
-                          "h-[36px] px-[16px] rounded-[8px] bg-[#1aa38a] text-[#ffffff] text-sm font-semibold transition-opacity",
-                          "hover:opacity-90 active:opacity-90 outline-none focus:ring-1 focus:ring-[#1aa38a]",
+                          "h-[36px] px-[16px] rounded-[8px] bg-black text-[#ffffff] text-sm font-semibold transition-opacity",
+                          "hover:opacity-90 active:opacity-90 outline-none focus:ring-1 focus:ring-black",
                         )}
                         onClick={async () => {
                           try {
@@ -4754,7 +4774,7 @@
             iconSize:         num("iconSize", 16),
             textMain:         col("textMain", "#222727"),
             textSub:          col("textSub", "rgba(34,39,39,0.6)"),
-            focusRing:        col("focusRing", "#1aa38a"),
+            focusRing:        col("focusRing", "#000000"),
             hoverFill:        col("hoverFill", "rgba(83,96,143,0.07)"),
             borderOuter:      col("borderOuter", "rgba(34,39,39,0.09)"),
             tagPinkBg:        col("tag.tones.pink.bg",   "rgba(233,30,99,0.15)"),
@@ -4776,7 +4796,7 @@
             inputBorder:      col("inputBorder", "rgba(45,66,107,0.10)"),
             inputPadX:        num("inputPadX", 12),
             inputPadY:        num("inputPadY", 8),
-            focusRing:        col("focusRing", "#1aa38a"),
+            focusRing:        col("focusRing", "#000000"),
             gapOuter:         num("gapOuterPx", 4),
             recoBarHeight:    num("recommendBarHeightPx", 4),
             recoBarRadius:    num("recommendBarRadiusPx", 4),
@@ -4794,9 +4814,9 @@
             recoItemFontSize: num("recommendItemTextSizePx", 13),
             recoItemLineH:    num("recommendItemLineHeightPx", 18),
             recoItemColor:    col("recommendItemTextColor", "rgba(34,39,39,0.75)"),
-            recoItemColorSel: col("recommendItemTextColorSelected", "#1aa38a"),
+            recoItemColorSel: col("recommendItemTextColorSelected", "#000000"),
             recoItemBgHover:  col("recommendItemBgHover", "rgba(83,96,143,0.07)"),
-            recoItemBgSel:    col("recommendItemBgSelected", "rgba(26,163,138,0.08)"),
+            recoItemBgSel:    col("recommendItemBgSelected", "rgba(0,0,0,0.05)"),
           };
         }
 
@@ -4814,8 +4834,8 @@
           sendBtnHeight:   num("sendBtnHeightPx", 36),
           sendBtnRadius:   num("sendBtnRadiusPx", 8),
           sendBtnBgDis:    col("sendBtnBgDisabled", "rgba(45,66,107,0.12)"),
-          sendBtnBgEn:     col("sendBtnBgEnabled", "#1aa38a"),
-          focusRing:       col("focusRing", "#1aa38a"),
+          sendBtnBgEn:     col("sendBtnBgEnabled", "#000000"),
+          focusRing:       col("focusRing", "#000000"),
           recoTitleGrad:   col("recoTitleGradient", "linear-gradient(90deg,#16DACB,#E774DD)"),
           motionOpacity:   num("motionOpacity", 0.4),
           statusColor:     col("statusColor", "rgba(34,39,39,0.6)"),
@@ -5221,7 +5241,7 @@
                     <span className="text-[15px] font-bold text-[#222727]">🧪 沙盒测试</span>
                     <span className={cx(
                       "px-[8px] py-[2px] rounded-[99px] text-[11px] font-semibold",
-                      allPass ? "bg-[rgba(26,163,138,0.12)] text-[#1aa38a]" : "bg-[rgba(233,30,99,0.10)] text-[#c0174a]",
+                      allPass ? "bg-[rgba(0,0,0,0.07)] text-black" : "bg-[rgba(233,30,99,0.10)] text-[#c0174a]",
                     )}>
                       {passCount} / {checks.length} 项通过
                     </span>
@@ -5233,7 +5253,7 @@
                 </div>
                 <button
                   type="button"
-                  className="flex items-center justify-center w-[30px] h-[30px] rounded-[8px] hover:bg-[rgba(83,96,143,0.09)] text-[rgba(34,39,39,0.4)] text-[20px] font-light outline-none focus:ring-1 focus:ring-[#1aa38a]"
+                  className="flex items-center justify-center w-[30px] h-[30px] rounded-[8px] hover:bg-[rgba(83,96,143,0.09)] text-[rgba(34,39,39,0.4)] text-[20px] font-light outline-none focus:ring-1 focus:ring-black"
                   onClick={onClose} aria-label="关闭沙盒"
                 >×</button>
               </div>
@@ -5248,8 +5268,8 @@
                       <button
                         key={s.id} type="button"
                         className={cx(
-                          "px-[10px] h-[26px] rounded-[6px] text-[12px] font-medium transition-colors outline-none focus:ring-1 focus:ring-[#1aa38a]",
-                          activeTab === s.id ? "bg-[#1aa38a] text-[#ffffff]" : "text-[rgba(34,39,39,0.65)] hover:bg-[rgba(83,96,143,0.08)]",
+                          "px-[10px] h-[26px] rounded-[6px] text-[12px] font-medium transition-colors outline-none focus:ring-1 focus:ring-black",
+                          activeTab === s.id ? "bg-black text-[#ffffff]" : "text-[rgba(34,39,39,0.65)] hover:bg-[rgba(83,96,143,0.08)]",
                         )}
                         onClick={() => setActiveTab(s.id)}
                       >{s.label}</button>
@@ -5258,7 +5278,7 @@
                   <div className="flex-1 overflow-auto p-[28px]" style={{ background: "rgba(83,96,143,0.025)" }}>
                     <div className="max-w-[500px] mx-auto">
                       <div className="flex items-center gap-[6px] mb-[14px]">
-                        <div className="w-[6px] h-[6px] rounded-full" style={{ background: "#1aa38a" }} />
+                        <div className="w-[6px] h-[6px] rounded-full" style={{ background: "#000000" }} />
                         <span className="text-[11px] text-[rgba(34,39,39,0.4)] font-medium tracking-wide">
                           Skill 驱动生成 · {scenarios.find(s => s.id === activeTab)?.label}
                         </span>
@@ -5279,7 +5299,7 @@
                         key={check.id}
                         className={cx(
                           "flex items-start gap-[8px] px-[10px] py-[8px] rounded-[8px]",
-                          check.pass ? "bg-[rgba(26,163,138,0.07)]" : "bg-[rgba(233,30,99,0.07)]",
+                          check.pass ? "bg-[rgba(0,0,0,0.04)]" : "bg-[rgba(233,30,99,0.07)]",
                         )}
                       >
                         <span className="shrink-0 text-[13px] leading-[18px]">{check.pass ? "✅" : "❌"}</span>
@@ -5291,9 +5311,9 @@
                   </div>
                   <div className={cx(
                     "px-[16px] py-[13px] border-t border-[rgba(45,66,107,0.12)] shrink-0",
-                    allPass ? "bg-[rgba(26,163,138,0.06)]" : "bg-[rgba(233,30,99,0.05)]",
+                    allPass ? "bg-[rgba(0,0,0,0.04)]" : "bg-[rgba(233,30,99,0.05)]",
                   )}>
-                    <div className={cx("text-[12px] font-semibold", allPass ? "text-[#1aa38a]" : "text-[#c0174a]")}>
+                    <div className={cx("text-[12px] font-semibold", allPass ? "text-black" : "text-[#c0174a]")}>
                       {allPass ? "✅ Skill 约束完整，可安全交付 AI 使用" : `❌ Skill 中有 ${checks.length - passCount} 项约束缺失或异常`}
                     </div>
                     <div className="text-[11px] text-[rgba(34,39,39,0.45)] mt-[3px]">
