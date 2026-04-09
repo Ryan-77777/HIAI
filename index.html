@@ -4655,35 +4655,30 @@
                             : "用于强约束 AI 生成“AI输入框”。"}
                       </div>
                     </div>
-                    {/* Buttons — flex-none keeps group together; wraps as a unit when narrow */}
-                    <div className="flex items-center gap-[6px] flex-none">
+                    {/* Icon-only buttons — flex-none, wraps as a unit when narrow */}
+                    <div className="flex items-center gap-[4px] flex-none">
                       {/* 沙盒测试 */}
                       {activeComponentId !== "iconLib" && (
                         <button
                           type="button"
-                          className={cx(
-                            "h-[28px] px-[10px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white",
-                            "text-[#222727] text-[11px] font-semibold whitespace-nowrap",
-                            "flex items-center gap-[4px] transition-colors",
-                            "hover:bg-[rgba(83,96,143,0.07)] active:opacity-80",
-                            "outline-none focus:ring-1 focus:ring-black",
-                          )}
+                          title="沙盒测试（模拟AI真实生成效果）"
+                          className="h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[rgba(34,39,39,0.65)] hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
                           onClick={() => setSandboxOpen(true)}
                         >
-                          <span style={{ fontSize: 12 }}>🧪</span>
-                          <span>沙盒测试</span>
+                          {/* Beaker / sandbox icon */}
+                          <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+                            <path d="M6 2v5L3.5 12.5A1 1 0 0 0 4.4 14h7.2a1 1 0 0 0 .9-1.5L10 7V2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M5.5 2h5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                            <circle cx="6.5" cy="10.5" r="0.7" fill="currentColor"/>
+                            <circle cx="9" cy="12" r="0.7" fill="currentColor"/>
+                          </svg>
                         </button>
                       )}
-                      {/* 下载 .md — icon-only 逐按钮加 tooltip */}
+                      {/* 下载 .md */}
                       <button
                         type="button"
-                        title="下载 .md 文件"
-                        className={cx(
-                          "h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white",
-                          "flex items-center justify-center text-[rgba(34,39,39,0.55)] transition-colors",
-                          "hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80",
-                          "outline-none focus:ring-1 focus:ring-black",
-                        )}
+                        title="下载 Design Skill .md 文件"
+                        className="h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
                         onClick={() => {
                           const blob = new Blob([designSkillMd], { type: "text/markdown;charset=utf-8" });
                           const url = URL.createObjectURL(blob);
@@ -4706,13 +4701,12 @@
                           <path d="M3 12h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
                         </svg>
                       </button>
-                      {/* 复制 — primary action */}
+                      {/* 复制 Markdown — primary, shows check on success */}
                       <button
                         type="button"
+                        title={copied ? "已复制！" : "复制 Design Skill Markdown"}
                         className={cx(
-                          "h-[28px] px-[12px] rounded-[7px] text-[11px] font-semibold whitespace-nowrap",
-                          "flex items-center gap-[4px] transition-all",
-                          "outline-none focus:ring-1 focus:ring-black",
+                          "h-[28px] w-[28px] rounded-[7px] flex items-center justify-center transition-all outline-none focus:ring-1 focus:ring-black",
                           copied
                             ? "bg-[rgba(0,0,0,0.07)] text-[#222727] border border-[rgba(45,66,107,0.14)]"
                             : "bg-black text-white hover:opacity-85 active:opacity-70",
@@ -4728,20 +4722,14 @@
                         }}
                       >
                         {copied ? (
-                          <>
-                            <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
-                              <path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            <span>已复制</span>
-                          </>
+                          <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+                            <path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
                         ) : (
-                          <>
-                            <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
-                              <rect x="5" y="5" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
-                              <path d="M9 5V3.5A1.5 1.5 0 0 0 7.5 2h-4A1.5 1.5 0 0 0 2 3.5v4A1.5 1.5 0 0 0 3.5 9H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
-                            </svg>
-                            <span>复制</span>
-                          </>
+                          <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+                            <rect x="5" y="5" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
+                            <path d="M9 5V3.5A1.5 1.5 0 0 0 7.5 2h-4A1.5 1.5 0 0 0 2 3.5v4A1.5 1.5 0 0 0 3.5 9H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                          </svg>
                         )}
                       </button>
                     </div>
