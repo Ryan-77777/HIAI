@@ -1,0 +1,211 @@
+{
+  "categories": {
+    "Development": [
+      {
+        "name": "if-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/8dd84b9a-281d-47ea-877c-3d5daa4a40dc",
+        "inset": "inset-[4.82%_5.26%_3.51%_7.66%]"
+      },
+      {
+        "name": "plugin",
+        "url": "https://www.figma.com/api/mcp/asset/4ab8ca62-e0f9-4a57-9a72-2df8d3492dd1",
+        "inset": "inset-[9.18%_8.38%]"
+      },
+      {
+        "name": "variable-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/d214c21e-6d41-40bc-b5fb-46f051a096a7",
+        "inset": "inset-[8.33%_4.17%]"
+      },
+      {
+        "name": "terminal-square-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/f144d96a-da4b-4ff7-ad75-9c053658482b",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "terminal-circle-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/e70d4d7a-efa9-4442-b053-2fd61740ab5e",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "terminal-browser-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/03a855f0-3ce7-438f-ae49-d83b9b77e0fe",
+        "inset": "inset-[8.33%_4.17%]"
+      },
+      {
+        "name": "terminal-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/c24b3c67-225a-4690-a0f3-6e51ed202278",
+        "inset": "inset-[16.67%_12.5%]"
+      },
+      {
+        "name": "server-06-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/65c35ed3-8d37-467c-bc7f-f4a47a97e3f0",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "server-05-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/7a635efb-38a2-45a1-80ad-e4c1629d98bc",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "server-04-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/697522c7-d7e1-461e-9f64-b8481fd83916",
+        "inset": "inset-[6.25%_4.17%]"
+      },
+      {
+        "name": "server-03-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/d33b57d6-5055-47ba-841d-839016e8b2c7",
+        "inset": "inset-[8.33%_4.17%]"
+      },
+      {
+        "name": "server-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/649d2d2a-3682-47e5-85ce-d6d525db42af",
+        "inset": "inset-[12.5%_4.17%]"
+      },
+      {
+        "name": "server-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/f1db1f82-5040-4b39-9ade-1f241a4b5959",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "qr-code-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/36d693f1-2353-45fe-b487-c43067f22d8c",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "qr-code-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/6495ce73-ed51-4286-96d0-3d3d4f740018",
+        "inset": "inset-[4.17%_8.29%_8.33%_8.33%]"
+      },
+      {
+        "name": "puzzle-piece-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/546c4aa6-3533-4e0a-ba16-a11057a16645",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "puzzle-piece-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/d1d0ed33-1181-4ead-9803-e4819b7cdedd",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "package-x-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/95351286-794d-4bff-b790-a647cfbee84b",
+        "inset": "inset-[4.77%_6.25%_4.77%_8.33%]"
+      },
+      {
+        "name": "package-search-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/5afbc0fa-1aab-4078-9593-0e105057ab4c",
+        "inset": "inset-[4.77%_4.17%_4.77%_8.33%]"
+      },
+      {
+        "name": "package-plus-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/3e951ac9-285a-4008-adc9-c3ff6e7d983b",
+        "inset": "inset-[4.77%_4.17%_4.77%_8.33%]"
+      },
+      {
+        "name": "package-check-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/761eeae1-27af-43a2-b170-01de5494e57a",
+        "inset": "inset-[4.77%_4.17%_4.77%_8.33%]"
+      },
+      {
+        "name": "package-minus-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/1cd8138f-0e17-4a38-8785-e7fa239a5ee9",
+        "inset": "inset-[4.77%_4.17%_4.77%_8.33%]"
+      },
+      {
+        "name": "package-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/a08e9f28-eba2-4980-a584-3fd4c7576614",
+        "inset": "inset-[4.77%_8.33%]"
+      },
+      {
+        "name": "git-pull-request-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/8ce6ad77-31b7-4c48-b0d3-123aefae2258",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "git-merge-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/ca50ab1f-6545-4fa2-b1da-1c55e2d67982",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "git-commit-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/28f03f42-85ff-457c-9ff0-b42c9feabf61",
+        "inset": "inset-[29.17%_4.17%]"
+      },
+      {
+        "name": "git-branch-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/68cf87d1-b670-4a4e-8853-e8f168576bc7",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "git-branch-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/8cc5c2ad-4719-43d3-bc79-bce3bf430a51",
+        "inset": "inset-[8.33%]"
+      },
+      {
+        "name": "folder-code-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/81f0eb5b-0c0e-4d2a-947e-d587cacaa608",
+        "inset": "inset-[8.33%_4.17%]"
+      },
+      {
+        "name": "file-code-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/8037be38-5f37-40a6-95d2-10d2faa7b162",
+        "inset": "inset-[4.17%_8.33%_4.17%_6.25%]"
+      },
+      {
+        "name": "file-code-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/a026bc34-e84a-4880-adaf-084aec260eff",
+        "inset": "inset-[4.17%_12.5%]"
+      },
+      {
+        "name": "dataflow-04-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/1b331b0d-c50b-468b-ac18-382df5168122",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "dataflow-03-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/b4f4c2dd-afcd-4a2e-9a18-5ec5fb7c908a",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "dataflow-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/6c3964b5-a9fe-49d5-b64a-eb6470bec231",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "dataflow-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/22dc7215-df3c-4f61-a617-53242acd555e",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "database-03-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/065b5973-468b-4869-9256-052335dd1764",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "database-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/9d88cf83-db1b-4c21-b3ed-4f2559909bae",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "database-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/dad71c4f-89c1-4432-b525-3c5e34c27d29",
+        "inset": "inset-[4.17%_8.33%]"
+      },
+      {
+        "name": "data-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/621db3a0-8daa-4b4b-bd2c-2a6a8a50697f",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "cpu-chip-02-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/5257676d-f60f-4ab1-a762-d6fc556c8933",
+        "inset": "inset-[4.17%]"
+      },
+      {
+        "name": "cpu-chip-01-stroked",
+        "url": "https://www.figma.com/api/mcp/asset/2900ec39-30f1-45e4-b940-71f871feb4cd",
+        "inset": "inset-[4.17%]"
+      }
+    ]
+  }
+}

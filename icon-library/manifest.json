@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "generatedFrom": "figma:C7xI0S0GkgPQdfPHzTsl3M",
+  "previewSizePx": 16,
+  "categories": [
+    { "id": "AIInput", "label": "AI Input", "count": 13, "file": "AIInput.json" },
+    { "id": "Development", "label": "Development", "count": 0, "file": "Development.json" },
+    { "id": "Users", "label": "Users", "count": 0, "file": "Users.json" },
+    { "id": "Communication", "label": "Communication", "count": 0, "file": "Communication.json" },
+    { "id": "Editor", "label": "Editor", "count": 0, "file": "Editor.json" },
+    { "id": "Files", "label": "Files", "count": 0, "file": "Files.json" },
+    { "id": "Layout", "label": "Layout", "count": 0, "file": "Layout.json" },
+    { "id": "Charts", "label": "Charts", "count": 0, "file": "Charts.json" }
+  ]
+}

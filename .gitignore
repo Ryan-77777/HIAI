@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node (如未来迁移到 Vite/npm)
+node_modules/
+dist/
+.env
+.env.local
+
+# IDE
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+Thumbs.db
+ehthumbs.db
+
+# Vercel
+.vercel
