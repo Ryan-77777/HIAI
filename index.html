@@ -3042,6 +3042,415 @@
         );
       }
       
+      // ─── FOUNDATION TOKENS DATA (from Figma Variables) ───────────────────────
+      const FOUNDATION_COLORS_INIT = {
+        "semi-amber":       ["#FDFBED","#FCF4D1","#F8E6A4","#F5D679","#F1C34E","#EEAE25","#C6881D","#9F6515","#77460F","#4F2B09"],
+        "semi-blue":        ["#ECF6FE","#CFE9FE","#9FD1FC","#70B8FB","#429EF9","#1482F8","#0B69D4","#0451B1","#003D8D","#002C69"],
+        "semi-brand":       ["#E6F6F2","#C5EDE3","#91DAC9","#63C8B2","#3BB59D","#1AA38A","#148875","#0F6D5F","#0B5248","#063631"],
+        "semi-cyan":        ["#E6F7F8","#C5EFF0","#91DEE1","#61CCD2","#37B9C3","#13A6B4","#0E8896","#0A6B78","#074F5A","#04333C"],
+        "semi-green":       ["#ECF7EC","#D0F0D1","#A6E1A7","#7FD182","#5DC262","#3EB346","#32953B","#27772F","#1C5A24","#123C18"],
+        "semi-grey":        ["#F9F9F9","#E6E7EA","#C6C7CD","#A7A8B0","#888992","#6B6C75","#555661","#41424C","#2E2E38","#1C1C23"],
+        "semi-bluegrey":    ["#FCFCFD","#F9FAFB","#F2F4F7","#E4E7EC","#D0D5DD","#98A2B3","#667085","#475467","#344054","#182230"],
+        "semi-indigo":      ["#ECEFF7","#D1D6F0","#A6B1E1","#7F8ED1","#5D6DC2","#3E4FB3","#32409F","#28338A","#1E2776","#161C61"],
+        "semi-light-blue":  ["#EBF8FD","#CDEEFB","#9CDBF7","#6DC8F4","#3FB3F0","#139EEC","#0A81C8","#0365A5","#004C81","#00355D"],
+        "semi-light-green": ["#F3F8EC","#E3F0D1","#C8E1A7","#AED280","#95C35E","#7DB43F","#669633","#507828","#3A5A1D","#263C13"],
+        "semi-lime":        ["#F3FAE8","#E5F5C8","#CFEC95","#BDE266","#AED93A","#A3CF11","#85AD0C","#688A09","#4C6705","#314503"],
+        "semi-orange":      ["#FFF8EC","#FEEECF","#FDD9A0","#FCC271","#FBA842","#FA8B14","#D0690F","#A74B0A","#7D3206","#531D03"],
+        "semi-pink":        ["#FDEDF1","#FAD2DC","#F5A7BD","#F17DA2","#EC558A","#E72E75","#C32165","#A01654","#7C0E43","#580731"],
+        "semi-purple":      ["#F7EAF7","#F0CCF0","#DF9DE1","#CC73D1","#B74EC2","#A22DB3","#8B239F","#751A8A","#5F1376","#4B0D61"],
+        "semi-red":         ["#FEF3EF","#FDDED5","#FCBAAB","#FA9582","#F96D59","#F74331","#D32E24","#B01C18","#8C0F10","#68080C"],
+        "semi-teal":        ["#E6F7F4","#C4F0E7","#8EE1D1","#2ECAB4","#26BFA9","#0EB39C","#0A9584","#07776B","#045A52","#003C3B"],
+        "semi-violet":      ["#F1EEF9","#DCD4F3","#BBACE8","#9E86DC","#8464D1","#6D45C5","#6039B1","#542D9C","#482388","#3C1B73"],
+        "semi-yellow":      ["#FEFDEC","#FEFACF","#FCF29F","#FBE870","#F9DA42","#F8C914","#CF9D0F","#A5760A","#7C5206","#533203"],
+      };
+      const FOUNDATION_COLOR_LABELS = {
+        "semi-amber":"Amber","semi-blue":"Blue","semi-brand":"Brand","semi-cyan":"Cyan",
+        "semi-green":"Green","semi-grey":"Grey","semi-bluegrey":"Blue Grey","semi-indigo":"Indigo",
+        "semi-light-blue":"Light Blue","semi-light-green":"Light Green","semi-lime":"Lime",
+        "semi-orange":"Orange","semi-pink":"Pink","semi-purple":"Purple","semi-red":"Red",
+        "semi-teal":"Teal","semi-violet":"Violet","semi-yellow":"Yellow",
+      };
+      const FOUNDATION_SPACING_INIT = [
+        { key:"spacing-super-loose",  label:"Super Loose",  value:40 },
+        { key:"spacing-extra-loose",  label:"Extra Loose",  value:32 },
+        { key:"spacing-loose",        label:"Loose",        value:24 },
+        { key:"spacing-base-loose",   label:"Base Loose",   value:20 },
+        { key:"spacing-base",         label:"Base",         value:16 },
+        { key:"spacing-base-tight",   label:"Base Tight",   value:12 },
+        { key:"spacing-tight",        label:"Tight",        value:8  },
+        { key:"spacing-extra-tight",  label:"Extra Tight",  value:4  },
+        { key:"spacing-super-tight",  label:"Super Tight",  value:2  },
+        { key:"spacing-none",         label:"None",         value:0  },
+      ];
+      const FOUNDATION_RADIUS_INIT = [
+        { key:"semi-border-radius-extra-small", label:"Extra Small", value:3    },
+        { key:"semi-border-radius-small",       label:"Small",       value:6    },
+        { key:"semi-border-radius-medium",      label:"Medium",      value:8    },
+        { key:"semi-border-radius-large",       label:"Large",       value:12   },
+        { key:"semi-border-radius-circle",      label:"Circle",      value:9999 },
+        { key:"semi-border-radius-full",        label:"Full",        value:9999 },
+      ];
+      const FOUNDATION_TEXT_INIT = [
+        { key:"semi-color-text-0", label:"Text 0", alpha:1.00, desc:"主标题、一级正文" },
+        { key:"semi-color-text-1", label:"Text 1", alpha:0.80, desc:"副标题、二级正文" },
+        { key:"semi-color-text-2", label:"Text 2", alpha:0.60, desc:"占位符、提示文字" },
+        { key:"semi-color-text-3", label:"Text 3", alpha:0.35, desc:"禁用状态文字"    },
+      ];
+
+      function buildFoundationDesignSkill(palette, spacing, radius) {
+        const colorSections = Object.entries(palette).map(([family, shades]) => {
+          const label = FOUNDATION_COLOR_LABELS[family] || family;
+          const rows = shades.map((hex, i) => `| \`${family}-${i}\` | \`${hex}\` |`).join("\n");
+          return `### ${label}\n| Token | 色值 |\n|-------|------|\n${rows}`;
+        }).join("\n\n");
+        const textRows = FOUNDATION_TEXT_INIT.map(t =>
+          `| \`${t.key}\` | rgba(34,39,39,${t.alpha}) | ${t.desc} |`
+        ).join("\n");
+        const spacingRows = spacing.map(s =>
+          `| \`${s.key}\` | ${s.value}px | ${s.label} |`
+        ).join("\n");
+        const radiusRows = radius.map(r =>
+          `| \`${r.key}\` | ${r.value >= 9999 ? "50%" : r.value + "px"} | ${r.label} |`
+        ).join("\n");
+        return [
+          "# DESIGN_SKILL — Foundation Tokens（基础参数）",
+          "",
+          "> 所有业务组件的样式变量**必须**引用本文档定义的基础 Token，**禁止**使用任意自定义色值、间距或圆角数值。",
+          "",
+          "---",
+          "",
+          "## 1. 设计原则",
+          "",
+          "- **Token 即来源**：颜色、间距、圆角均来自本文件；业务组件 Token 的值必须引用此处变量名。",
+          "- **禁止魔法数字**：组件样式中禁止出现未在本文档定义的颜色 hex / 间距数值 / 圆角数值。",
+          "- **单一来源**：本文档由 Figma Variables 同步生成，修改后实时更新 Design Skill，AI 生成组件时以此为准。",
+          "",
+          "---",
+          "",
+          "## 2. 色板（Palette Colors）",
+          "",
+          `> 共 ${Object.keys(palette).length} 个色系，每色系 10 级（0→9），级别越大颜色越深。优先使用 5 级作为主色，0-2 作为浅色背景，7-9 作为深色强调。`,
+          "",
+          colorSections,
+          "",
+          "### 特殊色",
+          "| Token | 色值 |",
+          "|-------|------|",
+          "| `semi-color-white` | `#FFFFFF` |",
+          "| `semi-color-black` | `#000000` |",
+          "",
+          "---",
+          "",
+          "## 3. 文字颜色（Text Colors）",
+          "",
+          "> 所有正文、标题、占位符颜色必须使用以下 Token，禁止直接使用 hex 色值替代。",
+          "",
+          "| Token | 色值 | 用途 |",
+          "|-------|------|------|",
+          textRows,
+          "",
+          "---",
+          "",
+          "## 4. 间距（Spacing）",
+          "",
+          "> 所有 padding、gap、margin 必须使用以下 Token 对应数值，禁止使用未列出的间距值。",
+          "",
+          "| Token | 数值 | 语义 |",
+          "|-------|------|------|",
+          spacingRows,
+          "",
+          "---",
+          "",
+          "## 5. 圆角（Border Radius）",
+          "",
+          "> 所有圆角值必须来自以下 Token，禁止使用未列出的数值。",
+          "",
+          "| Token | 数值 | 语义 |",
+          "|-------|------|------|",
+          radiusRows,
+          "",
+          "---",
+          "",
+          "## 6. 使用规范",
+          "",
+          "### 6.1 颜色语义映射（快速参考）",
+          "- 品牌主色：`semi-brand-5`（`#1AA38A`）",
+          "- 错误色：`semi-red-5`（`#F74331`）",
+          "- 警告色：`semi-amber-5`（`#EEAE25`）",
+          "- 成功色：`semi-green-5`（`#3EB346`）",
+          "- 信息色：`semi-blue-5`（`#1482F8`）",
+          "",
+          "### 6.2 禁止项",
+          "- ❌ 禁止在业务组件中直接写 hex 色值（如 `#FF0000`），必须引用 palette token",
+          "- ❌ 禁止使用 `spacing-*` 之外的间距数值（如 `7px`、`13px`）",
+          "- ❌ 禁止使用 `semi-border-radius-*` 之外的圆角数值（如 `5px`、`10px`）",
+          "- ❌ 禁止使用 `semi-color-text-0~3` 之外的文字颜色",
+          "",
+          "### 6.3 Token 命名规则",
+          "- 色板：`semi-{family}-{0-9}`",
+          "- 文字色：`semi-color-text-{0-3}`",
+          "- 间距：`spacing-{density}`",
+          "- 圆角：`semi-border-radius-{size}`",
+        ].join("\n");
+      }
+
+      function FoundationPage() {
+        const [palette, setPalette] = useState(() => deepClone(FOUNDATION_COLORS_INIT));
+        const [spacing, setSpacing] = useState(() => FOUNDATION_SPACING_INIT.map(s => ({ ...s })));
+        const [radius, setRadius] = useState(() => FOUNDATION_RADIUS_INIT.map(r => ({ ...r })));
+        const [midTab, setMidTab] = useState("colors");
+
+        const skillMd = useMemo(
+          () => buildFoundationDesignSkill(palette, spacing, radius),
+          [palette, spacing, radius],
+        );
+        const skillHtml = useMemo(() => (window.marked ? window.marked.parse(skillMd) : ""), [skillMd]);
+
+        function updateColor(family, idx, hex) {
+          setPalette(prev => {
+            const next = { ...prev };
+            next[family] = [...prev[family]];
+            next[family][idx] = hex.toUpperCase();
+            return next;
+          });
+        }
+
+        return (
+          <div className="flex h-full gap-0">
+            {/* ─── Left: Color Palette Preview ─── */}
+            <div className="h-full overflow-hidden flex flex-col" style={{ width: "40%", minWidth: 380 }}>
+              <div className="bg-white border border-[rgba(45,66,107,0.12)] rounded-[12px] h-full flex flex-col overflow-hidden">
+                <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] shrink-0">
+                  <div className="text-[14px] font-bold text-[#222727]">Design Tokens</div>
+                  <div className="text-[11px] text-[rgba(34,39,39,0.5)] mt-[2px]">
+                    基础设计变量 — 所有组件和模式的样式基础，使用 --ola-* CSS 自定义属性，对标 Tailwind v4 架构，11 级色阶。
+                  </div>
+                </div>
+                <div className="flex-1 overflow-auto p-[16px] flex flex-col gap-[24px]">
+                  {/* Palette Colors */}
+                  <div>
+                    <div className="text-[10px] font-bold text-[rgba(34,39,39,0.45)] tracking-widest uppercase mb-[4px]">PALETTE COLORS</div>
+                    <div className="text-[11px] text-[rgba(34,39,39,0.4)] mb-[12px]">
+                      {Object.keys(palette).length} 个色板 × 10 级色阶（0 → 9），覆盖品牌色、中性色、功能色全场景
+                    </div>
+                    <div className="grid grid-cols-3 gap-[8px]">
+                      {Object.entries(palette).map(([family, shades]) => (
+                        <div key={family} className="bg-[#fafafa] border border-[rgba(45,66,107,0.08)] rounded-[8px] p-[10px]">
+                          <div className="text-[11px] font-semibold text-[#222727] mb-[6px]">{FOUNDATION_COLOR_LABELS[family]}</div>
+                          <div className="flex rounded-[3px] overflow-hidden mb-[4px]" style={{ height: 22 }}>
+                            {shades.map((hex, i) => (
+                              <div key={i} style={{ flex: 1, backgroundColor: hex }} title={`${family}-${i}: ${hex}`} />
+                            ))}
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-[9px] text-[rgba(34,39,39,0.3)] font-mono">{shades[0]}</span>
+                            <span className="text-[9px] text-[rgba(34,39,39,0.3)] font-mono">{shades[9]}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Text Colors */}
+                  <div>
+                    <div className="text-[10px] font-bold text-[rgba(34,39,39,0.45)] tracking-widest uppercase mb-[10px]">TEXT COLORS</div>
+                    <div className="flex flex-col gap-[6px]">
+                      {FOUNDATION_TEXT_INIT.map(t => (
+                        <div key={t.key} className="flex items-center gap-[10px] px-[12px] py-[8px] bg-[#f8f9fa] rounded-[8px] border border-[rgba(45,66,107,0.06)]">
+                          <div className="w-[28px] h-[28px] rounded-[6px] border border-[rgba(45,66,107,0.1)] shrink-0"
+                            style={{ background: `rgba(34,39,39,${t.alpha})` }} />
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[11px] font-mono font-semibold text-[#222727]">{t.key}</div>
+                            <div className="text-[10px] text-[rgba(34,39,39,0.45)]">{t.desc}</div>
+                          </div>
+                          <div style={{ color: `rgba(34,39,39,${t.alpha})`, fontSize: 16, fontWeight: 600 }}>Aa</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Spacing */}
+                  <div>
+                    <div className="text-[10px] font-bold text-[rgba(34,39,39,0.45)] tracking-widest uppercase mb-[10px]">SPACING</div>
+                    <div className="flex flex-col gap-[7px]">
+                      {spacing.filter(s => s.value > 0).map(s => (
+                        <div key={s.key} className="flex items-center gap-[10px]">
+                          <div className="text-[10px] text-[rgba(34,39,39,0.5)] shrink-0" style={{ width: 72 }}>{s.label}</div>
+                          <div className="bg-[#1aa38a] rounded-[2px] shrink-0" style={{ height: 8, width: Math.min(s.value * 5, 180) }} />
+                          <div className="text-[10px] font-mono text-[rgba(34,39,39,0.5)]">{s.value}px</div>
+                        </div>
+                      ))}
+                      <div className="flex items-center gap-[10px]">
+                        <div className="text-[10px] text-[rgba(34,39,39,0.5)] shrink-0" style={{ width: 72 }}>None</div>
+                        <div className="text-[10px] font-mono text-[rgba(34,39,39,0.3)] italic">0px</div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Border Radius */}
+                  <div>
+                    <div className="text-[10px] font-bold text-[rgba(34,39,39,0.45)] tracking-widest uppercase mb-[10px]">BORDER RADIUS</div>
+                    <div className="flex gap-[16px] flex-wrap">
+                      {radius.map(r => (
+                        <div key={r.key} className="flex flex-col items-center gap-[6px]">
+                          <div
+                            className="border-[2px] border-[#1aa38a] bg-[rgba(26,163,138,0.08)]"
+                            style={{ width: 40, height: 40, borderRadius: r.value >= 9999 ? "50%" : r.value }}
+                          />
+                          <div className="text-[9px] text-[rgba(34,39,39,0.5)] text-center leading-tight">{r.label}</div>
+                          <div className="text-[9px] font-mono text-[rgba(34,39,39,0.35)]">{r.value >= 9999 ? "50%" : r.value + "px"}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* gap */}
+            <div className="shrink-0" style={{ width: 12 }} />
+
+            {/* ─── Middle: Token Editor ─── */}
+            <div className="h-full overflow-hidden flex flex-col" style={{ width: "28%", minWidth: 260 }}>
+              <div className="bg-white border border-[rgba(45,66,107,0.12)] rounded-[12px] h-full flex flex-col overflow-hidden">
+                <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] shrink-0">
+                  <div className="text-[13px] font-bold text-[#222727]">Tokens 参数</div>
+                  <div className="text-[11px] text-[rgba(34,39,39,0.5)] mt-[2px]">颜色可点击色块修改，数值可直接输入，实时同步到 Design Skill。</div>
+                </div>
+                <div className="flex gap-[4px] px-[8px] py-[8px] border-b border-[rgba(45,66,107,0.08)] shrink-0 flex-wrap">
+                  {[
+                    { id: "colors", label: "色板" },
+                    { id: "spacing", label: "间距" },
+                    { id: "radius", label: "圆角" },
+                    { id: "text", label: "文字色" },
+                  ].map(tab => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      className={cx(
+                        "px-[10px] py-[5px] rounded-[6px] text-[11px] font-medium transition-colors",
+                        midTab === tab.id ? "bg-[#1aa38a] text-white" : "text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.08)]",
+                      )}
+                      onClick={() => setMidTab(tab.id)}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex-1 overflow-auto p-[10px]">
+                  {midTab === "colors" && (
+                    <div className="flex flex-col gap-[14px]">
+                      {Object.entries(palette).map(([family, shades]) => (
+                        <div key={family}>
+                          <div className="text-[10px] font-semibold text-[rgba(34,39,39,0.45)] mb-[4px] uppercase tracking-wide">
+                            {FOUNDATION_COLOR_LABELS[family]}
+                          </div>
+                          <div className="flex flex-col gap-[1px]">
+                            {shades.map((hex, i) => (
+                              <div key={i} className="flex items-center gap-[7px] px-[6px] py-[4px] rounded-[5px] hover:bg-[rgba(83,96,143,0.04)]">
+                                <div className="relative shrink-0" style={{ width: 18, height: 18 }}>
+                                  <div className="w-full h-full rounded-[3px] border border-[rgba(45,66,107,0.15)]" style={{ backgroundColor: hex }} />
+                                  <input type="color" value={hex} onChange={e => updateColor(family, i, e.target.value)}
+                                    className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" title="点击修改颜色" />
+                                </div>
+                                <span className="text-[10px] font-mono text-[rgba(34,39,39,0.6)] flex-1">{family}-{i}</span>
+                                <span className="text-[9px] font-mono text-[rgba(34,39,39,0.38)]">{hex.toUpperCase()}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {midTab === "spacing" && (
+                    <div className="flex flex-col gap-[6px]">
+                      {spacing.map(s => (
+                        <div key={s.key} className="flex items-center gap-[8px] px-[8px] py-[7px] rounded-[6px] hover:bg-[rgba(83,96,143,0.04)]">
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[11px] font-medium text-[#222727] truncate">{s.label}</div>
+                            <div className="text-[9px] font-mono text-[rgba(34,39,39,0.38)] truncate">{s.key}</div>
+                          </div>
+                          <div className="flex items-center gap-[4px] shrink-0">
+                            <input type="number" min={0} max={160} value={s.value}
+                              onChange={e => setSpacing(prev => prev.map(x => x.key === s.key ? { ...x, value: Number(e.target.value) } : x))}
+                              className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-[#1aa38a]" />
+                            <span className="text-[10px] text-[rgba(34,39,39,0.4)]">px</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {midTab === "radius" && (
+                    <div className="flex flex-col gap-[6px]">
+                      {radius.map(r => (
+                        <div key={r.key} className="flex items-center gap-[8px] px-[8px] py-[7px] rounded-[6px] hover:bg-[rgba(83,96,143,0.04)]">
+                          <div className="border-[2px] border-[#1aa38a] bg-[rgba(26,163,138,0.1)] shrink-0"
+                            style={{ width: 26, height: 26, borderRadius: r.value >= 9999 ? "50%" : r.value }} />
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[11px] font-medium text-[#222727]">{r.label}</div>
+                            <div className="text-[9px] font-mono text-[rgba(34,39,39,0.38)] truncate">{r.key}</div>
+                          </div>
+                          {r.value < 9999 ? (
+                            <div className="flex items-center gap-[4px] shrink-0">
+                              <input type="number" min={0} max={100} value={r.value}
+                                onChange={e => setRadius(prev => prev.map(x => x.key === r.key ? { ...x, value: Number(e.target.value) } : x))}
+                                className="w-[52px] text-right text-[11px] font-mono border border-[rgba(45,66,107,0.15)] rounded-[5px] px-[5px] py-[3px] outline-none focus:border-[#1aa38a]" />
+                              <span className="text-[10px] text-[rgba(34,39,39,0.4)]">px</span>
+                            </div>
+                          ) : (
+                            <span className="text-[11px] font-mono text-[rgba(34,39,39,0.45)] shrink-0">50%</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {midTab === "text" && (
+                    <div className="flex flex-col gap-[6px]">
+                      {FOUNDATION_TEXT_INIT.map(t => (
+                        <div key={t.key} className="px-[8px] py-[8px] rounded-[6px] hover:bg-[rgba(83,96,143,0.04)]">
+                          <div className="flex items-center gap-[8px] mb-[3px]">
+                            <div className="w-[18px] h-[18px] rounded-[3px] border border-[rgba(45,66,107,0.1)] shrink-0"
+                              style={{ background: `rgba(34,39,39,${t.alpha})` }} />
+                            <span className="text-[11px] font-mono text-[#222727]">{t.key}</span>
+                          </div>
+                          <div className="text-[10px] text-[rgba(34,39,39,0.5)] ml-[26px]">{t.desc}</div>
+                          <div className="text-[9px] font-mono text-[rgba(34,39,39,0.35)] ml-[26px] mt-[2px]">
+                            #222727 @ {Math.round(t.alpha * 100)}% opacity
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* gap */}
+            <div className="shrink-0" style={{ width: 12 }} />
+
+            {/* ─── Right: Foundation Design Skill ─── */}
+            <div className="flex-1 h-full overflow-hidden" style={{ minWidth: 280 }}>
+              <div className="bg-white border border-[rgba(45,66,107,0.12)] rounded-[12px] h-full flex flex-col overflow-hidden">
+                <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] shrink-0 flex items-center justify-between gap-[8px]">
+                  <div>
+                    <div className="text-[13px] font-bold text-[#222727]">Foundation Design Skill</div>
+                    <div className="text-[11px] text-[rgba(34,39,39,0.5)] mt-[2px]">统一基础规范 · 所有业务组件 Token 的约束来源</div>
+                  </div>
+                  <button type="button"
+                    onClick={() => navigator.clipboard.writeText(skillMd).catch(() => {})}
+                    className="shrink-0 px-[10px] py-[5px] rounded-[6px] border border-[rgba(45,66,107,0.12)] text-[11px] font-medium text-[rgba(34,39,39,0.6)] hover:bg-[rgba(83,96,143,0.07)] transition-colors outline-none"
+                  >
+                    复制 Skill
+                  </button>
+                </div>
+                <div className="flex-1 overflow-auto p-[16px]">
+                  <div className="md" dangerouslySetInnerHTML={{ __html: skillHtml }} />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      // ─────────────────────────────────────────────────────────────────────────
+
       function Demo() {
         const COMPONENTS = useMemo(
           () => [
@@ -3230,6 +3639,7 @@
         }, [mode]);
 
         const [sandboxOpen, setSandboxOpen] = useState(false);
+        const [mainView, setMainView] = useState("business"); // "business" | "foundation"
 
         const [asidePx, setAsidePx] = useState(160); // Component nav
         const [leftPx, setLeftPx] = useState(520);   // UI
@@ -3377,8 +3787,37 @@
         );
 
         return (
-          <div className="w-screen h-screen overflow-hidden p-[12px] box-border">
-            <div className="w-full h-full flex gap-[0px]">
+          <div className="w-screen h-screen overflow-hidden flex flex-col bg-[#f5f6f8]">
+            {/* ── 顶部主 Tab 栏 ── */}
+            <div className="shrink-0 flex items-center gap-[8px] px-[16px] h-[44px] border-b border-[rgba(45,66,107,0.12)] bg-white">
+              <div className="text-[13px] font-bold text-[#222727] mr-[8px]">HiAI 组件规范平台</div>
+              <div className="flex items-center gap-[2px]">
+                {[
+                  { id: "business", label: "业务组件" },
+                  { id: "foundation", label: "基础参数" },
+                ].map(tab => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setMainView(tab.id)}
+                    className={cx(
+                      "px-[14px] py-[5px] rounded-[7px] text-[12px] font-semibold transition-colors outline-none",
+                      mainView === tab.id
+                        ? "bg-[#1aa38a] text-white"
+                        : "text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.08)]",
+                    )}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* ── 主内容区 ── */}
+            <div className="flex-1 overflow-hidden p-[12px] box-border">
+              {mainView === "foundation" ? (
+                <FoundationPage />
+              ) : (
+                <div className="w-full h-full flex gap-[0px]">
               {runtimeError ? (
                 <div className="fixed left-[16px] top-[16px] z-50 max-w-[560px]">
                   <div className="bg-[#ffffff] border border-[rgba(247,67,49,0.25)] rounded-[12px] overflow-hidden">
@@ -4076,7 +4515,7 @@
                 </div>
               </div>
             </div>
-
+              )}
             {/* ── Sandbox Modal ──────────────────────────────── */}
             {sandboxOpen && activeComponentId !== "iconLib" && (
               <SandboxModal
@@ -4085,6 +4524,7 @@
                 onClose={() => setSandboxOpen(false)}
               />
             )}
+          </div>
           </div>
         );
       }
