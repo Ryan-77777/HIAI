@@ -204,6 +204,44 @@
         }
       }
 
+      // ─── Foundation color resolver ──────────────────────────────────────────
+      const FOUNDATION_TEXT_COLOR_MAP = {
+        "semi-color-text-0": "rgba(34,39,39,1.0)",
+        "semi-color-text-1": "rgba(34,39,39,0.8)",
+        "semi-color-text-2": "rgba(34,39,39,0.6)",
+        "semi-color-text-3": "rgba(34,39,39,0.35)",
+      };
+      // Resolve a foundation token reference (e.g. "semi-brand-5") to its actual CSS value.
+      // Falls back to the literal string if it's not a known reference.
+      function resolveFoundationColor(ref, palette) {
+        if (!ref || typeof ref !== "string") return ref || "#000000";
+        // Palette reference: "semi-{family}-{shade 0-9}"
+        // Use greedy match to capture everything before the last "-digit" as the family name.
+        const m = ref.match(/^(semi-.+)-(\d)$/);
+        if (m) {
+          const fam = m[1];
+          const idx = parseInt(m[2]);
+          if (palette && palette[fam] && palette[fam][idx] !== undefined)
+            return palette[fam][idx];
+        }
+        if (ref === "semi-color-white") return "#FFFFFF";
+        if (ref === "semi-color-black") return "#000000";
+        if (ref === "semi-color-dark-text") return "#222727";
+        if (FOUNDATION_TEXT_COLOR_MAP[ref]) return FOUNDATION_TEXT_COLOR_MAP[ref];
+        return ref; // literal fallback (rgba, gradients, etc.)
+      }
+      // Recursively resolve all color references in a token tree.
+      function resolveAllTokenColors(tokens, palette) {
+        function rec(v) {
+          if (typeof v === "string") return resolveFoundationColor(v, palette);
+          if (Array.isArray(v)) return v.map(rec);
+          if (v && typeof v === "object")
+            return Object.fromEntries(Object.entries(v).map(([k, val]) => [k, rec(val)]));
+          return v;
+        }
+        return rec(tokens);
+      }
+
       const AI_INPUT_ASSETS = {
         motionPng: resolveAssetUrl("./ai-input-assets/ai-input-motion.svg"),
         iconMagicWand: resolveAssetUrl("./ai-input-assets/icon-magic-wand.svg"),
@@ -233,8 +271,8 @@
         paddingOuterPx: 12,
         borderOuter: "rgba(34,39,39,0.09)",
         hoverFill: "rgba(83,96,143,0.07)",
-        focusRing: "#1aa38a",
-        textMain: "#222727",
+        focusRing: "semi-brand-5",
+        textMain: "semi-color-dark-text",
         textSub: "rgba(34,39,39,0.6)",
         titleFontSizePx: 12,
         titleLineHeightPx: 16,
@@ -248,7 +286,7 @@
         headerPadY: 0,
         headerGap: 8,
         iconSize: 16,
-        iconPrimary: "#1aa38a",
+        iconPrimary: "semi-brand-5",
         iconNeutral: "rgba(34,39,39,0.75)",
         iconButtonSize: 24,
         iconButtonPad: 4,
@@ -267,17 +305,17 @@
           fontSize: 12,
           lineHeight: 16,
           tones: {
-            pink: { bg: "rgba(233,30,99,0.15)", fg: "#8c0f3d" },
-            teal: { bg: "rgba(0,179,161,0.15)", fg: "#015a58" },
-            violet: { bg: "rgba(106,58,199,0.15)", fg: "#331c77" },
+            pink: { bg: "rgba(233,30,99,0.15)", fg: "semi-pink-8" },
+            teal: { bg: "rgba(0,179,161,0.15)", fg: "semi-teal-8" },
+            violet: { bg: "rgba(106,58,199,0.15)", fg: "semi-violet-8" },
           },
         },
         button: {
           height: 36,
           radius: 8,
           border: "rgba(45,66,107,0.12)",
-          primaryBg: "#1aa38a",
-          primaryFg: "#ffffff",
+          primaryBg: "semi-brand-5",
+          primaryFg: "semi-color-white",
         },
         shimmer: {
           radius: 6,
@@ -299,7 +337,7 @@
         titleFontSizePx: 14,
         titleLineHeightPx: 20,
         titleFontWeight: 600,
-        titleColor: "rgba(34,39,39,0.8)",
+        titleColor: "semi-color-text-1",
         // AI badge
         aiBadgeRadiusPx: 3,
         aiBadgePadX: 4,
@@ -323,7 +361,7 @@
         inputRightPadX: 8,
         inputContentGapPx: 8,
         placeholderColor: "rgba(34,39,39,0.6)",
-        valueColor: "#222727",
+        valueColor: "semi-color-dark-text",
         placeholderFontSizePx: 14,
         placeholderLineHeightPx: 20,
         inputTextWeight: 400,
@@ -359,15 +397,15 @@
         recommendItemTextSizePx: 14,
         recommendItemLineHeightPx: 20,
         recommendItemTextColor: "rgba(34,39,39,0.8)",
-        recommendItemTextColorSelected: "#222727",
-        recommendItemTextColorHover: "#222727",
+        recommendItemTextColorSelected: "semi-color-dark-text",
+        recommendItemTextColorHover: "semi-color-dark-text",
         // hover/selected 背景来自设计稿多条场景的中间条目（I1460:50007;398:41680）
         recommendItemBgHover:
           "linear-gradient(252.03241159126486deg, rgba(231, 140, 225, 0.2) 1.9953%, rgba(170, 120, 243, 0.2) 16.397%, rgba(108, 147, 239, 0.2) 54.8%, rgba(131, 224, 236, 0.2) 88.404%, rgba(99, 219, 191, 0.2) 98.005%), linear-gradient(90deg, #ffffff 0%, #ffffff 100%)",
         recommendItemBgSelected:
           "linear-gradient(252.03241159126486deg, rgba(231, 140, 225, 0.2) 1.9953%, rgba(170, 120, 243, 0.2) 16.397%, rgba(108, 147, 239, 0.2) 54.8%, rgba(131, 224, 236, 0.2) 88.404%, rgba(99, 219, 191, 0.2) 98.005%), linear-gradient(90deg, #ffffff 0%, #ffffff 100%)",
         // Interaction
-        focusRing: "#1aa38a",
+        focusRing: "semi-brand-5",
         hoverFill: "rgba(83,96,143,0.07)",
       };
 
@@ -376,12 +414,12 @@
         componentName: "AI输入框 / HiAI Input",
         widthRule: "fill-container",
         // Outer shell
-        outerBg: "#f2f4f7",
+        outerBg: "semi-bluegrey-2",
         outerRadiusPx: 14,
         outerPadPx: 6,
         outerGapPx: 6,
         // Reply recommend panel (话术推荐 / 回复推荐)
-        recoOuterBg: "#f9fafb",
+        recoOuterBg: "semi-bluegrey-1",
         recoOuterRadiusPx: 12,
         recoOuterPadPx: 8,
         recoOuterGapPx: 4,
@@ -399,10 +437,10 @@
         recoItemGapPx: 4,
         recoItemFontSizePx: 12,
         recoItemLineHeightPx: 16,
-        recoItemTextColor: "rgba(34,39,39,0.8)",
+        recoItemTextColor: "semi-color-text-1",
         recoItemBgHover: "rgba(52,59,57,0.05)",
-        tooltipBg: "#464e4d",
-        tooltipTextColor: "#ffffff",
+        tooltipBg: "semi-grey-7",
+        tooltipTextColor: "semi-color-white",
         tooltipFontSizePx: 14,
         tooltipLineHeightPx: 20,
         tooltipRadiusPx: 6,
@@ -422,8 +460,8 @@
         statusLineHeightPx: 16,
         statusColor: "rgba(34,39,39,0.6)",
         // Inner input card
-        cardBg: "#ffffff",
-        cardBorder: "#ffffff",
+        cardBg: "semi-color-white",
+        cardBorder: "semi-color-white",
         cardBorderWidthPx: 1,
         cardRadiusPx: 12,
         cardPadPx: 12,
@@ -432,21 +470,21 @@
         textFontSizePx: 14,
         textLineHeightPx: 20,
         textColorPlaceholder: "rgba(34,39,39,0.35)",
-        textColorValue: "#222727",
+        textColorValue: "semi-color-dark-text",
         // Actions row
         actionsGapPx: 8,
         iconBtnRadiusPx: 6,
         iconBtnPadPx: 4,
         iconSizePx: 16,
         // Send button
-        sendBtnBgDisabled: "#e6eae9",
-        sendBtnBgEnabled: "#0b877d",
+        sendBtnBgDisabled: "semi-grey-1",
+        sendBtnBgEnabled: "semi-brand-6",
         sendBtnHeightPx: 24,
         sendBtnRadiusPx: 6,
         sendBtnPadPx: 4,
         // Interaction
         hoverFill: "rgba(83,96,143,0.07)",
-        focusRing: "#1aa38a",
+        focusRing: "semi-brand-5",
       };
 
       const ICON_LIBRARY_TOKENS = {
@@ -456,7 +494,7 @@
         gridGapPx: 12,
         cellSizePx: 44,
         cellRadiusPx: 10,
-        cellBg: "#ffffff",
+        cellBg: "semi-color-white",
         cellBorder: "rgba(45,66,107,0.12)",
         nameTextSizePx: 12,
         nameLineHeightPx: 16,
@@ -465,7 +503,7 @@
         searchRadiusPx: 10,
         searchBorder: "rgba(45,66,107,0.12)",
         searchPlaceholderColor: "rgba(34,39,39,0.35)",
-        focusRing: "#1aa38a",
+        focusRing: "semi-brand-5",
         hoverFill: "rgba(83,96,143,0.07)",
       };
 
@@ -1461,7 +1499,135 @@
         );
       }
 
-      function TokenField({ label, path, value, type, onChange, onHoverChange }) {
+      // ─── Foundation Color Picker ─────────────────────────────────────────────
+      // Displays a dropdown with all foundation palette colors + special/text colors.
+      // Value is stored as a foundation token reference (e.g. "semi-brand-5").
+      function FoundationColorPicker({ value, onChange, palette }) {
+        const [open, setOpen] = useState(false);
+        const rootRef = useRef(null);
+
+        useEffect(() => {
+          if (!open) return;
+          function onDown(e) {
+            if (rootRef.current && !rootRef.current.contains(e.target)) setOpen(false);
+          }
+          document.addEventListener("mousedown", onDown);
+          return () => document.removeEventListener("mousedown", onDown);
+        }, [open]);
+
+        const resolved = resolveFoundationColor(value, palette || {});
+        const isRef = typeof value === "string" && value.startsWith("semi-");
+
+        const specialColors = [
+          { key: "semi-color-white",     label: "White",     hex: "#FFFFFF" },
+          { key: "semi-color-black",     label: "Black",     hex: "#000000" },
+          { key: "semi-color-dark-text", label: "Dark Text", hex: "#222727" },
+        ];
+
+        return (
+          <div ref={rootRef} className="relative">
+            {/* Trigger button */}
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-[6px] w-full h-[30px] px-[8px] bg-white border border-[rgba(45,66,107,0.12)] rounded-[7px] hover:border-[#1aa38a] transition-colors outline-none"
+            >
+              {/* Swatch */}
+              <div className="shrink-0 w-[16px] h-[16px] rounded-[3px] border border-[rgba(45,66,107,0.15)] overflow-hidden"
+                style={{ background: "repeating-conic-gradient(rgba(0,0,0,0.06) 0% 25%, transparent 0% 50%) 0 0/6px 6px" }}>
+                <div className="w-full h-full" style={{ background: resolved }} />
+              </div>
+              {/* Label */}
+              <span className="text-[10px] font-mono text-[rgba(34,39,39,0.6)] flex-1 text-left truncate">
+                {isRef ? value : resolved}
+              </span>
+              {/* Chevron */}
+              <svg viewBox="0 0 8 5" width="8" height="5" className="shrink-0 text-[rgba(34,39,39,0.35)]" fill="none">
+                <path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {/* Dropdown panel */}
+            {open && (
+              <div
+                className="absolute top-[34px] left-0 right-0 z-[9999] bg-white border border-[rgba(45,66,107,0.12)] rounded-[10px] shadow-xl overflow-auto"
+                style={{ maxHeight: 300 }}
+              >
+                {/* Special colors */}
+                <div className="px-[10px] pt-[10px] pb-[8px] border-b border-[rgba(45,66,107,0.06)]">
+                  <div className="text-[9px] font-bold text-[rgba(34,39,39,0.4)] uppercase tracking-wider mb-[6px]">特殊色</div>
+                  <div className="flex gap-[5px]">
+                    {specialColors.map(sc => (
+                      <button
+                        key={sc.key}
+                        type="button"
+                        title={`${sc.key} · ${sc.hex}`}
+                        onClick={() => { onChange(sc.key); setOpen(false); }}
+                        className={cx(
+                          "w-[20px] h-[20px] rounded-[4px] border-[2px] transition-all",
+                          value === sc.key ? "border-[#1aa38a] scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(26,163,138,0.5)]",
+                        )}
+                        style={{ background: sc.hex, outline: sc.hex === "#FFFFFF" ? "1px solid rgba(45,66,107,0.08)" : "none" }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Text colors (rgba) */}
+                <div className="px-[10px] pt-[8px] pb-[8px] border-b border-[rgba(45,66,107,0.06)]">
+                  <div className="text-[9px] font-bold text-[rgba(34,39,39,0.4)] uppercase tracking-wider mb-[6px]">文字色</div>
+                  <div className="flex gap-[5px]">
+                    {(typeof FOUNDATION_TEXT_INIT !== "undefined" ? FOUNDATION_TEXT_INIT : []).map(t => (
+                      <button
+                        key={t.key}
+                        type="button"
+                        title={`${t.key} · rgba(34,39,39,${t.alpha})`}
+                        onClick={() => { onChange(t.key); setOpen(false); }}
+                        className={cx(
+                          "w-[20px] h-[20px] rounded-[4px] border-[2px] transition-all",
+                          value === t.key ? "border-[#1aa38a] scale-110" : "border-[rgba(45,66,107,0.15)] hover:border-[rgba(26,163,138,0.5)]",
+                        )}
+                        style={{ background: `rgba(34,39,39,${t.alpha})` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Palette colors grouped by family */}
+                <div className="p-[10px] flex flex-col gap-[8px]">
+                  {Object.entries(palette || {}).map(([family, shades]) => (
+                    <div key={family}>
+                      <div className="text-[9px] text-[rgba(34,39,39,0.4)] mb-[4px]">
+                        {(typeof FOUNDATION_COLOR_LABELS !== "undefined" && FOUNDATION_COLOR_LABELS[family]) || family}
+                      </div>
+                      <div className="flex gap-[2px]">
+                        {(shades || []).map((hex, i) => {
+                          const tokenKey = `${family}-${i}`;
+                          return (
+                            <button
+                              key={i}
+                              type="button"
+                              title={`${tokenKey} · ${hex}`}
+                              onClick={() => { onChange(tokenKey); setOpen(false); }}
+                              className={cx(
+                                "w-[18px] h-[18px] rounded-[2px] border-[2px] transition-all",
+                                value === tokenKey ? "border-[#1aa38a] scale-110" : "border-transparent hover:border-[rgba(26,163,138,0.5)]",
+                              )}
+                              style={{ background: hex }}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      function TokenField({ label, path, value, type, onChange, onHoverChange, palette }) {
         const inputBase =
           "h-[30px] px-[8px] bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[7px] text-[#222727] outline-none focus:ring-1 focus:ring-[#1aa38a] w-full";
         const mono = "font-mono text-[11px]";
@@ -1488,20 +1654,11 @@
                 onChange={(e) => onChange(parseMaybeNumber(e.target.value))}
               />
             ) : type === "color" ? (
-              <div className="flex items-center gap-[6px]">
-                <div className="shrink-0 h-[30px] w-[30px] rounded-[6px] border border-[rgba(45,66,107,0.15)] overflow-hidden relative"
-                  style={{ background: "repeating-conic-gradient(rgba(0,0,0,0.06) 0% 25%, transparent 0% 50%) 0 0 / 10px 10px" }}>
-                  <div className="absolute inset-0" style={{ background: String(value || "transparent") }} />
-                  <input
-                    type="color"
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                    value={typeof value === "string" && value.startsWith("#") ? value : "#222727"}
-                    onChange={(e) => onChange(e.target.value)}
-                    title="颜色选择器（仅适用 hex）"
-                  />
-                </div>
-                <input className={cx(inputBase, mono, "flex-1")} value={String(value ?? "")} onChange={(e) => onChange(e.target.value)} />
-              </div>
+              <FoundationColorPicker
+                value={value}
+                palette={palette || {}}
+                onChange={onChange}
+              />
             ) : type === "css-color" ? (
               <div className="flex items-center gap-[6px]">
                 <ColorSwatch value={value} />
@@ -1516,12 +1673,13 @@
 
       function TokensPanel({
         title = "Tokens（可编辑）",
-        subtitle = "修改任意 token，会实时同步更新 UI 与 Design Skill。",
+        subtitle = "颜色 token 引用基础参数色板，在「基础参数」页修改即可全局联动更新。",
         tokens,
         onTokensChange,
         onHoverChange,
         sections,
         onReset,
+        palette,
       }) {
         return (
           <div className="bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[12px] overflow-hidden h-full flex flex-col">
@@ -1548,7 +1706,7 @@
                     {sec.fields.map((f) => {
                       const v = getIn(tokens, f.path);
                       return (
-                        <TokenField
+                          <TokenField
                           key={f.path}
                           label={f.label}
                           path={f.path}
@@ -1556,6 +1714,7 @@
                           type={f.type}
                           onChange={(next) => onTokensChange(setIn(tokens, f.path, next))}
                           onHoverChange={onHoverChange}
+                          palette={palette}
                         />
                       );
                     })}
@@ -3194,10 +3353,9 @@
         ].join("\n");
       }
 
-      function FoundationPage() {
-        const [palette, setPalette] = useState(() => deepClone(FOUNDATION_COLORS_INIT));
-        const [spacing, setSpacing] = useState(() => FOUNDATION_SPACING_INIT.map(s => ({ ...s })));
-        const [radius, setRadius] = useState(() => FOUNDATION_RADIUS_INIT.map(r => ({ ...r })));
+      // FoundationPage is now a controlled component: palette/spacing/radius state live in Demo()
+      // so that all business components automatically get the updated colors.
+      function FoundationPage({ palette, setPalette, spacing, setSpacing, radius, setRadius }) {
         const [midTab, setMidTab] = useState("colors");
 
         const skillMd = useMemo(
@@ -3467,10 +3625,21 @@
         const [disabled, setDisabled] = useState(false);
         const [collapsed, setCollapsed] = useState(false);
         const [copied, setCopied] = useState(false);
+        // ── Foundation state (shared across all components) ──────────────────
+        const [foundationPalette, setFoundationPalette] = useState(() => deepClone(FOUNDATION_COLORS_INIT));
+        const [foundationSpacing, setFoundationSpacing] = useState(() => FOUNDATION_SPACING_INIT.map(s => ({ ...s })));
+        const [foundationRadius, setFoundationRadius] = useState(() => FOUNDATION_RADIUS_INIT.map(r => ({ ...r })));
+
         const [smartTokens, setSmartTokens] = useState(() => deepClone(SMART_SUMMARY_TOKENS));
         const [formTokens, setFormTokens] = useState(() => deepClone(FORM_RECOMMEND_TOKENS));
         const [aiTokens, setAiTokens] = useState(() => deepClone(AI_INPUT_TOKENS));
         const [iconLibTokens, setIconLibTokens] = useState(() => deepClone(ICON_LIBRARY_TOKENS));
+
+        // Resolved tokens: all foundation color references are replaced with actual CSS values
+        const resolvedSmartTokens = useMemo(() => resolveAllTokenColors(smartTokens, foundationPalette), [smartTokens, foundationPalette]);
+        const resolvedFormTokens  = useMemo(() => resolveAllTokenColors(formTokens, foundationPalette),  [formTokens,  foundationPalette]);
+        const resolvedAiTokens    = useMemo(() => resolveAllTokenColors(aiTokens, foundationPalette),    [aiTokens,    foundationPalette]);
+        const resolvedIconLibTokens = useMemo(() => resolveAllTokenColors(iconLibTokens, foundationPalette), [iconLibTokens, foundationPalette]);
         const [hoverTokenPath, setHoverTokenPath] = useState(null);
         const [showUpdatedAt, setShowUpdatedAt] = useState(true);
         const [showTags, setShowTags] = useState(true);
@@ -3483,6 +3652,7 @@
         const [aiRecoClick, setAiRecoClick] = useState("adopt"); // adopt | send
         const [aiRecoHideAfterPick, setAiRecoHideAfterPick] = useState(true);
 
+        // activeTokens: raw token refs (for design skill markdown & TokensPanel)
         const activeTokens =
           activeComponentId === "smartSummary"
             ? smartTokens
@@ -3491,6 +3661,15 @@
               : activeComponentId === "aiInput"
                 ? aiTokens
                 : iconLibTokens;
+        // activeResolvedTokens: CSS-resolved values (for component rendering)
+        const activeResolvedTokens =
+          activeComponentId === "smartSummary"
+            ? resolvedSmartTokens
+            : activeComponentId === "formRecommend"
+              ? resolvedFormTokens
+              : activeComponentId === "aiInput"
+                ? resolvedAiTokens
+                : resolvedIconLibTokens;
         const setActiveTokens =
           activeComponentId === "smartSummary"
             ? setSmartTokens
@@ -3511,11 +3690,11 @@
 
         const designSkillMd = useMemo(() => {
           return activeComponentId === "smartSummary"
-            ? buildDesignSkillMarkdown(activeTokens)
+            ? buildDesignSkillMarkdown(activeResolvedTokens)
             : activeComponentId === "formRecommend"
-              ? buildFormRecommendDesignSkillMarkdown(activeTokens)
+              ? buildFormRecommendDesignSkillMarkdown(activeResolvedTokens)
               : activeComponentId === "aiInput"
-                ? buildAiInputDesignSkillMarkdown(activeTokens)
+                ? buildAiInputDesignSkillMarkdown(activeResolvedTokens)
                 : [
                     "# DESIGN_SKILL — 图标库（Icon Library）",
                     "",
@@ -3815,7 +3994,11 @@
             {/* ── 主内容区 ── */}
             <div className="flex-1 overflow-hidden p-[12px] box-border">
               {mainView === "foundation" ? (
-                <FoundationPage />
+                <FoundationPage
+                  palette={foundationPalette} setPalette={setFoundationPalette}
+                  spacing={foundationSpacing} setSpacing={setFoundationSpacing}
+                  radius={foundationRadius}  setRadius={setFoundationRadius}
+                />
               ) : (
                 <div className="w-full h-full flex gap-[0px]">
               {runtimeError ? (
@@ -4105,7 +4288,7 @@
                     <div
                       className={cx(
                         highlightTarget === "outer" && activeComponentId === "smartSummary"
-                          ? `ring-2 ring-[${activeTokens.focusRing}] ring-offset-2 ring-offset-[rgba(255,255,255,0.75)] rounded-[12px]`
+                          ? `ring-2 ring-[${activeResolvedTokens.focusRing}] ring-offset-2 ring-offset-[rgba(255,255,255,0.75)] rounded-[12px]`
                           : "",
                       )}
                     >
@@ -4116,7 +4299,7 @@
                           disabled={disabled}
                           defaultCollapsed={collapsed}
                           showActions={{ copy: false, refresh: false, feedback: false }}
-                          tokens={activeTokens}
+                          tokens={activeResolvedTokens}
                           highlightTarget={highlightTarget}
                           showUpdatedAt={showUpdatedAt}
                           showTags={showTags}
@@ -4133,12 +4316,12 @@
                             scenario={formScenario}
                             resetNonce={formResetNonce}
                             highlightTarget={highlightTarget}
-                            tokens={activeTokens}
+                            tokens={activeResolvedTokens}
                           />
                         </div>
                       ) : activeComponentId === "iconLibrary" ? (
                         <div className={cx("w-full", collapsed && "hidden")}>
-                          <IconLibraryView tokens={activeTokens} />
+                          <IconLibraryView tokens={activeResolvedTokens} />
                         </div>
                       ) : (
                         <div className={cx("w-full", collapsed && "hidden")}>
@@ -4151,7 +4334,7 @@
                             replyRecommendClick={aiRecoClick}
                             replyRecommendHideAfterPick={aiRecoHideAfterPick}
                             highlightTarget={highlightTarget}
-                            tokens={activeTokens}
+                            tokens={activeResolvedTokens}
                           />
                         </div>
                       )}
@@ -4178,6 +4361,7 @@
                   onTokensChange={setActiveTokens}
                   onReset={resetActiveTokens}
                   onHoverChange={setHoverTokenPath}
+                  palette={foundationPalette}
                   sections={
                     activeComponentId === "smartSummary"
                       ? [
