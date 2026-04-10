@@ -5037,8 +5037,8 @@
               {/* Left: UI */}
               <div className="shrink-0 h-full" style={{ width: leftPx }}>
                 <div className="bg-[#ffffff] rounded-[12px] overflow-hidden h-full flex flex-col">
-                  <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] flex items-start gap-[12px] flex-wrap">
-                    <div className="flex-1 min-w-0 flex flex-col gap-[2px]">
+                  <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)]">
+                    <div className="min-w-0 flex flex-col gap-[2px]">
                       <div className="text-[#222727] text-sm font-bold">
                         {panelComponentId === "smartSummary"
                           ? "智能摘要组件面板（UI）"
@@ -5053,95 +5053,6 @@
                                   : "图标库（UI）"}
                       </div>
                       <div className="text-[rgba(34,39,39,0.6)] text-xs">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
-                    </div>
-                    <div className="flex items-center gap-[8px] flex-none">
-                      {panelComponentId === "smartSummary" ? (
-                        <>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setMode("error")}
-                          >
-                            触发错误
-                          </button>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setMode("empty")}
-                          >
-                            触发空态
-                          </button>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] bg-black text-[#ffffff] text-[12px] font-semibold whitespace-nowrap rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setMode("loading")}
-                          >
-                            触发加载
-                          </button>
-                        </>
-                      ) : panelComponentId === "formRecommend" ? (
-                        <>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setFormResetNonce((x) => x + 1)}
-                          >
-                            重置
-                          </button>
-                        </>
-                      ) : panelComponentId === "aiInput" ? (
-                        <>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() =>
-                              setAiValue(
-                                "用户反馈账号突然被封禁，提示存在异常风险；希望尽快恢复登录与发布权限，并确认如何避免再次触发风控。",
-                              )
-                            }
-                          >
-                            填充示例
-                          </button>
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
-                              "outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setAiValue("")}
-                          >
-                            清空
-                          </button>
-                        </>
-                      ) : panelComponentId === "bubbleRecommend" ? (
-                        <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">
-                          点击推荐填入输入框；hover 行内出现发送
-                        </span>
-                      ) : panelComponentId === "fusionWorkbench" ? (
-                        <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent</span>
-                      ) : (
-                        <></>
-                      )}
                     </div>
                   </div>
 
@@ -5196,9 +5107,45 @@
                           </label>
                         </>
                       ) : null}
+                      {panelComponentId === "smartSummary" ? (
+                        <div className="w-full flex flex-wrap gap-[8px] items-center">
+                          <button
+                            type="button"
+                            className={cx(
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
+                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
+                              "outline-none focus:ring-1 focus:ring-black",
+                            )}
+                            onClick={() => setMode("error")}
+                          >
+                            触发错误
+                          </button>
+                          <button
+                            type="button"
+                            className={cx(
+                              "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
+                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
+                              "outline-none focus:ring-1 focus:ring-black",
+                            )}
+                            onClick={() => setMode("empty")}
+                          >
+                            触发空态
+                          </button>
+                          <button
+                            type="button"
+                            className={cx(
+                              "h-[32px] px-[12px] bg-black text-[#ffffff] text-[12px] font-semibold whitespace-nowrap rounded-[8px] transition-opacity hover:opacity-90 active:opacity-90",
+                              "outline-none focus:ring-1 focus:ring-black",
+                            )}
+                            onClick={() => setMode("loading")}
+                          >
+                            触发加载
+                          </button>
+                        </div>
+                      ) : null}
                       {panelComponentId === "formRecommend" ? (
                         <>
-                          <div className="flex items-center gap-[8px] text-sm">
+                          <div className="w-full flex flex-wrap items-center gap-[8px] text-sm">
                             <span className="text-[rgba(34,39,39,0.6)]">交互场景：</span>
                             <select
                               className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-black"
@@ -5211,17 +5158,18 @@
                               <option value="ultra">超多字数（约100字）</option>
                             </select>
                           </div>
-
-                          <button
-                            type="button"
-                            className={cx(
-                              "h-[36px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
-                              "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black",
-                            )}
-                            onClick={() => setFormResetNonce((n) => n + 1)}
-                          >
-                            重置
-                          </button>
+                          <div className="w-full flex flex-wrap gap-[8px] items-center">
+                            <button
+                              type="button"
+                              className={cx(
+                                "h-[36px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-sm font-semibold transition-colors",
+                                "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90 outline-none focus:ring-1 focus:ring-black",
+                              )}
+                              onClick={() => setFormResetNonce((n) => n + 1)}
+                            >
+                              重置
+                            </button>
+                          </div>
                         </>
                       ) : null}
                       {panelComponentId === "aiInput" ? (
@@ -5260,7 +5208,45 @@
                             />
                             操作后隐藏推荐区
                           </label>
+                          <div className="w-full flex flex-wrap gap-[8px] items-center">
+                            <button
+                              type="button"
+                              className={cx(
+                                "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
+                                "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
+                                "outline-none focus:ring-1 focus:ring-black",
+                              )}
+                              onClick={() =>
+                                setAiValue(
+                                  "用户反馈账号突然被封禁，提示存在异常风险；希望尽快恢复登录与发布权限，并确认如何避免再次触发风控。",
+                                )
+                              }
+                            >
+                              填充示例
+                            </button>
+                            <button
+                              type="button"
+                              className={cx(
+                                "h-[32px] px-[12px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-[#222727] text-[12px] font-semibold whitespace-nowrap transition-colors",
+                                "hover:bg-[rgba(83,96,143,0.07)] active:opacity-90",
+                                "outline-none focus:ring-1 focus:ring-black",
+                              )}
+                              onClick={() => setAiValue("")}
+                            >
+                              清空
+                            </button>
+                          </div>
                         </>
+                      ) : null}
+                      {panelComponentId === "bubbleRecommend" ? (
+                        <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                          点击推荐填入输入框；hover 行内出现发送
+                        </span>
+                      ) : null}
+                      {panelComponentId === "fusionWorkbench" ? (
+                        <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                          顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent
+                        </span>
                       ) : null}
                     </div>
 
