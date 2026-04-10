@@ -3383,27 +3383,49 @@
         );
       }
 
-      function IconLibraryView({ tokens }) {
+      function IconLibraryView({ tokens, selectedIconName, onSelectIcon }) {
         const t = tokens || ICON_LIBRARY_TOKENS;
-        const [manifest, setManifest] = useState(null);
-        const [activeCat, setActiveCat] = useState(null);
-        const [icons, setIcons] = useState([]);
+        const [sections, setSections] = useState([]);
         const [query, setQuery] = useState("");
         const [copiedName, setCopiedName] = useState("");
         const [err, setErr] = useState("");
+        const [loading, setLoading] = useState(true);
 
         useEffect(() => {
           let alive = true;
           (async () => {
             try {
+              setErr("");
+              setLoading(true);
               const m = await loadIconLibraryManifest();
               if (!alive) return;
-              setManifest(m);
-              const first = m?.categories?.[0]?.id || null;
-              setActiveCat(first);
+              const cats = m?.categories || [];
+              const next = [];
+              const dict = window.__ICON_LIBRARY__?.byName;
+              for (const c of cats) {
+                if (!c?.file) continue;
+                try {
+                  const data = await loadIconLibraryCategory(c.file);
+                  if (!alive) return;
+                  const list = data?.icons || [];
+                  next.push({ id: c.id, label: c.label || c.id, icons: list });
+                  if (dict) {
+                    list.forEach((ic) => {
+                      if (ic?.name) dict[String(ic.name)] = ic;
+                    });
+                  }
+                } catch {
+                  if (!alive) return;
+                  next.push({ id: c.id, label: c.label || c.id, icons: [] });
+                }
+              }
+              if (!alive) return;
+              setSections(next);
             } catch (e) {
               if (!alive) return;
               setErr(String(e?.message || e));
+            } finally {
+              if (alive) setLoading(false);
             }
           })();
           return () => {
@@ -3411,41 +3433,24 @@
           };
         }, []);
 
-        useEffect(() => {
-          let alive = true;
-          if (!manifest || !activeCat) return;
-          const item = (manifest.categories || []).find((c) => c.id === activeCat);
-          if (!item) return;
-          (async () => {
-            try {
-              setErr("");
-              const data = await loadIconLibraryCategory(item.file);
-              if (!alive) return;
-              const list = data?.icons || [];
-              setIcons(list);
-              try {
-                const dict = window.__ICON_LIBRARY__?.byName;
-                if (dict) {
-                  list.forEach((ic) => {
-                    if (ic?.name) dict[String(ic.name)] = ic;
-                  });
-                }
-              } catch {}
-            } catch (e) {
-              if (!alive) return;
-              setErr(String(e?.message || e));
-            }
-          })();
-          return () => {
-            alive = false;
-          };
-        }, [manifest, activeCat]);
-
-        const filtered = useMemo(() => {
+        const filteredSections = useMemo(() => {
           const q = String(query || "").trim().toLowerCase();
-          if (!q) return icons;
-          return (icons || []).filter((ic) => String(ic.name || "").toLowerCase().includes(q));
-        }, [icons, query]);
+          return (sections || []).map((sec) => ({
+            ...sec,
+            icons: q
+              ? (sec.icons || []).filter((ic) => String(ic.name || "").toLowerCase().includes(q))
+              : (sec.icons || []).slice(),
+          })).filter((sec) => (sec.icons || []).length > 0);
+        }, [sections, query]);
+
+        const totalAll = useMemo(
+          () => (sections || []).reduce((n, s) => n + (s.icons || []).length, 0),
+          [sections],
+        );
+        const totalShown = useMemo(
+          () => filteredSections.reduce((n, s) => n + (s.icons || []).length, 0),
+          [filteredSections],
+        );
 
         function copyName(name) {
           const v = String(name || "");
@@ -3461,36 +3466,19 @@
           const size = t.previewSizePx;
           const insetCls = icon?.inset || "inset-[0px]";
           return (
-            <div className="relative" style={{ width: size, height: size }}>
+            <div className="relative shrink-0" style={{ width: size, height: size }}>
               <span className="absolute" style={insetClassToStyle(insetCls)}>
-                <img alt="" src={icon?.url} className="block w-full h-full" />
+                <img alt="" src={icon?.url} className="block w-full h-full" draggable={false} />
               </span>
             </div>
           );
         }
 
-        return (
-          <div className="w-full h-full flex flex-col" style={{ fontFamily: t.fontFamily }}>
-            <div className="p-[16px] border-b border-[rgba(45,66,107,0.12)] flex items-center gap-[12px]">
-              <div className="flex items-center gap-[8px]">
-                <div className="text-[#222727] text-sm font-semibold">分类</div>
-                <select
-                  className={cx(
-                    "h-[36px] px-[10px] rounded-[10px] border bg-[#ffffff] text-sm outline-none focus:ring-1",
-                    `border-[${t.searchBorder}]`,
-                    `focus:ring-[${t.focusRing}]`,
-                  )}
-                  value={activeCat || ""}
-                  onChange={(e) => setActiveCat(e.target.value)}
-                >
-                  {(manifest?.categories || []).map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.label} ({c.count})
-                    </option>
-                  ))}
-                </select>
-              </div>
+        const tile = Math.max(36, Number(t.cellSizePx) || 44);
 
+        return (
+          <div className="w-full h-full flex flex-col min-h-0" style={{ fontFamily: t.fontFamily }}>
+            <div className="px-[16px] py-[10px] border-b border-[rgba(45,66,107,0.12)] flex items-center gap-[12px] shrink-0">
               <div className="flex-1 min-w-0">
                 <input
                   className={cx(
@@ -3499,50 +3487,69 @@
                     `border-[${t.searchBorder}]`,
                     `focus:ring-[${t.focusRing}]`,
                   )}
-                  placeholder="搜索图标名称（如 user / send / chart）"
+                  placeholder="搜索图标 name（悬停格子可看全称）"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
               </div>
-
-              <div className="shrink-0 text-xs text-[rgba(34,39,39,0.6)] whitespace-nowrap">
-                {copiedName ? `已复制：${copiedName}` : `${filtered.length}/${icons.length}`}
+              <div className="shrink-0 text-xs text-[rgba(34,39,39,0.55)] whitespace-nowrap tabular-nums">
+                {copiedName ? `已复制 ${copiedName}` : `${totalShown}/${totalAll}`}
               </div>
             </div>
 
             {err ? (
               <div className="p-[16px] text-sm text-[#f74331]">{err}</div>
+            ) : loading ? (
+              <div className="flex-1 flex items-center justify-center text-sm text-[rgba(34,39,39,0.45)]">加载图标库…</div>
             ) : (
-              <div className="flex-1 overflow-auto p-[16px]">
-                <div
-                  className="grid"
-                  style={{
-                    gridTemplateColumns: `repeat(auto-fill, minmax(${t.cellSizePx}px, 1fr))`,
-                    gap: `${t.gridGapPx}px`,
-                  }}
-                >
-                  {filtered.map((ic) => (
-                    <button
-                      key={ic.name}
-                      type="button"
-                      className={cx(
-                        "text-left border border-solid",
-                        `rounded-[${t.cellRadiusPx}px]`,
-                        "p-[10px] flex flex-col items-start gap-[8px]",
-                        "outline-none focus:ring-1",
-                        `focus:ring-[${t.focusRing}]`,
-                      )}
-                      style={{ backgroundColor: t.cellBg, borderColor: t.cellBorder }}
-                      onClick={() => copyName(ic.name)}
-                      title={`点击复制：${ic.name}`}
-                    >
-                      <IconGlyph icon={ic} />
-                      <div className={cx("w-full overflow-hidden text-ellipsis whitespace-nowrap", `text-[${t.nameTextSizePx}px] leading-[${t.nameLineHeightPx}px]`)} style={{ color: t.nameColor }}>
-                        {ic.name}
-                      </div>
-                    </button>
-                  ))}
-                </div>
+              <div className="flex-1 min-h-0 overflow-auto px-[16px] py-[14px]">
+                {filteredSections.length === 0 ? (
+                  <div className="text-sm text-[rgba(34,39,39,0.45)]">无匹配图标</div>
+                ) : (
+                  <div className="flex flex-col gap-[20px]">
+                    {filteredSections.map((sec) => (
+                      <section key={sec.id}>
+                        <h3 className="text-[11px] font-bold text-[rgba(34,39,39,0.45)] tracking-wide uppercase mb-[10px]">
+                          {sec.label}
+                        </h3>
+                        <div
+                          className="grid"
+                          style={{
+                            gridTemplateColumns: `repeat(auto-fill, ${tile}px)`,
+                            gap: `${t.gridGapPx}px`,
+                          }}
+                        >
+                          {(sec.icons || []).map((ic) => {
+                            const sel = selectedIconName && ic.name === selectedIconName;
+                            return (
+                              <button
+                                key={`${sec.id}-${ic.name}`}
+                                type="button"
+                                aria-label={ic.name}
+                                title={ic.name}
+                                className={cx(
+                                  "flex items-center justify-center outline-none transition-colors rounded-[10px]",
+                                  "border-0 bg-transparent",
+                                  sel
+                                    ? "ring-2 ring-black ring-offset-1 ring-offset-white"
+                                    : "hover:bg-[rgba(83,96,143,0.08)]",
+                                  "focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-1",
+                                )}
+                                style={{ width: tile, height: tile, padding: 0 }}
+                                onClick={() => {
+                                  copyName(ic.name);
+                                  if (typeof onSelectIcon === "function") onSelectIcon(ic.name);
+                                }}
+                              >
+                                <IconGlyph icon={ic} />
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -4509,6 +4516,11 @@
         const [mainView, setMainView] = useState("business"); // "business" | "foundation" | "icons"
         const showComponentAside = mainView === "business";
         const panelComponentId = mainView === "icons" ? "iconLibrary" : activeComponentId;
+        const [iconLibrarySelectedName, setIconLibrarySelectedName] = useState(null);
+        const iconLibraryMidHidden = panelComponentId === "iconLibrary" && !iconLibrarySelectedName;
+        useEffect(() => {
+          if (mainView !== "icons") setIconLibrarySelectedName(null);
+        }, [mainView]);
 
         const [mode, setMode] = useState("ready");
         const [disabled, setDisabled] = useState(false);
@@ -4837,7 +4849,9 @@
         function getAvailableW() {
           const vw = Math.max(1080, viewportW || 0);
           const asideW = showComponentAside ? asidePx : 0;
-          const nHandles = showComponentAside ? 3 : 2; // business: aside+3 cols; icons: 3 cols only
+          const nHandles = showComponentAside
+            ? 3
+            : (iconLibraryMidHidden ? 1 : 2);
           return Math.max(0, vw - LAYOUT_PAD * 2 - asideW - HANDLE_W * nHandles);
         }
 
@@ -4864,8 +4878,21 @@
           const avail = getAvailableW();
           if (!avail) return;
 
+          if (iconLibraryMidHidden) {
+            let l = clamp(leftPx, minLeft, maxLeft);
+            let r = avail - l;
+            r = clamp(r, minRight, maxRight);
+            l = avail - r;
+            l = clamp(l, minLeft, maxLeft);
+            setLeftPx(l);
+            setMidPx(0);
+            setRightPx(r);
+            return;
+          }
+
+          let m = midPx < minMid ? 380 : midPx;
+          m = clamp(m, minMid, maxMid);
           let l = clamp(leftPx, minLeft, maxLeft);
-          let m = clamp(midPx, minMid, maxMid);
           let r = clamp(rightPx, minRight, maxRight);
 
           const sum = l + m + r;
@@ -4877,7 +4904,7 @@
           r = clamp(avail - l - m, minRight, maxRight);
 
           setLeftPx(l); setMidPx(m); setRightPx(r);
-        }, [viewportW, asidePx, showComponentAside]);
+        }, [viewportW, asidePx, showComponentAside, iconLibraryMidHidden]);
 
         function onDragMove(e) {
           const d = dragRef.current;
@@ -4893,6 +4920,15 @@
           if (d.active === "aside") {
             const a = clamp(d.startAside + dx, minAside, maxAside);
             setAsidePx(a);
+          } else if (d.active === "lr") {
+            let l = clamp(d.startLeft + dx, minLeft, maxLeft);
+            let r = avail - l;
+            r = clamp(r, minRight, maxRight);
+            l = avail - r;
+            l = clamp(l, minLeft, maxLeft);
+            setLeftPx(l);
+            setMidPx(0);
+            setRightPx(r);
           } else if (d.active === "left") {
             let l = clamp(d.startLeft + dx, minLeft, maxLeft);
             let m = clamp(avail - l - d.startRight, minMid, maxMid);
@@ -5307,7 +5343,11 @@
                         </div>
                       ) : panelComponentId === "iconLibrary" ? (
                         <div className={cx("w-full", collapsed && "hidden")}>
-                          <IconLibraryView tokens={activeResolvedTokens} />
+                          <IconLibraryView
+                            tokens={activeResolvedTokens}
+                            selectedIconName={iconLibrarySelectedName}
+                            onSelectIcon={setIconLibrarySelectedName}
+                          />
                         </div>
                       ) : (
                         <div className={cx("w-full", collapsed && "hidden")}>
@@ -5331,11 +5371,15 @@
                 </div>
               </div>
 
-              <DragHandle which="left" />
+              {iconLibraryMidHidden ? (
+                <DragHandle which="lr" />
+              ) : (
+                <>
+                  <DragHandle which="left" />
 
-              {/* Middle: Tokens */}
-              <div className="shrink-0 h-full" style={{ width: midPx }}>
-                <TokensPanel
+                  {/* Middle: Tokens */}
+                  <div className="shrink-0 h-full min-h-0" style={{ width: midPx }}>
+                    <TokensPanel
                   title={
                     panelComponentId === "smartSummary"
                       ? "Tokens（智能摘要）"
@@ -5347,7 +5391,9 @@
                             ? "Tokens（气泡推荐）"
                             : panelComponentId === "fusionWorkbench"
                               ? "Tokens（融合工作台框架）"
-                              : "Tokens（图标库）"
+                              : iconLibrarySelectedName
+                                ? `Tokens（${iconLibrarySelectedName}）`
+                                : "Tokens（图标库）"
                   }
                   tokens={activeTokens}
                   onTokensChange={setActiveTokens}
@@ -5798,10 +5844,12 @@
                               ],
                             },
                           ]
-                  }                />
-              </div>
+                    }                />
+                  </div>
 
-              <DragHandle which="right" />
+                  <DragHandle which="right" />
+                </>
+              )}
 
               {/* Right: Design Skill Markdown */}
               <div className="shrink-0 h-full" style={{ width: rightPx }}>
