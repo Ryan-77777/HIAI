@@ -654,6 +654,14 @@
         draftMinHeightPx: 72,
       };
 
+      const HIUI_BUTTON_TOKENS = {
+        fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+        componentName: "按钮 / HiUI Button（Figma 187:846）",
+        focusRing: "semi-brand-5",
+        previewBg: "semi-bluegrey-2",
+        captionColor: "rgba(34,39,39,0.6)",
+      };
+
       const ICON_LIBRARY_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
         componentName: "图标库 / HiUI Icon Library",
@@ -1823,6 +1831,40 @@
         ].join("\n");
       }
 
+      function buildHiuiButtonDesignSkillMarkdown(t) {
+        return [
+          "# DESIGN_SKILL — 按钮（HiUI Button）",
+          "",
+          "> 设计来源：[Figma Button 187:846](https://www.figma.com/design/22XmueLKx4r1Tz2kEruBSa/?node-id=187-846)",
+          "> HiUI 文档：https://hicode.bytedance.net/doc/hiui/basic/button.html",
+          "",
+          "## 1) 类型分区",
+          "",
+          "| 分区 | 色与交互（与 MCP get_design_context 一致） |",
+          "| --- | --- |",
+          "| 深色 Solid | Primary 底 `#1AA38A`，Hover `#148875`，Active `#0F6D5F`，白字。Secondary 底 `#222727`，Hover/Active `#000000`，白字。 |",
+          "| 浅色 Light | 白底 + 边框 `rgba(45,66,107,0.12)`；Primary 字/图标主色；Tertiary 字 `rgba(34,39,39,0.8)`；Hover 底 `rgba(83,96,143,0.07)`；Active 底 `rgba(83,96,143,0.12)`。 |",
+          "| 无背景 Borderless | 无边框；Primary/Tertiary 字色同浅色的字；Hover 底 `fill-0`；Primary Active 字 `#0F6D5F`，Tertiary Active 字 `#222727`。 |",
+          "| Text / Link | 容器圆角 6px，`gap` 4px；Text 默认次文字、Hover/Active 主文字；Link 默认主色、Hover `#148875`、Active `#0F6D5F`。 |",
+          "",
+          "## 2) 尺寸与 Padding",
+          "",
+          "- Default：`height-button_default` 36，`px-[12px] py-[6px]`，`rounded-[8px]`，`gap-[8px]`，字 14/20 Semibold。",
+          "- Small：高 24；Label `px-[8px] py-[2px]`；图标按钮容器 24×24，`p-[4px]`（Default 图标 36×36，`p-[8px]`）。",
+          "- Block：`width: 160px`，其余同 Label。",
+          "- Loading 文案最小宽：Default 76px / Small 68px。",
+          "",
+          "## 3) 禁用",
+          "",
+          "- 深色与浅色填充按钮：底 `#E6E7EA`，字 `rgba(34,39,39,0.35)`。无背景 / Text / Link：透明底，字同色。",
+          "",
+          "## 4) 预览区 Token",
+          "",
+          `| previewBg | ${t.previewBg} |`,
+          `| captionColor | ${t.captionColor} |`,
+          "",
+        ].join("\n");
+      }
 
       function getIn(obj, path) {
         return path.split(".").reduce((acc, key) => (acc == null ? acc : acc[key]), obj);
@@ -3049,6 +3091,438 @@
               <img alt="" src={url} className="block w-full h-full" style={imgStyle} />
             </span>
           </span>
+        );
+      }
+
+      /** HiUI 按钮展示：色值与尺寸自 Figma node 187:846（get_design_context） */
+      function HiuiButtonShowcase({ tokens, highlightTarget }) {
+        const t = tokens || HIUI_BUTTON_TOKENS;
+        const ring = highlightTarget === "hiuiBtnPreview";
+        const C = {
+          pri: "#1aa38a",
+          priH: "#148875",
+          priA: "#0f6d5f",
+          sec: "#222727",
+          secH: "#000000",
+          secA: "#000000",
+          white: "#ffffff",
+          bdr: "rgba(45,66,107,0.12)",
+          t1: "rgba(34,39,39,0.8)",
+          t0: "#222727",
+          disBg: "#e6e7ea",
+          disTx: "rgba(34,39,39,0.35)",
+          f0: "rgba(83,96,143,0.07)",
+          f1: "rgba(83,96,143,0.12)",
+        };
+
+        const [tab, setTab] = useState("solid");
+        const [sz, setSz] = useState("default");
+
+        function appearance(group, variant, state, content, size) {
+          const isSm = size === "small";
+          const hIcon = isSm ? 24 : 36;
+          const hLabel = isSm ? 24 : 36;
+          const h = content === "icon" ? hIcon : hLabel;
+          const padX = content === "icon" ? (isSm ? 4 : 8) : isSm ? 8 : 12;
+          const padY = content === "icon" ? (isSm ? 4 : 8) : isSm ? 2 : 6;
+          const gap = group === "textLink" ? 4 : 8;
+          const radius = group === "textLink" ? 6 : 8;
+          let bg = "transparent";
+          let color = C.t1;
+          let border = "none";
+          let iconColor = C.t1;
+          let spinColor = C.white;
+          let minW;
+          const w = content === "block" ? 160 : undefined;
+          let fontSize = 14;
+          let lineHeight = 20;
+          let boxH = h;
+          let boxPadX = padX;
+          let boxPadY = padY;
+          if (group === "textLink") {
+            fontSize = isSm ? 12 : 14;
+            lineHeight = isSm ? 16 : 20;
+            boxH = undefined;
+            boxPadX = 0;
+            boxPadY = 0;
+          }
+
+          function applyDisabled() {
+            color = C.disTx;
+            iconColor = C.disTx;
+            spinColor = C.disTx;
+            if (group === "solid" || group === "light") bg = C.disBg;
+            else bg = "transparent";
+            border = group === "light" ? `1px solid ${C.bdr}` : "none";
+          }
+
+          if (group === "solid") {
+            border = "none";
+            if (variant === "primary") {
+              bg = C.pri;
+              color = C.white;
+              iconColor = C.white;
+              spinColor = C.white;
+            } else {
+              bg = C.sec;
+              color = C.white;
+              iconColor = C.white;
+              spinColor = C.white;
+            }
+            if (state === "hover") bg = variant === "primary" ? C.priH : C.secH;
+            else if (state === "active") bg = variant === "primary" ? C.priA : C.secA;
+            else if (state === "disabled") applyDisabled();
+          } else if (group === "light") {
+            bg = "#ffffff";
+            border = `1px solid ${C.bdr}`;
+            if (variant === "primary") {
+              color = C.pri;
+              iconColor = C.pri;
+              spinColor = C.pri;
+            } else {
+              color = C.t1;
+              iconColor = C.t1;
+              spinColor = C.t1;
+            }
+            if (state === "hover") bg = C.f0;
+            else if (state === "active") {
+              bg = C.f1;
+              if (variant === "tertiary") color = iconColor = spinColor = C.t0;
+            } else if (state === "disabled") applyDisabled();
+          } else if (group === "borderless") {
+            if (variant === "primary") {
+              color = C.pri;
+              iconColor = C.pri;
+              spinColor = C.pri;
+            } else {
+              color = C.t1;
+              iconColor = C.t1;
+              spinColor = C.t1;
+            }
+            if (state === "hover") bg = C.f0;
+            else if (state === "active") {
+              if (variant === "primary") color = iconColor = spinColor = C.priA;
+              else color = iconColor = spinColor = C.t0;
+            } else if (state === "disabled") applyDisabled();
+          } else if (group === "textLink") {
+            if (variant === "text") {
+              color = iconColor = spinColor = C.t1;
+              if (state === "hover" || state === "active") color = iconColor = spinColor = C.t0;
+            } else {
+              color = iconColor = spinColor = C.pri;
+              if (state === "hover") color = iconColor = spinColor = C.priH;
+              if (state === "active") color = iconColor = spinColor = C.priA;
+            }
+            if (state === "disabled") color = iconColor = spinColor = C.disTx;
+          }
+
+          if (state === "loading") {
+            if (group === "solid") {
+              if (variant === "primary") {
+                bg = C.pri;
+                color = C.white;
+                spinColor = C.white;
+              } else {
+                bg = C.sec;
+                color = C.white;
+                spinColor = C.white;
+              }
+            } else if (group === "light") {
+              bg = "#ffffff";
+              border = `1px solid ${C.bdr}`;
+              if (variant === "primary") {
+                color = C.pri;
+                spinColor = C.pri;
+              } else {
+                color = C.t1;
+                spinColor = C.t1;
+              }
+            } else if (group === "borderless") {
+              if (variant === "primary") {
+                color = C.pri;
+                spinColor = C.pri;
+              } else {
+                color = C.t1;
+                spinColor = C.t1;
+              }
+            } else {
+              if (variant === "text") {
+                color = C.t1;
+                spinColor = C.t1;
+              } else {
+                color = C.pri;
+                spinColor = C.pri;
+              }
+            }
+            if (content === "label") minW = isSm ? 68 : 76;
+          }
+
+          return {
+            bg,
+            color,
+            border,
+            iconColor,
+            spinColor,
+            minW,
+            w,
+            h: boxH,
+            padX: boxPadX,
+            padY: boxPadY,
+            gap,
+            radius,
+            fontSize,
+            lineHeight,
+          };
+        }
+
+        function HiuiPlusGlyph({ color }) {
+          return (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 3.5v9M3.5 8h9" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          );
+        }
+
+        function Cell({ group, variant, state, content, size }) {
+          const a = appearance(group, variant, state, content, size);
+          const loading = state === "loading";
+          const dis = state === "disabled";
+          const justify = content === "block" ? "center" : "flex-start";
+          return (
+            <button
+              type="button"
+              disabled={dis}
+              className={cx(
+                "inline-flex items-center flex-none box-border whitespace-nowrap outline-none",
+                !dis && !loading && "cursor-pointer",
+                loading && "cursor-default",
+                dis && "cursor-not-allowed",
+              )}
+              style={{
+                fontFamily: t.fontFamily,
+                backgroundColor: a.bg,
+                color: a.color,
+                border: a.border,
+                borderRadius: a.radius,
+                minHeight: a.h,
+                height: a.h,
+                minWidth: a.minW,
+                width: a.w,
+                padding: `${a.padY}px ${a.padX}px`,
+                gap: a.gap,
+                fontSize: a.fontSize,
+                lineHeight: `${a.lineHeight}px`,
+                fontWeight: 600,
+                justifyContent: justify,
+                alignItems: "center",
+                overflow: "hidden",
+              }}
+            >
+              {loading ? (
+                <span
+                  className="inline-block shrink-0 rounded-full border-2 border-solid animate-spin"
+                  style={{
+                    width: 16,
+                    height: 16,
+                    borderColor: "rgba(128,128,128,0.25)",
+                    borderTopColor: a.spinColor,
+                  }}
+                />
+              ) : content === "icon" ? (
+                <HiuiPlusGlyph color={a.iconColor} />
+              ) : null}
+              {content !== "icon" ? "按钮" : null}
+            </button>
+          );
+        }
+
+        const states = [
+          { id: "default", zh: "Default" },
+          { id: "hover", zh: "Hover" },
+          { id: "active", zh: "Active" },
+          { id: "loading", zh: "Loading" },
+          { id: "disabled", zh: "Disabled" },
+        ];
+        const tabs = [
+          { id: "solid", zh: "深色 Solid", note: "Primary 绿底 / Secondary 黑底，白字" },
+          { id: "light", zh: "浅色 Light", note: "白底灰边：Primary 绿字 / Tertiary 灰字" },
+          { id: "borderless", zh: "无背景 Borderless", note: "Primary 绿字 / Tertiary 灰字，悬停 fill-0" },
+          { id: "textLink", zh: "Text / Link", note: "纯文本与链接样式（圆角 6px，gap 4）" },
+        ];
+        const pairsByTab = {
+          solid: [
+            ["primary", "Primary"],
+            ["secondary", "Secondary"],
+          ],
+          light: [
+            ["primary", "Primary"],
+            ["tertiary", "Tertiary"],
+          ],
+          borderless: [
+            ["primary", "Primary"],
+            ["tertiary", "Tertiary"],
+          ],
+        };
+        const contentRows = [
+          { key: "label", zh: "文字 Label" },
+          { key: "block", zh: "通栏 Block（160×高）" },
+          { key: "icon", zh: "仅图标（36 / 24）" },
+        ];
+
+        return (
+          <div
+            className={cx("w-full min-w-0 rounded-[12px] p-[20px] flex flex-col gap-[16px]", ring && `ring-2 ring-[${t.focusRing}] ring-offset-2 ring-offset-white`)}
+            style={{ backgroundColor: t.previewBg, fontFamily: t.fontFamily }}
+            data-hiui-preview="1"
+          >
+            <div className="flex flex-col gap-[6px]">
+              <div className="text-[#222727] text-sm font-bold">HiUI 按钮（Figma 187:846）</div>
+              <p className="text-xs leading-[18px]" style={{ color: t.captionColor }}>
+                用户使用按钮来触发操作或跳转。下列为稿中各分区与状态静态对照（宽/高/padding/圆角/色值与 MCP 导出一致）。
+                文档：
+                <a className="text-[#1aa38a] font-semibold underline-offset-2 hover:underline" href="https://hicode.bytedance.net/doc/hiui/basic/button.html" target="_blank" rel="noreferrer">
+                  HiUI Button
+                </a>
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-[8px]">
+              {tabs.map((x) => (
+                <button
+                  key={x.id}
+                  type="button"
+                  onClick={() => setTab(x.id)}
+                  className={cx(
+                    "px-[12px] py-[6px] rounded-[8px] text-xs font-semibold border transition-colors",
+                    tab === x.id
+                      ? "bg-white border-[rgba(45,66,107,0.12)] text-[#222727] shadow-sm"
+                      : "bg-transparent border-transparent text-[rgba(34,39,39,0.65)] hover:bg-[rgba(83,96,143,0.07)]",
+                  )}
+                >
+                  {x.zh}
+                </button>
+              ))}
+            </div>
+            <p className="text-[11px] leading-[16px]" style={{ color: t.captionColor }}>
+              {tabs.find((x) => x.id === tab)?.note}
+            </p>
+
+            {tab !== "textLink" ? (
+              <div className="flex flex-wrap items-center gap-[8px] text-xs">
+                <span style={{ color: t.captionColor }}>尺寸：</span>
+                <button
+                  type="button"
+                  className={cx(
+                    "h-[28px] px-[10px] rounded-[6px] text-xs font-semibold border",
+                    sz === "default" ? "bg-[#222727] text-white border-[#222727]" : "bg-white border-[rgba(45,66,107,0.12)]",
+                  )}
+                  onClick={() => setSz("default")}
+                >
+                  Default（36）
+                </button>
+                <button
+                  type="button"
+                  className={cx(
+                    "h-[28px] px-[10px] rounded-[6px] text-xs font-semibold border",
+                    sz === "small" ? "bg-[#222727] text-white border-[#222727]" : "bg-white border-[rgba(45,66,107,0.12)]",
+                  )}
+                  onClick={() => setSz("small")}
+                >
+                  Small（24）
+                </button>
+              </div>
+            ) : null}
+
+            {tab !== "textLink" ? (
+              <div className="w-full overflow-x-auto rounded-[8px] bg-white border border-[rgba(45,66,107,0.08)]">
+                <table className="w-full border-collapse text-left text-xs">
+                  <thead>
+                    <tr className="border-b border-[rgba(45,66,107,0.1)]">
+                      <th className="p-[10px] font-semibold text-[rgba(34,39,39,0.55)] w-[120px]">内容</th>
+                      {pairsByTab[tab].map(([vid, label]) => (
+                        <th key={vid} className="p-[10px] font-semibold text-[#222727] text-center" colSpan={5}>
+                          {label}
+                        </th>
+                      ))}
+                    </tr>
+                    <tr className="border-b border-[rgba(45,66,107,0.08)] bg-[rgba(83,96,143,0.04)]">
+                      <th className="p-[8px]" />
+                      {pairsByTab[tab].map(([vid]) =>
+                        states.map((s) => (
+                          <th key={`${vid}-${s.id}`} className="p-[8px] text-center font-medium text-[rgba(34,39,39,0.5)] whitespace-nowrap">
+                            {s.zh}
+                          </th>
+                        )),
+                      )}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contentRows.map((row) => (
+                      <tr key={row.key} className="border-b border-[rgba(45,66,107,0.06)]">
+                        <td className="p-[10px] font-medium text-[#222727] align-middle">{row.zh}</td>
+                        {pairsByTab[tab].map(([vid]) =>
+                          states.map((s) => (
+                            <td key={`${row.key}-${vid}-${s.id}`} className="p-[10px] align-middle text-center">
+                              <div className="inline-flex justify-center">
+                                <Cell group={tab} variant={vid} state={s.id} content={row.key} size={sz} />
+                              </div>
+                            </td>
+                          )),
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-[16px]">
+                {["default", "small"].map((ts) => (
+                  <div key={ts} className="w-full overflow-x-auto rounded-[8px] bg-white border border-[rgba(45,66,107,0.08)]">
+                    <div className="px-[12px] py-[8px] text-[11px] font-semibold text-[rgba(34,39,39,0.55)] border-b border-[rgba(45,66,107,0.08)]">
+                      {ts === "default" ? "Text / Link · Default（14 / 20）" : "Text / Link · Small（12 / 16）"}
+                    </div>
+                    <table className="w-full border-collapse text-left text-xs">
+                      <thead>
+                        <tr className="border-b border-[rgba(45,66,107,0.1)]">
+                          <th className="p-[10px] w-[100px]" />
+                          <th className="p-[10px] text-center font-semibold text-[#222727]" colSpan={5}>
+                            Text
+                          </th>
+                          <th className="p-[10px] text-center font-semibold text-[#222727]" colSpan={5}>
+                            Link
+                          </th>
+                        </tr>
+                        <tr className="border-b border-[rgba(45,66,107,0.08)] bg-[rgba(83,96,143,0.04)]">
+                          <th className="p-[8px]" />
+                          {["text", "link"].map((v) =>
+                            states.map((s) => (
+                              <th key={`${v}-${s.id}`} className="p-[8px] text-center font-medium text-[rgba(34,39,39,0.5)] whitespace-nowrap">
+                                {s.zh}
+                              </th>
+                            )),
+                          )}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="p-[10px] font-medium align-middle">文字</td>
+                          {["text", "link"].map((v) =>
+                            states.map((s) => (
+                              <td key={`${v}-${s.id}`} className="p-[10px] align-middle text-center">
+                                <div className="inline-flex justify-center">
+                                  <Cell group="textLink" variant={v} state={s.id} content="label" size={ts} />
+                                </div>
+                              </td>
+                            )),
+                          )}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         );
       }
 
@@ -4686,6 +5160,7 @@
             { id: "aiInput", name: "AI输入框" },
             { id: "imBubble", name: "IM气泡" },
             { id: "fusionWorkbench", name: "融合工作台框架" },
+            { id: "hiuiButton", name: "按钮" },
           ],
           [],
         );
@@ -4714,6 +5189,7 @@
         const [aiTokens, setAiTokens] = useState(() => deepClone(AI_INPUT_TOKENS));
         const [fusionTokens, setFusionTokens] = useState(() => deepClone(FUSION_WORKBENCH_TOKENS));
         const [bubbleTokens, setBubbleTokens] = useState(() => deepClone(IM_BUBBLE_TOKENS));
+        const [hiuiButtonTokens, setHiuiButtonTokens] = useState(() => deepClone(HIUI_BUTTON_TOKENS));
         const [iconLibTokens, setIconLibTokens] = useState(() => deepClone(ICON_LIBRARY_TOKENS));
 
         // Resolved tokens: all foundation color references are replaced with actual CSS values
@@ -4722,6 +5198,7 @@
         const resolvedAiTokens    = useMemo(() => resolveAllTokenColors(aiTokens, foundationPalette),    [aiTokens,    foundationPalette]);
         const resolvedFusionTokens = useMemo(() => resolveAllTokenColors(fusionTokens, foundationPalette), [fusionTokens, foundationPalette]);
         const resolvedBubbleTokens = useMemo(() => resolveAllTokenColors(bubbleTokens, foundationPalette), [bubbleTokens, foundationPalette]);
+        const resolvedHiuiButtonTokens = useMemo(() => resolveAllTokenColors(hiuiButtonTokens, foundationPalette), [hiuiButtonTokens, foundationPalette]);
         const resolvedIconLibTokens = useMemo(() => resolveAllTokenColors(iconLibTokens, foundationPalette), [iconLibTokens, foundationPalette]);
         const [hoverTokenPath, setHoverTokenPath] = useState(null);
         const [showUpdatedAt, setShowUpdatedAt] = useState(true);
@@ -4752,8 +5229,10 @@
                 ? aiTokens
                 : panelComponentId === "imBubble"
                   ? bubbleTokens
-                  : panelComponentId === "fusionWorkbench"
-                    ? fusionTokens
+                : panelComponentId === "fusionWorkbench"
+                  ? fusionTokens
+                  : panelComponentId === "hiuiButton"
+                    ? hiuiButtonTokens
                     : iconLibTokens;
         // activeResolvedTokens: CSS-resolved values (for component rendering)
         const activeResolvedTokens =
@@ -4767,7 +5246,9 @@
                   ? resolvedBubbleTokens
                   : panelComponentId === "fusionWorkbench"
                     ? resolvedFusionTokens
-                    : resolvedIconLibTokens;
+                    : panelComponentId === "hiuiButton"
+                      ? resolvedHiuiButtonTokens
+                      : resolvedIconLibTokens;
         const setActiveTokens =
           panelComponentId === "smartSummary"
             ? setSmartTokens
@@ -4779,7 +5260,9 @@
                   ? setBubbleTokens
                   : panelComponentId === "fusionWorkbench"
                     ? setFusionTokens
-                    : setIconLibTokens;
+                    : panelComponentId === "hiuiButton"
+                      ? setHiuiButtonTokens
+                      : setIconLibTokens;
 
         const resetActiveTokens =
           panelComponentId === "smartSummary"
@@ -4792,7 +5275,9 @@
                   ? () => setBubbleTokens(deepClone(IM_BUBBLE_TOKENS))
                   : panelComponentId === "fusionWorkbench"
                     ? () => setFusionTokens(deepClone(FUSION_WORKBENCH_TOKENS))
-                    : () => setIconLibTokens(deepClone(ICON_LIBRARY_TOKENS));
+                    : panelComponentId === "hiuiButton"
+                      ? () => setHiuiButtonTokens(deepClone(HIUI_BUTTON_TOKENS))
+                      : () => setIconLibTokens(deepClone(ICON_LIBRARY_TOKENS));
 
         const designSkillMd = useMemo(() => {
           return panelComponentId === "smartSummary"
@@ -4805,6 +5290,8 @@
                   ? buildImBubbleDesignSkillMarkdown(activeResolvedTokens)
                   : panelComponentId === "fusionWorkbench"
                     ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
+                    : panelComponentId === "hiuiButton"
+                      ? buildHiuiButtonDesignSkillMarkdown(activeResolvedTokens)
                 : [
                     "# DESIGN_SKILL — 图标库（Icon Library）",
                     "",
@@ -5017,6 +5504,12 @@
             if (p === "hoverFill") return "actionsRow";
             if (p === "focusRing") return "inputCard";
             return "inputCard";
+          }
+
+          if (panelComponentId === "hiuiButton") {
+            if (p === "previewBg" || p === "captionColor" || p === "fontFamily" || p === "componentName") return "hiuiBtnPreview";
+            if (p === "focusRing") return "hiuiBtnPreview";
+            return "hiuiBtnPreview";
           }
 
           return null;
@@ -5269,6 +5762,8 @@
                                 ? "IM气泡（UI）"
                                 : panelComponentId === "fusionWorkbench"
                                   ? "融合工作台框架（UI）"
+                                  : panelComponentId === "hiuiButton"
+                                    ? "按钮（UI）"
                                   : "图标库（UI）"}
                       </div>
                       <div className="text-[rgba(34,39,39,0.6)] text-xs">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
@@ -5489,6 +5984,11 @@
                           顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent
                         </span>
                       ) : null}
+                      {panelComponentId === "hiuiButton" ? (
+                        <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                          顶部 Tab 切换类型分区；尺寸切换仅作用于 Solid / Light / Borderless。色值与 Figma 187:846 MCP 导出一致。
+                        </span>
+                      ) : null}
                     </div>
 
                     <div
@@ -5548,6 +6048,10 @@
                             onAgentSegment={setFusionAgentSegment}
                           />
                         </div>
+                      ) : panelComponentId === "hiuiButton" ? (
+                        <div className={cx("w-full min-w-0", collapsed && "hidden")}>
+                          <HiuiButtonShowcase tokens={activeResolvedTokens} highlightTarget={highlightTarget} />
+                        </div>
                       ) : panelComponentId === "iconLibrary" ? (
                         <div className={cx("w-full", collapsed && "hidden")}>
                           <IconLibraryView
@@ -5598,6 +6102,8 @@
                             ? "Tokens（IM气泡）"
                             : panelComponentId === "fusionWorkbench"
                               ? "Tokens（融合工作台框架）"
+                              : panelComponentId === "hiuiButton"
+                                ? "Tokens（按钮）"
                               : iconLibrarySelectedName
                                 ? `Tokens（${iconLibrarySelectedName}）`
                                 : "Tokens（图标库）"
@@ -5928,6 +6434,24 @@
                               ],
                             },
                           ]
+                        : panelComponentId === "hiuiButton"
+                        ? [
+                            {
+                              title: "\u5143\u4fe1\u606f",
+                              fields: [
+                                { label: "\u7ec4\u4ef6\u540d\u79f0", path: "componentName", type: "text" },
+                                { label: "\u5b57\u4f53\u65cf", path: "fontFamily", type: "text" },
+                                { label: "Focus Ring", path: "focusRing", type: "color" },
+                              ],
+                            },
+                            {
+                              title: "\u9884\u89c8\u533a",
+                              fields: [
+                                { label: "\u9884\u89c8\u533a\u80cc\u666f", path: "previewBg", type: "color" },
+                                { label: "\u8bf4\u660e\u6587\u5b57\u8272", path: "captionColor", type: "css-color" },
+                              ],
+                            },
+                          ]
                         : panelComponentId === "fusionWorkbench"
                         ? [
                             {
@@ -6077,13 +6601,15 @@
                                 ? "用于强约束 AI 生成「IM气泡」：Figma 沟通区气泡样式 + 可选头像与气泡下 AI 推荐，点击采纳入框，悬停显发送。"
                                 : panelComponentId === "fusionWorkbench"
                                   ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
-                                  : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
+                                  : panelComponentId === "hiuiButton"
+                                    ? "HiUI 按钮（Figma 187:846）：深色 Solid / 浅色 Light / 无背景 / Text·Link；状态矩阵与尺寸与 MCP get_design_context 对齐。"
+                                    : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
                       </div>
                     </div>
                     {/* Icon-only buttons — flex-none, wraps as a unit when narrow */}
                     <div className="flex items-center gap-[4px] flex-none">
                       {/* 沙盒测试 */}
-                      {panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && (
+                      {panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && (
                         <button
                           type="button"
                           title="沙盒测试（模拟AI真实生成效果）"
@@ -6120,7 +6646,9 @@
                                     ? "DESIGN_SKILL_IM_BUBBLE.md"
                                     : panelComponentId === "fusionWorkbench"
                                       ? "DESIGN_SKILL_FUSION_WORKBENCH.md"
-                                      : "DESIGN_SKILL_ICON_LIBRARY.md";
+                                      : panelComponentId === "hiuiButton"
+                                        ? "DESIGN_SKILL_HIUI_BUTTON.md"
+                                        : "DESIGN_SKILL_ICON_LIBRARY.md";
                           document.body.appendChild(a);
                           a.click();
                           a.remove();
@@ -6173,7 +6701,7 @@
             </div>
               ) : null}
             {/* ── Sandbox Modal ──────────────────────────────── */}
-            {sandboxOpen && panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && (
+            {sandboxOpen && panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && (
               <SandboxModal
                 componentId={panelComponentId}
                 mdText={designSkillMd}
