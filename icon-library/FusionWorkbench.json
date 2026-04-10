@@ -6,6 +6,7 @@
     { "name": "fusion-stat-bar-chart", "url": "./hiai%20icon%20svg/bar-chart-01-stroked.svg", "inset": "inset-[8.33%]" },
     { "name": "fusion-stat-bar-chart-square", "url": "./hiai%20icon%20svg/bar-chart-square-01-stroked.svg", "inset": "inset-[8.33%]" },
     { "name": "fusion-stat-announcement", "url": "./hiai%20icon%20svg/announcement-01-stroked.svg", "inset": "inset-[8.33%]" },
-    { "name": "fusion-stat-settings", "url": "./hiai%20icon%20svg/settings-04-stroked.svg", "inset": "inset-[8.33%]" }
+    { "name": "fusion-stat-settings", "url": "./hiai%20icon%20svg/settings-04-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "im-read-receipt", "url": "./hiai%20icon%20svg/annotation-check-stroked.svg", "inset": "inset-[8.33%]" }
   ]
 }
