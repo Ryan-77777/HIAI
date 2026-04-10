@@ -34,7 +34,12 @@
       }
       html,
       body {
+        margin: 0;
+        height: 100%;
         font-family: var(--ui-font);
+      }
+      #root {
+        height: 100%;
       }
       @keyframes shimmer {
         0%   { background-position: 200% center; }
@@ -4071,7 +4076,7 @@
         }
 
         return (
-          <div className="flex h-full gap-0">
+          <div className="flex h-full min-h-0 gap-[12px]">
             {/* ─── Left: Color Palette Preview ─── */}
             <div className="h-full overflow-hidden flex flex-col" style={{ width: "40%", minWidth: 380 }}>
               <div className="bg-white rounded-[12px] h-full flex flex-col overflow-hidden">
@@ -4158,9 +4163,6 @@
                 </div>
               </div>
             </div>
-
-            {/* gap */}
-            <div className="shrink-0" style={{ width: 12 }} />
 
             {/* ─── Middle: Token Editor ─── */}
             <div className="h-full overflow-hidden flex flex-col" style={{ width: "28%", minWidth: 260 }}>
@@ -4276,9 +4278,6 @@
                 </div>
               </div>
             </div>
-
-            {/* gap */}
-            <div className="shrink-0" style={{ width: 12 }} />
 
             {/* ─── Right: Foundation Design Skill ─── */}
             <div className="flex-1 h-full overflow-hidden" style={{ minWidth: 280 }}>
@@ -4916,9 +4915,9 @@
         );
 
         return (
-          <div className="w-screen h-screen overflow-hidden flex flex-col bg-[#f5f6f8]">
+          <div className="w-full h-full min-h-0 overflow-hidden flex flex-col bg-[#f5f6f8] p-[12px] gap-[12px] box-border">
             {/* ── 顶部主 Tab（Figma Kit-3 RadioGroup 1687:11781：浅灰轨道 + 白 pill 选中） ── */}
-            <div className="shrink-0 relative flex items-center h-[44px] px-[16px]">
+            <div className="shrink-0 relative flex items-center h-[44px] min-h-[44px]">
               <div className="text-[13px] font-bold text-[#222727] shrink-0 z-[1]">HiAI Design.MD</div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
                 <div
@@ -4947,8 +4946,8 @@
                 </div>
               </div>
             </div>
-            {/* ── 主内容区 ── */}
-            <div className="flex-1 overflow-hidden p-[12px] box-border">
+            {/* ── 主内容区（与顶栏间距由外层 gap-[12px] 承担） ── */}
+            <div className="flex-1 min-h-0 overflow-hidden box-border">
               {mainView === "foundation" ? (
                 <FoundationPage
                   palette={foundationPalette} setPalette={setFoundationPalette}
@@ -4958,7 +4957,7 @@
               ) : mainView === "business" || mainView === "icons" ? (
                 <div className="w-full h-full flex gap-[0px]">
               {runtimeError ? (
-                <div className="fixed left-[16px] top-[16px] z-50 max-w-[560px]">
+                <div className="fixed left-[12px] top-[12px] z-50 max-w-[560px]">
                   <div className="bg-[#ffffff] border border-[rgba(247,67,49,0.25)] rounded-[12px] overflow-hidden">
                     <div className="px-[12px] py-[10px] bg-[rgba(247,67,49,0.08)] flex items-center justify-between gap-[8px]">
                       <div className="text-[#f74331] text-sm font-bold">运行时错误（导致页面无法交互）</div>
@@ -4981,7 +4980,7 @@
                 <>
                   <aside className="shrink-0 h-full" style={{ width: asidePx }}>
                     <div className="rounded-[12px] overflow-hidden h-full flex flex-col">
-                      <div className="px-[4px] pt-[8px] pb-[12px] flex-1 overflow-auto flex flex-col gap-[4px]">
+                      <div className="px-[12px] pt-[12px] pb-[12px] flex-1 overflow-auto flex flex-col gap-[4px]">
                         {COMPONENTS.map((c) => {
                           const active = c.id === activeComponentId;
                           return (
@@ -6526,7 +6525,7 @@
 
         return (
           <div
-            className="fixed inset-0 flex items-center justify-center"
+            className="fixed inset-0 flex items-center justify-center p-[12px] box-border"
             style={{ zIndex: 9999, background: "rgba(34,39,39,0.52)", backdropFilter: "blur(4px)" }}
             onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}
           >
