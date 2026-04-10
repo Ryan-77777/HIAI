@@ -1,0 +1,2119 @@
+{
+  "icons": [
+    {
+      "name": "hiai-icon-info-stroked",
+      "url": "./hiai%20icon%20svg/IconInfoStroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-icon-refresh-stroked2",
+      "url": "./hiai%20icon%20svg/IconRefreshStroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-icon-shield-stroked2",
+      "url": "./hiai%20icon%20svg/IconShieldStroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm-clock-check-stroked",
+      "url": "./hiai%20icon%20svg/alarm-clock-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm-clock-minus-stroked",
+      "url": "./hiai%20icon%20svg/alarm-clock-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm-clock-off-stroked",
+      "url": "./hiai%20icon%20svg/alarm-clock-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm-clock-plus-stroked",
+      "url": "./hiai%20icon%20svg/alarm-clock-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm-clock-stroked",
+      "url": "./hiai%20icon%20svg/alarm-clock-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm",
+      "url": "./hiai%20icon%20svg/alarm.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alarm1",
+      "url": "./hiai%20icon%20svg/alarm1.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-circle-stroked",
+      "url": "./hiai%20icon%20svg/alert-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-hexagon-stroked",
+      "url": "./hiai%20icon%20svg/alert-hexagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-octagon-stroked",
+      "url": "./hiai%20icon%20svg/alert-octagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-square-stroked",
+      "url": "./hiai%20icon%20svg/alert-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-triangle-stroked",
+      "url": "./hiai%20icon%20svg/alert-triangle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-circle",
+      "url": "./hiai%20icon%20svg/alert_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-alert-triangle",
+      "url": "./hiai%20icon%20svg/alert_triangle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-alert-stroked",
+      "url": "./hiai%20icon%20svg/annotation-alert-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-check-stroked",
+      "url": "./hiai%20icon%20svg/annotation-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-dots-stroked",
+      "url": "./hiai%20icon%20svg/annotation-dots-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-info-stroked",
+      "url": "./hiai%20icon%20svg/annotation-info-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-plus-stroked",
+      "url": "./hiai%20icon%20svg/annotation-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-annotation-question-stroked",
+      "url": "./hiai%20icon%20svg/annotation-question-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-block-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-block-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-block-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-block-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-block-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-block-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-block-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-block-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-down-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-down-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-down-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-down-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-up-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-up-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-up-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-up-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-broken-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-broken-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-down-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-down-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-down-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-down-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-up-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-up-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-up-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-up-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-circle-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-circle-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-down-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-down-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-down-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-down-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-down-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-down-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-up-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-up-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-up-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-up-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-narrow-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-narrow-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-down-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-down-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-down-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-down-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-down-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-up-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-up-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-up-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-up-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-square-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-square-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up-left-stroked",
+      "url": "./hiai%20icon%20svg/arrow-up-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up-right-stroked",
+      "url": "./hiai%20icon%20svg/arrow-up-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up-stroked",
+      "url": "./hiai%20icon%20svg/arrow-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down",
+      "url": "./hiai%20icon%20svg/arrow_down.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down-left",
+      "url": "./hiai%20icon%20svg/arrow_down_left.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-down-right",
+      "url": "./hiai%20icon%20svg/arrow_down_right.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-left",
+      "url": "./hiai%20icon%20svg/arrow_left.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-right",
+      "url": "./hiai%20icon%20svg/arrow_right.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up",
+      "url": "./hiai%20icon%20svg/arrow_up.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up-left",
+      "url": "./hiai%20icon%20svg/arrow_up_left.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-arrow-up-right",
+      "url": "./hiai%20icon%20svg/arrow_up_right.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-charging-01-stroked",
+      "url": "./hiai%20icon%20svg/battery-charging-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-charging-02-stroked",
+      "url": "./hiai%20icon%20svg/battery-charging-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-empty-stroked",
+      "url": "./hiai%20icon%20svg/battery-empty-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-full-stroked",
+      "url": "./hiai%20icon%20svg/battery-full-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-low-stroked",
+      "url": "./hiai%20icon%20svg/battery-low-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-battery-mid-stroked",
+      "url": "./hiai%20icon%20svg/battery-mid-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bluetooth-connect-stroked",
+      "url": "./hiai%20icon%20svg/bluetooth-connect-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bluetooth-off-stroked",
+      "url": "./hiai%20icon%20svg/bluetooth-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bluetooth-on-stroked",
+      "url": "./hiai%20icon%20svg/bluetooth-on-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bluetooth-signal-stroked",
+      "url": "./hiai%20icon%20svg/bluetooth-signal-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-book-closed-stroked",
+      "url": "./hiai%20icon%20svg/book-closed-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bookmark-check-stroked",
+      "url": "./hiai%20icon%20svg/bookmark-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bookmark-minus-stroked",
+      "url": "./hiai%20icon%20svg/bookmark-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-brackets-check-stroked",
+      "url": "./hiai%20icon%20svg/brackets-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-brackets-minus-stroked",
+      "url": "./hiai%20icon%20svg/brackets-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-brackets-plus-stroked",
+      "url": "./hiai%20icon%20svg/brackets-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-check-01-stroked",
+      "url": "./hiai%20icon%20svg/calendar-check-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-check-02-stroked",
+      "url": "./hiai%20icon%20svg/calendar-check-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-date-stroked",
+      "url": "./hiai%20icon%20svg/calendar-date-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-heart-01-stroked",
+      "url": "./hiai%20icon%20svg/calendar-heart-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-heart-02-stroked",
+      "url": "./hiai%20icon%20svg/calendar-heart-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-minus-01-stroked",
+      "url": "./hiai%20icon%20svg/calendar-minus-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-minus-02-stroked",
+      "url": "./hiai%20icon%20svg/calendar-minus-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-plus-01-stroked",
+      "url": "./hiai%20icon%20svg/calendar-plus-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-plus-02-stroked",
+      "url": "./hiai%20icon%20svg/calendar-plus-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-stroked3",
+      "url": "./hiai%20icon%20svg/calendar-stroked3.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar",
+      "url": "./hiai%20icon%20svg/calendar.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-check-stroked",
+      "url": "./hiai%20icon%20svg/calendar_check_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-clock",
+      "url": "./hiai%20icon%20svg/calendar_clock.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-stroked",
+      "url": "./hiai%20icon%20svg/calendar_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-calendar-stroked2",
+      "url": "./hiai%20icon%20svg/calendar_stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-circle-broken-stroked",
+      "url": "./hiai%20icon%20svg/check-circle-broken-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-circle-stroked2",
+      "url": "./hiai%20icon%20svg/check-circle-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-done-01-stroked",
+      "url": "./hiai%20icon%20svg/check-done-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-done-02-stroked",
+      "url": "./hiai%20icon%20svg/check-done-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-heart-stroked",
+      "url": "./hiai%20icon%20svg/check-heart-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-square-broken-stroked",
+      "url": "./hiai%20icon%20svg/check-square-broken-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-square-stroked",
+      "url": "./hiai%20icon%20svg/check-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-stroked",
+      "url": "./hiai%20icon%20svg/check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-verified-01-stroked",
+      "url": "./hiai%20icon%20svg/check-verified-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-verified-02-stroked",
+      "url": "./hiai%20icon%20svg/check-verified-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-verified-03-stroked",
+      "url": "./hiai%20icon%20svg/check-verified-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-choice-stroked",
+      "url": "./hiai%20icon%20svg/check_choice_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-check-circle-stroked",
+      "url": "./hiai%20icon%20svg/check_circle_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-checkbox-indeterminate",
+      "url": "./hiai%20icon%20svg/checkbox_indeterminate.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-checkbox-tick",
+      "url": "./hiai%20icon%20svg/checkbox_tick.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-down-double-stroked",
+      "url": "./hiai%20icon%20svg/chevron-down-double-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-down-stroked2",
+      "url": "./hiai%20icon%20svg/chevron-down-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-left-double-stroked",
+      "url": "./hiai%20icon%20svg/chevron-left-double-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-left-stroked2",
+      "url": "./hiai%20icon%20svg/chevron-left-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-right-double-stroked2",
+      "url": "./hiai%20icon%20svg/chevron-right-double-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-right-stroked2",
+      "url": "./hiai%20icon%20svg/chevron-right-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-selector-horizontal-stroked",
+      "url": "./hiai%20icon%20svg/chevron-selector-horizontal-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-selector-vertical-stroked",
+      "url": "./hiai%20icon%20svg/chevron-selector-vertical-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-up-double-stroked",
+      "url": "./hiai%20icon%20svg/chevron-up-double-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-up-stroked2",
+      "url": "./hiai%20icon%20svg/chevron-up-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-down",
+      "url": "./hiai%20icon%20svg/chevron_down.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-down-stroked",
+      "url": "./hiai%20icon%20svg/chevron_down_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-left",
+      "url": "./hiai%20icon%20svg/chevron_left.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-right",
+      "url": "./hiai%20icon%20svg/chevron_right.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-right-double-stroked",
+      "url": "./hiai%20icon%20svg/chevron_right_double_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-right-stroked",
+      "url": "./hiai%20icon%20svg/chevron_right_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-up",
+      "url": "./hiai%20icon%20svg/chevron_up.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-up-down",
+      "url": "./hiai%20icon%20svg/chevron_up_down.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-chevron-up-stroked",
+      "url": "./hiai%20icon%20svg/chevron_up_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-check-stroked",
+      "url": "./hiai%20icon%20svg/clock-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-fast-forward-stroked",
+      "url": "./hiai%20icon%20svg/clock-fast-forward-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-plus-stroked",
+      "url": "./hiai%20icon%20svg/clock-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-refresh-stroked",
+      "url": "./hiai%20icon%20svg/clock-refresh-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-rewind-stroked",
+      "url": "./hiai%20icon%20svg/clock-rewind-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-snooze-stroked",
+      "url": "./hiai%20icon%20svg/clock-snooze-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-stopwatch-stroked",
+      "url": "./hiai%20icon%20svg/clock-stopwatch-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock-stroked",
+      "url": "./hiai%20icon%20svg/clock-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-clock",
+      "url": "./hiai%20icon%20svg/clock.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-close",
+      "url": "./hiai%20icon%20svg/close.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-cloud-moon-stroked",
+      "url": "./hiai%20icon%20svg/cloud-moon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-cloud-sun-01-stroked",
+      "url": "./hiai%20icon%20svg/cloud-sun-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-cloud-sun-02-stroked",
+      "url": "./hiai%20icon%20svg/cloud-sun-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-cloud-sun-03-stroked",
+      "url": "./hiai%20icon%20svg/cloud-sun-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-calendar",
+      "url": "./hiai%20icon%20svg/color_calendar.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-checkbox",
+      "url": "./hiai%20icon%20svg/color_checkbox.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-layout",
+      "url": "./hiai%20icon%20svg/color_layout.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-navigation",
+      "url": "./hiai%20icon%20svg/color_navigation.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-slider",
+      "url": "./hiai%20icon%20svg/color_slider.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-tabs",
+      "url": "./hiai%20icon%20svg/color_tabs.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-tooltip",
+      "url": "./hiai%20icon%20svg/color_tooltip.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-01-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-02-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-check-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-down-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-edit-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-edit-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-lock-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-lock-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-minus-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-plus-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-refresh-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-refresh-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-search-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-search-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-shield-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-shield-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-up-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card-x-stroked",
+      "url": "./hiai%20icon%20svg/credit-card-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-credit-card",
+      "url": "./hiai%20icon%20svg/credit_card.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-dots-horizontal-stroked",
+      "url": "./hiai%20icon%20svg/dots-horizontal-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-dots-vertical-stroked",
+      "url": "./hiai%20icon%20svg/dots-vertical-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-double-chevron-down",
+      "url": "./hiai%20icon%20svg/double_chevron_down.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-double-chevron-left",
+      "url": "./hiai%20icon%20svg/double_chevron_left.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-double-chevron-right",
+      "url": "./hiai%20icon%20svg/double_chevron_right.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-double-chevron-up",
+      "url": "./hiai%20icon%20svg/double_chevron_up.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-01-stroked",
+      "url": "./hiai%20icon%20svg/edit-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-02-stroked",
+      "url": "./hiai%20icon%20svg/edit-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-03-stroked",
+      "url": "./hiai%20icon%20svg/edit-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-04-stroked",
+      "url": "./hiai%20icon%20svg/edit-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-05-stroked",
+      "url": "./hiai%20icon%20svg/edit-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit",
+      "url": "./hiai%20icon%20svg/edit.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-2-stroked",
+      "url": "./hiai%20icon%20svg/edit_2_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-edit-stroked",
+      "url": "./hiai%20icon%20svg/edit_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-off-stroked",
+      "url": "./hiai%20icon%20svg/eye-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-stroked",
+      "url": "./hiai%20icon%20svg/eye-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-closed",
+      "url": "./hiai%20icon%20svg/eye_closed.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-closed-solid",
+      "url": "./hiai%20icon%20svg/eye_closed_solid.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-closed-stroked",
+      "url": "./hiai%20icon%20svg/eye_closed_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-open-stroked",
+      "url": "./hiai%20icon%20svg/eye_open_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-eye-opened",
+      "url": "./hiai%20icon%20svg/eye_opened.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filled-arrow-down",
+      "url": "./hiai%20icon%20svg/filled_arrow_down.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filled-arrow-up",
+      "url": "./hiai%20icon%20svg/filled_arrow_up.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filter-funnel-01-stroked",
+      "url": "./hiai%20icon%20svg/filter-funnel-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filter-funnel-02-stroked",
+      "url": "./hiai%20icon%20svg/filter-funnel-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filter-lines-stroked",
+      "url": "./hiai%20icon%20svg/filter-lines-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filter",
+      "url": "./hiai%20icon%20svg/filter.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-filter-stroked",
+      "url": "./hiai%20icon%20svg/filter_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-01-stroked",
+      "url": "./hiai%20icon%20svg/globe-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-02-stroked",
+      "url": "./hiai%20icon%20svg/globe-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-03-stroked",
+      "url": "./hiai%20icon%20svg/globe-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-04-stroked",
+      "url": "./hiai%20icon%20svg/globe-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-05-stroked",
+      "url": "./hiai%20icon%20svg/globe-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-06-stroked",
+      "url": "./hiai%20icon%20svg/globe-06-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-slated-01-stroked",
+      "url": "./hiai%20icon%20svg/globe-slated-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-slated-02-stroked",
+      "url": "./hiai%20icon%20svg/globe-slated-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe",
+      "url": "./hiai%20icon%20svg/globe.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-globe-stroke",
+      "url": "./hiai%20icon%20svg/globe_stroke.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-circle-stroked2",
+      "url": "./hiai%20icon%20svg/help-circle-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-hexagon-stroked",
+      "url": "./hiai%20icon%20svg/help-hexagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-octagon-stroked",
+      "url": "./hiai%20icon%20svg/help-octagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-square-stroked",
+      "url": "./hiai%20icon%20svg/help-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-circle",
+      "url": "./hiai%20icon%20svg/help_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-help-circle-stroked",
+      "url": "./hiai%20icon%20svg/help_circle_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-01-stroked",
+      "url": "./hiai%20icon%20svg/home-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-02-stroked",
+      "url": "./hiai%20icon%20svg/home-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-03-stroked",
+      "url": "./hiai%20icon%20svg/home-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-04-stroked",
+      "url": "./hiai%20icon%20svg/home-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-05-stroked",
+      "url": "./hiai%20icon%20svg/home-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-line-stroked",
+      "url": "./hiai%20icon%20svg/home-line-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-smile-stroked",
+      "url": "./hiai%20icon%20svg/home-smile-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home",
+      "url": "./hiai%20icon%20svg/home.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-home-stroked",
+      "url": "./hiai%20icon%20svg/home_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-icon-chevron-left-stroked",
+      "url": "./hiai%20icon%20svg/iconChevronLeftStroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-info-circle-stroked",
+      "url": "./hiai%20icon%20svg/info-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-info-hexagon-stroked",
+      "url": "./hiai%20icon%20svg/info-hexagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-info-octagon-stroked",
+      "url": "./hiai%20icon%20svg/info-octagon-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-info-square-stroked",
+      "url": "./hiai%20icon%20svg/info-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-info-circle",
+      "url": "./hiai%20icon%20svg/info_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-key-01-stroked",
+      "url": "./hiai%20icon%20svg/key-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-key-02-stroked",
+      "url": "./hiai%20icon%20svg/key-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-key",
+      "url": "./hiai%20icon%20svg/key.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-key-stroked",
+      "url": "./hiai%20icon%20svg/key_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-keyboard-01-stroked",
+      "url": "./hiai%20icon%20svg/keyboard-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-keyboard-02-stroked",
+      "url": "./hiai%20icon%20svg/keyboard-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-alt-01-stroked",
+      "url": "./hiai%20icon%20svg/layout-alt-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-alt-02-stroked",
+      "url": "./hiai%20icon%20svg/layout-alt-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-alt-03-stroked",
+      "url": "./hiai%20icon%20svg/layout-alt-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-alt-04-stroked",
+      "url": "./hiai%20icon%20svg/layout-alt-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-bottom-stroked",
+      "url": "./hiai%20icon%20svg/layout-bottom-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-left-stroked",
+      "url": "./hiai%20icon%20svg/layout-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-right-stroked",
+      "url": "./hiai%20icon%20svg/layout-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-top-stroked",
+      "url": "./hiai%20icon%20svg/layout-top-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-two",
+      "url": "./hiai%20icon%20svg/layout-two.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-layout-stroked",
+      "url": "./hiai%20icon%20svg/layout_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-01-stroked",
+      "url": "./hiai%20icon%20svg/link-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-02-stroked",
+      "url": "./hiai%20icon%20svg/link-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-03-stroked",
+      "url": "./hiai%20icon%20svg/link-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-04-stroked",
+      "url": "./hiai%20icon%20svg/link-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-05-stroked",
+      "url": "./hiai%20icon%20svg/link-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-broken-01-stroked",
+      "url": "./hiai%20icon%20svg/link-broken-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-broken-02-stroked",
+      "url": "./hiai%20icon%20svg/link-broken-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-external-01-stroked",
+      "url": "./hiai%20icon%20svg/link-external-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-link-external-02-stroked",
+      "url": "./hiai%20icon%20svg/link-external-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-01-stroked",
+      "url": "./hiai%20icon%20svg/lock-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-02-stroked",
+      "url": "./hiai%20icon%20svg/lock-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-03-stroked",
+      "url": "./hiai%20icon%20svg/lock-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-04-stroked",
+      "url": "./hiai%20icon%20svg/lock-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-keyhole-circle-stroked",
+      "url": "./hiai%20icon%20svg/lock-keyhole-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-keyhole-square-stroked",
+      "url": "./hiai%20icon%20svg/lock-keyhole-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-unlocked-01-stroked",
+      "url": "./hiai%20icon%20svg/lock-unlocked-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-unlocked-02-stroked",
+      "url": "./hiai%20icon%20svg/lock-unlocked-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-unlocked-03-stroked",
+      "url": "./hiai%20icon%20svg/lock-unlocked-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-unlocked-04-stroked",
+      "url": "./hiai%20icon%20svg/lock-unlocked-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock",
+      "url": "./hiai%20icon%20svg/lock.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-lock-stroked",
+      "url": "./hiai%20icon%20svg/lock_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-in-01-stroked",
+      "url": "./hiai%20icon%20svg/log-in-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-in-02-stroked",
+      "url": "./hiai%20icon%20svg/log-in-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-in-03-stroked",
+      "url": "./hiai%20icon%20svg/log-in-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-in-04-stroked",
+      "url": "./hiai%20icon%20svg/log-in-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-out-01-stroked",
+      "url": "./hiai%20icon%20svg/log-out-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-out-02-stroked",
+      "url": "./hiai%20icon%20svg/log-out-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-out-03-stroked",
+      "url": "./hiai%20icon%20svg/log-out-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-log-out-04-stroked",
+      "url": "./hiai%20icon%20svg/log-out-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-map-01-stroked",
+      "url": "./hiai%20icon%20svg/map-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-map-02-stroked",
+      "url": "./hiai%20icon%20svg/map-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-map-pin",
+      "url": "./hiai%20icon%20svg/map_pin.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-map-pin-stroked",
+      "url": "./hiai%20icon%20svg/map_pin_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-01-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-02-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-03-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-04-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-05-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-marker-pin-06-stroked",
+      "url": "./hiai%20icon%20svg/marker-pin-06-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-maximize-01-stroked",
+      "url": "./hiai%20icon%20svg/maximize-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-maximize-02-stroked",
+      "url": "./hiai%20icon%20svg/maximize-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-maximize-stroked",
+      "url": "./hiai%20icon%20svg/maximize-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-maximize",
+      "url": "./hiai%20icon%20svg/maximize.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu-01-stroked",
+      "url": "./hiai%20icon%20svg/menu-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu-02-stroked",
+      "url": "./hiai%20icon%20svg/menu-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu-03-stroked",
+      "url": "./hiai%20icon%20svg/menu-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu-04-stroked",
+      "url": "./hiai%20icon%20svg/menu-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu-05-stroked",
+      "url": "./hiai%20icon%20svg/menu-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-menu",
+      "url": "./hiai%20icon%20svg/menu.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minimize-01-stroked",
+      "url": "./hiai%20icon%20svg/minimize-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minimize-02-stroked",
+      "url": "./hiai%20icon%20svg/minimize-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minimize",
+      "url": "./hiai%20icon%20svg/minimize.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-circle-stroked2",
+      "url": "./hiai%20icon%20svg/minus-circle-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-square-stroked",
+      "url": "./hiai%20icon%20svg/minus-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-stroked2",
+      "url": "./hiai%20icon%20svg/minus-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus",
+      "url": "./hiai%20icon%20svg/minus.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-circle",
+      "url": "./hiai%20icon%20svg/minus_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-circle-stroked",
+      "url": "./hiai%20icon%20svg/minus_circle_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-minus-stroked",
+      "url": "./hiai%20icon%20svg/minus_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-01-stroked",
+      "url": "./hiai%20icon%20svg/monitor-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-02-stroked",
+      "url": "./hiai%20icon%20svg/monitor-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-03-stroked",
+      "url": "./hiai%20icon%20svg/monitor-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-04-stroked",
+      "url": "./hiai%20icon%20svg/monitor-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-05-stroked",
+      "url": "./hiai%20icon%20svg/monitor-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-stroked",
+      "url": "./hiai%20icon%20svg/monitor_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-monitor-stroked2",
+      "url": "./hiai%20icon%20svg/monitor_stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-moon-01-stroked",
+      "url": "./hiai%20icon%20svg/moon-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-moon-02-stroked",
+      "url": "./hiai%20icon%20svg/moon-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-moon-eclipse-stroked",
+      "url": "./hiai%20icon%20svg/moon-eclipse-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-moon-star-stroked",
+      "url": "./hiai%20icon%20svg/moon-star-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-moon",
+      "url": "./hiai%20icon%20svg/moon.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-more-stroked",
+      "url": "./hiai%20icon%20svg/more_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-move-stroked",
+      "url": "./hiai%20icon%20svg/move-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-navigation-pointer-01-stroked",
+      "url": "./hiai%20icon%20svg/navigation-pointer-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-navigation-pointer-02-stroked",
+      "url": "./hiai%20icon%20svg/navigation-pointer-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-navigation-pointer-off-01-stroked",
+      "url": "./hiai%20icon%20svg/navigation-pointer-off-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-navigation-pointer-off-02-stroked",
+      "url": "./hiai%20icon%20svg/navigation-pointer-off-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-circle-stroked2",
+      "url": "./hiai%20icon%20svg/plus-circle-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-square-stroked",
+      "url": "./hiai%20icon%20svg/plus-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-stroked2",
+      "url": "./hiai%20icon%20svg/plus-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus",
+      "url": "./hiai%20icon%20svg/plus.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-circle",
+      "url": "./hiai%20icon%20svg/plus_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-circle-stroked",
+      "url": "./hiai%20icon%20svg/plus_circle_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-plus-stroked",
+      "url": "./hiai%20icon%20svg/plus_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-power-01-stroked",
+      "url": "./hiai%20icon%20svg/power-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-power-02-stroked",
+      "url": "./hiai%20icon%20svg/power-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-power-03-stroked",
+      "url": "./hiai%20icon%20svg/power-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-receipt-check-stroked",
+      "url": "./hiai%20icon%20svg/receipt-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-ccw-01-stroked",
+      "url": "./hiai%20icon%20svg/refresh-ccw-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-ccw-02-stroked",
+      "url": "./hiai%20icon%20svg/refresh-ccw-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-ccw-03-stroked",
+      "url": "./hiai%20icon%20svg/refresh-ccw-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-ccw-04-stroked",
+      "url": "./hiai%20icon%20svg/refresh-ccw-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-ccw-05-stroked",
+      "url": "./hiai%20icon%20svg/refresh-ccw-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-cw-01-stroked",
+      "url": "./hiai%20icon%20svg/refresh-cw-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-cw-02-stroked",
+      "url": "./hiai%20icon%20svg/refresh-cw-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-cw-03-stroked",
+      "url": "./hiai%20icon%20svg/refresh-cw-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-cw-04-stroked",
+      "url": "./hiai%20icon%20svg/refresh-cw-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-cw-05-stroked",
+      "url": "./hiai%20icon%20svg/refresh-cw-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh",
+      "url": "./hiai%20icon%20svg/refresh.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh2",
+      "url": "./hiai%20icon%20svg/refresh2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-refresh-stroked",
+      "url": "./hiai%20icon%20svg/refresh_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-rotate",
+      "url": "./hiai%20icon%20svg/rotate.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-route-stroked",
+      "url": "./hiai%20icon%20svg/route-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-route",
+      "url": "./hiai%20icon%20svg/route.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-scan-stroked",
+      "url": "./hiai%20icon%20svg/scan-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-scan",
+      "url": "./hiai%20icon%20svg/scan.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-02-stroked",
+      "url": "./hiai%20icon%20svg/search-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-lg-stroked",
+      "url": "./hiai%20icon%20svg/search-lg-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-md-stroked",
+      "url": "./hiai%20icon%20svg/search-md-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-refraction-stroked",
+      "url": "./hiai%20icon%20svg/search-refraction-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-sm-stroked",
+      "url": "./hiai%20icon%20svg/search-sm-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search",
+      "url": "./hiai%20icon%20svg/search.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-search-stroked",
+      "url": "./hiai%20icon%20svg/search_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-settings-01-stroked",
+      "url": "./hiai%20icon%20svg/settings-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-settings-02-stroked",
+      "url": "./hiai%20icon%20svg/settings-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-settings-03-stroked",
+      "url": "./hiai%20icon%20svg/settings-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-settings-04-stroked",
+      "url": "./hiai%20icon%20svg/settings-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-01-stroked",
+      "url": "./hiai%20icon%20svg/shield-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-02-stroked",
+      "url": "./hiai%20icon%20svg/shield-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-03-stroked",
+      "url": "./hiai%20icon%20svg/shield-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-dollar-stroked",
+      "url": "./hiai%20icon%20svg/shield-dollar-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-off-stroked",
+      "url": "./hiai%20icon%20svg/shield-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-plus-stroked",
+      "url": "./hiai%20icon%20svg/shield-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-tick-stroked",
+      "url": "./hiai%20icon%20svg/shield-tick-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-zap-stroked",
+      "url": "./hiai%20icon%20svg/shield-zap-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield",
+      "url": "./hiai%20icon%20svg/shield.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-shield-stroked",
+      "url": "./hiai%20icon%20svg/shield_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sidebar",
+      "url": "./hiai%20icon%20svg/sidebar.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sliders-01-stroked",
+      "url": "./hiai%20icon%20svg/sliders-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sliders-02-stroked",
+      "url": "./hiai%20icon%20svg/sliders-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sliders-03-stroked",
+      "url": "./hiai%20icon%20svg/sliders-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sliders-04-stroked",
+      "url": "./hiai%20icon%20svg/sliders-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sun-setting-01-stroked",
+      "url": "./hiai%20icon%20svg/sun-setting-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sun-setting-02-stroked",
+      "url": "./hiai%20icon%20svg/sun-setting-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sun-setting-03-stroked",
+      "url": "./hiai%20icon%20svg/sun-setting-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sun-stroked",
+      "url": "./hiai%20icon%20svg/sun-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sun",
+      "url": "./hiai%20icon%20svg/sun.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sunrise-stroked",
+      "url": "./hiai%20icon%20svg/sunrise-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-sunset-stroked",
+      "url": "./hiai%20icon%20svg/sunset-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tab-arrow-stroked",
+      "url": "./hiai%20icon%20svg/tab_arrow_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tabs-stroked",
+      "url": "./hiai%20icon%20svg/tabs_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-target-01-stroked",
+      "url": "./hiai%20icon%20svg/target-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-target-02-stroked",
+      "url": "./hiai%20icon%20svg/target-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-target-03-stroked",
+      "url": "./hiai%20icon%20svg/target-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-target-04-stroked",
+      "url": "./hiai%20icon%20svg/target-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-target-05-stroked",
+      "url": "./hiai%20icon%20svg/target-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-01-left-stroked",
+      "url": "./hiai%20icon%20svg/toggle-01-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-01-right-stroked",
+      "url": "./hiai%20icon%20svg/toggle-01-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-02-left-stroked",
+      "url": "./hiai%20icon%20svg/toggle-02-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-02-right-stroked",
+      "url": "./hiai%20icon%20svg/toggle-02-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-03-left-stroked",
+      "url": "./hiai%20icon%20svg/toggle-03-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-toggle-03-right-stroked",
+      "url": "./hiai%20icon%20svg/toggle-03-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tool-01-stroked",
+      "url": "./hiai%20icon%20svg/tool-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tool-02-stroked",
+      "url": "./hiai%20icon%20svg/tool-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-trash-01-stroked",
+      "url": "./hiai%20icon%20svg/trash-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-trash-02-stroked",
+      "url": "./hiai%20icon%20svg/trash-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-trash-03-stroked",
+      "url": "./hiai%20icon%20svg/trash-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-trash-04-stroked",
+      "url": "./hiai%20icon%20svg/trash-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-triangle-arrow",
+      "url": "./hiai%20icon%20svg/triangle_arrow.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-triangle-arrow-vertical",
+      "url": "./hiai%20icon%20svg/triangle_arrow_vertical.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-unlock",
+      "url": "./hiai%20icon%20svg/unlock.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-unlock-stroked",
+      "url": "./hiai%20icon%20svg/unlock_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-wifi-off-stroked",
+      "url": "./hiai%20icon%20svg/wifi-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-wifi-stroked",
+      "url": "./hiai%20icon%20svg/wifi-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-wifi",
+      "url": "./hiai%20icon%20svg/wifi.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-window-adaption-stroked",
+      "url": "./hiai%20icon%20svg/window_adaption_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-wrench",
+      "url": "./hiai%20icon%20svg/wrench.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-x-close-stroked",
+      "url": "./hiai%20icon%20svg/x-close-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-zap-circle-stroked",
+      "url": "./hiai%20icon%20svg/zap-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-zap-fast-stroked",
+      "url": "./hiai%20icon%20svg/zap-fast-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-zap-off-stroked",
+      "url": "./hiai%20icon%20svg/zap-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-zap-square-stroked",
+      "url": "./hiai%20icon%20svg/zap-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-zap-stroked",
+      "url": "./hiai%20icon%20svg/zap-stroked.svg",
+      "inset": "inset-[8.33%]"
+    }
+  ]
+}

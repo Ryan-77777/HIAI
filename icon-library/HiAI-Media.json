@@ -1,0 +1,334 @@
+{
+  "icons": [
+    {
+      "name": "hiai-icon-pause-stroked",
+      "url": "./hiai%20icon%20svg/IconPauseStroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-airplay-stroked",
+      "url": "./hiai%20icon%20svg/airplay-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-airpods-stroked",
+      "url": "./hiai%20icon%20svg/airpods-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-call-records",
+      "url": "./hiai%20icon%20svg/call-records.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-01-stroked",
+      "url": "./hiai%20icon%20svg/camera-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-02-stroked",
+      "url": "./hiai%20icon%20svg/camera-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-03-stroked",
+      "url": "./hiai%20icon%20svg/camera-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-lens-stroked",
+      "url": "./hiai%20icon%20svg/camera-lens-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-off-stroked",
+      "url": "./hiai%20icon%20svg/camera-off-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera-plus-stroked",
+      "url": "./hiai%20icon%20svg/camera-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-camera",
+      "url": "./hiai%20icon%20svg/camera.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-image",
+      "url": "./hiai%20icon%20svg/color_image.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-film-01-stroked",
+      "url": "./hiai%20icon%20svg/film-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-film-02-stroked",
+      "url": "./hiai%20icon%20svg/film-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-film-03-stroked",
+      "url": "./hiai%20icon%20svg/film-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-01-stroked",
+      "url": "./hiai%20icon%20svg/image-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-02-stroked",
+      "url": "./hiai%20icon%20svg/image-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-03-stroked",
+      "url": "./hiai%20icon%20svg/image-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-04-stroked",
+      "url": "./hiai%20icon%20svg/image-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-05-stroked",
+      "url": "./hiai%20icon%20svg/image-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-check-stroked",
+      "url": "./hiai%20icon%20svg/image-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-down-stroked",
+      "url": "./hiai%20icon%20svg/image-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-left-stroked",
+      "url": "./hiai%20icon%20svg/image-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-plus-stroked",
+      "url": "./hiai%20icon%20svg/image-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-right-stroked",
+      "url": "./hiai%20icon%20svg/image-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-up-stroked",
+      "url": "./hiai%20icon%20svg/image-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-x-stroked",
+      "url": "./hiai%20icon%20svg/image-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image",
+      "url": "./hiai%20icon%20svg/image.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-stroked",
+      "url": "./hiai%20icon%20svg/image_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-music-note-01-stroked",
+      "url": "./hiai%20icon%20svg/music-note-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-music-note-02-stroked",
+      "url": "./hiai%20icon%20svg/music-note-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-music-note-plus-stroked",
+      "url": "./hiai%20icon%20svg/music-note-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-music",
+      "url": "./hiai%20icon%20svg/music.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-music-note-stroked",
+      "url": "./hiai%20icon%20svg/music_note_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-pause-circle-stroked",
+      "url": "./hiai%20icon%20svg/pause-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-pause-square-stroked",
+      "url": "./hiai%20icon%20svg/pause-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-pause",
+      "url": "./hiai%20icon%20svg/pause.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play-circle-stroked",
+      "url": "./hiai%20icon%20svg/play-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play-square-stroked",
+      "url": "./hiai%20icon%20svg/play-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play-stroked2",
+      "url": "./hiai%20icon%20svg/play-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play",
+      "url": "./hiai%20icon%20svg/play.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play-circle",
+      "url": "./hiai%20icon%20svg/play_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-play-stroked",
+      "url": "./hiai%20icon%20svg/play_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-recording-01-stroked",
+      "url": "./hiai%20icon%20svg/recording-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-recording-02-stroked",
+      "url": "./hiai%20icon%20svg/recording-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-recording-03-stroked",
+      "url": "./hiai%20icon%20svg/recording-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-speaker-01-stroked",
+      "url": "./hiai%20icon%20svg/speaker-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-speaker-02-stroked",
+      "url": "./hiai%20icon%20svg/speaker-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-speaker-03-stroked",
+      "url": "./hiai%20icon%20svg/speaker-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-subtitles-filled",
+      "url": "./hiai%20icon%20svg/subtitles_filled.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tv-01-stroked",
+      "url": "./hiai%20icon%20svg/tv-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tv-02-stroked",
+      "url": "./hiai%20icon%20svg/tv-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tv-03-stroked",
+      "url": "./hiai%20icon%20svg/tv-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-tv-checked-stroked",
+      "url": "./hiai%20icon%20svg/tv_checked_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-video",
+      "url": "./hiai%20icon%20svg/video.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-video-douyin-stroked",
+      "url": "./hiai%20icon%20svg/video_douyin_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-video-stroked",
+      "url": "./hiai%20icon%20svg/video_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-video-url-stroked",
+      "url": "./hiai%20icon%20svg/video_url_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-max-stroked",
+      "url": "./hiai%20icon%20svg/volume-max-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-min-stroked",
+      "url": "./hiai%20icon%20svg/volume-min-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-minus-stroked",
+      "url": "./hiai%20icon%20svg/volume-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-plus-stroked",
+      "url": "./hiai%20icon%20svg/volume-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-x-stroked",
+      "url": "./hiai%20icon%20svg/volume-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-1",
+      "url": "./hiai%20icon%20svg/volume_1.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-volume-2",
+      "url": "./hiai%20icon%20svg/volume_2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-vote-video-stroked",
+      "url": "./hiai%20icon%20svg/vote_video_stroked.svg",
+      "inset": "inset-[8.33%]"
+    }
+  ]
+}

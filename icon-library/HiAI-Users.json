@@ -1,0 +1,354 @@
+{
+  "icons": [
+    {
+      "name": "hiai-color-avatar",
+      "url": "./hiai%20icon%20svg/color_avatar.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-content-stroked",
+      "url": "./hiai%20icon%20svg/face-content-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-frown-stroked",
+      "url": "./hiai%20icon%20svg/face-frown-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-happy-stroked",
+      "url": "./hiai%20icon%20svg/face-happy-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-id-square-stroked",
+      "url": "./hiai%20icon%20svg/face-id-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-id-stroked",
+      "url": "./hiai%20icon%20svg/face-id-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-neutral-stroked",
+      "url": "./hiai%20icon%20svg/face-neutral-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-sad-stroked",
+      "url": "./hiai%20icon%20svg/face-sad-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-smile-stroked2",
+      "url": "./hiai%20icon%20svg/face-smile-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-wink-stroked",
+      "url": "./hiai%20icon%20svg/face-wink-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-face-smile-stroked",
+      "url": "./hiai%20icon%20svg/face_smile_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-facebook",
+      "url": "./hiai%20icon%20svg/facebook.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-faceu-logo",
+      "url": "./hiai%20icon%20svg/faceu_logo.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-fingerprint-01-stroked",
+      "url": "./hiai%20icon%20svg/fingerprint-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-fingerprint-02-stroked",
+      "url": "./hiai%20icon%20svg/fingerprint-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-fingerprint-03-stroked",
+      "url": "./hiai%20icon%20svg/fingerprint-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-fingerprint-04-stroked",
+      "url": "./hiai%20icon%20svg/fingerprint-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-check-stroked",
+      "url": "./hiai%20icon%20svg/image-user-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-down-stroked",
+      "url": "./hiai%20icon%20svg/image-user-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-left-stroked",
+      "url": "./hiai%20icon%20svg/image-user-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-plus-stroked",
+      "url": "./hiai%20icon%20svg/image-user-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-right-stroked",
+      "url": "./hiai%20icon%20svg/image-user-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-stroked",
+      "url": "./hiai%20icon%20svg/image-user-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-up-stroked",
+      "url": "./hiai%20icon%20svg/image-user-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-image-user-x-stroked",
+      "url": "./hiai%20icon%20svg/image-user-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-member",
+      "url": "./hiai%20icon%20svg/member.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-passport-stroked",
+      "url": "./hiai%20icon%20svg/passport-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-01-stroked",
+      "url": "./hiai%20icon%20svg/user-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-02-stroked",
+      "url": "./hiai%20icon%20svg/user-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-03-stroked",
+      "url": "./hiai%20icon%20svg/user-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-check-01-stroked",
+      "url": "./hiai%20icon%20svg/user-check-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-check-02-stroked",
+      "url": "./hiai%20icon%20svg/user-check-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-circle-stroked2",
+      "url": "./hiai%20icon%20svg/user-circle-stroked2.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-down-01-stroked",
+      "url": "./hiai%20icon%20svg/user-down-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-down-02-stroked",
+      "url": "./hiai%20icon%20svg/user-down-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-edit-stroked",
+      "url": "./hiai%20icon%20svg/user-edit-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-left-01-stroked",
+      "url": "./hiai%20icon%20svg/user-left-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-left-02-stroked",
+      "url": "./hiai%20icon%20svg/user-left-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-minus-01-stroked",
+      "url": "./hiai%20icon%20svg/user-minus-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-minus-02-stroked",
+      "url": "./hiai%20icon%20svg/user-minus-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-plus-01-stroked",
+      "url": "./hiai%20icon%20svg/user-plus-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-plus-02-stroked",
+      "url": "./hiai%20icon%20svg/user-plus-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-right-01-stroked",
+      "url": "./hiai%20icon%20svg/user-right-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-right-02-stroked",
+      "url": "./hiai%20icon%20svg/user-right-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-square-stroked",
+      "url": "./hiai%20icon%20svg/user-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-up-01-stroked",
+      "url": "./hiai%20icon%20svg/user-up-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-up-02-stroked",
+      "url": "./hiai%20icon%20svg/user-up-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-x-01-stroked",
+      "url": "./hiai%20icon%20svg/user-x-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-x-02-stroked",
+      "url": "./hiai%20icon%20svg/user-x-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user",
+      "url": "./hiai%20icon%20svg/user.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-add",
+      "url": "./hiai%20icon%20svg/user_add.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-card-phone",
+      "url": "./hiai%20icon%20svg/user_card_phone.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-card-video",
+      "url": "./hiai%20icon%20svg/user_card_video.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-circle",
+      "url": "./hiai%20icon%20svg/user_circle.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-circle-stroked",
+      "url": "./hiai%20icon%20svg/user_circle_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-group",
+      "url": "./hiai%20icon%20svg/user_group.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-setting",
+      "url": "./hiai%20icon%20svg/user_setting.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-user-stroked",
+      "url": "./hiai%20icon%20svg/user_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-01-stroked",
+      "url": "./hiai%20icon%20svg/users-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-02-stroked",
+      "url": "./hiai%20icon%20svg/users-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-03-stroked",
+      "url": "./hiai%20icon%20svg/users-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-check-stroked",
+      "url": "./hiai%20icon%20svg/users-check-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-down-stroked",
+      "url": "./hiai%20icon%20svg/users-down-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-edit-stroked",
+      "url": "./hiai%20icon%20svg/users-edit-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-left-stroked",
+      "url": "./hiai%20icon%20svg/users-left-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-minus-stroked",
+      "url": "./hiai%20icon%20svg/users-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-plus-stroked",
+      "url": "./hiai%20icon%20svg/users-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-right-stroked",
+      "url": "./hiai%20icon%20svg/users-right-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-up-stroked",
+      "url": "./hiai%20icon%20svg/users-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-users-x-stroked",
+      "url": "./hiai%20icon%20svg/users-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    }
+  ]
+}

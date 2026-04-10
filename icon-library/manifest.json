@@ -1,14 +1,103 @@
 {
   "version": 1,
-  "generatedFrom": "figma:C7xI0S0GkgPQdfPHzTsl3M",
+  "generatedFrom": "figma:C7xI0S0GkgPQdfPHzTsl3M +local:hiai-icon-svg +local:hiai-icon-svg",
   "previewSizePx": 16,
   "categories": [
-    { "id": "AIInput", "label": "AI Input", "count": 16, "file": "AIInput.json" },
-    { "id": "AIIcons", "label": "AI图标", "count": 1, "file": "AIIcons.json" },
-    { "id": "Development", "label": "Development", "count": 41, "file": "Development.json" },
-    { "id": "Users", "label": "Users", "count": 0, "file": "Users.json" },
-    { "id": "Communication", "label": "Communication", "count": 0, "file": "Communication.json" },
-    { "id": "Editor", "label": "Editor", "count": 0, "file": "Editor.json" },
-    { "id": "Files", "label": "Files", "count": 0, "file": "Files.json" }
+    {
+      "id": "AIInput",
+      "label": "AI Input",
+      "count": 16,
+      "file": "AIInput.json"
+    },
+    {
+      "id": "AIIcons",
+      "label": "AI图标",
+      "count": 1,
+      "file": "AIIcons.json"
+    },
+    {
+      "id": "Development",
+      "label": "Development",
+      "count": 41,
+      "file": "Development.json"
+    },
+    {
+      "id": "Users",
+      "label": "Users",
+      "count": 0,
+      "file": "Users.json"
+    },
+    {
+      "id": "Communication",
+      "label": "Communication",
+      "count": 0,
+      "file": "Communication.json"
+    },
+    {
+      "id": "Editor",
+      "label": "Editor",
+      "count": 0,
+      "file": "Editor.json"
+    },
+    {
+      "id": "Files",
+      "label": "Files",
+      "count": 0,
+      "file": "Files.json"
+    },
+    {
+      "id": "HiAI-Editor",
+      "label": "HiAI · 文本与排版",
+      "count": 131,
+      "file": "HiAI-Editor.json"
+    },
+    {
+      "id": "HiAI-Users",
+      "label": "HiAI · 用户与成员",
+      "count": 70,
+      "file": "HiAI-Users.json"
+    },
+    {
+      "id": "HiAI-Communication",
+      "label": "HiAI · 沟通与通知",
+      "count": 104,
+      "file": "HiAI-Communication.json"
+    },
+    {
+      "id": "HiAI-Files",
+      "label": "HiAI · 文件与存储",
+      "count": 104,
+      "file": "HiAI-Files.json"
+    },
+    {
+      "id": "HiAI-Charts",
+      "label": "HiAI · 图表与数据",
+      "count": 113,
+      "file": "HiAI-Charts.json"
+    },
+    {
+      "id": "HiAI-Media",
+      "label": "HiAI · 媒体与播放",
+      "count": 66,
+      "file": "HiAI-Media.json"
+    },
+    {
+      "id": "HiAI-Development",
+      "label": "HiAI · 开发与代码",
+      "count": 62,
+      "file": "HiAI-Development.json"
+    },
+    {
+      "id": "HiAI-Interface",
+      "label": "HiAI · 界面与导航",
+      "count": 423,
+      "file": "HiAI-Interface.json"
+    },
+    {
+      "id": "HiAI-General",
+      "label": "HiAI · 通用",
+      "count": 732,
+      "file": "HiAI-General.json"
+    }
   ]
 }

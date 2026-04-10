@@ -1,0 +1,524 @@
+{
+  "icons": [
+    {
+      "name": "hiai-announcement-01-stroked",
+      "url": "./hiai%20icon%20svg/announcement-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-announcement-02-stroked",
+      "url": "./hiai%20icon%20svg/announcement-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-announcement-03-stroked",
+      "url": "./hiai%20icon%20svg/announcement-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-at-sign-stroked",
+      "url": "./hiai%20icon%20svg/at-sign-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-01-stroked",
+      "url": "./hiai%20icon%20svg/bell-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-02-stroked",
+      "url": "./hiai%20icon%20svg/bell-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-03-stroked",
+      "url": "./hiai%20icon%20svg/bell-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-04-stroked",
+      "url": "./hiai%20icon%20svg/bell-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-minus-stroked",
+      "url": "./hiai%20icon%20svg/bell-minus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-off-01-stroked",
+      "url": "./hiai%20icon%20svg/bell-off-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-off-02-stroked",
+      "url": "./hiai%20icon%20svg/bell-off-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-off-03-stroked",
+      "url": "./hiai%20icon%20svg/bell-off-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-plus-stroked",
+      "url": "./hiai%20icon%20svg/bell-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-ringing-01-stroked",
+      "url": "./hiai%20icon%20svg/bell-ringing-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-ringing-02-stroked",
+      "url": "./hiai%20icon%20svg/bell-ringing-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-ringing-03-stroked",
+      "url": "./hiai%20icon%20svg/bell-ringing-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-ringing-04-stroked",
+      "url": "./hiai%20icon%20svg/bell-ringing-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell",
+      "url": "./hiai%20icon%20svg/bell.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-bell-stroked",
+      "url": "./hiai%20icon%20svg/bell_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-color-notification",
+      "url": "./hiai%20icon%20svg/color_notification.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-groupchat",
+      "url": "./hiai%20icon%20svg/groupchat.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-groupchathistory",
+      "url": "./hiai%20icon%20svg/groupchathistory.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-headphones-01-stroked",
+      "url": "./hiai%20icon%20svg/headphones-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-headphones-02-stroked",
+      "url": "./hiai%20icon%20svg/headphones-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-inbox-01-stroked",
+      "url": "./hiai%20icon%20svg/inbox-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-inbox-02-stroked",
+      "url": "./hiai%20icon%20svg/inbox-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-inbox",
+      "url": "./hiai%20icon%20svg/inbox.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-01-stroked",
+      "url": "./hiai%20icon%20svg/mail-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-02-stroked",
+      "url": "./hiai%20icon%20svg/mail-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-03-stroked",
+      "url": "./hiai%20icon%20svg/mail-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-04-stroked",
+      "url": "./hiai%20icon%20svg/mail-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-05-stroked",
+      "url": "./hiai%20icon%20svg/mail-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail",
+      "url": "./hiai%20icon%20svg/mail.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-stroked",
+      "url": "./hiai%20icon%20svg/mail_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-mail-stroked-1",
+      "url": "./hiai%20icon%20svg/mail_stroked_1.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-alert-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-alert-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-alert-square-stroked",
+      "url": "./hiai%20icon%20svg/message-alert-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-chat-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-chat-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-chat-square-stroked",
+      "url": "./hiai%20icon%20svg/message-chat-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-check-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-check-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-check-square-stroked",
+      "url": "./hiai%20icon%20svg/message-check-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-circle-01-stroked",
+      "url": "./hiai%20icon%20svg/message-circle-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-circle-02-stroked",
+      "url": "./hiai%20icon%20svg/message-circle-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-dots-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-dots-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-dots-square-stroked",
+      "url": "./hiai%20icon%20svg/message-dots-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-heart-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-heart-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-heart-square-stroked",
+      "url": "./hiai%20icon%20svg/message-heart-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-notification-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-notification-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-notification-square-stroked",
+      "url": "./hiai%20icon%20svg/message-notification-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-plus-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-plus-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-plus-square-stroked",
+      "url": "./hiai%20icon%20svg/message-plus-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-question-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-question-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-question-square-stroked",
+      "url": "./hiai%20icon%20svg/message-question-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-smile-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-smile-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-smile-square-stroked",
+      "url": "./hiai%20icon%20svg/message-smile-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-square-01-stroked",
+      "url": "./hiai%20icon%20svg/message-square-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-square-02-stroked",
+      "url": "./hiai%20icon%20svg/message-square-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-x-circle-stroked",
+      "url": "./hiai%20icon%20svg/message-x-circle-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-x-square-stroked",
+      "url": "./hiai%20icon%20svg/message-x-square-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-message-question-stroked",
+      "url": "./hiai%20icon%20svg/message_question_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone-01-stroked",
+      "url": "./hiai%20icon%20svg/microphone-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone-02-stroked",
+      "url": "./hiai%20icon%20svg/microphone-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone-off-01-stroked",
+      "url": "./hiai%20icon%20svg/microphone-off-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone-off-02-stroked",
+      "url": "./hiai%20icon%20svg/microphone-off-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone",
+      "url": "./hiai%20icon%20svg/microphone.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-microphone-off",
+      "url": "./hiai%20icon%20svg/microphone_off.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-notification-box-stroked",
+      "url": "./hiai%20icon%20svg/notification-box-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-notification-message-stroked",
+      "url": "./hiai%20icon%20svg/notification-message-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-01-stroked",
+      "url": "./hiai%20icon%20svg/phone-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-02-stroked",
+      "url": "./hiai%20icon%20svg/phone-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-call-01-stroked",
+      "url": "./hiai%20icon%20svg/phone-call-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-call-02-stroked",
+      "url": "./hiai%20icon%20svg/phone-call-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-hang-up-stroked",
+      "url": "./hiai%20icon%20svg/phone-hang-up-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-incoming-01-stroked",
+      "url": "./hiai%20icon%20svg/phone-incoming-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-incoming-02-stroked",
+      "url": "./hiai%20icon%20svg/phone-incoming-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-outgoing-01-stroked",
+      "url": "./hiai%20icon%20svg/phone-outgoing-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-outgoing-02-stroked",
+      "url": "./hiai%20icon%20svg/phone-outgoing-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-pause-stroked",
+      "url": "./hiai%20icon%20svg/phone-pause-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-plus-stroked",
+      "url": "./hiai%20icon%20svg/phone-plus-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-stroked",
+      "url": "./hiai%20icon%20svg/phone-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-x-stroked",
+      "url": "./hiai%20icon%20svg/phone-x-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone",
+      "url": "./hiai%20icon%20svg/phone.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-phone-stroke",
+      "url": "./hiai%20icon%20svg/phone_stroke.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-reply",
+      "url": "./hiai%20icon%20svg/reply.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-reply-stroked",
+      "url": "./hiai%20icon%20svg/reply_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send-01-stroked",
+      "url": "./hiai%20icon%20svg/send-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send-02-stroked",
+      "url": "./hiai%20icon%20svg/send-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send-03-stroked",
+      "url": "./hiai%20icon%20svg/send-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send",
+      "url": "./hiai%20icon%20svg/send.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send-msg-stroked",
+      "url": "./hiai%20icon%20svg/send_msg_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-send-stroked",
+      "url": "./hiai%20icon%20svg/send_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-01-stroked",
+      "url": "./hiai%20icon%20svg/share-01-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-02-stroked",
+      "url": "./hiai%20icon%20svg/share-02-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-03-stroked",
+      "url": "./hiai%20icon%20svg/share-03-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-04-stroked",
+      "url": "./hiai%20icon%20svg/share-04-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-05-stroked",
+      "url": "./hiai%20icon%20svg/share-05-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-06-stroked",
+      "url": "./hiai%20icon%20svg/share-06-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-07-stroked",
+      "url": "./hiai%20icon%20svg/share-07-stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share",
+      "url": "./hiai%20icon%20svg/share.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-money-stroked",
+      "url": "./hiai%20icon%20svg/share_money_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-share-stroked",
+      "url": "./hiai%20icon%20svg/share_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-smartphone-check-stroked",
+      "url": "./hiai%20icon%20svg/smartphone_check_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-smartphone-stroked",
+      "url": "./hiai%20icon%20svg/smartphone_stroked.svg",
+      "inset": "inset-[8.33%]"
+    },
+    {
+      "name": "hiai-voicemail-stroked",
+      "url": "./hiai%20icon%20svg/voicemail-stroked.svg",
+      "inset": "inset-[8.33%]"
+    }
+  ]
+}
