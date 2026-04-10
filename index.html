@@ -246,6 +246,7 @@
         }
         if (ref === "semi-color-white") return "#FFFFFF";
         if (ref === "semi-color-black") return "#000000";
+        if (ref === "semi-color-danger") return "#E23E25";
         if (ref === "semi-color-dark-text") return "#222727";
         if (FOUNDATION_TEXT_COLOR_MAP[ref]) return FOUNDATION_TEXT_COLOR_MAP[ref];
         return ref; // literal fallback (rgba, gradients, etc.)
@@ -507,62 +508,92 @@
         focusRing: "semi-brand-5",
       };
 
-      // 融合工作台框架（Figma：统一框架定义 6347:160598、关键页面 6144:34550）
+      // 融合工作台 · 在线 Agent 外壳（Figma 8279:67909「在线Agent」帧，Semi 变量落地值）
+      const FUSION_ONLINE_AGENT_ICONS = {
+        onlineDot: "https://www.figma.com/api/mcp/asset/c7b08657-21e2-4091-a142-7f808b54b8d8",
+        users: "https://www.figma.com/api/mcp/asset/5ff95a75-07ae-4c62-8a30-13f3220d2cc6",
+        annotationCheck: "https://www.figma.com/api/mcp/asset/f7d4cf0f-fca6-49fc-8d49-40c680619d23",
+        barChart: "https://www.figma.com/api/mcp/asset/32b8ae27-143e-4a57-97a8-890f709f5f17",
+        barChartSquare: "https://www.figma.com/api/mcp/asset/df57c2a2-ce80-4dd9-9811-03c03f9fa60a",
+        announcement: "https://www.figma.com/api/mcp/asset/2f85335a-0334-49e2-a7f3-b3175930bead",
+        settings: "https://www.figma.com/api/mcp/asset/1e22c857-4354-4e2a-9a99-2cc205f20c3b",
+      };
+
       const FUSION_WORKBENCH_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
-        componentName: "融合工作台框架 / Fusion Workbench Shell",
-        // 外骨架
-        shellBg: "semi-bluegrey-2",
-        surfaceBg: "semi-color-white",
-        chromeNavBg: "semi-grey-9",
-        chromeNavWidthPx: 60,
-        workspacePadPx: 8,
-        shellRadiusPx: 10,
-        shellBorder: "rgba(45,66,107,0.12)",
-        // 顶栏（与主内容区间距 12px → 顶栏下沿到主区 y=56）
-        topBarHeightPx: 32,
-        topBarBelowGapPx: 12,
-        topBarBg: "semi-color-white",
-        // 左侧：列表模式（在线 Agent 列表 400×1012 内边距 16）
-        listModeSessionWidthPx: 400,
-        sessionListInnerPadPx: 16,
-        sessionToolbarHeightPx: 32,
-        sessionFilterHeightPx: 32,
-        sessionSectionGapPx: 16,
-        sessionItemHeightPx: 68,
-        sessionItemGapPx: 4,
-        sessionGroupTitleSizePx: 12,
-        sessionTitleSizePx: 14,
-        sessionMetaSizePx: 12,
-        // 左侧：卡片模式（卡片区宽约 988 / 1840）
-        cardModeRailWidthPx: 988,
-        cardModeTopBarHeightPx: 48,
-        cardCellRadiusPx: 10,
-        cardCellMinHeightPx: 120,
-        // 中间主工作区（内边距 16、底栏 36）
-        tripleInnerPadPx: 16,
-        tripleColGapPx: 16,
-        listModeUserColPx: 400,
-        listModeImColPx: 488,
-        listModeDetailColPx: 488,
-        cardModeImColPx: 402,
-        cardModeDetailColPx: 418,
-        // 详情区 Tab
-        detailTabBarHeightPx: 60,
-        detailTabDividerPx: 1,
-        detailTabFontSizePx: 14,
-        detailBodyPadPx: 16,
-        // 底栏
-        bottomBarHeightPx: 36,
-        bottomBarBg: "semi-color-white",
-        // 文本与分割
-        textPrimary: "semi-color-dark-text",
-        textSecondary: "semi-color-text-1",
-        textMuted: "semi-color-text-2",
-        dividerColor: "rgba(45,66,107,0.12)",
-        itemHoverBg: "rgba(83,96,143,0.07)",
-        itemSelectedBg: "rgba(0,0,0,0.06)",
+        componentName: "融合工作台框架 / 在线 Agent 外壳（Figma 8279:67909）",
         focusRing: "semi-brand-5",
+        // 外框 Agent 容器
+        shellBg: "semi-bluegrey-2",
+        shellRadiusPx: 6,
+        // 工作区内边距（pl-8 pr-12 py-12）与主列间距 12
+        workspacePadLeftPx: 8,
+        workspacePadRightPx: 12,
+        workspacePadYPx: 12,
+        workspaceColumnGapPx: 12,
+        // 顶部组件（L4 毛玻璃 blur 10px）
+        topBarPadXPx: 12,
+        topBarBackdropBlurPx: 10,
+        topBarTitleFontPx: 14,
+        topBarTitleLinePx: 20,
+        onlinePillPadXPx: 8,
+        onlinePillPadYPx: 2,
+        onlinePillRadiusPx: 6,
+        onlineIconBoxPx: 16,
+        onlineDotSizePx: 10,
+        onlineTimerFontPx: 14,
+        onlineTimerLinePx: 20,
+        // 中间指标条（半透明白 + 白描边）
+        statsBarBg: "rgba(255,255,255,0.6)",
+        statsBarBorder: "semi-color-white",
+        statsBarRadiusPx: 6,
+        statsBarPadXPx: 16,
+        statsBarPadYPx: 4,
+        statsBarGapPx: 16,
+        statsItemGapPx: 4,
+        statsIconSizePx: 14,
+        statsLabelFontPx: 12,
+        statsLabelLinePx: 16,
+        statsValueFontPx: 12,
+        statsValueLinePx: 16,
+        statsDividerBg: "rgba(34,39,39,0.09)",
+        statsDividerHeightPx: 12,
+        riskDotSizePx: 6,
+        riskDotColor: "semi-color-danger",
+        statsActionIconPx: 16,
+        statsActionPadPx: 4,
+        statsTrailingIconGapPx: 12,
+        // 右侧 Segmented / RadioGroup
+        segmentTrackBg: "rgba(52,59,57,0.05)",
+        segmentTrackRadiusPx: 6,
+        segmentOuterPadPx: 4,
+        segmentItemHeightPx: 32,
+        segmentItemInnerPadXPx: 16,
+        segmentItemInnerPadYPx: 4,
+        segmentSelectedBg: "semi-color-white",
+        segmentInactiveColor: "semi-color-text-2",
+        segmentActiveColor: "semi-color-text-0",
+        segmentLabelFontPx: 12,
+        segmentLabelLinePx: 16,
+        // 主内容：半透明白底 + 白边，圆角 16
+        mainFrostBg: "rgba(255,255,255,0.5)",
+        mainFrostBorder: "semi-color-white",
+        mainFrostRadiusPx: 16,
+        listColumnWidthPx: 407,
+        listTitleFontPx: 36,
+        listSubtitleFontPx: 24,
+        listPlaceholderGapPx: 30,
+        // 详情白卡片 + Agent 工作台阴影
+        detailCardBg: "semi-color-white",
+        detailCardRadiusPx: 16,
+        detailCardPadPx: 16,
+        detailCardShadow: "0px 0px 16px 0px rgba(101,115,137,0.06)",
+        detailTitleFontPx: 36,
+        detailSubtitleFontPx: 24,
+        detailPlaceholderGapPx: 30,
+        // 文案色（占位标题）
+        textPrimary: "semi-color-text-0",
+        textSubtitle: "semi-color-text-3",
       };
 
       const ICON_LIBRARY_TOKENS = {
@@ -1542,129 +1573,99 @@
 
       function buildFusionWorkbenchDesignSkillMarkdown(t) {
         return [
-          "# DESIGN_SKILL — 融合工作台框架（HiAI Fusion Workbench Shell）",
+          "# DESIGN_SKILL — 融合工作台 · 在线 Agent 外壳（HiAI）",
           "",
-          "> 设计来源：[Figma 统一框架定义](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6347-160598) · [关键页面应用](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6144-34550)",
+          "> 设计来源：[Figma 在线Agent 帧](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8279-67909)（Semi Design 变量落地）；历史三栏稿见 [6347:160598](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6347-160598)。",
           "",
           "---",
           "",
           "## §1 系统角色与指令",
           "",
-          "**角色**：将本规范实现为可嵌入业务内容的**外壳框架**（shell），不负责具体工单字段、IM 文案、详情表单内容——这些由业务通过 slot / children 注入。",
+          "**角色**：实现「在线 Agent」托管视图的**外壳**（顶栏 + 列表槽 + 详情白卡片）。业务列表、会话、Tab 内容由 slot 注入；本规范只锁布局、色值、圆角、间距与阴影。",
           "",
-          "**最高指令**：所有尺寸、间距、分割线与颜色必须来自 §2 Token；**禁止**在框架层使用未定义魔法数。图标须引用平台「图标库」`getIcon(name)`。",
+          "**最高指令**：所有视觉数值必须来自 §2 Token；禁止魔法数。顶栏内图标须与稿一致（实现时可用设计导出资源或图标库中等价 `name`）。",
           "",
-          "**触发关键词**：`融合工作台` / `FusionWorkbench` / `在线 Agent` / `托管工作台框架` / `会话列表 + IM + 详情`",
+          "**触发关键词**：`在线 Agent` / `融合工作台` / `FusionWorkbench` / `8279:67909`",
           "",
           "---",
           "",
           "## §2 Global Design Tokens",
           "",
-          "### 2.1 色彩与分割",
+          "### 2.1 色彩",
           "",
           "| Role | Token | Value |",
           "| --- | --- | --- |",
           `| 页面底 | shellBg | ${mdToken("shellBg", t.shellBg)} |`,
-          `| 内容面 | surfaceBg | ${mdToken("surfaceBg", t.surfaceBg)} |`,
-          `| 左侧导航条 | chromeNavBg | ${mdToken("chromeNavBg", t.chromeNavBg)} |`,
-          `| 顶栏/底栏底 | topBarBg / bottomBarBg | ${mdToken("topBarBg", t.topBarBg)} |`,
-          `| 主文 | textPrimary | ${mdToken("textPrimary", t.textPrimary)} |`,
-          `| 次文 | textSecondary | ${mdToken("textSecondary", t.textSecondary)} |`,
-          `| 弱文 | textMuted | ${mdToken("textMuted", t.textMuted)} |`,
-          `| 分割线 | dividerColor | ${mdToken("dividerColor", t.dividerColor)} |`,
-          `| 列表项 hover | itemHoverBg | ${mdToken("itemHoverBg", t.itemHoverBg)} |`,
-          `| 列表项选中 | itemSelectedBg | ${mdToken("itemSelectedBg", t.itemSelectedBg)} |`,
-          `| Focus ring | focusRing | ${mdToken("focusRing", t.focusRing)} |`,
+          `| 主槽半透底 | mainFrostBg | ${mdToken("mainFrostBg", t.mainFrostBg)} |`,
+          `| 主槽描边 | mainFrostBorder | ${mdToken("mainFrostBorder", t.mainFrostBorder)} |`,
+          `| 详情卡片面 | detailCardBg | ${mdToken("detailCardBg", t.detailCardBg)} |`,
+          `| 指标条底 | statsBarBg | ${mdToken("statsBarBg", t.statsBarBg)} |`,
+          `| 指标条边框 | statsBarBorder | ${mdToken("statsBarBorder", t.statsBarBorder)} |`,
+          `| 指标竖分割线 | statsDividerBg | ${mdToken("statsDividerBg", t.statsDividerBg)} |`,
+          `| 风险点 | riskDotColor | ${mdToken("riskDotColor", t.riskDotColor)} |`,
+          `| 分段轨道底 | segmentTrackBg | ${mdToken("segmentTrackBg", t.segmentTrackBg)} |`,
+          `| 分段选中底 | segmentSelectedBg | ${mdToken("segmentSelectedBg", t.segmentSelectedBg)} |`,
+          `| 主标题字色 | textPrimary | ${mdToken("textPrimary", t.textPrimary)} |`,
+          `| 副标题字色 | textSubtitle | ${mdToken("textSubtitle", t.textSubtitle)} |`,
+          `| Focus ring | focusRing | ${mdToken("focusRing", t.focusRing)} |",
           "",
-          "### 2.2 布局尺寸（与 Figma 标注对齐）",
+          "### 2.2 尺寸与排版（与 Figma 标注一致）",
           "",
-          "| 含义 | Token | Value | 说明 |",
-          "| --- | --- | --- | --- |",
-          `| 全局左侧导航宽 | chromeNavWidthPx | ${mdToken("chromeNavWidthPx", `${t.chromeNavWidthPx}px`)} | Nav/ByteHi 窄条 |`,
-          `| 主区内边距 | workspacePadPx | ${mdToken("workspacePadPx", `${t.workspacePadPx}px`)} | 顶栏与主区相对工作区内缘 |`,
-          `| 顶栏高 | topBarHeightPx | ${mdToken("topBarHeightPx", `${t.topBarHeightPx}px`)} | 「顶部组件」 |`,
-          `| 顶栏与主区竖间距 | topBarBelowGapPx | ${mdToken("topBarBelowGapPx", `${t.topBarBelowGapPx}px`)} | 32 + 12 = 44，与稿 y=56 对齐（含内边距） |`,
-          `| **列表模式** 会话列宽 | listModeSessionWidthPx | ${mdToken("listModeSessionWidthPx", `${t.listModeSessionWidthPx}px`)} | 在线 Agent 列表 |`,
-          `| 会话区内边距 | sessionListInnerPadPx | ${mdToken("sessionListInnerPadPx", `${t.sessionListInnerPadPx}px`)} | 列表/工具条相对轨道内缘 |`,
-          `| 会话工具条高 | sessionToolbarHeightPx | ${mdToken("sessionToolbarHeightPx", `${t.sessionToolbarHeightPx}px`)} | 首行 |`,
-          `| 筛选行高 | sessionFilterHeightPx | ${mdToken("sessionFilterHeightPx", `${t.sessionFilterHeightPx}px`)} | 第二行 |`,
-          `| 区块竖间距 | sessionSectionGapPx | ${mdToken("sessionSectionGapPx", `${t.sessionSectionGapPx}px`)} | 工具条与列表等 |`,
-          `| 会话行高 | sessionItemHeightPx | ${mdToken("sessionItemHeightPx", `${t.sessionItemHeightPx}px`)} | 单行会话 |`,
-          `| 会话行间 gap | sessionItemGapPx | ${mdToken("sessionItemGapPx", `${t.sessionItemGapPx}px`)} | |`,
-          `| **卡片模式** 左侧轨宽 | cardModeRailWidthPx | ${mdToken("cardModeRailWidthPx", `${t.cardModeRailWidthPx}px`)} | 卡片区总宽（约 988/1840） |`,
-          `| 卡片顶栏高 | cardModeTopBarHeightPx | ${mdToken("cardModeTopBarHeightPx", `${t.cardModeTopBarHeightPx}px`)} | 「卡片-顶部」 |`,
-          `| 三栏主区内边距 | tripleInnerPadPx | ${mdToken("tripleInnerPadPx", `${t.tripleInnerPadPx}px`)} | 右侧主工作区内缘 |`,
-          `| 三栏列间距 | tripleColGapPx | ${mdToken("tripleColGapPx", `${t.tripleColGapPx}px`)} | 用户信息｜沟通｜详情 之间 |`,
-          `| 列表模式：用户列 | listModeUserColPx | ${mdToken("listModeUserColPx", `${t.listModeUserColPx}px`)} | 融合-用户信息 |`,
-          `| 列表模式：IM 列 | listModeImColPx | ${mdToken("listModeImColPx", `${t.listModeImColPx}px`)} | 融合-沟通区 |`,
-          `| 列表模式：详情列 | listModeDetailColPx | ${mdToken("listModeDetailColPx", `${t.listModeDetailColPx}px`)} | 详情区 |`,
-          `| 卡片模式：IM 列 | cardModeImColPx | ${mdToken("cardModeImColPx", `${t.cardModeImColPx}px`)} | 右侧沟通 |`,
-          `| 卡片模式：详情列 | cardModeDetailColPx | ${mdToken("cardModeDetailColPx", `${t.cardModeDetailColPx}px`)} | 右侧详情 |`,
-          `| 详情 Tab 栏高 | detailTabBarHeightPx | ${mdToken("detailTabBarHeightPx", `${t.detailTabBarHeightPx}px`)} | 顶部 Tab |`,
-          `| Tab 下分割线 | detailTabDividerPx | ${mdToken("detailTabDividerPx", `${t.detailTabDividerPx}px`)} | |`,
-          `| 详情正文区内边距 | detailBodyPadPx | ${mdToken("detailBodyPadPx", `${t.detailBodyPadPx}px`)} | |`,
-          `| 底栏高 | bottomBarHeightPx | ${mdToken("bottomBarHeightPx", `${t.bottomBarHeightPx}px`)} | 底部操作 |`,
-          `| 外壳圆角 | shellRadiusPx | ${mdToken("shellRadiusPx", `${t.shellRadiusPx}px`)} | |`,
+          "| 含义 | Token | Value |",
+          "| --- | --- | --- |",
+          `| 外框圆角 | shellRadiusPx | ${mdToken("shellRadiusPx", `${t.shellRadiusPx}px`)} |`,
+          `| 工作区左内边距 | workspacePadLeftPx | ${mdToken("workspacePadLeftPx", `${t.workspacePadLeftPx}px`)} |`,
+          `| 工作区右内边距 | workspacePadRightPx | ${mdToken("workspacePadRightPx", `${t.workspacePadRightPx}px`)} |`,
+          `| 工作区上下内边距 | workspacePadYPx | ${mdToken("workspacePadYPx", `${t.workspacePadYPx}px`)} |`,
+          `| 顶栏与主槽间距 | workspaceColumnGapPx | ${mdToken("workspaceColumnGapPx", `${t.workspaceColumnGapPx}px`)} |`,
+          `| 顶栏水平 padding | topBarPadXPx | ${mdToken("topBarPadXPx", `${t.topBarPadXPx}px`)} |`,
+          `| 顶栏 backdrop blur | topBarBackdropBlurPx | ${mdToken("topBarBackdropBlurPx", `${t.topBarBackdropBlurPx}px`)} |`,
+          `| 昵称 14/20 Semibold | topBarTitleFontPx / Line | ${mdToken("topBarTitleFontPx", `${t.topBarTitleFontPx}px`)} / ${mdToken("topBarTitleLinePx", `${t.topBarTitleLinePx}px`)} |`,
+          `| 在线状态胶囊 | onlinePill* + onlineDotSizePx | 见 Token 面板 |`,
+          `| 指标条 | statsBarPad/Gap/Radius + statsIconSizePx | 见 Token 面板 |`,
+          `| 分段控件高 | segmentItemHeightPx | ${mdToken("segmentItemHeightPx", `${t.segmentItemHeightPx}px`)} |`,
+          `| 主槽圆角 | mainFrostRadiusPx | ${mdToken("mainFrostRadiusPx", `${t.mainFrostRadiusPx}px`)} |`,
+          `| 列表列宽 | listColumnWidthPx | ${mdToken("listColumnWidthPx", `${t.listColumnWidthPx}px`)} |`,
+          `| 占位标题 36 / 副标 24 | listTitle* / detailTitle* | 见 Token 面板 |`,
+          `| 详情卡片内边距 | detailCardPadPx | ${mdToken("detailCardPadPx", `${t.detailCardPadPx}px`)} |`,
+          `| 详情卡片阴影 | detailCardShadow | \`${String(t.detailCardShadow).replace(/`/g, "\\`")}\` |`,
           "",
-          `**Typography**：${mdToken("fontFamily", t.fontFamily)}`,
+          `**Typography**：${mdToken("fontFamily", t.fontFamily)}（PingFang SC）`,
           "",
           "---",
           "",
           "## §3 信息架构（固定骨架）",
           "",
-          "1. **ChromeNav**（可选）：左侧 `chromeNavWidthPx` 竖条，与业务全局导航一致。",
-          "2. **Workspace**：右侧剩余区域，`workspacePadPx` 内边距。",
-          "3. **TopBar**：高度 `topBarHeightPx`，承接标题、统计、筛选入口等（业务填充）。",
-          "4. **MainRow**：`flex:1; min-height:0; display:flex`：",
-          "   - **SessionRail**（列表或卡片模式二选一）：",
-          "     - *列表模式*：固定宽 `listModeSessionWidthPx`，内含工具条、筛选、可滚动会话列表。",
-          "     - *卡片模式*：固定宽 `cardModeRailWidthPx`，内含 `cardModeTopBarHeightPx` 顶栏 + 卡片网格滚动区。",
-          "   - **WorkCanvas**：`flex:1; min-width:0; border-left: 1px dividerColor`，内含：",
-          "     - **TripleRow**：上区域 `flex:1`，内边距 `tripleInnerPadPx`，列间距 `tripleColGapPx`：",
-          "       - *列表模式*：三列固定宽 `listModeUserColPx` + `listModeImColPx` + `listModeDetailColPx`（过窄时允许列 `min-width` + 横向滚动，但**优先**按比例缩小中间列）。",
-          "       - *卡片模式*：仅两列 `cardModeImColPx` + `cardModeDetailColPx`（用户摘要已在左侧卡片轨展示）。",
-          "     - **DetailPanel** 内：**TabBar**（`detailTabBarHeightPx`）+ 1px 分割线 + **DetailBody**（`detailBodyPadPx`，业务 Tab 内容）。",
-          "     - **BottomBar**：高 `bottomBarHeightPx`，横跨 WorkCanvas 内容宽（输入/快捷操作）。",
+          "1. **Shell**：`shellBg` + `shellRadiusPx` + `overflow:hidden`。",
+          "2. **Workspace 列**：`padding` = 左/右/上/下 Token；`gap` = `workspaceColumnGapPx`（顶栏与主槽之间）。",
+          "3. **TopBar**（`justify-content: space-between` 三列）：左「用户昵称 + 在线状态」；中「指标条」半透明白底、白描边、`statsBarGapPx` 分组；右「融合工作台 / 在线Agent / 工单Agent」分段控件，选中项 `segmentSelectedBg` + 轻阴影。",
+          "4. **MainFrostRow**：`mainFrostBg` + 白实线边框 + `mainFrostRadiusPx`；左固定 `listColumnWidthPx` 列表槽；右 `flex:1` 详情白卡片：`detailCardBg`、`detailCardRadiusPx`、`detailCardPadPx`、`box-shadow: detailCardShadow`（Agent 工作台阴影 #657389 @ 16 blur）。",
           "",
           "---",
           "",
           "## §4 交互说明",
           "",
-          "- **会话列表布局切换**：在 SessionRail 内提供「列表 / 卡片」切换；切换仅改变左侧轨宽度与内容形态，**不改变** WorkCanvas 内 IM 与详情的相对关系（列表模式三栏、卡片模式两栏）。",
-          "- **详情 Tab**：Tab 项数量与文案由业务定义；激活态使用 `itemSelectedBg` 或下划线（须用 Token 色，禁止随意色值）。",
-          "- **会话选中**：当前会话行背景 `itemSelectedBg`，左侧框线可用 `focusRing` 2px inset 或左边框 2px。",
-          "- **滚动**：SessionRail、TripleRow 内各列、DetailBody 独立 `overflow-y: auto`；BottomBar 不滚动。",
+          "- 分段切换仅切换产品模式状态，不改变槽位 DOM 结构。",
+          "- 指标条右侧三个图标按钮：`padding` = `statsActionPadPx`，图标 `statsActionIconPx`。",
           "",
           "---",
           "",
-          "## §5 适配与响应式",
-          "",
-          "- 框架最小宽度建议 **1280px**（低于时整体 `overflow-x: auto` 或按产品要求收起 SessionRail）。",
-          "- `WorkCanvas` 使用 `min-width: 0` 防止 flex 子项撑破布局。",
-          "- 三列在容器变窄时顺序：**先压缩 IM 列**（`flex-shrink:1`），用户列与详情列 `flex-shrink:0` 直至达到各自 `min-width`（建议 min 280px / 240px）。",
-          "",
-          "---",
-          "",
-          "## §6 嵌入约定（Slot / API）",
+          "## §5 嵌入约定（Slot）",
           "",
           "| 区域 | 约定 |",
           "| --- | --- |",
-          "| `slot:topBar` | 业务标题、统计、按钮 |",
-          "| `slot:sessionList` / `slot:sessionCards` | 列表行或卡片网格 |",
-          "| `slot:userPane` | 当前会话用户摘要 |",
-          "| `slot:imPane` | 消息时间线 + 输入区（或仅消息区） |",
-          "| `slot:detailTabs` | Tab 标签与切换状态 |",
-          "| `slot:detailBody` | 当前 Tab 对应详情内容 |",
-          "| `slot:bottomBar` | 主操作、快捷回复等 |",
+          "| `slot:list` | 列表与卡片内容 |",
+          "| `slot:detail` | 会话容器、Tab 容器及业务详情 |",
+          "| `slot:topMetrics` | 可选：替换中间指标条数据与图标 |",
           "",
           "---",
           "",
-          "## §7 校验清单",
+          "## §6 校验清单",
           "",
-          "- [ ] 列表模式下列宽之和与 Figma 比例一致（400 + 488 + 488 + 2×16 gap 在 1408 内容区内）。",
-          "- [ ] 卡片模式下右侧为 402 + 418 + 16 gap。",
-          "- [ ] 顶栏 32px、顶栏下间距 12px、底栏 36px。",
-          "- [ ] 所有颜色来自 §2，图标来自图标库。",
+          "- [ ] 外框圆角 6px、主槽圆角 16px、详情卡圆角 16px 与稿一致。",
+          "- [ ] 工作区内边距 8 / 12 / 12 与列间距 12 与稿一致。",
+          "- [ ] 列表列宽 407px；详情区为白底 + 指定 drop shadow。",
+          "- [ ] 顶栏 blur 10px；指标条 rgba(255,255,255,0.6) + 白边框。",
           "",
         ].join("\n");
       }
@@ -2895,328 +2896,345 @@
         );
       }
 
-      function FusionWorkbenchView({
-        tokens,
-        highlightTarget,
-        sessionListMode,
-        onSessionListMode,
-        detailTab,
-        onDetailTab,
-      }) {
+      function FusionWorkbenchView({ tokens, highlightTarget, agentSegment, onAgentSegment }) {
         const t = tokens || FUSION_WORKBENCH_TOKENS;
         const hi = (id) => highlightTarget === id;
-        const demoSessions = [
-          { id: 1, title: "物流异常 · 用户催促发货", meta: "2 分钟前 · 待响应" },
-          { id: 2, title: "退款进度咨询", meta: "16 分钟前" },
-          { id: 3, title: "账号风控申诉", meta: "昨日" },
+        const ic = FUSION_ONLINE_AGENT_ICONS;
+
+        const StatDivider = () => (
+          <div
+            className="shrink-0 w-px"
+            style={{ height: t.statsDividerHeightPx, background: t.statsDividerBg }}
+            aria-hidden
+          />
+        );
+
+        const StatIconBtn = ({ src, label }) => (
+          <button
+            type="button"
+            title={label}
+            className="shrink-0 flex items-center justify-center cursor-pointer outline-none border-0 bg-transparent"
+            style={{ padding: t.statsActionPadPx, borderRadius: t.statsBarRadiusPx }}
+          >
+            <span className="block overflow-hidden relative shrink-0" style={{ width: t.statsActionIconPx, height: t.statsActionIconPx }}>
+              <img alt="" src={src} className="w-full h-full object-contain block" draggable={false} />
+            </span>
+          </button>
+        );
+
+        const segmentItems = [
+          { id: "fusion", label: "融合工作台" },
+          { id: "online", label: "在线Agent" },
+          { id: "ticket", label: "工单Agent" },
         ];
-        const tabs = ["详情", "订单", "知识库", "备注"];
+
         return (
           <div
-            className="flex flex-col overflow-hidden border rounded-[10px] w-full"
+            className="flex flex-col overflow-hidden w-full min-w-0"
             style={{
               fontFamily: t.fontFamily,
               background: t.shellBg,
-              borderColor: t.shellBorder,
+              borderRadius: t.shellRadiusPx,
               minHeight: 520,
               maxHeight: 720,
+              ...(hi("fusionShell") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
             }}
+            data-token-hint="fusionShell"
           >
-            <div className="flex flex-1 min-h-0 min-w-0">
-              {/* ChromeNav */}
-              <aside
-                className="shrink-0 flex flex-col items-center py-[12px] gap-[8px]"
+            <div
+              className="flex flex-1 min-h-0 min-w-0 flex-col overflow-hidden"
+              style={{
+                paddingLeft: t.workspacePadLeftPx,
+                paddingRight: t.workspacePadRightPx,
+                paddingTop: t.workspacePadYPx,
+                paddingBottom: t.workspacePadYPx,
+                gap: t.workspaceColumnGapPx,
+                ...(hi("fusionWorkspace") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+              }}
+              data-token-hint="fusionWorkspace"
+            >
+              {/* 顶部组件 — 毛玻璃 + 左昵称/在线 + 中指标 + 右分段 */}
+              <header
+                className="shrink-0 flex w-full items-center justify-between overflow-hidden"
                 style={{
-                  width: t.chromeNavWidthPx,
-                  background: t.chromeNavBg,
-                  ...(hi("fusionChromeNav") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+                  paddingLeft: t.topBarPadXPx,
+                  paddingRight: t.topBarPadXPx,
+                  backdropFilter: `blur(${t.topBarBackdropBlurPx}px)`,
+                  WebkitBackdropFilter: `blur(${t.topBarBackdropBlurPx}px)`,
+                  ...(hi("fusionTopBar") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
                 }}
-                data-token-hint="fusionChromeNav"
+                data-token-hint="fusionTopBar"
               >
-                <div className="w-[28px] h-[28px] rounded-[6px] bg-white/10" />
-                <div className="w-[28px] h-[28px] rounded-[6px] bg-white/10" />
-                <div className="w-[28px] h-[28px] rounded-[6px] bg-white/10 mt-auto" />
-              </aside>
-              <div
-                className="flex-1 flex flex-col min-w-0"
-                style={{ padding: t.workspacePadPx }}
-              >
-                {/* TopBar */}
-                <header
-                  className="shrink-0 flex items-center justify-between px-[12px] rounded-[8px] border"
-                  style={{
-                    height: t.topBarHeightPx,
-                    background: t.topBarBg,
-                    borderColor: t.dividerColor,
-                    ...(hi("fusionTopBar") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
-                  }}
-                  data-token-hint="fusionTopBar"
-                >
-                  <span style={{ color: t.textPrimary, fontSize: 13, fontWeight: 600 }}>融合工作台</span>
-                  <span style={{ color: t.textMuted, fontSize: 12 }}>统计区 slot</span>
-                </header>
-                <div style={{ height: t.topBarBelowGapPx }} className="shrink-0" />
-                <div className="flex flex-1 min-h-0 border rounded-[8px] overflow-hidden" style={{ borderColor: t.dividerColor, background: t.surfaceBg }}>
-                  {/* Session rail */}
-                  <div
-                    className="shrink-0 flex flex-col border-r overflow-hidden"
+                <div className="flex items-center gap-[12px] shrink-0 min-w-0">
+                  <p
+                    className="m-0 font-semibold whitespace-nowrap shrink-0"
                     style={{
-                      width: sessionListMode === "list" ? t.listModeSessionWidthPx : t.cardModeRailWidthPx,
-                      borderColor: t.dividerColor,
-                      ...(hi("fusionSessionRail") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+                      fontSize: t.topBarTitleFontPx,
+                      lineHeight: `${t.topBarTitleLinePx}px`,
+                      color: t.textPrimary,
                     }}
-                    data-token-hint="fusionSessionRail"
                   >
-                    {sessionListMode === "list" ? (
-                      <>
-                        <div
-                          className="shrink-0 flex items-center justify-between"
-                          style={{ padding: `${12}px ${t.sessionListInnerPadPx}px 8px` }}
-                        >
-                          <div className="flex items-center gap-[8px]" style={{ height: t.sessionToolbarHeightPx }}>
-                            <button type="button" className="w-[24px] h-[24px] rounded-[6px] border flex items-center justify-center text-[12px]" style={{ borderColor: t.dividerColor, color: t.textSecondary }}>
-                              +
-                            </button>
-                            <span style={{ color: t.textPrimary, fontSize: 14, fontWeight: 600 }}>会话</span>
-                          </div>
-                          <div className="flex rounded-[6px] border p-[2px]" style={{ borderColor: t.dividerColor }}>
-                            <button
-                              type="button"
-                              onClick={() => onSessionListMode("list")}
-                              className="px-[8px] py-[2px] rounded-[4px] text-[11px] font-semibold"
-                              style={{
-                                background: sessionListMode === "list" ? t.itemSelectedBg : "transparent",
-                                color: t.textPrimary,
-                              }}
-                            >
-                              列表
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => onSessionListMode("card")}
-                              className="px-[8px] py-[2px] rounded-[4px] text-[11px] font-semibold"
-                              style={{
-                                background: sessionListMode === "card" ? t.itemSelectedBg : "transparent",
-                                color: t.textPrimary,
-                              }}
-                            >
-                              卡片
-                            </button>
-                          </div>
-                        </div>
-                        <div className="shrink-0 px-[16px]" style={{ marginBottom: t.sessionSectionGapPx }}>
-                          <div className="flex gap-[6px] flex-wrap" style={{ minHeight: t.sessionFilterHeightPx, alignItems: "center" }}>
-                            {["全部", "待处理", "已响应", "挂起"].map((x, i) => (
-                              <button
-                                key={x}
-                                type="button"
-                                className="px-[10px] h-[28px] rounded-[6px] text-[12px] border"
-                                style={{
-                                  borderColor: t.dividerColor,
-                                  color: i === 0 ? t.textPrimary : t.textSecondary,
-                                  background: i === 0 ? t.itemSelectedBg : t.surfaceBg,
-                                }}
-                              >
-                                {x}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="flex-1 overflow-y-auto px-[16px] pb-[16px] space-y-[4px]" style={{ gap: t.sessionItemGapPx }}>
-                          <div style={{ color: t.textMuted, fontSize: t.sessionGroupTitleSizePx, fontWeight: 600, marginBottom: 4 }}>进行中</div>
-                          {demoSessions.map((s, idx) => (
-                            <button
-                              key={s.id}
-                              type="button"
-                              className="w-full text-left rounded-[8px] border px-[12px] flex flex-col justify-center transition-colors"
-                              style={{
-                                height: t.sessionItemHeightPx,
-                                borderColor: t.dividerColor,
-                                background: idx === 0 ? t.itemSelectedBg : t.surfaceBg,
-                                color: t.textPrimary,
-                              }}
-                            >
-                              <div style={{ fontSize: t.sessionTitleSizePx, fontWeight: 600 }} className="truncate">{s.title}</div>
-                              <div style={{ fontSize: t.sessionMetaSizePx, color: t.textMuted }} className="truncate">{s.meta}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div
-                          className="shrink-0 flex items-center px-[16px] border-b"
-                          style={{ height: t.cardModeTopBarHeightPx, borderColor: t.dividerColor, color: t.textPrimary, fontWeight: 600 }}
-                        >
-                          卡片视图
-                          <div className="ml-auto flex rounded-[6px] border p-[2px]" style={{ borderColor: t.dividerColor }}>
-                            <button
-                              type="button"
-                              onClick={() => onSessionListMode("list")}
-                              className="px-[8px] py-[2px] rounded-[4px] text-[11px] font-semibold"
-                              style={{ color: t.textSecondary }}
-                            >
-                              列表
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => onSessionListMode("card")}
-                              className="px-[8px] py-[2px] rounded-[4px] text-[11px] font-semibold"
-                              style={{ background: t.itemSelectedBg, color: t.textPrimary }}
-                            >
-                              卡片
-                            </button>
-                          </div>
-                        </div>
-                        <div className="flex-1 overflow-y-auto p-[12px] grid grid-cols-3 gap-[10px] content-start">
-                          {demoSessions.map((s) => (
-                            <div
-                              key={s.id}
-                              className="rounded-[10px] border p-[10px] flex flex-col gap-[6px]"
-                              style={{
-                                borderColor: t.dividerColor,
-                                minHeight: t.cardCellMinHeightPx,
-                                background: t.surfaceBg,
-                              }}
-                            >
-                              <div style={{ fontSize: 12, fontWeight: 600, color: t.textPrimary }} className="line-clamp-2">{s.title}</div>
-                              <div style={{ fontSize: 11, color: t.textMuted }}>{s.meta}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  {/* Work canvas */}
+                    用户昵称
+                  </p>
                   <div
-                    className="flex-1 flex flex-col min-w-0"
+                    className="flex items-center gap-[8px] shrink-0"
                     style={{
-                      ...(hi("fusionWorkCanvas") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+                      paddingLeft: t.onlinePillPadXPx,
+                      paddingRight: t.onlinePillPadXPx,
+                      paddingTop: t.onlinePillPadYPx,
+                      paddingBottom: t.onlinePillPadYPx,
+                      borderRadius: t.onlinePillRadiusPx,
                     }}
-                    data-token-hint="fusionWorkCanvas"
                   >
                     <div
-                      className="flex-1 flex min-h-0"
-                      style={{ padding: t.tripleInnerPadPx, gap: t.tripleColGapPx }}
+                      className="flex items-center justify-center shrink-0"
+                      style={{ width: t.onlineIconBoxPx, height: t.onlineIconBoxPx, paddingTop: 4, paddingBottom: 4 }}
                     >
-                      {sessionListMode === "list" ? (
-                        <>
-                          <section
-                            className="shrink-0 flex flex-col rounded-[8px] border overflow-hidden"
-                            style={{
-                              width: t.listModeUserColPx,
-                              borderColor: t.dividerColor,
-                              ...(hi("fusionUserPane") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
-                            }}
-                            data-token-hint="fusionUserPane"
-                          >
-                            <div className="px-[12px] py-[10px] border-b font-semibold text-[13px]" style={{ borderColor: t.dividerColor, color: t.textPrimary }}>
-                              用户信息
-                            </div>
-                            <div className="flex-1 overflow-y-auto p-[12px] text-[12px]" style={{ color: t.textSecondary }}>
-                              <p style={{ margin: 0 }}>slot：头像、昵称、标签、关键属性（业务注入）。</p>
-                            </div>
-                          </section>
-                          <section
-                            className="shrink-0 flex flex-col rounded-[8px] border overflow-hidden"
-                            style={{
-                              width: t.listModeImColPx,
-                              minWidth: 200,
-                              borderColor: t.dividerColor,
-                              ...(hi("fusionImPane") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
-                            }}
-                            data-token-hint="fusionImPane"
-                          >
-                            <div className="px-[12px] py-[10px] border-b font-semibold text-[13px]" style={{ borderColor: t.dividerColor, color: t.textPrimary }}>
-                              沟通区（IM）
-                            </div>
-                            <div className="flex-1 overflow-y-auto p-[12px] space-y-[8px]" style={{ color: t.textSecondary, fontSize: 12 }}>
-                              <div className="rounded-[8px] px-[10px] py-[8px]" style={{ background: t.itemHoverBg }}>用户：咨询物流进度…</div>
-                              <div className="rounded-[8px] px-[10px] py-[8px] border" style={{ borderColor: t.dividerColor }}>坐席：已为您查询运单…</div>
-                            </div>
-                          </section>
-                        </>
-                      ) : null}
-                      {sessionListMode === "card" ? (
-                        <section
-                          className="shrink-0 flex flex-col rounded-[8px] border overflow-hidden"
-                          style={{
-                            width: t.cardModeImColPx,
-                            minWidth: 200,
-                            borderColor: t.dividerColor,
-                            ...(hi("fusionImPane") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
-                          }}
-                          data-token-hint="fusionImPane"
-                        >
-                          <div className="px-[12px] py-[10px] border-b font-semibold text-[13px]" style={{ borderColor: t.dividerColor, color: t.textPrimary }}>
-                            沟通区（IM）
-                          </div>
-                          <div className="flex-1 overflow-y-auto p-[12px] text-[12px]" style={{ color: t.textSecondary }}>
-                            slot：消息列表 + 输入区
-                          </div>
-                        </section>
-                      ) : null}
-                      <section
-                        className="flex flex-col min-w-0 rounded-[8px] border overflow-hidden"
+                      <span className="relative block shrink-0 overflow-hidden" style={{ width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
+                        <img alt="" src={ic.onlineDot} className="absolute inset-0 w-full h-full object-cover block max-w-none" draggable={false} />
+                      </span>
+                    </div>
+                    <p
+                      className="m-0 font-semibold whitespace-nowrap"
+                      style={{
+                        fontSize: t.onlineTimerFontPx,
+                        lineHeight: `${t.onlineTimerLinePx}px`,
+                        color: "rgba(34,39,39,0.8)",
+                      }}
+                    >
+                      在线 02:27:58
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="shrink-0 flex items-center border border-solid"
+                  style={{
+                    gap: t.statsBarGapPx,
+                    paddingLeft: t.statsBarPadXPx,
+                    paddingRight: t.statsBarPadXPx,
+                    paddingTop: t.statsBarPadYPx,
+                    paddingBottom: t.statsBarPadYPx,
+                    borderRadius: t.statsBarRadiusPx,
+                    background: t.statsBarBg,
+                    borderColor: t.statsBarBorder,
+                    ...(hi("fusionStatsBar") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                  }}
+                  data-token-hint="fusionStatsBar"
+                >
+                  <div className="flex items-center gap-[4px] shrink-0">
+                    <div className="flex items-center gap-[4px] shrink-0">
+                      <div className="shrink-0 rounded-[6px]" style={{ width: t.riskDotSizePx, height: t.riskDotSizePx, background: t.riskDotColor }} />
+                      <span
+                        className="font-normal whitespace-nowrap"
                         style={{
-                          flex: sessionListMode === "list" ? `1 1 ${t.listModeDetailColPx}px` : "0 0 auto",
-                          width: sessionListMode === "card" ? t.cardModeDetailColPx : undefined,
-                          minWidth: 240,
-                          borderColor: t.dividerColor,
-                          ...(hi("fusionDetailPane") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                          fontSize: t.statsLabelFontPx,
+                          lineHeight: `${t.statsLabelLinePx}px`,
+                          color: "rgba(34,39,39,0.6)",
                         }}
-                        data-token-hint="fusionDetailPane"
                       >
-                        <div
-                          className="shrink-0 flex items-end px-[8px]"
+                        风险
+                      </span>
+                    </div>
+                    <span
+                      className="font-semibold whitespace-nowrap"
+                      style={{
+                        fontSize: t.statsValueFontPx,
+                        lineHeight: `${t.statsValueLinePx}px`,
+                        color: t.textPrimary,
+                      }}
+                    >
+                      2
+                    </span>
+                  </div>
+                  <StatDivider />
+                  <div className="flex items-center gap-[4px] shrink-0 min-w-0">
+                    <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
+                      <img alt="" src={ic.users} className="w-full h-full object-contain block" draggable={false} />
+                    </span>
+                    <span
+                      className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
+                      style={{
+                        fontSize: t.statsValueFontPx,
+                        lineHeight: `${t.statsValueLinePx}px`,
+                        color: t.textPrimary,
+                      }}
+                    >
+                      12
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-[4px] shrink-0 min-w-0">
+                    <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
+                      <img alt="" src={ic.annotationCheck} className="w-full h-full object-contain block" draggable={false} />
+                    </span>
+                    <span
+                      className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
+                      style={{
+                        fontSize: t.statsValueFontPx,
+                        lineHeight: `${t.statsValueLinePx}px`,
+                        color: t.textPrimary,
+                      }}
+                    >
+                      36
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-[4px] shrink-0 min-w-0">
+                    <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
+                      <img alt="" src={ic.barChart} className="w-full h-full object-contain block" draggable={false} />
+                    </span>
+                    <span
+                      className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
+                      style={{
+                        fontSize: t.statsValueFontPx,
+                        lineHeight: `${t.statsValueLinePx}px`,
+                        color: t.textPrimary,
+                      }}
+                    >
+                      7/23
+                    </span>
+                  </div>
+                  <StatDivider />
+                  <div className="flex items-center shrink-0" style={{ gap: t.statsTrailingIconGapPx }}>
+                    <StatIconBtn src={ic.barChartSquare} label="图表" />
+                    <StatIconBtn src={ic.announcement} label="公告" />
+                    <StatIconBtn src={ic.settings} label="设置" />
+                  </div>
+                </div>
+
+                <div
+                  className="shrink-0 flex items-center justify-end"
+                  style={{
+                    ...(hi("fusionSegment") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                  }}
+                  data-token-hint="fusionSegment"
+                >
+                  <div
+                    className="flex items-start"
+                    style={{
+                      background: t.segmentTrackBg,
+                      borderRadius: t.segmentTrackRadiusPx,
+                    }}
+                  >
+                    {segmentItems.map((item) => {
+                      const active = agentSegment === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => onAgentSegment(item.id)}
+                          className="cursor-pointer border-0 bg-transparent p-0 flex items-start shrink-0 outline-none"
                           style={{
-                            height: t.detailTabBarHeightPx,
-                            ...(hi("fusionDetailTabs") ? { boxShadow: `inset 0 -2px 0 0 ${t.focusRing}` } : {}),
+                            padding: t.segmentOuterPadPx,
+                            minHeight: t.segmentItemHeightPx,
                           }}
-                          data-token-hint="fusionDetailTabs"
                         >
-                          {tabs.map((name) => (
-                            <button
-                              key={name}
-                              type="button"
-                              onClick={() => onDetailTab(name)}
-                              className="px-[14px] h-[36px] mb-[-1px] border-b-2 text-[13px] font-semibold transition-colors"
+                          <div
+                            className="flex items-start justify-center w-full"
+                            style={{
+                              paddingLeft: t.segmentItemInnerPadXPx,
+                              paddingRight: t.segmentItemInnerPadXPx,
+                              paddingTop: t.segmentItemInnerPadYPx,
+                              paddingBottom: t.segmentItemInnerPadYPx,
+                              borderRadius: t.segmentTrackRadiusPx,
+                              background: active ? t.segmentSelectedBg : "transparent",
+                              boxShadow: active ? "0 1px 2px rgba(101,115,137,0.08)" : "none",
+                            }}
+                          >
+                            <span
+                              className="font-semibold whitespace-nowrap text-left"
                               style={{
-                                borderColor: detailTab === name ? t.focusRing : "transparent",
-                                color: detailTab === name ? t.textPrimary : t.textMuted,
+                                fontSize: t.segmentLabelFontPx,
+                                lineHeight: `${t.segmentLabelLinePx}px`,
+                                color: active ? t.segmentActiveColor : t.segmentInactiveColor,
                               }}
                             >
-                              {name}
-                            </button>
-                          ))}
-                        </div>
-                        <div className="shrink-0 w-full" style={{ height: t.detailTabDividerPx, background: t.dividerColor }} />
-                        <div
-                          className="flex-1 overflow-y-auto text-[12px] leading-[18px]"
-                          style={{
-                            padding: t.detailBodyPadPx,
-                            color: t.textSecondary,
-                            ...(hi("fusionDetailBody") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
-                          }}
-                          data-token-hint="fusionDetailBody"
-                        >
-                          <p style={{ margin: "0 0 8px", color: t.textPrimary, fontWeight: 600 }}>业务详情 slot</p>
-                          <p style={{ margin: 0 }}>当前 Tab：<strong style={{ color: t.textPrimary }}>{detailTab}</strong>。此处嵌入表单、订单、知识库等任意业务模块。</p>
-                        </div>
-                      </section>
-                    </div>
-                    <footer
-                      className="shrink-0 flex items-center px-[16px] border-t"
+                              {item.label}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </header>
+
+              {/* 主行：半透明白槽 + 列表区 407 + 详情白卡片 */}
+              <div
+                className="flex flex-1 min-h-0 w-full min-w-0 border border-solid leading-none"
+                style={{
+                  background: t.mainFrostBg,
+                  borderColor: t.mainFrostBorder,
+                  borderRadius: t.mainFrostRadiusPx,
+                  ...(hi("fusionMainRow") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+                }}
+                data-token-hint="fusionMainRow"
+              >
+                <div
+                  className="shrink-0 flex flex-col items-center justify-center h-full overflow-hidden"
+                  style={{
+                    width: t.listColumnWidthPx,
+                    ...(hi("fusionListZone") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
+                  }}
+                  data-token-hint="fusionListZone"
+                >
+                  <div
+                    className="flex flex-col items-center"
+                    style={{ gap: t.listPlaceholderGapPx }}
+                  >
+                    <p
+                      className="m-0 font-semibold"
                       style={{
-                        height: t.bottomBarHeightPx,
-                        background: t.bottomBarBg,
-                        borderColor: t.dividerColor,
-                        ...(hi("fusionBottomBar") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                        fontSize: t.listTitleFontPx,
+                        lineHeight: "normal",
+                        color: t.textPrimary,
                       }}
-                      data-token-hint="fusionBottomBar"
                     >
-                      <span style={{ color: t.textMuted, fontSize: 12 }}>底部操作 slot · 主按钮 / 快捷话术</span>
-                    </footer>
+                      列表区
+                    </p>
+                    <p
+                      className="m-0 font-normal"
+                      style={{
+                        fontSize: t.listSubtitleFontPx,
+                        lineHeight: "normal",
+                        color: t.textSubtitle,
+                      }}
+                    >
+                      列表＆卡片
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="flex flex-1 min-w-0 flex-col items-center justify-center overflow-hidden"
+                  style={{
+                    background: t.detailCardBg,
+                    borderRadius: t.detailCardRadiusPx,
+                    padding: t.detailCardPadPx,
+                    boxShadow: t.detailCardShadow,
+                    ...(hi("fusionDetailCard") ? { boxShadow: `${t.detailCardShadow}, 0 0 0 2px ${t.focusRing}` } : {}),
+                  }}
+                  data-token-hint="fusionDetailCard"
+                >
+                  <div className="flex flex-col items-center" style={{ gap: t.detailPlaceholderGapPx }}>
+                    <p
+                      className="m-0 font-semibold"
+                      style={{
+                        fontSize: t.detailTitleFontPx,
+                        lineHeight: "normal",
+                        color: t.textPrimary,
+                      }}
+                    >
+                      详情区
+                    </p>
+                    <p
+                      className="m-0 font-normal"
+                      style={{
+                        fontSize: t.detailSubtitleFontPx,
+                        lineHeight: "normal",
+                        color: t.textSubtitle,
+                      }}
+                    >
+                      会话容器、Tab容器
+                    </p>
                   </div>
                 </div>
               </div>
@@ -4224,8 +4242,7 @@
         const [aiRecoMode, setAiRecoMode] = useState("single"); // off | single | multi
         const [aiRecoClick, setAiRecoClick] = useState("adopt"); // adopt | send
         const [aiRecoHideAfterPick, setAiRecoHideAfterPick] = useState(true);
-        const [fusionSessionMode, setFusionSessionMode] = useState("list"); // list | card
-        const [fusionDetailTab, setFusionDetailTab] = useState("详情");
+        const [fusionAgentSegment, setFusionAgentSegment] = useState("online"); // fusion | online | ticket（对齐 Figma 8279:67909）
 
         // activeTokens: raw token refs (for design skill markdown & TokensPanel)
         const activeTokens =
@@ -4446,34 +4463,24 @@
           }
 
           if (panelComponentId === "fusionWorkbench") {
-            if (p === "chromeNavWidthPx" || p === "chromeNavBg") return "fusionChromeNav";
-            if (p.startsWith("topBar") || p === "workspacePadPx") return "fusionTopBar";
+            if (p === "shellBg" || p === "shellRadiusPx") return "fusionShell";
+            if (p.startsWith("workspace")) return "fusionWorkspace";
+            if (p.startsWith("topBar") || p.startsWith("online")) return "fusionTopBar";
+            if (p.startsWith("segment")) return "fusionSegment";
+            if (p.startsWith("stats") || p.startsWith("risk") || p.startsWith("statsTrailing")) return "fusionStatsBar";
+            if (p.startsWith("mainFrost")) return "fusionMainRow";
+            if (p.startsWith("listColumn") || p.startsWith("listTitle") || p.startsWith("listSubtitle") || p.startsWith("listPlaceholder"))
+              return "fusionListZone";
             if (
-              p.startsWith("listModeSession") ||
-              p.startsWith("sessionList") ||
-              p.startsWith("sessionToolbar") ||
-              p.startsWith("sessionFilter") ||
-              p.startsWith("sessionSection") ||
-              p.startsWith("sessionItem") ||
-              p.startsWith("sessionGroup") ||
-              p.startsWith("sessionTitle") ||
-              p.startsWith("sessionMeta") ||
-              p.startsWith("cardModeRail") ||
-              p.startsWith("cardModeTop") ||
-              p.startsWith("cardCell")
+              p.startsWith("detailCard") ||
+              p.startsWith("detailTitle") ||
+              p.startsWith("detailSubtitle") ||
+              p.startsWith("detailPlaceholder")
             )
-              return "fusionSessionRail";
-            if (p === "listModeUserColPx") return "fusionUserPane";
-            if (p === "listModeImColPx" || p === "cardModeImColPx") return "fusionImPane";
-            if (p === "listModeDetailColPx" || p === "cardModeDetailColPx") return "fusionDetailPane";
-            if (p.startsWith("detailTab")) return "fusionDetailTabs";
-            if (p.startsWith("detailBody")) return "fusionDetailBody";
-            if (p.startsWith("bottomBar")) return "fusionBottomBar";
-            if (p.startsWith("triple") || p.startsWith("shell") || p.startsWith("surface") || p === "shellBorder" || p === "shellRadiusPx")
-              return "fusionWorkCanvas";
-            if (p.startsWith("divider") || p.startsWith("itemHover") || p.startsWith("itemSelected") || p.startsWith("textPrimary") || p.startsWith("textSecondary") || p.startsWith("textMuted"))
-              return "fusionWorkCanvas";
-            return "fusionWorkCanvas";
+              return "fusionDetailCard";
+            if (p === "textPrimary" || p === "textSubtitle") return "fusionMainRow";
+            if (p === "focusRing" || p === "componentName" || p === "fontFamily") return "fusionShell";
+            return "fusionMainRow";
           }
 
           if (panelComponentId === "aiInput") {
@@ -4809,7 +4816,7 @@
                           </button>
                         </>
                       ) : panelComponentId === "fusionWorkbench" ? (
-                        <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">列表/卡片在预览内切换</span>
+                        <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent</span>
                       ) : (
                         <></>
                       )}
@@ -4974,10 +4981,8 @@
                           <FusionWorkbenchView
                             tokens={activeResolvedTokens}
                             highlightTarget={highlightTarget}
-                            sessionListMode={fusionSessionMode}
-                            onSessionListMode={setFusionSessionMode}
-                            detailTab={fusionDetailTab}
-                            onDetailTab={setFusionDetailTab}
+                            agentSegment={fusionAgentSegment}
+                            onAgentSegment={setFusionAgentSegment}
                           />
                         </div>
                       ) : panelComponentId === "iconLibrary" ? (
@@ -5284,74 +5289,92 @@
                         : panelComponentId === "fusionWorkbench"
                         ? [
                             {
-                              title: "\u6846\u67b6\u4e0e\u5bfc\u822a",
+                              title: "\u5916\u58f3\u4e0e\u5de5\u4f5c\u533a",
                               fields: [
                                 { label: "\u7ec4\u4ef6\u540d\u79f0", path: "componentName", type: "text" },
-                                { label: "\u5916\u58f3\u5706\u89d2\uff08px\uff09", path: "shellRadiusPx", type: "number" },
-                                { label: "\u5916\u58f3\u63cf\u8fb9", path: "shellBorder", type: "css-color" },
-                                { label: "\u9875\u9762\u5e95 shellBg", path: "shellBg", type: "color" },
-                                { label: "\u5185\u5bb9\u9762 surfaceBg", path: "surfaceBg", type: "color" },
-                                { label: "\u5de6\u4fa7\u5bfc\u822a\u5bbd\uff08px\uff09", path: "chromeNavWidthPx", type: "number" },
-                                { label: "\u5de6\u4fa7\u5bfc\u822a\u8272", path: "chromeNavBg", type: "color" },
-                                { label: "\u5de5\u4f5c\u533a\u5185\u8fb9\u8ddd\uff08px\uff09", path: "workspacePadPx", type: "number" },
-                              ],
-                            },
-                            {
-                              title: "\u9876\u680f",
-                              fields: [
-                                { label: "\u9876\u680f\u9ad8\uff08px\uff09", path: "topBarHeightPx", type: "number" },
-                                { label: "\u9876\u680f\u4e0b\u95f4\u8ddd\uff08px\uff09", path: "topBarBelowGapPx", type: "number" },
-                                { label: "\u9876\u680f\u80cc\u666f", path: "topBarBg", type: "color" },
-                              ],
-                            },
-                            {
-                              title: "\u5de6\u4fa7\u4f1a\u8bdd\u8f68\u9053",
-                              fields: [
-                                { label: "\u5217\u8868\u6a21\u5f0f\u5bbd\u5ea6\uff08px\uff09", path: "listModeSessionWidthPx", type: "number" },
-                                { label: "\u5217\u8868\u533a\u5185\u8fb9\u8ddd\uff08px\uff09", path: "sessionListInnerPadPx", type: "number" },
-                                { label: "\u5de5\u5177\u6761\u9ad8\uff08px\uff09", path: "sessionToolbarHeightPx", type: "number" },
-                                { label: "\u7b5b\u9009\u884c\u9ad8\uff08px\uff09", path: "sessionFilterHeightPx", type: "number" },
-                                { label: "\u533a\u5757\u7ad6\u95f4\u8ddd\uff08px\uff09", path: "sessionSectionGapPx", type: "number" },
-                                { label: "\u4f1a\u8bdd\u884c\u9ad8\uff08px\uff09", path: "sessionItemHeightPx", type: "number" },
-                                { label: "\u4f1a\u8bdd\u884c\u95f4 gap\uff08px\uff09", path: "sessionItemGapPx", type: "number" },
-                                { label: "\u5206\u7ec4\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "sessionGroupTitleSizePx", type: "number" },
-                                { label: "\u4f1a\u8bdd\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "sessionTitleSizePx", type: "number" },
-                                { label: "\u4f1a\u8bdd\u5143\u4fe1\u606f\u5b57\u53f7\uff08px\uff09", path: "sessionMetaSizePx", type: "number" },
-                                { label: "\u5361\u7247\u8f68\u5bbd\u5ea6\uff08px\uff09", path: "cardModeRailWidthPx", type: "number" },
-                                { label: "\u5361\u7247\u9876\u680f\u9ad8\uff08px\uff09", path: "cardModeTopBarHeightPx", type: "number" },
-                                { label: "\u5361\u7247\u683c\u6700\u5c0f\u9ad8\uff08px\uff09", path: "cardCellMinHeightPx", type: "number" },
-                                { label: "\u5361\u7247\u683c\u5706\u89d2\uff08px\uff09", path: "cardCellRadiusPx", type: "number" },
-                              ],
-                            },
-                            {
-                              title: "\u4e09\u680f\u4e0e\u8be6\u60c5",
-                              fields: [
-                                { label: "\u4e3b\u533a\u5185\u8fb9\u8ddd\uff08px\uff09", path: "tripleInnerPadPx", type: "number" },
-                                { label: "\u5217\u95f4\u8ddd\uff08px\uff09", path: "tripleColGapPx", type: "number" },
-                                { label: "\u5217\u8868-\u7528\u6237\u5217\u5bbd\uff08px\uff09", path: "listModeUserColPx", type: "number" },
-                                { label: "\u5217\u8868-IM\u5217\u5bbd\uff08px\uff09", path: "listModeImColPx", type: "number" },
-                                { label: "\u5217\u8868-\u8be6\u60c5\u5217\u5bbd\uff08px\uff09", path: "listModeDetailColPx", type: "number" },
-                                { label: "\u5361\u7247-IM\u5217\u5bbd\uff08px\uff09", path: "cardModeImColPx", type: "number" },
-                                { label: "\u5361\u7247-\u8be6\u60c5\u5217\u5bbd\uff08px\uff09", path: "cardModeDetailColPx", type: "number" },
-                                { label: "\u8be6\u60c5 Tab \u680f\u9ad8\uff08px\uff09", path: "detailTabBarHeightPx", type: "number" },
-                                { label: "Tab \u5206\u5272\u7ebf\uff08px\uff09", path: "detailTabDividerPx", type: "number" },
-                                { label: "\u8be6\u60c5 Tab \u5b57\u53f7\uff08px\uff09", path: "detailTabFontSizePx", type: "number" },
-                                { label: "\u8be6\u60c5\u6b63\u6587\u533a\u5185\u8fb9\u8ddd\uff08px\uff09", path: "detailBodyPadPx", type: "number" },
-                              ],
-                            },
-                            {
-                              title: "\u5e95\u680f\u4e0e\u6587\u5b57",
-                              fields: [
-                                { label: "\u5e95\u680f\u9ad8\uff08px\uff09", path: "bottomBarHeightPx", type: "number" },
-                                { label: "\u5e95\u680f\u80cc\u666f", path: "bottomBarBg", type: "color" },
-                                { label: "\u4e3b\u6587\u5b57\u8272", path: "textPrimary", type: "color" },
-                                { label: "\u6b21\u6587\u5b57\u8272", path: "textSecondary", type: "color" },
-                                { label: "\u5f31\u6587\u5b57\u8272", path: "textMuted", type: "color" },
-                                { label: "\u5206\u5272\u7ebf", path: "dividerColor", type: "css-color" },
-                                { label: "\u5217\u8868\u9879 hover \u5e95", path: "itemHoverBg", type: "css-color" },
-                                { label: "\u5217\u8868\u9879\u9009\u4e2d\u5e95", path: "itemSelectedBg", type: "css-color" },
-                                { label: "Focus Ring", path: "focusRing", type: "color" },
                                 { label: "\u5b57\u4f53\u65cf", path: "fontFamily", type: "text" },
+                                { label: "Focus Ring", path: "focusRing", type: "color" },
+                                { label: "\u9875\u9762\u5e95 shellBg", path: "shellBg", type: "color" },
+                                { label: "\u5916\u58f3\u5706\u89d2\uff08px\uff09", path: "shellRadiusPx", type: "number" },
+                                { label: "\u5de6\u5185\u8fb9\u8ddd\uff08px\uff09", path: "workspacePadLeftPx", type: "number" },
+                                { label: "\u53f3\u5185\u8fb9\u8ddd\uff08px\uff09", path: "workspacePadRightPx", type: "number" },
+                                { label: "\u4e0a\u4e0b\u5185\u8fb9\u8ddd\uff08px\uff09", path: "workspacePadYPx", type: "number" },
+                                { label: "\u9876\u680f\u4e0e\u4e3b\u533a\u95f4\u8ddd\uff08px\uff09", path: "workspaceColumnGapPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u9876\u90e8\u7ec4\u4ef6\uff08\u6bdb\u73bb\u7483 + \u5728\u7ebf + \u6307\u6807\uff09",
+                              fields: [
+                                { label: "\u9876\u680f\u6c34\u5e73 padding\uff08px\uff09", path: "topBarPadXPx", type: "number" },
+                                { label: "\u80cc\u666f\u6a21\u7cca blur\uff08px\uff09", path: "topBarBackdropBlurPx", type: "number" },
+                                { label: "\u6635\u79f0\u5b57\u53f7\uff08px\uff09", path: "topBarTitleFontPx", type: "number" },
+                                { label: "\u6635\u79f0\u884c\u9ad8\uff08px\uff09", path: "topBarTitleLinePx", type: "number" },
+                                { label: "\u5728\u7ebf\u80f6\u56ca\u6c34\u5e73 padding\uff08px\uff09", path: "onlinePillPadXPx", type: "number" },
+                                { label: "\u5728\u7ebf\u80f6\u56ca\u5782\u76f4 padding\uff08px\uff09", path: "onlinePillPadYPx", type: "number" },
+                                { label: "\u5728\u7ebf\u80f6\u56ca\u5706\u89d2\uff08px\uff09", path: "onlinePillRadiusPx", type: "number" },
+                                { label: "\u7eff\u70b9\u5916\u6846\uff08px\uff09", path: "onlineIconBoxPx", type: "number" },
+                                { label: "\u7eff\u70b9\u76f4\u5f84\uff08px\uff09", path: "onlineDotSizePx", type: "number" },
+                                { label: "\u5728\u7ebf\u6587\u5b57\u5b57\u53f7\uff08px\uff09", path: "onlineTimerFontPx", type: "number" },
+                                { label: "\u5728\u7ebf\u6587\u5b57\u884c\u9ad8\uff08px\uff09", path: "onlineTimerLinePx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u4e2d\u95f4\u6307\u6807\u6761",
+                              fields: [
+                                { label: "\u6761\u80cc\u666f", path: "statsBarBg", type: "css-color" },
+                                { label: "\u6761\u8fb9\u6846\u8272", path: "statsBarBorder", type: "color" },
+                                { label: "\u6761\u5706\u89d2\uff08px\uff09", path: "statsBarRadiusPx", type: "number" },
+                                { label: "\u6761\u5185\u6c34\u5e73 padding\uff08px\uff09", path: "statsBarPadXPx", type: "number" },
+                                { label: "\u6761\u5185\u5782\u76f4 padding\uff08px\uff09", path: "statsBarPadYPx", type: "number" },
+                                { label: "\u5927\u533a\u5757 gap\uff08px\uff09", path: "statsBarGapPx", type: "number" },
+                                { label: "\u5c0f\u6807\u7b7e\u4e0e\u6570\u5b57 gap\uff08px\uff09", path: "statsItemGapPx", type: "number" },
+                                { label: "\u56fe\u6807\u5c3a\u5bf8\uff08px\uff09", path: "statsIconSizePx", type: "number" },
+                                { label: "\u5206\u5272\u7ebf\u8272", path: "statsDividerBg", type: "css-color" },
+                                { label: "\u5206\u5272\u7ebf\u9ad8\uff08px\uff09", path: "statsDividerHeightPx", type: "number" },
+                                { label: "\u98ce\u9669\u70b9\u76f4\u5f84\uff08px\uff09", path: "riskDotSizePx", type: "number" },
+                                { label: "\u98ce\u9669\u70b9\u8272", path: "riskDotColor", type: "color" },
+                                { label: "\u64cd\u4f5c\u56fe\u6807\uff08px\uff09", path: "statsActionIconPx", type: "number" },
+                                { label: "\u64cd\u4f5c\u6309\u94ae padding\uff08px\uff09", path: "statsActionPadPx", type: "number" },
+                                { label: "\u5c3e\u90e8\u56fe\u6807\u95f4\u8ddd\uff08px\uff09", path: "statsTrailingIconGapPx", type: "number" },
+                                { label: "\u6807\u7b7e\u5b57\u53f7\uff08px\uff09", path: "statsLabelFontPx", type: "number" },
+                                { label: "\u6570\u503c\u5b57\u53f7\uff08px\uff09", path: "statsValueFontPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u5206\u6bb5\u63a7\u5236\uff08\u878d\u5408 / \u5728\u7ebf / \u5de5\u5355\uff09",
+                              fields: [
+                                { label: "\u8f68\u9053\u80cc\u666f", path: "segmentTrackBg", type: "css-color" },
+                                { label: "\u8f68\u9053\u5706\u89d2\uff08px\uff09", path: "segmentTrackRadiusPx", type: "number" },
+                                { label: "\u5916\u5c42 padding\uff08px\uff09", path: "segmentOuterPadPx", type: "number" },
+                                { label: "\u9879\u9ad8\u5ea6\uff08px\uff09", path: "segmentItemHeightPx", type: "number" },
+                                { label: "\u9009\u4e2d\u5750\u5e95\u8272", path: "segmentSelectedBg", type: "color" },
+                                { label: "\u672a\u9009\u4e2d\u6587\u5b57", path: "segmentInactiveColor", type: "color" },
+                                { label: "\u9009\u4e2d\u6587\u5b57", path: "segmentActiveColor", type: "color" },
+                                { label: "\u6807\u7b7e\u5b57\u53f7\uff08px\uff09", path: "segmentLabelFontPx", type: "number" },
+                                { label: "\u6807\u7b7e\u884c\u9ad8\uff08px\uff09", path: "segmentLabelLinePx", type: "number" },
+                                { label: "\u9879\u5185\u6c34\u5e73 padding\uff08px\uff09", path: "segmentItemInnerPadXPx", type: "number" },
+                                { label: "\u9879\u5185\u5782\u76f4 padding\uff08px\uff09", path: "segmentItemInnerPadYPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u5217\u8868\u533a\u4e0e\u8be6\u60c5\u5361\u7247",
+                              fields: [
+                                { label: "\u4e3b\u69fd\u534a\u900f\u660e\u5e95", path: "mainFrostBg", type: "css-color" },
+                                { label: "\u4e3b\u69fd\u8fb9\u6846\u8272", path: "mainFrostBorder", type: "color" },
+                                { label: "\u4e3b\u69fd\u5706\u89d2\uff08px\uff09", path: "mainFrostRadiusPx", type: "number" },
+                                { label: "\u5217\u8868\u5217\u5bbd\uff08px\uff09", path: "listColumnWidthPx", type: "number" },
+                                { label: "\u5217\u8868\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "listTitleFontPx", type: "number" },
+                                { label: "\u5217\u8868\u526f\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "listSubtitleFontPx", type: "number" },
+                                { label: "\u5217\u8868\u5360\u4f4d\u7ad6\u95f4\u8ddd\uff08px\uff09", path: "listPlaceholderGapPx", type: "number" },
+                                { label: "\u8be6\u60c5\u5361\u7247\u80cc\u666f", path: "detailCardBg", type: "color" },
+                                { label: "\u8be6\u60c5\u5361\u7247\u5706\u89d2\uff08px\uff09", path: "detailCardRadiusPx", type: "number" },
+                                { label: "\u8be6\u60c5\u5361\u7247\u5185\u8fb9\u8ddd\uff08px\uff09", path: "detailCardPadPx", type: "number" },
+                                { label: "\u8be6\u60c5\u5361\u7247\u9634\u5f71 CSS", path: "detailCardShadow", type: "text" },
+                                { label: "\u8be6\u60c5\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "detailTitleFontPx", type: "number" },
+                                { label: "\u8be6\u60c5\u526f\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "detailSubtitleFontPx", type: "number" },
+                                { label: "\u8be6\u60c5\u5360\u4f4d\u7ad6\u95f4\u8ddd\uff08px\uff09", path: "detailPlaceholderGapPx", type: "number" },
+                                { label: "\u6807\u9898\u6587\u5b57\u8272", path: "textPrimary", type: "color" },
+                                { label: "\u526f\u6807\u9898\u6587\u5b57\u8272", path: "textSubtitle", type: "color" },
                               ],
                             },
                           ]
@@ -5407,7 +5430,7 @@
                             : panelComponentId === "aiInput"
                               ? "用于强约束 AI 生成“AI输入框”。"
                               : panelComponentId === "fusionWorkbench"
-                                ? "融合工作台外壳：左侧会话（列表/卡片）+ 中间 IM + 右侧详情 Tab；业务内容以 slot 嵌入。"
+                                ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
                                 : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
                       </div>
                     </div>
