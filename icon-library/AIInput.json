@@ -9,11 +9,12 @@
     { "name": "icon_disorder-list_outlined", "url": "./hiai%20icon%20svg/disorder-list-outlined.svg", "inset": "inset-[8.33%]" },
     { "name": "link-03-stroked", "url": "./hiai%20icon%20svg/link-03-stroked.svg", "inset": "inset-[8.33%]" },
     { "name": "palette-stroked", "url": "./hiai%20icon%20svg/palette-stroked.svg", "inset": "inset-[8.33%]" },
-    { "name": "semi-icons-send_stroked", "url": "./hiai%20icon%20svg/send-02-stroked.svg", "inset": "inset-[8.33%]" },
-    { "name": "semi-icons-send_stroked_enabled", "url": "./hiai%20icon%20svg/send-01-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "hiai-send", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
+    { "name": "semi-icons-send_stroked", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
+    { "name": "semi-icons-send_stroked_enabled", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
     { "name": "x-close-stroked", "url": "./hiai%20icon%20svg/x-close-stroked.svg", "inset": "inset-[20.83%]" },
     { "name": "refresh", "url": "./hiai%20icon%20svg/refresh-ccw-02-stroked.svg", "inset": "inset-[8.33%_8.33%_8.33%_4.17%]" },
     { "name": "IconCopyStroked2", "url": "./hiai%20icon%20svg/copy-stroked2.svg", "inset": "inset-[8.33%]" },
-    { "name": "send-filled", "url": "./hiai%20icon%20svg/send.svg", "inset": "inset-[8.33%]" }
+    { "name": "send-filled", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" }
   ]
 }

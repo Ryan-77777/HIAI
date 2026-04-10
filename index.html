@@ -496,6 +496,7 @@
         sendBtnHeightPx: 24,
         sendBtnRadiusPx: 6,
         sendBtnPadPx: 4,
+        sendIconName: "hiai-send",
         // Interaction
         hoverFill: "rgba(83,96,143,0.07)",
         focusRing: "semi-brand-5",
@@ -647,7 +648,7 @@
         sendBtnPadPx: 4,
         sendBtnRadiusPx: 6,
         sendIconPx: 16,
-        sendIconName: "semi-icons-send_stroked",
+        sendIconName: "hiai-send",
         // 模拟输入区
         draftAreaBorder: "rgba(45,66,107,0.12)",
         draftMinHeightPx: 72,
@@ -1483,11 +1484,11 @@
           "ul          : getIcon(\"icon_disorder-list_outlined\")",
           "link        : getIcon(\"link-03-stroked\")",
           "palette     : getIcon(\"palette-stroked\")",
-          "send        : getIcon(\"semi-icons-send_stroked\") (\u7981\u7528\u6001\u539f\u8272 / \u6709\u5185\u5bb9\u6001 filter:brightness(0)invert(1))",
+          "send        : getIcon(\"hiai-send\") (\u7981\u7528\u6001\u539f\u8272 / \u6709\u5185\u5bb9\u6001 filter:brightness(0)invert(1))",
           "reco-close  : getIcon(\"x-close-stroked\")",
           "reco-refresh: getIcon(\"refresh\")",
           "reco-copy   : getIcon(\"IconCopyStroked2\")",
-          "reco-send   : getIcon(\"semi-icons-send_stroked\")",
+          "reco-send   : getIcon(\"hiai-send\")",
           "```",
           "",
           "---",
@@ -2494,6 +2495,7 @@
         tokens,
       }) {
         const t = tokens || AI_INPUT_TOKENS;
+        const sendIconLibName = t.sendIconName || "hiai-send";
         const hl = (key) =>
           highlightTarget === key ? `ring-2 ring-[${t.focusRing}] ring-offset-2 ring-offset-[rgba(255,255,255,0.75)]` : "";
 
@@ -2721,9 +2723,9 @@
                         }}
                       >
                         {renderIconFromLibrary({
-                          name: "semi-icons-send_stroked",
+                          name: sendIconLibName,
                           size: t.iconSizePx,
-                          fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                          fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
                           fallbackInset: "inset-[8.33%]",
                         })}
                       </button>
@@ -2897,9 +2899,9 @@
                   aria-disabled={sendDisabled ? "true" : "false"}
                 >
                   {renderIconFromLibrary({
-                    name: "semi-icons-send_stroked",
+                    name: sendIconLibName,
                     size: t.iconSizePx,
-                    fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                    fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
                     fallbackInset: "inset-[8.33%]",
                     imgStyle: sendDisabled ? undefined : { filter: "brightness(0) invert(1)" },
                   })}
@@ -2926,7 +2928,7 @@
           generatedFrom: "figma:C7xI0S0GkgPQdfPHzTsl3M",
           previewSizePx: 16,
           categories: [
-            { id: "AIInput", label: "AI Input", count: 15, file: "AIInput.json" },
+            { id: "AIInput", label: "AI Input", count: 16, file: "AIInput.json" },
             { id: "AIIcons", label: "AI图标", count: 2, file: "AIIcons.json" },
             { id: "FusionWorkbench", label: "融合工作台", count: 8, file: "FusionWorkbench.json" },
             { id: "Development", label: "Development", count: 41, file: "Development.json" },
@@ -2945,12 +2947,13 @@
               { name: "icon_disorder-list_outlined", url: hiaiSvgUrl("disorder-list-outlined.svg"), inset: "inset-[8.33%]" },
               { name: "link-03-stroked", url: hiaiSvgUrl("link-03-stroked.svg"), inset: "inset-[8.33%]" },
               { name: "palette-stroked", url: hiaiSvgUrl("palette-stroked.svg"), inset: "inset-[8.33%]" },
-              { name: "semi-icons-send_stroked", url: hiaiSvgUrl("send-02-stroked.svg"), inset: "inset-[8.33%]" },
-              { name: "semi-icons-send_stroked_enabled", url: hiaiSvgUrl("send-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "hiai-send", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
+              { name: "semi-icons-send_stroked", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
+              { name: "semi-icons-send_stroked_enabled", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
               { name: "x-close-stroked", url: hiaiSvgUrl("x-close-stroked.svg"), inset: "inset-[20.83%]" },
               { name: "refresh", url: hiaiSvgUrl("refresh-ccw-02-stroked.svg"), inset: "inset-[8.33%_8.33%_8.33%_4.17%]" },
               { name: "IconCopyStroked2", url: hiaiSvgUrl("copy-stroked2.svg"), inset: "inset-[8.33%]" },
-              { name: "send-filled", url: hiaiSvgUrl("send.svg"), inset: "inset-[8.33%]" },
+              { name: "send-filled", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
             ],
           },
           AIIcons: {
@@ -4421,7 +4424,7 @@
       }) {
         const t = tokens || IM_BUBBLE_TOKENS;
         const hi = (id) => highlightTarget === id;
-        const sendIconName = t.sendIconName || "semi-icons-send_stroked";
+        const sendIconName = t.sendIconName || "hiai-send";
         const R = t.peerBubbleRadiusPx;
         const peerBubbleRadius = `0 ${R}px ${R}px ${R}px`;
         const selfBubbleRadius = `${R}px 0 ${R}px ${R}px`;
@@ -4634,7 +4637,7 @@
                         {renderIconFromLibrary({
                           name: sendIconName,
                           size: t.sendIconPx,
-                          fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                          fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
                           fallbackInset: "inset-[8.33%]",
                           imgStyle: { opacity: 0.65 },
                         })}
@@ -5837,6 +5840,7 @@
                                 { label: "IconButton padding\uff08px\uff09", path: "iconBtnPadPx", type: "number" },
                                 { label: "\u53d1\u9001\u6309\u9215\u9ad8\u5ea6\uff08px\uff09", path: "sendBtnHeightPx", type: "number" },
                                 { label: "\u53d1\u9001\u6309\u9215 padding\uff08px\uff09", path: "sendBtnPadPx", type: "number" },
+                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "text" },
                                 { label: "\u63a8\u8350\u5916\u5c42 padding\uff08px\uff09", path: "recoOuterPadPx", type: "number" },
                                 { label: "\u63a8\u8350\u5916\u5c42 gap\uff08px\uff09", path: "recoOuterGapPx", type: "number" },
                                 { label: "\u6807\u9898\u884c\u9ad8\u5ea6\uff08px\uff09", path: "recoHeaderHeightPx", type: "number" },
@@ -6300,7 +6304,7 @@
             sendBtnPad:       num("sendBtnPadPx", 4),
             sendBtnRadius:    num("sendBtnRadiusPx", 6),
             sendIconPx:       num("sendIconPx", 16),
-            sendIconName:     col("sendIconName", "semi-icons-send_stroked"),
+            sendIconName:     col("sendIconName", "hiai-send"),
             readReceiptColor: col("readReceiptColor", "#00b3a4"),
             avatarSize:       num("avatarSizePx", 24),
             avatarGap:        num("avatarGapPx", 8),
@@ -6767,9 +6771,9 @@
                     cursor: "pointer",
                   }}>
                     {renderIconFromLibrary({
-                      name: v.sendIconName || "semi-icons-send_stroked",
+                      name: v.sendIconName || "hiai-send",
                       size: v.sendIconPx,
-                      fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                      fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
                       fallbackInset: "inset-[8.33%]",
                       imgStyle: { opacity: 0.65 },
                     })}
