@@ -49,7 +49,7 @@ open http://127.0.0.1:5174/index.html
 
 ### 方式 C — 在线预览（Vercel）
 
-访问 [线上预览地址](https://hlaidesign.vercel.app/) — 无需本地配置，直接打开即用。
+访问 [线上预览地址](https://hiaidesign.vercel.app/) — 无需本地配置，直接打开即用。
 
 ---
 

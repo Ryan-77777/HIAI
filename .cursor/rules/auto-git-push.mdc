@@ -29,6 +29,6 @@ git push
 
 ## 重要说明
 
-- 推送成功后，Vercel 会在 1-2 分钟内自动重新部署到 `hlaidesign.vercel.app`
+- 推送成功后，Vercel 会在 1-2 分钟内自动重新部署到 `hiaidesign.vercel.app`
 - 推送完成后，在回复末尾告知用户：`已自动推送到 GitHub，Vercel 将在 1-2 分钟内更新。`
 - 如果 git push 失败，立即报告错误原因，不要静默跳过
