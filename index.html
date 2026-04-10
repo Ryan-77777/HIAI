@@ -2923,9 +2923,9 @@
           generatedFrom: "figma:C7xI0S0GkgPQdfPHzTsl3M",
           previewSizePx: 16,
           categories: [
-            { id: "AIInput", label: "AI Input", count: 13, file: "AIInput.json" },
+            { id: "AIInput", label: "AI Input", count: 16, file: "AIInput.json" },
             { id: "AIIcons", label: "AI图标", count: 1, file: "AIIcons.json" },
-            { id: "Development", label: "Development", count: 59, file: "Development.json" },
+            { id: "Development", label: "Development", count: 41, file: "Development.json" },
             { id: "Users", label: "Users", count: 41, file: "Users.json" },
           ],
         },
@@ -2998,7 +2998,7 @@
         try {
           const dict = window.__ICON_LIBRARY__?.byName;
           if (!dict) return;
-          for (const file of ["AIInput.json", "AIIcons.json"]) {
+          for (const file of ["AIInput.json", "AIIcons.json", "Development.json"]) {
             const data = await loadIconLibraryCategory(file);
             (data?.icons || []).forEach((ic) => {
               if (ic?.name) dict[String(ic.name)] = ic;
@@ -3407,7 +3407,17 @@
                 try {
                   const data = await loadIconLibraryCategory(c.file);
                   if (!alive) return;
-                  const list = data?.icons || [];
+                  let list = data?.icons || [];
+                  if (!list.length && c.id) {
+                    try {
+                      const r = await fetch(resolveAssetUrl("./icon-library-data.json"), { cache: "no-store" });
+                      if (r.ok) {
+                        const agg = await r.json();
+                        const extra = agg?.categories?.[c.id];
+                        if (Array.isArray(extra) && extra.length) list = extra.slice();
+                      }
+                    } catch {}
+                  }
                   next.push({ id: c.id, label: c.label || c.id, icons: list });
                   if (dict) {
                     list.forEach((ic) => {
