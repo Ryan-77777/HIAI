@@ -4929,13 +4929,18 @@
             {/* ── 顶部主 Tab（Figma Kit-3 RadioGroup 1687:11781：浅灰轨道 + 白 pill 选中） ── */}
             <div className="shrink-0 relative flex items-center h-[44px] min-h-[44px]">
               <div className="flex items-center gap-[10px] shrink-0 z-[1]">
-                <img
-                  src="./brand/hiai-logo.png"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="h-[28px] w-[28px] shrink-0 rounded-[8px] object-cover shadow-[0_1px_3px_rgba(34,39,39,0.12)]"
-                />
+                <span
+                  className="shrink-0 rounded-[8px] overflow-hidden shadow-[0_1px_3px_rgba(34,39,39,0.12)]"
+                  title="图标库 · hiai-2-mark（AI图标）"
+                >
+                  {renderIconFromLibrary({
+                    name: "hiai-2-mark",
+                    size: 28,
+                    fallbackUrl: resolveAssetUrl("./brand/hiai-logo.png"),
+                    fallbackInset: "inset-[8.33%]",
+                    imgStyle: { objectFit: "contain" },
+                  })}
+                </span>
                 <span className="text-[14px] font-bold text-[#222727] leading-[28px] whitespace-nowrap">
                   HiAI Design.MD
                 </span>
