@@ -5010,11 +5010,11 @@
                               key={c.id}
                               type="button"
                               className={cx(
-                                "w-full text-left pl-0 pr-[8px] py-[8px] rounded-[8px] transition-colors",
+                                "w-full text-left px-[8px] py-[8px] rounded-[8px] transition-colors border-0",
                                 active
-                                  ? "bg-[rgba(0,0,0,0.06)] text-black"
-                                  : "text-[#222727] hover:bg-[rgba(83,96,143,0.07)]",
-                                "outline-none focus:ring-1 focus:ring-black",
+                                  ? "bg-[rgba(0,0,0,0.10)] text-black shadow-none"
+                                  : "text-[#222727] hover:bg-[rgba(83,96,143,0.07)] bg-transparent",
+                                "outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
                               )}
                               onClick={() => {
                                 setActiveComponentId(c.id);
