@@ -1,19 +1,25 @@
 {
   "version": 1,
-  "generatedFrom": "figma:C7xI0S0GkgPQdfPHzTsl3M +local:hiai-icon-svg +local:hiai-icon-svg",
+  "generatedFrom": "figma:C7xI0S0GkgPQdfPHzTsl3M +local:hiai-icon-svg",
   "previewSizePx": 16,
   "categories": [
     {
       "id": "AIInput",
       "label": "AI Input",
-      "count": 16,
+      "count": 15,
       "file": "AIInput.json"
     },
     {
       "id": "AIIcons",
       "label": "AI图标",
-      "count": 1,
+      "count": 2,
       "file": "AIIcons.json"
+    },
+    {
+      "id": "FusionWorkbench",
+      "label": "融合工作台",
+      "count": 7,
+      "file": "FusionWorkbench.json"
     },
     {
       "id": "Development",

@@ -1,21 +1,19 @@
 {
   "icons": [
-    { "name": "magic-wand", "url": "./ai-input-assets/icon-magic-wand.svg", "inset": "inset-[8.1%_7.48%_8.1%_7.48%]" },
-    { "name": "IconFaceSmileStroked", "url": "./ai-input-assets/icon-smile.svg", "inset": "inset-[4.17%_4.17%_4.17%_4.16%]" },
-    { "name": "image-01-stroked", "url": "./ai-input-assets/icon-image.svg", "inset": "inset-[8.33%]" },
-    { "name": "underline-01-stroked", "url": "./ai-input-assets/icon-underline.svg", "inset": "inset-[12.5%_12.5%_8.33%_12.5%]" },
-    { "name": "bold-01-stroked", "url": "./ai-input-assets/icon-bold.svg", "inset": "inset-[12.5%_16.67%_12.5%_20.83%]" },
-    { "name": "icon_order-list_outlined", "url": "./ai-input-assets/icon-ol.svg", "inset": "inset-[5.27%_4.17%_7.06%_6.42%]" },
-    { "name": "icon_disorder-list_outlined", "url": "./ai-input-assets/icon-ul.svg", "inset": "inset-[10.42%_4.17%_10.42%_8.33%]" },
-    { "name": "link-03-stroked", "url": "./ai-input-assets/icon-link.svg", "inset": "inset-[4.44%_4.4%_4.44%_4.4%]" },
-    { "name": "palette-stroked", "url": "./ai-input-assets/icon-palette.svg", "inset": "inset-[4.17%]" },
-    { "name": "semi-icons-send_stroked", "url": "./ai-input-assets/icon-send.svg", "inset": "inset-[8.66%_8.66%_3.54%_3.54%]" },
-    { "name": "semi-icons-send_stroked_enabled", "url": "./ai-input-assets/icon-send-enabled.svg", "inset": "inset-[8.66%_8.66%_3.54%_3.54%]" },
-
-    { "name": "x-close-stroked", "url": "./ai-input-assets/icon-reco-close.svg", "inset": "inset-[20.83%]" },
-    { "name": "refresh", "url": "./ai-input-assets/icon-reco-refresh.svg", "inset": "inset-[8.33%_8.33%_8.33%_4.17%]" },
-    { "name": "IconCopyStroked2", "url": "./ai-input-assets/icon-reco-copy.svg", "inset": "inset-[8.33%]" },
-    { "name": "send-filled", "url": "./ai-input-assets/icon-reco-send.svg", "inset": "inset-[7.87%_0%_0.14%_6.08%]" }
+    { "name": "magic-wand", "url": "./hiai%20icon%20svg/magic-wand-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "IconFaceSmileStroked", "url": "./hiai%20icon%20svg/face_smile_stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "image-01-stroked", "url": "./hiai%20icon%20svg/image-01-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "underline-01-stroked", "url": "./hiai%20icon%20svg/underline-01-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "bold-01-stroked", "url": "./hiai%20icon%20svg/bold-01-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "icon_order-list_outlined", "url": "./hiai%20icon%20svg/order-list-outlined.svg", "inset": "inset-[8.33%]" },
+    { "name": "icon_disorder-list_outlined", "url": "./hiai%20icon%20svg/disorder-list-outlined.svg", "inset": "inset-[8.33%]" },
+    { "name": "link-03-stroked", "url": "./hiai%20icon%20svg/link-03-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "palette-stroked", "url": "./hiai%20icon%20svg/palette-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "semi-icons-send_stroked", "url": "./hiai%20icon%20svg/send-02-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "semi-icons-send_stroked_enabled", "url": "./hiai%20icon%20svg/send-01-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "x-close-stroked", "url": "./hiai%20icon%20svg/x-close-stroked.svg", "inset": "inset-[20.83%]" },
+    { "name": "refresh", "url": "./hiai%20icon%20svg/refresh-ccw-02-stroked.svg", "inset": "inset-[8.33%_8.33%_8.33%_4.17%]" },
+    { "name": "IconCopyStroked2", "url": "./hiai%20icon%20svg/copy-stroked2.svg", "inset": "inset-[8.33%]" },
+    { "name": "send-filled", "url": "./hiai%20icon%20svg/send.svg", "inset": "inset-[8.33%]" }
   ]
 }
-

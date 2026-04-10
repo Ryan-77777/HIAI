@@ -229,6 +229,10 @@
         }
       }
 
+      function hiaiSvgUrl(filename) {
+        return resolveAssetUrl("./hiai%20icon%20svg/" + String(filename || ""));
+      }
+
       // ─── Foundation color resolver ──────────────────────────────────────────
       const FOUNDATION_TEXT_COLOR_MAP = {
         "semi-color-text-0": "rgba(34,39,39,1.0)",
@@ -270,22 +274,6 @@
 
       const AI_INPUT_ASSETS = {
         motionPng: resolveAssetUrl("./ai-input-assets/ai-input-motion.svg"),
-        iconMagicWand: resolveAssetUrl("./ai-input-assets/icon-magic-wand.svg"),
-        iconSmile: resolveAssetUrl("./ai-input-assets/icon-smile.svg"),
-        iconImage: resolveAssetUrl("./ai-input-assets/icon-image.svg"),
-        iconUnderline: resolveAssetUrl("./ai-input-assets/icon-underline.png"),
-        iconBold: resolveAssetUrl("./ai-input-assets/icon-bold.svg"),
-        iconOl: resolveAssetUrl("./ai-input-assets/icon-ol.svg"),
-        iconUl: resolveAssetUrl("./ai-input-assets/icon-ul.svg"),
-        iconLink: resolveAssetUrl("./ai-input-assets/icon-link.svg"),
-        iconPalette: resolveAssetUrl("./ai-input-assets/icon-palette.png"),
-        iconSend: resolveAssetUrl("./ai-input-assets/icon-send.svg"),
-        iconSendEnabled: resolveAssetUrl("./ai-input-assets/icon-send.svg"),
-        // Reply recommend (话术推荐)
-        iconRecoClose: resolveAssetUrl("./ai-input-assets/icon-reco-close.svg"),
-        iconRecoRefresh: resolveAssetUrl("./ai-input-assets/icon-reco-refresh.svg"),
-        iconRecoCopy: resolveAssetUrl("./ai-input-assets/icon-reco-copy.svg"),
-        iconRecoSend: resolveAssetUrl("./ai-input-assets/icon-reco-send.svg"),
       };
 
       const SMART_SUMMARY_TOKENS = {
@@ -402,8 +390,8 @@
         // 刷新图标渐变色（与 AI 主题色一致，禁止使用纯色）
         refreshIconGradient:
           "linear-gradient(72.45deg, rgb(63,226,213) 0%, rgb(64,147,224) 37.4%, rgb(122,97,250) 69.7%, rgb(214,130,235) 100%)",
-        // icon assets (MUST be local for portability)
-        refreshIconSrc: "./ai-input-assets/icon-reco-refresh.svg",
+        // 刷新按钮使用图标库 `refresh`（见 FormRecommend 内 renderIconFromLibrary）
+        refreshIconSrc: "library:refresh",
         // Recommendation bar / animated stripe
         recommendBarHeightPx: 28,
         recommendBarRadiusPx: 6,
@@ -513,15 +501,15 @@
         focusRing: "semi-brand-5",
       };
 
-      // 融合工作台 · 在线 Agent 外壳（Figma 8279:67909「在线Agent」帧，Semi 变量落地值）
-      const FUSION_ONLINE_AGENT_ICONS = {
-        onlineDot: "https://www.figma.com/api/mcp/asset/c7b08657-21e2-4091-a142-7f808b54b8d8",
-        users: "https://www.figma.com/api/mcp/asset/5ff95a75-07ae-4c62-8a30-13f3220d2cc6",
-        annotationCheck: "https://www.figma.com/api/mcp/asset/f7d4cf0f-fca6-49fc-8d49-40c680619d23",
-        barChart: "https://www.figma.com/api/mcp/asset/32b8ae27-143e-4a57-97a8-890f709f5f17",
-        barChartSquare: "https://www.figma.com/api/mcp/asset/df57c2a2-ce80-4dd9-9811-03c03f9fa60a",
-        announcement: "https://www.figma.com/api/mcp/asset/2f85335a-0334-49e2-a7f3-b3175930bead",
-        settings: "https://www.figma.com/api/mcp/asset/1e22c857-4354-4e2a-9a99-2cc205f20c3b",
+      // 融合工作台顶栏指标图标：均在 icon-library/FusionWorkbench.json 注册
+      const FUSION_ONLINE_AGENT_ICON_NAMES = {
+        onlineDot: "fusion-online-dot",
+        users: "fusion-stat-users",
+        annotationCheck: "fusion-stat-annotation-check",
+        barChart: "fusion-stat-bar-chart",
+        barChartSquare: "fusion-stat-bar-chart-square",
+        announcement: "fusion-stat-announcement",
+        settings: "fusion-stat-settings",
       };
 
       const FUSION_WORKBENCH_TOKENS = {
@@ -637,7 +625,7 @@
         sendBtnPadPx: 4,
         sendBtnRadiusPx: 6,
         sendIconPx: 16,
-        sendIconSrc: "./ai-input-assets/icon-send.svg",
+        sendIconName: "semi-icons-send_stroked",
         // 模拟输入区
         draftAreaBorder: "rgba(45,66,107,0.12)",
         draftMinHeightPx: 72,
@@ -1143,7 +1131,7 @@
           "",
           `- \u5237\u65b0\u6309\u9215\u9634\u5f71\uff1a\`${t.refreshBtnShadow}\``,
           `- \u5237\u65b0\u6309\u9215 offset-right\uff1a${mdToken("refreshBtnOffsetRightPx", `${t.refreshBtnOffsetRightPx}px`)}`,
-          `- \u5237\u65b0\u56fe\u6807\u8def\u5f84\uff1a\`${t.refreshIconSrc}\``,
+          "- \u5237\u65b0\u56fe\u6807\uff1a\u56fe\u6807\u5e93 `refresh`\uff08`getIcon(\"refresh\")`\uff09",
           `- \u5f69\u6761\u52a8\u6548\u65f6\u957f\uff1a${mdToken("stripeAnimDurationSec", `${t.stripeAnimDurationSec}s`)}`,
           "",
           "---",
@@ -1460,24 +1448,24 @@
           "### 3.3 Component-Specific Tokens\uff08\u4ec5\u672c\u7ec4\u4ef6\u4f7f\u7528\uff09",
           "",
           `- \u56fe\u6807\u5c3a\u5bf8\u56fa\u5b9a\uff1aiconSizePx = ${t.iconSizePx}px\uff0c**\u4e0d\u5f97\u6539\u53d8**\u3002`,
-          "- \u56fe\u6807\u8d44\u6e90\u8def\u5f84\uff08\u5fc5\u987b\u4f7f\u7528\u672c\u5730\u8def\u5f84\uff0c\u7981\u6b62\u66ff\u6362\uff09\uff1a",
+          "- \u5de5\u5177\u680f/\u8bdd\u672f\u63a8\u8350\u56fe\u6807\uff1a**\u5fc5\u987b** \u901a\u8fc7\u56fe\u6807\u5e93 `getIcon(name)` \u5f15\u7528\uff08AIInput \u5206\u7c7b\uff0c\u8d44\u6e90\u4e3a `hiai icon svg/` \u5185 SVG\uff09\u3002",
           "",
           "```",
-          `motion SVG  : ${AI_INPUT_ASSETS.motionPng}`,
-          `magic-wand  : ${AI_INPUT_ASSETS.iconMagicWand}`,
-          `smile       : ${AI_INPUT_ASSETS.iconSmile}`,
-          `image       : ${AI_INPUT_ASSETS.iconImage}`,
-          `underline   : ${AI_INPUT_ASSETS.iconUnderline}`,
-          `bold        : ${AI_INPUT_ASSETS.iconBold}`,
-          `ol          : ${AI_INPUT_ASSETS.iconOl}`,
-          `ul          : ${AI_INPUT_ASSETS.iconUl}`,
-          `link        : ${AI_INPUT_ASSETS.iconLink}`,
-          `palette     : ${AI_INPUT_ASSETS.iconPalette}`,
-          `send        : ${AI_INPUT_ASSETS.iconSend}  (\u7981\u7528\u6001\u539f\u8272 / \u6709\u5185\u5bb9\u6001 filter:brightness(0)invert(1))`,
-          `reco-close  : ${AI_INPUT_ASSETS.iconRecoClose}`,
-          `reco-refresh: ${AI_INPUT_ASSETS.iconRecoRefresh}`,
-          `reco-copy   : ${AI_INPUT_ASSETS.iconRecoCopy}`,
-          `reco-send   : ${AI_INPUT_ASSETS.iconRecoSend}`,
+          `motion \u5c42\uff08\u975e\u56fe\u6807\u5e93\uff09: ${AI_INPUT_ASSETS.motionPng}`,
+          "magic-wand  : getIcon(\"magic-wand\")",
+          "smile       : getIcon(\"IconFaceSmileStroked\")",
+          "image       : getIcon(\"image-01-stroked\")",
+          "underline   : getIcon(\"underline-01-stroked\")",
+          "bold        : getIcon(\"bold-01-stroked\")",
+          "ol          : getIcon(\"icon_order-list_outlined\")",
+          "ul          : getIcon(\"icon_disorder-list_outlined\")",
+          "link        : getIcon(\"link-03-stroked\")",
+          "palette     : getIcon(\"palette-stroked\")",
+          "send        : getIcon(\"semi-icons-send_stroked\") (\u7981\u7528\u6001\u539f\u8272 / \u6709\u5185\u5bb9\u6001 filter:brightness(0)invert(1))",
+          "reco-close  : getIcon(\"x-close-stroked\")",
+          "reco-refresh: getIcon(\"refresh\")",
+          "reco-copy   : getIcon(\"IconCopyStroked2\")",
+          "reco-send   : getIcon(\"semi-icons-send_stroked\")",
           "```",
           "",
           "---",
@@ -1580,8 +1568,9 @@
           `  borderRadius: '${t.sendBtnRadiusPx}px', overflow: 'hidden',`,
           `  backgroundColor: isEmpty ? '${t.sendBtnBgDisabled}' : '${t.sendBtnBgEnabled}',`,
           "}}>",
-          "  <img src={sendIconSrc} style={{",
-          `    width: '${t.iconSizePx}px', height: '${t.iconSizePx}px',`,
+          "  {/* getIcon(sendIconName)?.url */}",
+          "  <img src={getIcon(sendIconName)?.url} style={{",
+          `    width: '${t.sendIconPx}px', height: '${t.sendIconPx}px',`,
           "    filter: isEmpty ? 'none' : 'brightness(0) invert(1)',",
           "  }} />",
           "</button>",
@@ -1771,6 +1760,7 @@
           `| 发送按钮 padding | sendBtnPadPx | ${mdToken("sendBtnPadPx", px(t.sendBtnPadPx))} |`,
           `| 发送按钮圆角 | sendBtnRadiusPx | ${mdToken("sendBtnRadiusPx", px(t.sendBtnRadiusPx))} |`,
           `| 发送图标边长 | sendIconPx | ${mdToken("sendIconPx", px(t.sendIconPx))} |`,
+          `| 发送图标（图标库 name） | sendIconName | \`${t.sendIconName}\` |`,
           "",
           "### 2.3 recoGradient（须原样使用）",
           "",
@@ -2360,37 +2350,18 @@
                   onMouseEnter={e => { if (!refreshing) e.currentTarget.style.boxShadow = "0 4px 12px rgba(31,69,77,0.10), 0 2px 6px rgba(31,69,77,0.07), 0 1px 2px rgba(31,69,77,0.05)"; }}
                   onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 2px 8px rgba(31,69,77,0.05), 0 2px 4px rgba(31,69,77,0.04), 0 1px 2px rgba(31,69,77,0.04)"; }}
                 >
-                  {/* 彩色渐变刷新图标，对齐 Figma AI 配色 */}
-                  <svg
-                    width="16" height="15"
-                    viewBox="0 0 14 13.3333"
-                    fill="none"
+                  <span
+                    className="inline-flex"
+                    style={{ animation: refreshing ? "spin 0.8s linear infinite" : "none" }}
                     aria-hidden="true"
-                    style={{
-                      display: "block",
-                      flexShrink: 0,
-                      animation: refreshing ? "spin 0.8s linear infinite" : "none",
-                    }}
                   >
-                    {/* 从 token refreshIconGradient 解析色值，确保渐变与 token 联动 */}
-                    {(() => {
-                      const stops = (t.refreshIconGradient.match(/rgb\([^)]+\)/g) || ["rgb(63,226,213)","rgb(64,147,224)","rgb(122,97,250)","rgb(214,130,235)"]);
-                      const offsets = ["0%","37.4%","69.7%","100%"];
-                      return (
-                        <defs>
-                          <linearGradient id="recoRefreshGrad" x1="0" y1="1" x2="1" y2="0" gradientUnits="objectBoundingBox">
-                            {stops.map((c, i) => <stop key={i} offset={offsets[i] || "100%"} stopColor={c} />)}
-                          </linearGradient>
-                        </defs>
-                      );
-                    })()}
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M0 6.66667C0 2.98477 2.98477 0 6.66667 0C8.50826 0 10.1765 0.747596 11.3823 1.95425C11.8088 2.38097 12.2654 2.90832 12.6667 3.39629V1.33333C12.6667 0.965143 12.9651 0.666667 13.3333 0.666667C13.7015 0.666667 14 0.965143 14 1.33333V5.33333C14 5.70152 13.7015 6 13.3333 6H9.33333C8.96514 6 8.66667 5.70152 8.66667 5.33333C8.66667 4.96514 8.96514 4.66667 9.33333 4.66667H11.9795C11.518 4.08752 10.9444 3.40224 10.4392 2.89674C9.47323 1.93009 8.14027 1.33333 6.66667 1.33333C3.72115 1.33333 1.33333 3.72115 1.33333 6.66667C1.33333 9.61218 3.72115 12 6.66667 12C9.09716 12 11.1495 10.3737 11.7916 8.1485C11.8937 7.79474 12.2632 7.59072 12.617 7.6928C12.9707 7.79488 13.1748 8.16441 13.0727 8.51817C12.2703 11.2987 9.70697 13.3333 6.66667 13.3333C2.98477 13.3333 0 10.3486 0 6.66667Z"
-                      fill="url(#recoRefreshGrad)"
-                    />
-                  </svg>
+                    {renderIconFromLibrary({
+                      name: "refresh",
+                      size: 16,
+                      fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
+                      fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
+                    })}
+                  </span>
                 </button>
               )}
             </div>
@@ -2662,7 +2633,7 @@
                         {renderIconFromLibrary({
                           name: "x-close-stroked",
                           size: t.iconSizePx,
-                          fallbackUrl: AI_INPUT_ASSETS.iconRecoClose,
+                          fallbackUrl: hiaiSvgUrl("x-close-stroked.svg"),
                           fallbackInset: "inset-[20.83%]",
                         })}
                       </button>
@@ -2679,7 +2650,7 @@
                         {renderIconFromLibrary({
                           name: "refresh",
                           size: t.iconSizePx,
-                          fallbackUrl: AI_INPUT_ASSETS.iconRecoRefresh,
+                          fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
                           fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
                         })}
                       </button>
@@ -2700,7 +2671,7 @@
                             {renderIconFromLibrary({
                               name: "IconCopyStroked2",
                               size: t.iconSizePx,
-                              fallbackUrl: AI_INPUT_ASSETS.iconRecoCopy,
+                              fallbackUrl: hiaiSvgUrl("copy-stroked2.svg"),
                               fallbackInset: "inset-[8.33%]",
                             })}
                           </button>
@@ -2720,8 +2691,8 @@
                         {renderIconFromLibrary({
                           name: "semi-icons-send_stroked",
                           size: t.iconSizePx,
-                          fallbackUrl: AI_INPUT_ASSETS.iconRecoSend,
-                          fallbackInset: "inset-[11.37%_11.53%_9.35%_9.08%]",
+                          fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                          fallbackInset: "inset-[8.33%]",
                         })}
                       </button>
                     </div>
@@ -2820,66 +2791,66 @@
                 <div className={cx("flex-1 flex items-center min-w-0", `gap-[${t.actionsGapPx}px]`, hl("leftActions"))}>
                   <IconBtn
                     iconName="magic-wand"
-                    fallbackSrc={AI_INPUT_ASSETS.iconMagicWand}
+                    fallbackSrc={hiaiSvgUrl("magic-wand-stroked.svg")}
                     label="AI 功能"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.1%_7.48%_8.1%_7.48%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="IconFaceSmileStroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconSmile}
+                    fallbackSrc={hiaiSvgUrl("face_smile_stroked.svg")}
                     label="表情"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[4.17%_4.17%_4.17%_4.16%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="image-01-stroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconImage}
+                    fallbackSrc={hiaiSvgUrl("image-01-stroked.svg")}
                     label="图片"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="underline-01-stroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconUnderline}
+                    fallbackSrc={hiaiSvgUrl("underline-01-stroked.svg")}
                     label="下划线"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[12.5%_12.5%_8.33%_12.5%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="bold-01-stroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconBold}
+                    fallbackSrc={hiaiSvgUrl("bold-01-stroked.svg")}
                     label="加粗"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[12.5%_16.67%_12.5%_20.83%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="icon_order-list_outlined"
-                    fallbackSrc={AI_INPUT_ASSETS.iconOl}
+                    fallbackSrc={hiaiSvgUrl("order-list-outlined.svg")}
                     label="有序列表"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[5.27%_4.17%_7.06%_6.42%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="icon_disorder-list_outlined"
-                    fallbackSrc={AI_INPUT_ASSETS.iconUl}
+                    fallbackSrc={hiaiSvgUrl("disorder-list-outlined.svg")}
                     label="无序列表"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[10.42%_4.17%_10.42%_8.33%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="link-03-stroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconLink}
+                    fallbackSrc={hiaiSvgUrl("link-03-stroked.svg")}
                     label="链接"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[4.44%_4.4%_4.44%_4.4%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
                     iconName="palette-stroked"
-                    fallbackSrc={AI_INPUT_ASSETS.iconPalette}
+                    fallbackSrc={hiaiSvgUrl("palette-stroked.svg")}
                     label="调色板"
                     tokenKey="iconButton"
-                    fallbackInsetCls="inset-[4.17%]"
+                    fallbackInsetCls="inset-[8.33%]"
                   />
                 </div>
 
@@ -2896,8 +2867,8 @@
                   {renderIconFromLibrary({
                     name: "semi-icons-send_stroked",
                     size: t.iconSizePx,
-                    fallbackUrl: AI_INPUT_ASSETS.iconSend,
-                    fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                    fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
                     imgStyle: sendDisabled ? undefined : { filter: "brightness(0) invert(1)" },
                   })}
                 </button>
@@ -2923,8 +2894,9 @@
           generatedFrom: "figma:C7xI0S0GkgPQdfPHzTsl3M",
           previewSizePx: 16,
           categories: [
-            { id: "AIInput", label: "AI Input", count: 16, file: "AIInput.json" },
-            { id: "AIIcons", label: "AI图标", count: 1, file: "AIIcons.json" },
+            { id: "AIInput", label: "AI Input", count: 15, file: "AIInput.json" },
+            { id: "AIIcons", label: "AI图标", count: 2, file: "AIIcons.json" },
+            { id: "FusionWorkbench", label: "融合工作台", count: 7, file: "FusionWorkbench.json" },
             { id: "Development", label: "Development", count: 41, file: "Development.json" },
             { id: "Users", label: "Users", count: 41, file: "Users.json" },
           ],
@@ -2932,30 +2904,38 @@
         categories: {
           AIInput: {
             icons: [
-              { name: "magic-wand", url: resolveAssetUrl("./ai-input-assets/icon-magic-wand.svg"), inset: "inset-[8.1%_7.48%_8.1%_7.48%]" },
-              { name: "IconFaceSmileStroked", url: resolveAssetUrl("./ai-input-assets/icon-smile.svg"), inset: "inset-[4.17%_4.17%_4.17%_4.16%]" },
-              { name: "image-01-stroked", url: resolveAssetUrl("./ai-input-assets/icon-image.svg"), inset: "inset-[8.33%]" },
-              { name: "underline-01-stroked", url: resolveAssetUrl("./ai-input-assets/icon-underline.png"), inset: "inset-[12.5%_12.5%_8.33%_12.5%]" },
-              { name: "bold-01-stroked", url: resolveAssetUrl("./ai-input-assets/icon-bold.svg"), inset: "inset-[12.5%_16.67%_12.5%_20.83%]" },
-              { name: "icon_order-list_outlined", url: resolveAssetUrl("./ai-input-assets/icon-ol.svg"), inset: "inset-[5.27%_4.17%_7.06%_6.42%]" },
-              { name: "icon_disorder-list_outlined", url: resolveAssetUrl("./ai-input-assets/icon-ul.svg"), inset: "inset-[10.42%_4.17%_10.42%_8.33%]" },
-              { name: "link-03-stroked", url: resolveAssetUrl("./ai-input-assets/icon-link.svg"), inset: "inset-[4.44%_4.4%_4.44%_4.4%]" },
-              { name: "palette-stroked", url: resolveAssetUrl("./ai-input-assets/icon-palette.png"), inset: "inset-[4.17%]" },
-              { name: "semi-icons-send_stroked", url: resolveAssetUrl("./ai-input-assets/icon-send.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
-              { name: "semi-icons-send_stroked_enabled", url: resolveAssetUrl("./ai-input-assets/icon-send.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
-              { name: "x-close-stroked", url: resolveAssetUrl("./ai-input-assets/icon-reco-close.svg"), inset: "inset-[20.83%]" },
-              { name: "refresh", url: resolveAssetUrl("./ai-input-assets/icon-reco-refresh.svg"), inset: "inset-[8.33%_8.33%_8.33%_4.17%]" },
-              { name: "IconCopyStroked2", url: resolveAssetUrl("./ai-input-assets/icon-reco-copy.svg"), inset: "inset-[8.33%]" },
-              { name: "send-filled", url: resolveAssetUrl("./ai-input-assets/icon-reco-send.svg"), inset: "inset-[7.87%_0%_0.14%_6.08%]" },
+              { name: "magic-wand", url: hiaiSvgUrl("magic-wand-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "IconFaceSmileStroked", url: hiaiSvgUrl("face_smile_stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "image-01-stroked", url: hiaiSvgUrl("image-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "underline-01-stroked", url: hiaiSvgUrl("underline-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "bold-01-stroked", url: hiaiSvgUrl("bold-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "icon_order-list_outlined", url: hiaiSvgUrl("order-list-outlined.svg"), inset: "inset-[8.33%]" },
+              { name: "icon_disorder-list_outlined", url: hiaiSvgUrl("disorder-list-outlined.svg"), inset: "inset-[8.33%]" },
+              { name: "link-03-stroked", url: hiaiSvgUrl("link-03-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "palette-stroked", url: hiaiSvgUrl("palette-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "semi-icons-send_stroked", url: hiaiSvgUrl("send-02-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "semi-icons-send_stroked_enabled", url: hiaiSvgUrl("send-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "x-close-stroked", url: hiaiSvgUrl("x-close-stroked.svg"), inset: "inset-[20.83%]" },
+              { name: "refresh", url: hiaiSvgUrl("refresh-ccw-02-stroked.svg"), inset: "inset-[8.33%_8.33%_8.33%_4.17%]" },
+              { name: "IconCopyStroked2", url: hiaiSvgUrl("copy-stroked2.svg"), inset: "inset-[8.33%]" },
+              { name: "send-filled", url: hiaiSvgUrl("send.svg"), inset: "inset-[8.33%]" },
             ],
           },
           AIIcons: {
             icons: [
-              {
-                name: "hiai-2-mark",
-                url: resolveAssetUrl("./brand/hiai-logo.png"),
-                inset: "inset-[8.33%]",
-              },
+              { name: "hiai-2-mark", url: resolveAssetUrl("./brand/hiai-logo.png"), inset: "inset-[8.33%]" },
+              { name: "smart-summary-mark", url: resolveAssetUrl("./summary-icon.png"), inset: "inset-[0px]" },
+            ],
+          },
+          FusionWorkbench: {
+            icons: [
+              { name: "fusion-online-dot", url: hiaiSvgUrl("dot_stroked.svg"), inset: "inset-[15%]" },
+              { name: "fusion-stat-users", url: hiaiSvgUrl("users-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "fusion-stat-annotation-check", url: hiaiSvgUrl("annotation-check-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "fusion-stat-bar-chart", url: hiaiSvgUrl("bar-chart-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "fusion-stat-bar-chart-square", url: hiaiSvgUrl("bar-chart-square-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "fusion-stat-announcement", url: hiaiSvgUrl("announcement-01-stroked.svg"), inset: "inset-[8.33%]" },
+              { name: "fusion-stat-settings", url: hiaiSvgUrl("settings-04-stroked.svg"), inset: "inset-[8.33%]" },
             ],
           },
           Development: {
@@ -2998,7 +2978,7 @@
         try {
           const dict = window.__ICON_LIBRARY__?.byName;
           if (!dict) return;
-          for (const file of ["AIInput.json", "AIIcons.json", "Development.json"]) {
+          for (const file of ["AIInput.json", "AIIcons.json", "FusionWorkbench.json", "Development.json"]) {
             const data = await loadIconLibraryCategory(file);
             (data?.icons || []).forEach((ic) => {
               if (ic?.name) dict[String(ic.name)] = ic;
@@ -3039,7 +3019,7 @@
       function FusionWorkbenchView({ tokens, highlightTarget, agentSegment, onAgentSegment }) {
         const t = tokens || FUSION_WORKBENCH_TOKENS;
         const hi = (id) => highlightTarget === id;
-        const ic = FUSION_ONLINE_AGENT_ICONS;
+        const ic = FUSION_ONLINE_AGENT_ICON_NAMES;
 
         const StatDivider = () => (
           <div
@@ -3049,16 +3029,19 @@
           />
         );
 
-        const StatIconBtn = ({ src, label }) => (
+        const StatIconBtn = ({ iconName, fallbackFile, label }) => (
           <button
             type="button"
             title={label}
             className="shrink-0 flex items-center justify-center cursor-pointer outline-none border-0 bg-transparent"
             style={{ padding: t.statsActionPadPx, borderRadius: t.statsBarRadiusPx }}
           >
-            <span className="block overflow-hidden relative shrink-0" style={{ width: t.statsActionIconPx, height: t.statsActionIconPx }}>
-              <img alt="" src={src} className="w-full h-full object-contain block" draggable={false} />
-            </span>
+            {renderIconFromLibrary({
+              name: iconName,
+              size: t.statsActionIconPx,
+              fallbackUrl: hiaiSvgUrl(fallbackFile),
+              fallbackInset: "inset-[8.33%]",
+            })}
           </button>
         );
 
@@ -3131,7 +3114,13 @@
                       style={{ width: t.onlineIconBoxPx, height: t.onlineIconBoxPx, paddingTop: 4, paddingBottom: 4 }}
                     >
                       <span className="relative block shrink-0 overflow-hidden" style={{ width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
-                        <img alt="" src={ic.onlineDot} className="absolute inset-0 w-full h-full object-cover block max-w-none" draggable={false} />
+                        {renderIconFromLibrary({
+                          name: ic.onlineDot,
+                          size: t.onlineDotSizePx,
+                          fallbackUrl: hiaiSvgUrl("dot_stroked.svg"),
+                          fallbackInset: "inset-[15%]",
+                          imgStyle: { objectFit: "cover" },
+                        })}
                       </span>
                     </div>
                     <p
@@ -3190,7 +3179,12 @@
                   <StatDivider />
                   <div className="flex items-center gap-[4px] shrink-0 min-w-0">
                     <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
-                      <img alt="" src={ic.users} className="w-full h-full object-contain block" draggable={false} />
+                      {renderIconFromLibrary({
+                        name: ic.users,
+                        size: t.statsIconSizePx,
+                        fallbackUrl: hiaiSvgUrl("users-01-stroked.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
                     </span>
                     <span
                       className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
@@ -3205,7 +3199,12 @@
                   </div>
                   <div className="flex items-center gap-[4px] shrink-0 min-w-0">
                     <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
-                      <img alt="" src={ic.annotationCheck} className="w-full h-full object-contain block" draggable={false} />
+                      {renderIconFromLibrary({
+                        name: ic.annotationCheck,
+                        size: t.statsIconSizePx,
+                        fallbackUrl: hiaiSvgUrl("annotation-check-stroked.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
                     </span>
                     <span
                       className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
@@ -3220,7 +3219,12 @@
                   </div>
                   <div className="flex items-center gap-[4px] shrink-0 min-w-0">
                     <span className="relative block shrink-0 overflow-hidden" style={{ width: t.statsIconSizePx, height: t.statsIconSizePx }}>
-                      <img alt="" src={ic.barChart} className="w-full h-full object-contain block" draggable={false} />
+                      {renderIconFromLibrary({
+                        name: ic.barChart,
+                        size: t.statsIconSizePx,
+                        fallbackUrl: hiaiSvgUrl("bar-chart-01-stroked.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
                     </span>
                     <span
                       className="font-semibold whitespace-nowrap overflow-hidden text-ellipsis"
@@ -3235,9 +3239,9 @@
                   </div>
                   <StatDivider />
                   <div className="flex items-center shrink-0" style={{ gap: t.statsTrailingIconGapPx }}>
-                    <StatIconBtn src={ic.barChartSquare} label="图表" />
-                    <StatIconBtn src={ic.announcement} label="公告" />
-                    <StatIconBtn src={ic.settings} label="设置" />
+                    <StatIconBtn iconName={ic.barChartSquare} fallbackFile="bar-chart-square-01-stroked.svg" label="图表" />
+                    <StatIconBtn iconName={ic.announcement} fallbackFile="announcement-01-stroked.svg" label="公告" />
+                    <StatIconBtn iconName={ic.settings} fallbackFile="settings-04-stroked.svg" label="设置" />
                   </div>
                 </div>
 
@@ -3519,9 +3523,11 @@
                   <div className="flex flex-col gap-[20px]">
                     {filteredSections.map((sec) => (
                       <section key={sec.id}>
-                        <h3 className="text-[11px] font-bold text-[rgba(34,39,39,0.45)] tracking-wide uppercase mb-[10px]">
-                          {sec.label}
-                        </h3>
+                        {sec.id !== "AIInput" ? (
+                          <h3 className="text-[11px] font-bold text-[rgba(34,39,39,0.45)] tracking-wide uppercase mb-[10px]">
+                            {sec.label}
+                          </h3>
+                        ) : null}
                         <div
                           className="grid"
                           style={{
@@ -3701,12 +3707,14 @@
             
             {/* Header */}
             <div className={cx(`w-full rounded-[8px] px-[${t.headerPadX}px] py-[${t.headerPadY}px] flex items-center gap-[${t.headerGap}px]`, hl("header"))}>
-              <img
-                src={SUMMARY_ICON_SRC}
-                alt=""
-                aria-hidden="true"
-                className={cx(`shrink-0 size-[${t.iconSize}px]`, hl("icon"))}
-              />
+              <span className={cx("shrink-0", hl("icon"))}>
+                {renderIconFromLibrary({
+                  name: "smart-summary-mark",
+                  size: t.iconSize,
+                  fallbackUrl: resolveAssetUrl(SUMMARY_ICON_SRC),
+                  fallbackInset: "inset-[0px]",
+                })}
+              </span>
               <div className={cx(`flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[${t.titleFontSizePx}px] leading-[${t.titleLineHeightPx}px] font-semibold`, hl("title"))}>
                 {title}
               </div>
@@ -3725,7 +3733,12 @@
                     onClick={handleCopy}
                     disabled={!isInteractive || isBusy || isError || isEmpty}
                   >
-                    <img src={SUMMARY_ICON_SRC} alt="" aria-hidden="true" className={`size-[${t.iconSize}px]`} />
+                    {renderIconFromLibrary({
+                      name: "IconCopyStroked2",
+                      size: t.iconSize,
+                      fallbackUrl: hiaiSvgUrl("copy-stroked2.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
                   </button>
                 ) : null}
                 
@@ -3742,7 +3755,13 @@
                     onClick={handleRefresh}
                     disabled={!isInteractive || isBusy}
                   >
-                    <img src={SUMMARY_ICON_SRC} alt="" aria-hidden="true" className={cx(`size-[${t.iconSize}px]`, isBusy && "opacity-60")} />
+                    {renderIconFromLibrary({
+                      name: "refresh",
+                      size: t.iconSize,
+                      fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
+                      fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
+                      imgStyle: isBusy ? { opacity: 0.6 } : undefined,
+                    })}
                   </button>
                 ) : null}
                 
@@ -4367,7 +4386,7 @@
       }) {
         const t = tokens || BUBBLE_RECOMMEND_TOKENS;
         const hi = (id) => highlightTarget === id;
-        const sendSrc = resolveAssetUrl(t.sendIconSrc || "./ai-input-assets/icon-send.svg");
+        const sendIconName = t.sendIconName || "semi-icons-send_stroked";
 
         function adopt(text) {
           onDraftChange(text);
@@ -4466,15 +4485,13 @@
                       send(recommendText);
                     }}
                   >
-                    <img
-                      alt=""
-                      src={sendSrc}
-                      width={t.sendIconPx}
-                      height={t.sendIconPx}
-                      className="block"
-                      style={{ opacity: 0.65 }}
-                      draggable={false}
-                    />
+                    {renderIconFromLibrary({
+                      name: sendIconName,
+                      size: t.sendIconPx,
+                      fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                      imgStyle: { opacity: 0.65 },
+                    })}
                   </button>
                 </div>
               </div>
@@ -5719,7 +5736,7 @@
                                 { label: "\u6309\u94ae padding\uff08px\uff09", path: "sendBtnPadPx", type: "number" },
                                 { label: "\u6309\u94ae\u5706\u89d2\uff08px\uff09", path: "sendBtnRadiusPx", type: "number" },
                                 { label: "\u56fe\u6807\u8fb9\u957f\uff08px\uff09", path: "sendIconPx", type: "number" },
-                                { label: "\u53d1\u9001\u56fe\u6807\u8def\u5f84", path: "sendIconSrc", type: "text" },
+                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "text" },
                               ],
                             },
                             {
@@ -6105,6 +6122,7 @@
             sendBtnPad:       num("sendBtnPadPx", 4),
             sendBtnRadius:    num("sendBtnRadiusPx", 6),
             sendIconPx:       num("sendIconPx", 16),
+            sendIconName:     col("sendIconName", "semi-icons-send_stroked"),
           };
         }
 
@@ -6184,7 +6202,12 @@
           return (
             <div style={outerStyle}>
               <div style={headerStyle}>
-                <img src="./summary-icon.png" width={v.iconSize} height={v.iconSize} alt="" />
+                {renderIconFromLibrary({
+                  name: "smart-summary-mark",
+                  size: v.iconSize,
+                  fallbackUrl: resolveAssetUrl("./summary-icon.png"),
+                  fallbackInset: "inset-[0px]",
+                })}
                 <div style={{ ...shimBarStyle, flex: 1, height: 12, animationDelay: "0s" }} />
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: v.bodyGap }}>
@@ -6200,7 +6223,12 @@
           return (
             <div style={outerStyle}>
               <div style={headerStyle}>
-                <img src="./summary-icon.png" width={v.iconSize} height={v.iconSize} alt="" />
+                {renderIconFromLibrary({
+                  name: "smart-summary-mark",
+                  size: v.iconSize,
+                  fallbackUrl: resolveAssetUrl("./summary-icon.png"),
+                  fallbackInset: "inset-[0px]",
+                })}
                 <span style={{ ...titleStyle, color: "#f74331" }}>获取摘要失败</span>
               </div>
               <div style={{ fontSize: v.bodyFontSize, color: v.textSub, lineHeight: "1.5" }}>
@@ -6214,7 +6242,12 @@
           return (
             <div style={outerStyle}>
               <div style={headerStyle}>
-                <img src="./summary-icon.png" width={v.iconSize} height={v.iconSize} alt="" />
+                {renderIconFromLibrary({
+                  name: "smart-summary-mark",
+                  size: v.iconSize,
+                  fallbackUrl: resolveAssetUrl("./summary-icon.png"),
+                  fallbackInset: "inset-[0px]",
+                })}
                 <span style={titleStyle}>暂无摘要</span>
               </div>
               <div style={{ fontSize: v.bodyFontSize, color: v.textSub }}>
@@ -6237,7 +6270,12 @@
         return (
           <div style={outerStyle}>
             <div style={headerStyle}>
-              <img src="./summary-icon.png" width={v.iconSize} height={v.iconSize} alt="" />
+              {renderIconFromLibrary({
+                name: "smart-summary-mark",
+                size: v.iconSize,
+                fallbackUrl: resolveAssetUrl("./summary-icon.png"),
+                fallbackInset: "inset-[0px]",
+              })}
               <span style={titleStyle}>智能摘要</span>
               <span style={{ fontSize: 10, color: v.textSub, whiteSpace: "nowrap" }}>03-30 12:00</span>
               <span style={{ fontSize: 14, color: v.textSub, cursor: "pointer" }}>∧</span>
@@ -6492,7 +6530,13 @@
                   outline: "none",
                   cursor: "pointer",
                 }}>
-                  <img src="./ai-input-assets/icon-send.svg" width={v.sendIconPx} height={v.sendIconPx} alt="" />
+                  {renderIconFromLibrary({
+                    name: v.sendIconName || "semi-icons-send_stroked",
+                    size: v.sendIconPx,
+                    fallbackUrl: hiaiSvgUrl("send-02-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                    imgStyle: { opacity: 0.65 },
+                  })}
                 </button>
               </div>
             </div>
