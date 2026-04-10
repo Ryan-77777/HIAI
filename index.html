@@ -2159,12 +2159,40 @@
         // css-color: any CSS color string (hex, rgba, hsl, etc.) — shows swatch + text input
         // color: hex only — shows swatch + native color picker + text input
         const isColorType = type === "color" || type === "css-color";
+        const [iconOpen, setIconOpen] = useState(false);
+        const [iconQuery, setIconQuery] = useState("");
+
+        useEffect(() => {
+          if (!iconOpen) return;
+          let alive = true;
+          (async () => {
+            try {
+              await window.__ENSURE_ICON_LIB_ALL__?.();
+              if (!alive) return;
+              // force re-render by touching state (query unchanged)
+              setIconQuery((q) => q);
+            } catch {}
+          })();
+          function onDocDown(e) {
+            const el = e.target;
+            const root = document.querySelector(`[data-icon-field-root="${safeCssEscape(path)}"]`);
+            if (!root) return;
+            if (root.contains(el)) return;
+            setIconOpen(false);
+          }
+          document.addEventListener("mousedown", onDocDown, true);
+          return () => {
+            alive = false;
+            document.removeEventListener("mousedown", onDocDown, true);
+          };
+        }, [iconOpen, path]);
 
         return (
           <div
             className="flex flex-col gap-[4px]"
             onMouseEnter={() => onHoverChange?.(path)}
             onMouseLeave={() => onHoverChange?.(null)}
+            data-icon-field-root={path}
           >
             <div className="flex items-center justify-between gap-[6px]">
               <div className="text-[11px] leading-[15px] font-medium text-[#222727] flex-1 min-w-0 truncate">{label}</div>
@@ -2178,26 +2206,96 @@
                 onChange={(e) => onChange(parseMaybeNumber(e.target.value))}
               />
             ) : type === "icon" ? (
-              <div className="flex items-center gap-[8px]">
-                <span className="shrink-0">
-                  {renderIconFromLibrary({
-                    name: String(value || ""),
-                    size: 16,
-                    fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
-                    fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
-                    imgStyle: { opacity: 0.9 },
-                  })}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <input
-                    className={cx(inputBase, mono)}
-                    value={String(value ?? "")}
-                    placeholder="搜索并选择图标 name…"
-                    list="__hiai_icon_names__"
-                    onFocus={() => window.__ENSURE_ICON_LIB_ALL__?.()}
-                    onChange={(e) => onChange(e.target.value)}
-                  />
-                </div>
+              <div className="relative">
+                <button
+                  type="button"
+                  className={cx(
+                    "w-full h-[30px] px-[8px] bg-[#ffffff] border border-[rgba(45,66,107,0.12)] rounded-[7px] outline-none focus:ring-1 focus:ring-black flex items-center gap-[8px]",
+                  )}
+                  onClick={() => setIconOpen((v) => !v)}
+                >
+                  <span className="shrink-0">
+                    {renderIconFromLibrary({
+                      name: String(value || ""),
+                      size: 16,
+                      fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                      fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                      imgStyle: { opacity: 0.9 },
+                    })}
+                  </span>
+                  <span className={cx("flex-1 min-w-0 truncate text-left", mono)}>{String(value ?? "") || "选择图标…"}</span>
+                  <svg viewBox="0 0 8 5" width="8" height="5" className="shrink-0 text-[rgba(34,39,39,0.35)]" fill="none">
+                    <path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                {iconOpen ? (
+                  <div
+                    className="absolute top-[34px] left-0 right-0 z-[9999] bg-white border border-[rgba(45,66,107,0.12)] rounded-[10px] shadow-xl overflow-hidden"
+                  >
+                    <div className="p-[10px] border-b border-[rgba(45,66,107,0.06)]">
+                      <input
+                        className={cx(
+                          "h-[30px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] outline-none focus:ring-1 focus:ring-black w-full",
+                          mono,
+                        )}
+                        value={iconQuery}
+                        placeholder="搜索图标…"
+                        onChange={(e) => setIconQuery(e.target.value)}
+                        autoFocus
+                      />
+                      <div className="text-[10px] leading-[14px] text-[rgba(34,39,39,0.45)] mt-[6px]">
+                        从图标库按 name 选择替换（支持模糊搜索）。点击方块即可应用。
+                      </div>
+                    </div>
+
+                    <div className="p-[10px] overflow-auto" style={{ maxHeight: 320 }}>
+                      {(() => {
+                        const q = String(iconQuery || "").trim().toLowerCase();
+                        const names = getAllIconNames();
+                        const filtered = q ? names.filter((n) => n.toLowerCase().includes(q)) : names;
+                        const shown = filtered.slice(0, 240);
+                        return (
+                          <>
+                            <div className="grid grid-cols-6 gap-[8px]">
+                              {shown.map((n) => {
+                                const active = String(value || "") === n;
+                                return (
+                                  <button
+                                    key={n}
+                                    type="button"
+                                    title={n}
+                                    onClick={() => {
+                                      onChange(n);
+                                      setIconOpen(false);
+                                    }}
+                                    className={cx(
+                                      "w-[44px] h-[44px] rounded-[10px] border flex items-center justify-center transition-colors",
+                                      active
+                                        ? "border-black bg-[rgba(0,0,0,0.04)]"
+                                        : "border-[rgba(45,66,107,0.12)] hover:bg-[rgba(83,96,143,0.07)]",
+                                    )}
+                                  >
+                                    {renderIconFromLibrary({
+                                      name: n,
+                                      size: 18,
+                                      fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                                      fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                                      imgStyle: { opacity: 0.9 },
+                                    })}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                            <div className="mt-[10px] text-[10px] leading-[14px] text-[rgba(34,39,39,0.45)]">
+                              {q ? `匹配 ${filtered.length} 项` : `共 ${names.length} 项`}；当前展示前 {shown.length} 项
+                            </div>
+                          </>
+                        );
+                      })()}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             ) : type === "color" ? (
               <FoundationColorPicker
@@ -7759,31 +7857,7 @@
 
       ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
 
-      // Datalist for icon picker (built once; refreshes after icon library hydration)
-      (function mountIconDatalist() {
-        try {
-          if (document.getElementById("__hiai_icon_names__")) return;
-          const dl = document.createElement("datalist");
-          dl.id = "__hiai_icon_names__";
-          document.body.appendChild(dl);
-          function refresh() {
-            const names = getAllIconNames();
-            dl.innerHTML = names.map((n) => `<option value="${escapeHtml(n)}"></option>`).join("");
-          }
-          // initial + delayed refresh (after async icon hydration)
-          refresh();
-          window.setTimeout(refresh, 600);
-          window.setTimeout(refresh, 1600);
-          const orig = window.__ENSURE_ICON_LIB_ALL__;
-          if (typeof orig === "function") {
-            window.__ENSURE_ICON_LIB_ALL__ = async () => {
-              const r = await orig();
-              refresh();
-              return r;
-            };
-          }
-        } catch {}
-      })();
+      // Icon picker now uses custom grid dropdown (no datalist needed).
     </script>
   </body>
 </html>
