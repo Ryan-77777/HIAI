@@ -604,6 +604,7 @@
         // 头像（Figma 24×24，与气泡间距 8）
         avatarSizePx: 24,
         avatarGapPx: 8,
+        // 头像资源固定对齐 Figma 8287:154389（左右各一张），此处 label 仅保留兼容字段（渲染不再使用）。
         avatarPeerLabel: "对",
         avatarSelfLabel: "我",
         // 入站行：右侧留白（Figma spacing-extra-loose 32）
@@ -1763,7 +1764,9 @@
           "**交互**：",
           "- 点击推荐**文案**：写入下方模拟输入框并复制剪贴板。",
           "- **悬停**推荐行：右侧出现发送按钮（图标库 `sendIconName`）。",
-          "- 业务可配置是否展示头像、是否展示 AI 推荐；本 demo 用复选框预览。**「预览 AI 托管出站渐变」**用于切换己方气泡为渐变态，便于对照设计稿。",
+          "- 业务可配置是否展示头像、是否展示 AI 推荐；本 demo 用复选框预览。",
+          "- **头像资源固定**：左右聊天头像默认固定使用两张图片（见 Figma 8287:154389），不得用字母/渐变占位或业务自定义头像替代，以保证对齐稿面。",
+          "- **「预览 AI 托管出站渐变」**用于切换己方气泡为渐变态，便于对照设计稿。",
           "",
           "**触发关键词**：`IM气泡` / `IM 气泡` / `ImBubble` / `气泡推荐`（兼容） / `吸附推荐`",
           "",
@@ -4939,21 +4942,19 @@
           if (typeof onSend === "function") onSend(text);
         }
 
-        function AvatarFace({ label }) {
+        function AvatarFace({ side }) {
           const s = t.avatarSizePx;
+          // 固定头像资源（对齐 Figma 8287:154389），不要用字母/渐变占位。
+          const src = side === "self"
+            ? resolveAssetUrl("./im-bubble-assets/avatar-self.png")
+            : resolveAssetUrl("./im-bubble-assets/avatar-peer.png");
           return (
-            <div
-              className="shrink-0 rounded-full flex items-center justify-center font-semibold select-none"
-              style={{
-                width: s,
-                height: s,
-                fontSize: Math.max(10, Math.round(s * 0.42)),
-                color: "rgba(34,39,39,0.5)",
-                background: "linear-gradient(135deg, rgba(99,219,191,0.28), rgba(108,147,239,0.28))",
-              }}
-              aria-hidden
-            >
-              {label}
+            <div className="shrink-0 rounded-full overflow-hidden" style={{ width: s, height: s }} aria-hidden>
+              <img
+                alt=""
+                src={src}
+                className="block w-full h-full object-cover pointer-events-none"
+              />
             </div>
           );
         }
@@ -5000,7 +5001,7 @@
                   style={{ gap: gapAv, paddingRight: t.peerRowPadRightPx }}
                   data-token-hint="imPeerRow1"
                 >
-                  {showAvatar ? <AvatarFace label={t.avatarPeerLabel} /> : null}
+                  {showAvatar ? <AvatarFace side="peer" /> : null}
                   <div
                     className="min-w-0 box-border"
                     style={{
@@ -5053,7 +5054,7 @@
                       </p>
                     </div>
                   </div>
-                  {showAvatar ? <AvatarFace label={t.avatarSelfLabel} /> : null}
+                  {showAvatar ? <AvatarFace side="self" /> : null}
                 </div>
 
                 <div className="flex flex-col items-stretch w-full min-w-0" style={{ gap: t.stackGapPx }}>
@@ -5062,7 +5063,7 @@
                     style={{ gap: gapAv, paddingRight: t.peerRowPadRightPx }}
                     data-token-hint="bubblePeerBubble"
                   >
-                    {showAvatar ? <AvatarFace label={t.avatarPeerLabel} /> : null}
+                    {showAvatar ? <AvatarFace side="peer" /> : null}
                     <div
                       className="min-w-0 box-border"
                       style={{
