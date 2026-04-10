@@ -596,6 +596,48 @@
         textSubtitle: "semi-color-text-3",
       };
 
+      // 气泡推荐（Figma 8280:120612「气泡推荐」— 吸附在对方 IM 气泡下方）
+      const BUBBLE_RECOMMEND_TOKENS = {
+        fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+        componentName: "气泡推荐 / IM Bubble Reply Suggest",
+        focusRing: "semi-brand-5",
+        demoChromeBg: "semi-color-white",
+        demoChromeBorder: "rgba(45,66,107,0.12)",
+        demoChromeRadiusPx: 12,
+        demoChromePadPx: 16,
+        // 对方消息气泡（入站）
+        peerBubbleBg: "rgba(249,249,249,1)",
+        peerBubblePadXPx: 12,
+        peerBubblePadYPx: 8,
+        peerBubbleRadiusPx: 12,
+        peerBubbleMaxWidthPx: 500,
+        peerTextFontPx: 14,
+        peerTextLinePx: 20,
+        peerTextColor: "semi-color-text-0",
+        stackGapPx: 4,
+        // 推荐条（渐变胶囊）
+        recoGradient:
+          "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(239, 246, 255) 55%, rgb(243, 245, 255) 90%, rgb(252, 243, 255) 100%)",
+        recoPadXPx: 8,
+        recoPadYPx: 4,
+        recoRadiusPx: 6,
+        recoFontPx: 12,
+        recoLinePx: 16,
+        recoTextColor: "semi-color-text-1",
+        recoMaxWidthPx: 500,
+        recoSendGapPx: 4,
+        // 发送按钮（hover 显隐）
+        sendBtnBg: "semi-color-white",
+        sendBtnBorder: "rgba(34,39,39,0.09)",
+        sendBtnPadPx: 4,
+        sendBtnRadiusPx: 6,
+        sendIconPx: 16,
+        sendIconSrc: "./ai-input-assets/icon-send.svg",
+        // 模拟输入区
+        draftAreaBorder: "rgba(45,66,107,0.12)",
+        draftMinHeightPx: 72,
+      };
+
       const ICON_LIBRARY_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
         componentName: "图标库 / HiUI Icon Library",
@@ -1666,6 +1708,89 @@
           "- [ ] 工作区内边距 8 / 12 / 12 与列间距 12 与稿一致。",
           "- [ ] 列表列宽 407px；详情区为白底 + 指定 drop shadow。",
           "- [ ] 顶栏 blur 10px；指标条 rgba(255,255,255,0.6) + 白边框。",
+          "",
+        ].join("\n");
+      }
+
+      function buildBubbleRecommendDesignSkillMarkdown(t) {
+        const px = (n) => String(n) + "px";
+        return [
+          "# DESIGN_SKILL — 气泡推荐（IM 吸附回复推荐）",
+          "",
+          "> 设计来源：[Figma 气泡推荐](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8280-120612)",
+          "",
+          "---",
+          "",
+          "## §1 系统角色与指令",
+          "",
+          "**场景**：IM 会话中，AI 在**对方发来的消息气泡正下方**（间距 4px）吸附一条**渐变背景**的推荐回复文案。",
+          "",
+          "**交互**：",
+          "- 点击推荐**文案区域**：将推荐内容**写入输入框**并写入剪贴板（业务可二选一，本规范要求至少回填输入框）。",
+          "- **鼠标悬停**整条推荐行时，右侧出现**发送**按钮（纸飞机图标）；点击发送＝将推荐文案作为一条消息发出（由业务接入发送管线）。",
+          "- 推荐条**宽度随文案自适应**，不超过 `recoMaxWidthPx`。",
+          "",
+          "**触发关键词**：`气泡推荐` / `IM 推荐` / `BubbleRecommend` / `吸附推荐`",
+          "",
+          "---",
+          "",
+          "## §2 Global Design Tokens",
+          "",
+          "### 2.1 色彩与渐变",
+          "",
+          "| Role | Token | Value |",
+          "| --- | --- | --- |",
+          `| 对方气泡底 | peerBubbleBg | ${mdToken("peerBubbleBg", t.peerBubbleBg)} |`,
+          `| 推荐条渐变 | recoGradient | （见 §2.3 原文） |`,
+          `| 推荐文字 | recoTextColor | ${mdToken("recoTextColor", t.recoTextColor)} |`,
+          `| 对方气泡文字 | peerTextColor | ${mdToken("peerTextColor", t.peerTextColor)} |`,
+          `| 发送按钮底 | sendBtnBg | ${mdToken("sendBtnBg", t.sendBtnBg)} |`,
+          `| 发送按钮边 | sendBtnBorder | ${mdToken("sendBtnBorder", t.sendBtnBorder)} |`,
+          `| Focus ring | focusRing | ${mdToken("focusRing", t.focusRing)} |",
+          "",
+          "### 2.2 尺寸与间距",
+          "",
+          "| 含义 | Token | Value |",
+          "| --- | --- | --- |",
+          `| 对方气泡内边距 X | peerBubblePadXPx | ${mdToken("peerBubblePadXPx", px(t.peerBubblePadXPx))} |`,
+          `| 对方气泡内边距 Y | peerBubblePadYPx | ${mdToken("peerBubblePadYPx", px(t.peerBubblePadYPx))} |`,
+          `| 对方气泡圆角 | peerBubbleRadiusPx | ${mdToken("peerBubbleRadiusPx", px(t.peerBubbleRadiusPx))} |`,
+          `| 对方气泡最大宽 | peerBubbleMaxWidthPx | ${mdToken("peerBubbleMaxWidthPx", px(t.peerBubbleMaxWidthPx))} |`,
+          `| 气泡与推荐间距 | stackGapPx | ${mdToken("stackGapPx", px(t.stackGapPx))} |`,
+          `| 推荐内边距 X | recoPadXPx | ${mdToken("recoPadXPx", px(t.recoPadXPx))} |`,
+          `| 推荐内边距 Y | recoPadYPx | ${mdToken("recoPadYPx", px(t.recoPadYPx))} |`,
+          `| 推荐圆角 | recoRadiusPx | ${mdToken("recoRadiusPx", px(t.recoRadiusPx))} |`,
+          `| 推荐文案字号/行高 | recoFontPx / recoLinePx | ${mdToken("recoFontPx", px(t.recoFontPx))} / ${mdToken("recoLinePx", px(t.recoLinePx))} |`,
+          `| 推荐最大宽 | recoMaxWidthPx | ${mdToken("recoMaxWidthPx", px(t.recoMaxWidthPx))} |`,
+          `| 推荐与发送钮间距 | recoSendGapPx | ${mdToken("recoSendGapPx", px(t.recoSendGapPx))} |`,
+          `| 发送按钮 padding | sendBtnPadPx | ${mdToken("sendBtnPadPx", px(t.sendBtnPadPx))} |`,
+          `| 发送按钮圆角 | sendBtnRadiusPx | ${mdToken("sendBtnRadiusPx", px(t.sendBtnRadiusPx))} |`,
+          `| 发送图标边长 | sendIconPx | ${mdToken("sendIconPx", px(t.sendIconPx))} |",
+          "",
+          "### 2.3 recoGradient（须原样使用）",
+          "",
+          "```css",
+          `background-image: ${t.recoGradient};`,
+          "```",
+          "",
+          "---",
+          "",
+          "## §3 结构与 DOM",
+          "",
+          "1. 对方消息气泡：`peerBubble*` + 入站圆角（右上/右下/左下为圆角，左上贴会话边可由产品决定）。",
+          "2. 推荐行容器：`display:flex; align-items:flex-start; gap: recoSendGapPx; width:100%; max-width: peerBubbleMaxWidthPx`（与气泡对齐）。",
+          "3. 推荐文案区：`button` 或 `role=button`，`background-image: recoGradient`，可换行。",
+          "4. 发送按钮：**默认不占交互焦点可视**（`opacity:0` 或 `visibility`），**父级 hover** 时显示；`sendBtn*` 样式与稿一致。",
+          "",
+          "---",
+          "",
+          "## §4 校验清单",
+          "",
+          "- [ ] 渐变与 Figma 四色停点一致。",
+          "- [ ] 推荐区 padding 8×4、圆角 6、正文 12/16、字色 text-1。",
+          "- [ ] 发送钮白底 + rgba(34,39,39,0.09) 描边 + 16px 图标。",
+          "",
+          `**Typography**：${mdToken("fontFamily", t.fontFamily)}`,
           "",
         ].join("\n");
       }
@@ -4181,12 +4306,167 @@
 
       // ─────────────────────────────────────────────────────────────────────────
 
+      function BubbleRecommendView({
+        tokens,
+        highlightTarget,
+        recommendText,
+        draftValue,
+        onDraftChange,
+        onSend,
+        lastSentPreview,
+      }) {
+        const t = tokens || BUBBLE_RECOMMEND_TOKENS;
+        const hi = (id) => highlightTarget === id;
+        const sendSrc = resolveAssetUrl(t.sendIconSrc || "./ai-input-assets/icon-send.svg");
+
+        function adopt(text) {
+          onDraftChange(text);
+          try {
+            navigator.clipboard.writeText(text);
+          } catch {}
+        }
+
+        function send(text) {
+          adopt(text);
+          if (typeof onSend === "function") onSend(text);
+        }
+
+        const peerR = t.peerBubbleRadiusPx;
+        const peerBR = `0 ${peerR}px ${peerR}px ${peerR}px`;
+
+        return (
+          <div className="flex flex-col gap-[16px] w-full max-w-[440px]" style={{ fontFamily: t.fontFamily }}>
+            <div
+              className="rounded-[12px] border flex flex-col gap-[12px] box-border"
+              style={{
+                background: t.demoChromeBg,
+                borderColor: t.demoChromeBorder,
+                borderRadius: t.demoChromeRadiusPx,
+                padding: t.demoChromePadPx,
+                ...(hi("bubbleDemoChrome") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+              }}
+              data-token-hint="bubbleDemoChrome"
+            >
+              <div className="text-[11px] leading-[16px]" style={{ color: "rgba(34,39,39,0.45)" }}>
+                IM 片段：对方消息下方吸附推荐（hover 行内右侧出现发送）
+              </div>
+              <div className="flex flex-col items-start w-full min-w-0" style={{ gap: t.stackGapPx }} data-token-hint="bubbleStack">
+                <div
+                  className="min-w-0 box-border w-max max-w-full"
+                  style={{
+                    maxWidth: t.peerBubbleMaxWidthPx,
+                    padding: `${t.peerBubblePadYPx}px ${t.peerBubblePadXPx}px`,
+                    background: t.peerBubbleBg,
+                    borderRadius: peerBR,
+                    ...(hi("bubblePeerBubble") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                  }}
+                  data-token-hint="bubblePeerBubble"
+                >
+                  <p
+                    className="m-0"
+                    style={{
+                      fontSize: t.peerTextFontPx,
+                      lineHeight: `${t.peerTextLinePx}px`,
+                      color: t.peerTextColor,
+                    }}
+                  >
+                    你帮我看下这个有啥问题呢
+                  </p>
+                </div>
+                <div
+                  className="group flex items-start w-full min-w-0"
+                  style={{ gap: t.recoSendGapPx, maxWidth: t.peerBubbleMaxWidthPx }}
+                  data-token-hint="bubbleRecoRow"
+                >
+                  <button
+                    type="button"
+                    className="text-left cursor-pointer border-0 outline-none min-w-0 shrink-0 box-border"
+                    style={{
+                      width: "max-content",
+                      maxWidth: "100%",
+                      padding: `${t.recoPadYPx}px ${t.recoPadXPx}px`,
+                      borderRadius: t.recoRadiusPx,
+                      backgroundImage: t.recoGradient,
+                      fontSize: t.recoFontPx,
+                      lineHeight: `${t.recoLinePx}px`,
+                      color: t.recoTextColor,
+                      ...(hi("bubbleRecoChip") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                    }}
+                    data-token-hint="bubbleRecoChip"
+                    onClick={() => adopt(recommendText)}
+                  >
+                    {recommendText}
+                  </button>
+                  <button
+                    type="button"
+                    title="发送"
+                    aria-label="发送推荐回复"
+                    className="shrink-0 flex items-center justify-center opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-150 outline-none"
+                    style={{
+                      padding: t.sendBtnPadPx,
+                      borderRadius: t.sendBtnRadiusPx,
+                      background: t.sendBtnBg,
+                      border: `1px solid ${t.sendBtnBorder}`,
+                      ...(hi("bubbleSendBtn") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                    }}
+                    data-token-hint="bubbleSendBtn"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      send(recommendText);
+                    }}
+                  >
+                    <img
+                      alt=""
+                      src={sendSrc}
+                      width={t.sendIconPx}
+                      height={t.sendIconPx}
+                      className="block"
+                      style={{ opacity: 0.65 }}
+                      draggable={false}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="rounded-[12px] border flex flex-col gap-[8px] box-border p-[12px]"
+              style={{ borderColor: t.draftAreaBorder }}
+              data-token-hint="bubbleDraftWrap"
+            >
+              <div className="text-[11px] text-[rgba(34,39,39,0.45)]">模拟输入框（点击推荐文案即填入并复制）</div>
+              <textarea
+                value={draftValue}
+                onChange={(e) => onDraftChange(e.target.value)}
+                rows={3}
+                className="w-full rounded-[8px] border px-[10px] py-[8px] text-[14px] outline-none resize-y box-border"
+                style={{
+                  minHeight: t.draftMinHeightPx,
+                  borderColor: "rgba(34,39,39,0.12)",
+                  color: "#222727",
+                  ...(hi("bubbleDraftInput") ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {}),
+                }}
+                data-token-hint="bubbleDraftInput"
+                placeholder="输入回复…"
+              />
+              {lastSentPreview ? (
+                <div className="text-[12px] text-[rgba(34,39,39,0.55)] leading-[18px]">
+                  已模拟发送：<span className="font-medium text-[#222727]">{lastSentPreview}</span>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        );
+      }
+
       function Demo() {
         const COMPONENTS = useMemo(
           () => [
             { id: "smartSummary", name: "智能摘要" },
             { id: "formRecommend", name: "表单推荐" },
             { id: "aiInput", name: "AI输入框" },
+            { id: "bubbleRecommend", name: "气泡推荐" },
             { id: "fusionWorkbench", name: "融合工作台框架" },
           ],
           [],
@@ -4223,6 +4503,7 @@
         const [formTokens, setFormTokens] = useState(() => deepClone(FORM_RECOMMEND_TOKENS));
         const [aiTokens, setAiTokens] = useState(() => deepClone(AI_INPUT_TOKENS));
         const [fusionTokens, setFusionTokens] = useState(() => deepClone(FUSION_WORKBENCH_TOKENS));
+        const [bubbleTokens, setBubbleTokens] = useState(() => deepClone(BUBBLE_RECOMMEND_TOKENS));
         const [iconLibTokens, setIconLibTokens] = useState(() => deepClone(ICON_LIBRARY_TOKENS));
 
         // Resolved tokens: all foundation color references are replaced with actual CSS values
@@ -4230,6 +4511,7 @@
         const resolvedFormTokens  = useMemo(() => resolveAllTokenColors(formTokens, foundationPalette),  [formTokens,  foundationPalette]);
         const resolvedAiTokens    = useMemo(() => resolveAllTokenColors(aiTokens, foundationPalette),    [aiTokens,    foundationPalette]);
         const resolvedFusionTokens = useMemo(() => resolveAllTokenColors(fusionTokens, foundationPalette), [fusionTokens, foundationPalette]);
+        const resolvedBubbleTokens = useMemo(() => resolveAllTokenColors(bubbleTokens, foundationPalette), [bubbleTokens, foundationPalette]);
         const resolvedIconLibTokens = useMemo(() => resolveAllTokenColors(iconLibTokens, foundationPalette), [iconLibTokens, foundationPalette]);
         const [hoverTokenPath, setHoverTokenPath] = useState(null);
         const [showUpdatedAt, setShowUpdatedAt] = useState(true);
@@ -4243,6 +4525,10 @@
         const [aiRecoClick, setAiRecoClick] = useState("adopt"); // adopt | send
         const [aiRecoHideAfterPick, setAiRecoHideAfterPick] = useState(true);
         const [fusionAgentSegment, setFusionAgentSegment] = useState("online"); // fusion | online | ticket（对齐 Figma 8279:67909）
+        const [bubbleDraft, setBubbleDraft] = useState("");
+        const [bubbleLastSent, setBubbleLastSent] = useState("");
+        const bubbleRecommendDemoText =
+          "好的请稍等，我这面帮您查看一下你的账号异常信息";
 
         // activeTokens: raw token refs (for design skill markdown & TokensPanel)
         const activeTokens =
@@ -4252,9 +4538,11 @@
               ? formTokens
               : panelComponentId === "aiInput"
                 ? aiTokens
-                : panelComponentId === "fusionWorkbench"
-                  ? fusionTokens
-                  : iconLibTokens;
+                : panelComponentId === "bubbleRecommend"
+                  ? bubbleTokens
+                  : panelComponentId === "fusionWorkbench"
+                    ? fusionTokens
+                    : iconLibTokens;
         // activeResolvedTokens: CSS-resolved values (for component rendering)
         const activeResolvedTokens =
           panelComponentId === "smartSummary"
@@ -4263,9 +4551,11 @@
               ? resolvedFormTokens
               : panelComponentId === "aiInput"
                 ? resolvedAiTokens
-                : panelComponentId === "fusionWorkbench"
-                  ? resolvedFusionTokens
-                  : resolvedIconLibTokens;
+                : panelComponentId === "bubbleRecommend"
+                  ? resolvedBubbleTokens
+                  : panelComponentId === "fusionWorkbench"
+                    ? resolvedFusionTokens
+                    : resolvedIconLibTokens;
         const setActiveTokens =
           panelComponentId === "smartSummary"
             ? setSmartTokens
@@ -4273,9 +4563,11 @@
               ? setFormTokens
               : panelComponentId === "aiInput"
                 ? setAiTokens
-                : panelComponentId === "fusionWorkbench"
-                  ? setFusionTokens
-                  : setIconLibTokens;
+                : panelComponentId === "bubbleRecommend"
+                  ? setBubbleTokens
+                  : panelComponentId === "fusionWorkbench"
+                    ? setFusionTokens
+                    : setIconLibTokens;
 
         const resetActiveTokens =
           panelComponentId === "smartSummary"
@@ -4284,9 +4576,11 @@
               ? () => setFormTokens(deepClone(FORM_RECOMMEND_TOKENS))
               : panelComponentId === "aiInput"
                 ? () => setAiTokens(deepClone(AI_INPUT_TOKENS))
-                : panelComponentId === "fusionWorkbench"
-                  ? () => setFusionTokens(deepClone(FUSION_WORKBENCH_TOKENS))
-                  : () => setIconLibTokens(deepClone(ICON_LIBRARY_TOKENS));
+                : panelComponentId === "bubbleRecommend"
+                  ? () => setBubbleTokens(deepClone(BUBBLE_RECOMMEND_TOKENS))
+                  : panelComponentId === "fusionWorkbench"
+                    ? () => setFusionTokens(deepClone(FUSION_WORKBENCH_TOKENS))
+                    : () => setIconLibTokens(deepClone(ICON_LIBRARY_TOKENS));
 
         const designSkillMd = useMemo(() => {
           return panelComponentId === "smartSummary"
@@ -4295,12 +4589,14 @@
               ? buildFormRecommendDesignSkillMarkdown(activeResolvedTokens)
               : panelComponentId === "aiInput"
                 ? buildAiInputDesignSkillMarkdown(activeResolvedTokens)
-                : panelComponentId === "fusionWorkbench"
-                  ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
+                : panelComponentId === "bubbleRecommend"
+                  ? buildBubbleRecommendDesignSkillMarkdown(activeResolvedTokens)
+                  : panelComponentId === "fusionWorkbench"
+                    ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
                 : [
                     "# DESIGN_SKILL — 图标库（Icon Library）",
                     "",
-                    "> **平台级约束**：HiAI 体系内**所有业务组件**（智能摘要、表单推荐、AI 输入框、融合工作台框架及未来新增组件）中出现的图标，**必须**通过本图标库按 `name` 引用；禁止自建 SVG、emoji、第三方图标字体或任意未注册资源，以保证视觉与交互一致性。",
+                    "> **平台级约束**：HiAI 体系内**所有业务组件**（智能摘要、表单推荐、AI 输入框、气泡推荐、融合工作台框架及未来新增组件）中出现的图标，**必须**通过本图标库按 `name` 引用；禁止自建 SVG、emoji、第三方图标字体或任意未注册资源，以保证视觉与交互一致性。",
                     "",
                     "## 0.1 文案生成原则（重要：文案非固定）",
                     "",
@@ -4460,6 +4756,19 @@
             if (p.startsWith("recommendWrap") || p.startsWith("recommendItem")) return "recommendList";
             if (p === "focusRing") return "input";
             return "input";
+          }
+
+          if (panelComponentId === "bubbleRecommend") {
+            if (p.startsWith("demoChrome")) return "bubbleDemoChrome";
+            if (p.startsWith("peer")) return "bubblePeerBubble";
+            if (p === "stackGapPx") return "bubbleStack";
+            if (p === "recoSendGapPx") return "bubbleRecoRow";
+            if (p.startsWith("reco")) return "bubbleRecoChip";
+            if (p.startsWith("send")) return "bubbleSendBtn";
+            if (p === "draftMinHeightPx") return "bubbleDraftInput";
+            if (p.startsWith("draft")) return "bubbleDraftWrap";
+            if (p === "focusRing" || p === "fontFamily" || p === "componentName") return "bubbleDemoChrome";
+            return "bubbleRecoRow";
           }
 
           if (panelComponentId === "fusionWorkbench") {
@@ -4706,7 +5015,9 @@
                                     ? "表单字段下的 AI 推荐规范"
                                     : c.id === "aiInput"
                                       ? "对话/富文本场景输入框规范"
-                                      : "会话列表 + IM + 详情 Tab 外壳"}
+                                      : c.id === "bubbleRecommend"
+                                        ? "IM 气泡下渐变推荐 + 采纳/发送"
+                                        : "会话列表 + IM + 详情 Tab 外壳"}
                               </div>
                             </button>
                           );
@@ -4730,9 +5041,11 @@
                             ? "表单推荐（UI）"
                             : panelComponentId === "aiInput"
                               ? "AI输入框（UI）"
-                              : panelComponentId === "fusionWorkbench"
-                                ? "融合工作台框架（UI）"
-                                : "图标库（UI）"}
+                              : panelComponentId === "bubbleRecommend"
+                                ? "气泡推荐（UI）"
+                                : panelComponentId === "fusionWorkbench"
+                                  ? "融合工作台框架（UI）"
+                                  : "图标库（UI）"}
                       </div>
                       <div className="text-[rgba(34,39,39,0.6)] text-xs">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
                     </div>
@@ -4815,6 +5128,10 @@
                             清空
                           </button>
                         </>
+                      ) : panelComponentId === "bubbleRecommend" ? (
+                        <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">
+                          点击推荐填入输入框；hover 行内出现发送
+                        </span>
                       ) : panelComponentId === "fusionWorkbench" ? (
                         <span className="text-[11px] text-[rgba(34,39,39,0.45)] whitespace-nowrap">顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent</span>
                       ) : (
@@ -4976,6 +5293,18 @@
                             tokens={activeResolvedTokens}
                           />
                         </div>
+                      ) : panelComponentId === "bubbleRecommend" ? (
+                        <div className={cx("w-full min-w-0", collapsed && "hidden")}>
+                          <BubbleRecommendView
+                            tokens={activeResolvedTokens}
+                            highlightTarget={highlightTarget}
+                            recommendText={bubbleRecommendDemoText}
+                            draftValue={bubbleDraft}
+                            onDraftChange={setBubbleDraft}
+                            onSend={(text) => setBubbleLastSent(text)}
+                            lastSentPreview={bubbleLastSent}
+                          />
+                        </div>
                       ) : panelComponentId === "fusionWorkbench" ? (
                         <div className={cx("w-full min-w-0", collapsed && "hidden")}>
                           <FusionWorkbenchView
@@ -5023,9 +5352,11 @@
                         ? "Tokens（表单推荐）"
                         : panelComponentId === "aiInput"
                           ? "Tokens（AI输入框）"
-                          : panelComponentId === "fusionWorkbench"
-                            ? "Tokens（融合工作台框架）"
-                            : "Tokens（图标库）"
+                          : panelComponentId === "bubbleRecommend"
+                            ? "Tokens（气泡推荐）"
+                            : panelComponentId === "fusionWorkbench"
+                              ? "Tokens（融合工作台框架）"
+                              : "Tokens（图标库）"
                   }
                   tokens={activeTokens}
                   onTokensChange={setActiveTokens}
@@ -5286,6 +5617,72 @@
                               ],
                             },
                           ]
+                        : panelComponentId === "bubbleRecommend"
+                        ? [
+                            {
+                              title: "\u5143\u4fe0\u606f",
+                              fields: [
+                                { label: "\u7ec4\u4ef6\u540d\u79f0", path: "componentName", type: "text" },
+                                { label: "\u5b57\u4f53\u65cf", path: "fontFamily", type: "text" },
+                                { label: "Focus Ring", path: "focusRing", type: "color" },
+                              ],
+                            },
+                            {
+                              title: "\u9884\u89c8\u533a\uff08Demo\uff09",
+                              fields: [
+                                { label: "\u9884\u89c8\u533a\u80cc\u666f", path: "demoChromeBg", type: "color" },
+                                { label: "\u9884\u89c8\u533a\u8fb9\u6846", path: "demoChromeBorder", type: "css-color" },
+                                { label: "\u9884\u89c8\u533a\u5706\u89d2\uff08px\uff09", path: "demoChromeRadiusPx", type: "number" },
+                                { label: "\u9884\u89c8\u533a\u5185\u8fb9\u8ddd\uff08px\uff09", path: "demoChromePadPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u5bf9\u65b9\u6c14\u6ce1",
+                              fields: [
+                                { label: "\u6c14\u6ce1\u5e95\u8272", path: "peerBubbleBg", type: "css-color" },
+                                { label: "\u6c14\u6ce1\u5185\u8fb9\u8ddd X\uff08px\uff09", path: "peerBubblePadXPx", type: "number" },
+                                { label: "\u6c14\u6ce1\u5185\u8fb9\u8ddd Y\uff08px\uff09", path: "peerBubblePadYPx", type: "number" },
+                                { label: "\u6c14\u6ce1\u5706\u89d2\uff08px\uff09", path: "peerBubbleRadiusPx", type: "number" },
+                                { label: "\u6c14\u6ce1\u6700\u5927\u5bbd\uff08px\uff09", path: "peerBubbleMaxWidthPx", type: "number" },
+                                { label: "\u6c14\u6ce1\u6587\u5b57\u5b57\u53f7\uff08px\uff09", path: "peerTextFontPx", type: "number" },
+                                { label: "\u6c14\u6ce1\u6587\u5b57\u884c\u9ad8\uff08px\uff09", path: "peerTextLinePx", type: "number" },
+                                { label: "\u6c14\u6ce1\u6587\u5b57\u8272", path: "peerTextColor", type: "color" },
+                                { label: "\u6c14\u6ce1\u4e0e\u63a8\u8350\u95f4\u8ddd\uff08px\uff09", path: "stackGapPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u6e10\u53d8\u63a8\u8350\u6761",
+                              fields: [
+                                { label: "recoGradient CSS", path: "recoGradient", type: "text" },
+                                { label: "\u63a8\u8350\u5185\u8fb9\u8ddd X\uff08px\uff09", path: "recoPadXPx", type: "number" },
+                                { label: "\u63a8\u8350\u5185\u8fb9\u8ddd Y\uff08px\uff09", path: "recoPadYPx", type: "number" },
+                                { label: "\u63a8\u8350\u5706\u89d2\uff08px\uff09", path: "recoRadiusPx", type: "number" },
+                                { label: "\u63a8\u8350\u5b57\u53f7\uff08px\uff09", path: "recoFontPx", type: "number" },
+                                { label: "\u63a8\u8350\u884c\u9ad8\uff08px\uff09", path: "recoLinePx", type: "number" },
+                                { label: "\u63a8\u8350\u6587\u5b57\u8272", path: "recoTextColor", type: "color" },
+                                { label: "\u63a8\u8350\u6700\u5927\u5bbd\uff08px\uff09", path: "recoMaxWidthPx", type: "number" },
+                                { label: "\u63a8\u8350\u4e0e\u53d1\u9001\u94ae\u95f4\u8ddd\uff08px\uff09", path: "recoSendGapPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u53d1\u9001\u6309\u94ae",
+                              fields: [
+                                { label: "\u6309\u94ae\u5e95\u8272", path: "sendBtnBg", type: "color" },
+                                { label: "\u6309\u94ae\u8fb9\u6846", path: "sendBtnBorder", type: "css-color" },
+                                { label: "\u6309\u94ae padding\uff08px\uff09", path: "sendBtnPadPx", type: "number" },
+                                { label: "\u6309\u94ae\u5706\u89d2\uff08px\uff09", path: "sendBtnRadiusPx", type: "number" },
+                                { label: "\u56fe\u6807\u8fb9\u957f\uff08px\uff09", path: "sendIconPx", type: "number" },
+                                { label: "\u53d1\u9001\u56fe\u6807\u8def\u5f84", path: "sendIconSrc", type: "text" },
+                              ],
+                            },
+                            {
+                              title: "\u6a21\u62df\u8f93\u5165",
+                              fields: [
+                                { label: "\u8fb9\u6846\u8272\uff08\u533a\u57df\uff09", path: "draftAreaBorder", type: "css-color" },
+                                { label: "\u8f93\u5165\u6846\u6700\u5c0f\u9ad8\uff08px\uff09", path: "draftMinHeightPx", type: "number" },
+                              ],
+                            },
+                          ]
                         : panelComponentId === "fusionWorkbench"
                         ? [
                             {
@@ -5429,9 +5826,11 @@
                             ? "用于强约束 AI 生成“表单推荐”。"
                             : panelComponentId === "aiInput"
                               ? "用于强约束 AI 生成“AI输入框”。"
-                              : panelComponentId === "fusionWorkbench"
-                                ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
-                                : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
+                              : panelComponentId === "bubbleRecommend"
+                                ? "用于强约束 AI 生成「气泡推荐」：对方 IM 气泡下渐变推荐条，点击采纳入框，悬停显发送。"
+                                : panelComponentId === "fusionWorkbench"
+                                  ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
+                                  : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
                       </div>
                     </div>
                     {/* Icon-only buttons — flex-none, wraps as a unit when narrow */}
@@ -5470,9 +5869,11 @@
                                 ? "DESIGN_SKILL_FORM_RECOMMEND.md"
                                 : panelComponentId === "aiInput"
                                   ? "DESIGN_SKILL_AI_INPUT.md"
-                                  : panelComponentId === "fusionWorkbench"
-                                    ? "DESIGN_SKILL_FUSION_WORKBENCH.md"
-                                    : "DESIGN_SKILL_ICON_LIBRARY.md";
+                                  : panelComponentId === "bubbleRecommend"
+                                    ? "DESIGN_SKILL_BUBBLE_RECOMMEND.md"
+                                    : panelComponentId === "fusionWorkbench"
+                                      ? "DESIGN_SKILL_FUSION_WORKBENCH.md"
+                                      : "DESIGN_SKILL_ICON_LIBRARY.md";
                           document.body.appendChild(a);
                           a.click();
                           a.remove();
@@ -5624,7 +6025,41 @@
           };
         }
 
-        // aiInput
+        if (componentId === "bubbleRecommend") {
+          const gradMatch = md.match(/background-image:\s*([^;\n`]+)/);
+          const recoGrad = gradMatch
+            ? gradMatch[1].trim()
+            : "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(252, 243, 255) 100%)";
+          return {
+            fontFamily:       col("fontFamily", '"PingFang SC",sans-serif'),
+            focusRing:        col("focusRing", "#000000"),
+            peerBubbleBg:     col("peerBubbleBg", "rgba(249,249,249,1)"),
+            peerBubblePadX:   num("peerBubblePadXPx", 12),
+            peerBubblePadY:   num("peerBubblePadYPx", 8),
+            peerBubbleRadius: num("peerBubbleRadiusPx", 12),
+            peerBubbleMaxW:   num("peerBubbleMaxWidthPx", 500),
+            peerTextFont:     num("peerTextFontPx", 14),
+            peerTextLine:     num("peerTextLinePx", 20),
+            peerTextColor:    col("peerTextColor", "#222727"),
+            stackGap:         num("stackGapPx", 4),
+            recoGradient:     recoGrad,
+            recoPadX:         num("recoPadXPx", 8),
+            recoPadY:         num("recoPadYPx", 4),
+            recoRadius:       num("recoRadiusPx", 6),
+            recoFont:         num("recoFontPx", 12),
+            recoLine:         num("recoLinePx", 16),
+            recoTextColor:    col("recoTextColor", "rgba(34,39,39,0.65)"),
+            recoMaxW:         num("recoMaxWidthPx", 500),
+            recoSendGap:      num("recoSendGapPx", 4),
+            sendBtnBg:        col("sendBtnBg", "#ffffff"),
+            sendBtnBorder:    col("sendBtnBorder", "rgba(34,39,39,0.09)"),
+            sendBtnPad:       num("sendBtnPadPx", 4),
+            sendBtnRadius:    num("sendBtnRadiusPx", 6),
+            sendIconPx:       num("sendIconPx", 16),
+          };
+        }
+
+        // aiInput（默认分支，含未知 componentId）
         return {
           outerRadius:     num("outerRadiusPx", 12),
           outerPadding:    num("outerPadPx", 12),
@@ -5941,11 +6376,87 @@
         );
       }
 
+      function SpecBubbleRecommend({ v }) {
+        const [hover, setHover] = React.useState(false);
+        const FF = v.fontFamily || '"PingFang SC",sans-serif';
+        const peerR = v.peerBubbleRadius;
+        const peerBR = `0 ${peerR}px ${peerR}px ${peerR}px`;
+        const rowMax = Math.min(v.peerBubbleMaxW, v.recoMaxW);
+        const demoReco = "好的请稍等，我这面帮您查看一下";
+        return (
+          <div style={{ fontFamily: FF, display: "flex", flexDirection: "column", gap: 16, width: "100%", maxWidth: 440, boxSizing: "border-box" }}>
+            <div style={{ fontSize: 11, color: "rgba(34,39,39,0.45)", lineHeight: "16px" }}>IM 吸附推荐（沙盒）</div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: v.stackGap, width: "100%", minWidth: 0 }}>
+              <div style={{
+                maxWidth: rowMax,
+                padding: `${v.peerBubblePadY}px ${v.peerBubblePadX}px`,
+                background: v.peerBubbleBg,
+                borderRadius: peerBR,
+                boxSizing: "border-box",
+              }}>
+                <p style={{ margin: 0, fontSize: v.peerTextFont, lineHeight: `${v.peerTextLine}px`, color: v.peerTextColor }}>
+                  你帮我看下这个有啥问题呢
+                </p>
+              </div>
+              <div
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: v.recoSendGap,
+                  maxWidth: rowMax,
+                  width: "100%",
+                  minWidth: 0,
+                }}
+              >
+                <button type="button" style={{
+                  textAlign: "left",
+                  cursor: "default",
+                  border: "none",
+                  outline: "none",
+                  width: "max-content",
+                  maxWidth: "100%",
+                  padding: `${v.recoPadY}px ${v.recoPadX}px`,
+                  borderRadius: v.recoRadius,
+                  backgroundImage: v.recoGradient,
+                  fontSize: v.recoFont,
+                  lineHeight: `${v.recoLine}px`,
+                  color: v.recoTextColor,
+                  fontFamily: "inherit",
+                  boxSizing: "border-box",
+                }}>
+                  {demoReco}
+                </button>
+                <button type="button" title="发送" aria-label="发送" style={{
+                  flexShrink: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: v.sendBtnPad,
+                  borderRadius: v.sendBtnRadius,
+                  background: v.sendBtnBg,
+                  border: `1px solid ${v.sendBtnBorder}`,
+                  opacity: hover ? 1 : 0,
+                  pointerEvents: hover ? "auto" : "none",
+                  transition: "opacity 150ms",
+                  outline: "none",
+                  cursor: "pointer",
+                }}>
+                  <img src="./ai-input-assets/icon-send.svg" width={v.sendIconPx} height={v.sendIconPx} alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       // ─── Sandbox Modal (markdown-driven) ──────────────────────────────────────
       function SandboxModal({ componentId, mdText, onClose }) {
         const defaultTab =
           componentId === "smartSummary"  ? "ready"  :
-          componentId === "formRecommend" ? "multi"  : "single";
+          componentId === "formRecommend" ? "multi"  :
+          componentId === "bubbleRecommend" ? "im" : "single";
         const [activeTab, setActiveTab] = React.useState(defaultTab);
 
         const v = React.useMemo(
@@ -5960,6 +6471,8 @@
             : componentId === "formRecommend"
             ? [{ id: "loading", label: "加载中" }, { id: "single", label: "单条推荐" },
                { id: "multi",   label: "多条推荐" }]
+            : componentId === "bubbleRecommend"
+            ? [{ id: "im", label: "推荐态" }]
             : [{ id: "off", label: "无推荐" }, { id: "single", label: "单条推荐" },
                { id: "multi", label: "多条推荐" }];
 
@@ -5988,6 +6501,18 @@
             { id: "r9",  label: "推荐列表圆角 ∈ [4,8,12,16]px", pass: [4,8,12,16].includes(v.recoWrapRadius) },
             { id: "r10", label: "推荐条圆角 > 0",               pass: v.recoBarRadius > 0 },
           ];
+          if (componentId === "bubbleRecommend") return [
+            { id: "r1",  label: "对方气泡圆角已定义",           pass: v.peerBubbleRadius > 0 },
+            { id: "r2",  label: "气泡与推荐间距已定义",         pass: v.stackGap >= 0 },
+            { id: "r3",  label: "recoGradient 已从 Skill 解析", pass: Boolean(v.recoGradient) && v.recoGradient.length > 8 },
+            { id: "r4",  label: "推荐内边距已定义",             pass: v.recoPadX > 0 && v.recoPadY >= 0 },
+            { id: "r5",  label: "焦点环颜色已定义",             pass: Boolean(v.focusRing) },
+            { id: "r6",  label: "发送按钮 padding 已定义",      pass: v.sendBtnPad >= 0 },
+            { id: "r7",  label: "发送图标边长 > 0",             pass: v.sendIconPx > 0 },
+            { id: "r8",  label: "对方气泡底色的 token 已定义",   pass: Boolean(v.peerBubbleBg) },
+            { id: "r9",  label: "推荐文字色已定义",             pass: Boolean(v.recoTextColor) },
+            { id: "r10", label: "推荐与发送钮间距已定义",       pass: v.recoSendGap >= 0 },
+          ];
           return [
             { id: "r1",  label: "外层圆角 = 12px",              pass: v.outerRadius === 12 },
             { id: "r2",  label: "外层内边距 = 12px",            pass: v.outerPadding === 12 },
@@ -6008,12 +6533,14 @@
         function renderPreview() {
           if (componentId === "smartSummary")  return <SpecSmartSummary v={v} scenario={activeTab} />;
           if (componentId === "formRecommend") return <SpecFormRecommend v={v} scenario={activeTab} />;
+          if (componentId === "bubbleRecommend") return <SpecBubbleRecommend v={v} />;
           return <SpecAiInput v={v} scenario={activeTab} />;
         }
 
         const compLabel =
           componentId === "smartSummary"  ? "智能摘要组件面板" :
-          componentId === "formRecommend" ? "表单推荐" : "AI 输入框";
+          componentId === "formRecommend" ? "表单推荐" :
+          componentId === "bubbleRecommend" ? "气泡推荐" : "AI 输入框";
 
         return (
           <div
