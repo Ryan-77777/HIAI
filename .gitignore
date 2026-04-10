@@ -25,3 +25,7 @@ ehthumbs.db
 
 # Vercel
 .vercel
+
+# Inline babel check temp (scripts/check-inline-babel.mjs)
+.inline-babel-check.jsx
+.inline-babel-check.out.js
