@@ -639,7 +639,8 @@
         stackGapPx: 4,
         // 推荐条（渐变胶囊）
         recoGradient:
-          "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(239, 246, 255) 55%, rgb(243, 245, 255) 90%, rgb(252, 243, 255) 100%)",
+          // Figma 8287:155516（推荐-收起）背景：彩色低透明渐变 + 纯白底叠层
+          "linear-gradient(256.0875987295907deg, rgba(231, 140, 225, 0.1) 1.9953%, rgba(170, 120, 243, 0.1) 16.397%, rgba(108, 147, 239, 0.1) 54.8%, rgba(131, 224, 236, 0.1) 88.404%, rgba(99, 219, 191, 0.1) 98.005%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%)",
         recoPadXPx: 8,
         recoPadYPx: 4,
         recoRadiusPx: 6,
@@ -5155,9 +5156,9 @@
                         {renderIconFromLibrary({
                           name: sendIconName,
                           size: t.sendIconPx,
-                          fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
-                          fallbackInset: "inset-[8.33%]",
-                          imgStyle: { opacity: 0.65 },
+                          fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                          fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                          imgStyle: { opacity: 0.8 },
                         })}
                       </button>
                     </div>
@@ -7411,9 +7412,9 @@
                     {renderIconFromLibrary({
                       name: v.sendIconName || "hiai-send",
                       size: v.sendIconPx,
-                      fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
-                      fallbackInset: "inset-[8.33%]",
-                      imgStyle: { opacity: 0.65 },
+                      fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                      fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                      imgStyle: { opacity: 0.8 },
                     })}
                   </button>
                 </div>
