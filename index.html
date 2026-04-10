@@ -531,6 +531,20 @@
         iconBtnRadiusPx: 6,
         iconBtnPadPx: 4,
         iconSizePx: 16,
+        // Icons（可替换，必须来自图标库）
+        iconRecoCloseName: "x-close-stroked",
+        iconRecoRefreshName: "refresh",
+        iconRecoCopyName: "IconCopyStroked2",
+        iconRecoSendName: "hiai-send",
+        iconToolMagicWandName: "magic-wand",
+        iconToolEmojiName: "IconFaceSmileStroked",
+        iconToolImageName: "image-01-stroked",
+        iconToolUnderlineName: "underline-01-stroked",
+        iconToolBoldName: "bold-01-stroked",
+        iconToolOrderedListName: "icon_order-list_outlined",
+        iconToolUnorderedListName: "icon_disorder-list_outlined",
+        iconToolLinkName: "link-03-stroked",
+        iconToolPaletteName: "palette-stroked",
         // Send button
         sendBtnBgDisabled: "semi-grey-1",
         sendBtnBgEnabled: "semi-brand-6",
@@ -2777,7 +2791,7 @@
         tokens,
       }) {
         const t = tokens || AI_INPUT_TOKENS;
-        const sendIconLibName = t.sendIconName || "hiai-send";
+        const sendIconLibName = t.sendIconName || t.iconRecoSendName || "hiai-send";
         const hl = (key) =>
           highlightTarget === key ? `ring-2 ring-[${t.focusRing}] ring-offset-2 ring-offset-[rgba(255,255,255,0.75)]` : "";
 
@@ -2947,7 +2961,7 @@
                         onClick={() => setRecoDismissed(true)}
                       >
                         {renderIconFromLibrary({
-                          name: "x-close-stroked",
+                          name: t.iconRecoCloseName || "x-close-stroked",
                           size: t.iconSizePx,
                           fallbackUrl: hiaiSvgUrl("x-close-stroked.svg"),
                           fallbackInset: "inset-[20.83%]",
@@ -2964,7 +2978,7 @@
                         }}
                       >
                         {renderIconFromLibrary({
-                          name: "refresh",
+                          name: t.iconRecoRefreshName || "refresh",
                           size: t.iconSizePx,
                           fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
                           fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
@@ -2985,7 +2999,7 @@
                             }}
                           >
                             {renderIconFromLibrary({
-                              name: "IconCopyStroked2",
+                              name: t.iconRecoCopyName || "IconCopyStroked2",
                               size: t.iconSizePx,
                               fallbackUrl: hiaiSvgUrl("copy-stroked2.svg"),
                               fallbackInset: "inset-[8.33%]",
@@ -3007,8 +3021,8 @@
                         {renderIconFromLibrary({
                           name: sendIconLibName,
                           size: t.iconSizePx,
-                          fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
-                          fallbackInset: "inset-[8.33%]",
+                          fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                          fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
                         })}
                       </button>
                     </div>
@@ -3106,63 +3120,63 @@
               <div className={cx("w-full flex items-center", `gap-[${t.actionsGapPx}px]`, hl("actionsRow"))}>
                 <div className={cx("flex-1 flex items-center min-w-0", `gap-[${t.actionsGapPx}px]`, hl("leftActions"))}>
                   <IconBtn
-                    iconName="magic-wand"
+                    iconName={t.iconToolMagicWandName || "magic-wand"}
                     fallbackSrc={hiaiSvgUrl("magic-wand-stroked.svg")}
                     label="AI 功能"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="IconFaceSmileStroked"
+                    iconName={t.iconToolEmojiName || "IconFaceSmileStroked"}
                     fallbackSrc={hiaiSvgUrl("face_smile_stroked.svg")}
                     label="表情"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="image-01-stroked"
+                    iconName={t.iconToolImageName || "image-01-stroked"}
                     fallbackSrc={hiaiSvgUrl("image-01-stroked.svg")}
                     label="图片"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="underline-01-stroked"
+                    iconName={t.iconToolUnderlineName || "underline-01-stroked"}
                     fallbackSrc={hiaiSvgUrl("underline-01-stroked.svg")}
                     label="下划线"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="bold-01-stroked"
+                    iconName={t.iconToolBoldName || "bold-01-stroked"}
                     fallbackSrc={hiaiSvgUrl("bold-01-stroked.svg")}
                     label="加粗"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="icon_order-list_outlined"
+                    iconName={t.iconToolOrderedListName || "icon_order-list_outlined"}
                     fallbackSrc={hiaiSvgUrl("order-list-outlined.svg")}
                     label="有序列表"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="icon_disorder-list_outlined"
+                    iconName={t.iconToolUnorderedListName || "icon_disorder-list_outlined"}
                     fallbackSrc={hiaiSvgUrl("disorder-list-outlined.svg")}
                     label="无序列表"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="link-03-stroked"
+                    iconName={t.iconToolLinkName || "link-03-stroked"}
                     fallbackSrc={hiaiSvgUrl("link-03-stroked.svg")}
                     label="链接"
                     tokenKey="iconButton"
                     fallbackInsetCls="inset-[8.33%]"
                   />
                   <IconBtn
-                    iconName="palette-stroked"
+                    iconName={t.iconToolPaletteName || "palette-stroked"}
                     fallbackSrc={hiaiSvgUrl("palette-stroked.svg")}
                     label="调色板"
                     tokenKey="iconButton"
@@ -6627,6 +6641,24 @@
                                 { label: "\u6761\u76ee padding\uff08px\uff09", path: "recoItemPadPx", type: "number" },
                                 { label: "Tooltip padX\uff08px\uff09", path: "tooltipPadX", type: "number" },
                                 { label: "Tooltip padY\uff08px\uff09", path: "tooltipPadY", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "🧩 Icons（组件内所有按钮图标）",
+                              fields: [
+                                { label: "推荐面板：关闭", path: "iconRecoCloseName", type: "icon" },
+                                { label: "推荐面板：刷新", path: "iconRecoRefreshName", type: "icon" },
+                                { label: "推荐面板：复制", path: "iconRecoCopyName", type: "icon" },
+                                { label: "推荐面板：发送", path: "iconRecoSendName", type: "icon" },
+                                { label: "工具栏：魔棒", path: "iconToolMagicWandName", type: "icon" },
+                                { label: "工具栏：表情", path: "iconToolEmojiName", type: "icon" },
+                                { label: "工具栏：图片", path: "iconToolImageName", type: "icon" },
+                                { label: "工具栏：下划线", path: "iconToolUnderlineName", type: "icon" },
+                                { label: "工具栏：加粗", path: "iconToolBoldName", type: "icon" },
+                                { label: "工具栏：有序列表", path: "iconToolOrderedListName", type: "icon" },
+                                { label: "工具栏：无序列表", path: "iconToolUnorderedListName", type: "icon" },
+                                { label: "工具栏：链接", path: "iconToolLinkName", type: "icon" },
+                                { label: "工具栏：调色板", path: "iconToolPaletteName", type: "icon" },
                               ],
                             },
                             {
