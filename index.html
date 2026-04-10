@@ -2961,8 +2961,8 @@
                   {renderIconFromLibrary({
                     name: sendIconLibName,
                     size: t.iconSizePx,
-                    fallbackUrl: hiaiSvgUrl("hiai-send.svg"),
-                    fallbackInset: "inset-[8.33%]",
+                    fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                    fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
                     imgStyle: sendDisabled ? undefined : { filter: "brightness(0) invert(1)" },
                   })}
                 </button>
@@ -3007,13 +3007,14 @@
               { name: "icon_disorder-list_outlined", url: hiaiSvgUrl("disorder-list-outlined.svg"), inset: "inset-[8.33%]" },
               { name: "link-03-stroked", url: hiaiSvgUrl("link-03-stroked.svg"), inset: "inset-[8.33%]" },
               { name: "palette-stroked", url: hiaiSvgUrl("palette-stroked.svg"), inset: "inset-[8.33%]" },
-              { name: "hiai-send", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
-              { name: "semi-icons-send_stroked", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
-              { name: "semi-icons-send_stroked_enabled", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
+              // Figma 6146:90000 发送图标 semi-icons-send：inset 不对会显得“偏大/偏上”，需按稿使用非对称 inset
+              { name: "hiai-send", url: hiaiSvgUrl("send_stroked.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
+              { name: "semi-icons-send_stroked", url: hiaiSvgUrl("send_stroked.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
+              { name: "semi-icons-send_stroked_enabled", url: hiaiSvgUrl("send_stroked.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
               { name: "x-close-stroked", url: hiaiSvgUrl("x-close-stroked.svg"), inset: "inset-[20.83%]" },
               { name: "refresh", url: hiaiSvgUrl("refresh-ccw-02-stroked.svg"), inset: "inset-[8.33%_8.33%_8.33%_4.17%]" },
               { name: "IconCopyStroked2", url: hiaiSvgUrl("copy-stroked2.svg"), inset: "inset-[8.33%]" },
-              { name: "send-filled", url: hiaiSvgUrl("hiai-send.svg"), inset: "inset-[8.33%]" },
+              { name: "send-filled", url: hiaiSvgUrl("send_stroked.svg"), inset: "inset-[8.66%_8.66%_3.54%_3.54%]" },
             ],
           },
           AIIcons: {
