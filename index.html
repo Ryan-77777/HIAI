@@ -4989,9 +4989,10 @@
               {/* Nav: component switcher（仅业务组件 Tab） */}
               {showComponentAside ? (
                 <>
-                  <aside className="shrink-0 h-full" style={{ width: asidePx }}>
-                    <div className="rounded-[12px] overflow-hidden h-full flex flex-col">
-                      <div className="p-[12px] flex-1 overflow-auto flex flex-col gap-[4px] box-border min-h-0">
+                  <aside className="shrink-0 h-full min-h-0 flex flex-col" style={{ width: asidePx }}>
+                    <div className="h-full min-h-0 flex flex-col overflow-hidden">
+                      {/* 顶/左与右侧白卡片顶边、顶栏 logo 左缘对齐；右贴栏宽；底 12px；与主面板间距由 12px DragHandle 承担 */}
+                      <div className="pt-0 pl-0 pr-0 pb-[12px] flex-1 min-h-0 overflow-auto flex flex-col gap-[4px] box-border">
                         {COMPONENTS.map((c) => {
                           const active = c.id === activeComponentId;
                           return (
@@ -4999,7 +5000,7 @@
                               key={c.id}
                               type="button"
                               className={cx(
-                                "w-full text-left px-[10px] py-[8px] rounded-[8px] transition-colors",
+                                "w-full text-left pl-0 pr-[8px] py-[8px] rounded-[8px] transition-colors",
                                 active
                                   ? "bg-[rgba(0,0,0,0.06)] text-black"
                                   : "text-[#222727] hover:bg-[rgba(83,96,143,0.07)]",
