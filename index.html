@@ -604,7 +604,9 @@
         // 头像（Figma 24×24，与气泡间距 8）
         avatarSizePx: 24,
         avatarGapPx: 8,
-        // 头像资源固定对齐 Figma 8287:154389（左右各一张），此处 label 仅保留兼容字段（渲染不再使用）。
+        // 头像资源固定对齐 Figma 8287:154389（左右各一张）；须与 Design Skill 中 imAvatar* token 一致，供模型与沙盒解析。
+        imAvatarPeerUrl: "./im-bubble-assets/avatar-peer.png",
+        imAvatarSelfUrl: "./im-bubble-assets/avatar-self.png",
         avatarPeerLabel: "对",
         avatarSelfLabel: "我",
         // 入站行：右侧留白（Figma spacing-extra-loose 32）
@@ -1748,6 +1750,7 @@
           "",
           "> 设计来源：[Figma 💠 IM气泡 / 融合-沟通区](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8285-154237)",
           "> 己方气泡成色（AI 托管渐变）：[Figma 右侧会话详情](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6146-89887)",
+          "> 左右头像固定素材：[Figma 8287:154389](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8287-154389)",
           "",
           "---",
           "",
@@ -1765,7 +1768,7 @@
           "- 点击推荐**文案**：写入下方模拟输入框并复制剪贴板。",
           "- **悬停**推荐行：右侧出现发送按钮（图标库 `sendIconName`）。",
           "- 业务可配置是否展示头像、是否展示 AI 推荐；本 demo 用复选框预览。",
-          "- **头像资源固定**：左右聊天头像默认固定使用两张图片（见 Figma 8287:154389），不得用字母/渐变占位或业务自定义头像替代，以保证对齐稿面。",
+          "- **头像资源固定**：必须使用 Skill §2.5 中的 `imAvatarPeerUrl`（左侧/对方）与 `imAvatarSelfUrl`（右侧/己方）作为 `<img src>`；不得用首字母、emoji、渐变色块或任意占位图替换。路径为相对站点根目录的静态资源，实现时按部署环境解析为可访问 URL。",
           "- **「预览 AI 托管出站渐变」**用于切换己方气泡为渐变态，便于对照设计稿。",
           "",
           "**触发关键词**：`IM气泡` / `IM 气泡` / `ImBubble` / `气泡推荐`（兼容） / `吸附推荐`",
@@ -1830,6 +1833,21 @@
           `background-image: ${t.selfAiBubbleGradient};`,
           "```",
           "",
+          "### 2.5 头像资源（固定，Figma 8287:154389）",
+          "",
+          "| 角色 | Token | 值（相对站点根路径，须原样使用） |",
+          "| --- | --- | --- |",
+          `| 左侧/对方头像图 | imAvatarPeerUrl | ${mdToken("imAvatarPeerUrl", t.imAvatarPeerUrl)} |`,
+          `| 右侧/己方头像图 | imAvatarSelfUrl | ${mdToken("imAvatarSelfUrl", t.imAvatarSelfUrl)} |`,
+          "",
+          "实现示例（语义约束，非可选样式）：",
+          "",
+          "```html",
+          "<!-- 容器：width/height = avatarSizePx，border-radius: 50%，overflow: hidden -->",
+          `<img alt="" src="${t.imAvatarPeerUrl}" style="width:100%;height:100%;object-fit:cover;display:block" />`,
+          `<img alt="" src="${t.imAvatarSelfUrl}" style="width:100%;height:100%;object-fit:cover;display:block" />`,
+          "```",
+          "",
           "---",
           "",
           "## §3 结构与圆角",
@@ -1837,6 +1855,7 @@
           "1. **入站气泡**：`border-radius` 为「左上 0、右上/右下/左下 = peerBubbleRadiusPx」（贴头像一侧为直角）。",
           "2. **出站气泡**：镜像为「右上 0，其余三角 = peerBubbleRadiusPx」；左侧为已读图标 + 间距 readReceiptGapPx。底色遵循 §1「己方气泡成色规则」：`selfBubbleBg` 或 `background-image: selfAiBubbleGradient`（勿混用半透明叠层导致偏色）。",
           "3. **AI 推荐行**：与末条入站气泡左缘对齐；若展示头像，推荐行 `margin-left = avatarSizePx + avatarGapPx`。",
+          "4. **头像**：入站在左、出站在右；必须使用 §2.5 的 `imAvatarPeerUrl` / `imAvatarSelfUrl` 作为图片地址，容器为正圆且边长 `avatarSizePx`，内层 `object-fit: cover`（禁止首字母/渐变占位）。",
           "",
           "---",
           "",
@@ -1844,6 +1863,7 @@
           "",
           "- [ ] 入站/出站底色与 Figma semi fill-0 / cyan-0 一致。",
           "- [ ] 己方手动发送为实心 `selfBubbleBg`；AI 托管/自动发送为 §2.4 渐变，与 6146:89887 稿一致。",
+          "- [ ] 头像使用 §2.5 的 `imAvatarPeerUrl` / `imAvatarSelfUrl`，圆形容器与 `avatarSizePx` 一致。",
           "- [ ] 已读标记尺寸 12px，颜色 readReceiptColor，图标库 readReceiptIconName。",
           "- [ ] 推荐渐变与发送钮行为符合 §2.3 / §1。",
           "",
@@ -4944,10 +4964,8 @@
 
         function AvatarFace({ side }) {
           const s = t.avatarSizePx;
-          // 固定头像资源（对齐 Figma 8287:154389），不要用字母/渐变占位。
-          const src = side === "self"
-            ? resolveAssetUrl("./im-bubble-assets/avatar-self.png")
-            : resolveAssetUrl("./im-bubble-assets/avatar-peer.png");
+          const rel = side === "self" ? t.imAvatarSelfUrl : t.imAvatarPeerUrl;
+          const src = resolveAssetUrl(rel || (side === "self" ? "./im-bubble-assets/avatar-self.png" : "./im-bubble-assets/avatar-peer.png"));
           return (
             <div className="shrink-0 rounded-full overflow-hidden" style={{ width: s, height: s }} aria-hidden>
               <img
@@ -6426,6 +6444,15 @@
                               ],
                             },
                             {
+                              title: "\u5934\u50cf\uff08\u56fa\u5b9a\u7d20\u6750\uff0cFigma 8287:154389\uff09",
+                              fields: [
+                                { label: "\u5bf9\u65b9/\u5de6\u4fa7\u5934\u50cf\u8def\u5f84", path: "imAvatarPeerUrl", type: "text" },
+                                { label: "\u5df1\u65b9/\u53f3\u4fa7\u5934\u50cf\u8def\u5f84", path: "imAvatarSelfUrl", type: "text" },
+                                { label: "\u5934\u50cf\u8fb9\u957f\uff08px\uff09", path: "avatarSizePx", type: "number" },
+                                { label: "\u5934\u50cf\u4e0e\u6c14\u6ce1\u95f4\u8ddd\uff08px\uff09", path: "avatarGapPx", type: "number" },
+                              ],
+                            },
+                            {
                               title: "\u5bf9\u65b9\u6c14\u6ce1",
                               fields: [
                                 { label: "\u6c14\u6ce1\u5e95\u8272", path: "peerBubbleBg", type: "css-color" },
@@ -6887,6 +6914,8 @@
             avatarSize:       num("avatarSizePx", 24),
             avatarGap:        num("avatarGapPx", 8),
             imSectionGap:     num("imSectionGapPx", 16),
+            imAvatarPeerUrl:  col("imAvatarPeerUrl", "./im-bubble-assets/avatar-peer.png"),
+            imAvatarSelfUrl:  col("imAvatarSelfUrl", "./im-bubble-assets/avatar-self.png"),
           };
         }
 
@@ -7237,20 +7266,22 @@
         const demoReco = "好的请稍等，我这面帮您查看一下";
         const av = v.avatarSize || 24;
         const ag = v.avatarGap || 8;
-        const Av = ({ ch }) => (
-          <div style={{
-            width: av, height: av, borderRadius: 9999, flexShrink: 0,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 11, fontWeight: 600, color: "rgba(34,39,39,0.5)",
-            background: "linear-gradient(135deg, rgba(99,219,191,0.28), rgba(108,147,239,0.28))",
-          }}>{ch}</div>
-        );
+        const peerAvatarSrc = resolveAssetUrl(v.imAvatarPeerUrl || "./im-bubble-assets/avatar-peer.png");
+        const selfAvatarSrc = resolveAssetUrl(v.imAvatarSelfUrl || "./im-bubble-assets/avatar-self.png");
+        function SandboxAvatar({ side }) {
+          const src = side === "self" ? selfAvatarSrc : peerAvatarSrc;
+          return (
+            <div style={{ width: av, height: av, borderRadius: 9999, overflow: "hidden", flexShrink: 0 }}>
+              <img alt="" src={src} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", pointerEvents: "none" }} />
+            </div>
+          );
+        }
         return (
           <div style={{ fontFamily: FF, display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 480, boxSizing: "border-box" }}>
             <div style={{ fontSize: 11, color: "rgba(34,39,39,0.45)", lineHeight: "16px" }}>IM气泡（沙盒预览）</div>
             <div style={{ display: "flex", flexDirection: "column", gap: v.imSectionGap || 16, width: "100%", minWidth: 0 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: ag, paddingRight: 24 }}>
-                <Av ch="对" />
+                <SandboxAvatar side="peer" />
                 <div style={{
                   maxWidth: rowMax,
                   padding: `${v.peerBubblePadY}px ${v.peerBubblePadX}px`,
@@ -7285,7 +7316,7 @@
                     </p>
                   </div>
                 </div>
-                <Av ch="我" />
+                <SandboxAvatar side="self" />
               </div>
               {v.selfAiBubbleGradient ? (
                 <div style={{ display: "flex", alignItems: "flex-start", gap: ag, justifyContent: "flex-end", paddingLeft: 16 }}>
@@ -7312,12 +7343,12 @@
                       </p>
                     </div>
                   </div>
-                  <Av ch="我" />
+                  <SandboxAvatar side="self" />
                 </div>
               ) : null}
               <div style={{ display: "flex", flexDirection: "column", gap: v.stackGap, alignItems: "stretch" }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: ag, paddingRight: 24 }}>
-                  <Av ch="对" />
+                  <SandboxAvatar side="peer" />
                   <div style={{
                     maxWidth: rowMax,
                     padding: `${v.peerBubblePadY}px ${v.peerBubblePadX}px`,
@@ -7452,6 +7483,13 @@
             { id: "r8",  label: "对方气泡底色的 token 已定义",   pass: Boolean(v.peerBubbleBg) },
             { id: "r9",  label: "推荐文字色已定义",             pass: Boolean(v.recoTextColor) },
             { id: "r10", label: "推荐与发送钮间距已定义",       pass: v.recoSendGap >= 0 },
+            {
+              id: "r11",
+              label: "Skill 已声明固定头像 token（imAvatarPeerUrl / imAvatarSelfUrl）",
+              pass:
+                /data-token-path="imAvatarPeerUrl"/.test(String(mdText || "")) &&
+                /data-token-path="imAvatarSelfUrl"/.test(String(mdText || "")),
+            },
           ];
           return [
             { id: "r1",  label: "外层圆角 = 12px",              pass: v.outerRadius === 12 },
@@ -7465,7 +7503,7 @@
             { id: "r9",  label: "外层背景色已定义",             pass: Boolean(v.outerBg) },
             { id: "r10", label: "输入卡片背景色已定义",          pass: Boolean(v.cardBg) },
           ];
-        }, [componentId, v]);
+        }, [componentId, v, mdText]);
 
         const passCount = checks.filter(c => c.pass).length;
         const allPass   = passCount === checks.length;
