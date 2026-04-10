@@ -619,8 +619,11 @@
         peerTextFontPx: 14,
         peerTextLinePx: 20,
         peerTextColor: "semi-color-text-0",
-        // 己方消息气泡 — semi-cyan-0
+        // 己方消息气泡 — semi-cyan-0（用户手动编辑并手动发送）
         selfBubbleBg: "#e5f7f7",
+        // 己方「AI 托管 / AI 自动发送」气泡底：Figma 6146:89887 右侧会话详情，与推荐条同款水平渐变
+        selfAiBubbleGradient:
+          "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(239, 246, 255) 55%, rgb(243, 245, 255) 90%, rgb(252, 243, 255) 100%)",
         selfTextFontPx: 14,
         selfTextLinePx: 20,
         selfTextColor: "semi-color-text-0",
@@ -1743,17 +1746,24 @@
           "# DESIGN_SKILL — IM气泡（沟通区 + 可选 AI 推荐）",
           "",
           "> 设计来源：[Figma 💠 IM气泡 / 融合-沟通区](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8285-154237)",
+          "> 己方气泡成色（AI 托管渐变）：[Figma 右侧会话详情](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6146-89887)",
           "",
           "---",
           "",
           "## §1 系统角色与指令",
           "",
-          "**场景**：IM 会话列表中单条消息的视觉：入站（对方）左对齐 + 灰底气泡；出站（己方）右对齐 + 青色浅底气泡 + 已读标记；可选在**末条对方气泡下**展示 AI 推荐条。",
+          "**场景**：IM 会话列表中单条消息的视觉：入站（对方）左对齐 + 灰底气泡；出站（己方）右对齐 + **依发送来源切换底色** + 已读标记；可选在**末条对方气泡下**展示 AI 推荐条。",
+          "",
+          "**己方气泡成色规则**（须由业务消息模型显式区分，禁止仅靠文案猜测）：",
+          "",
+          "- **手动编辑且手动发送**：出站气泡使用实心浅青绿 `selfBubbleBg`（semi-cyan-0，如 `#e5f7f7`）。",
+          "- **AI 托管场景中由 AI 生成并发送**，或 **AI 自动代发**（用户未改文案即发出）：出站气泡使用 **彩色水平渐变** `selfAiBubbleGradient`（与稿 6146:89887 一致；默认与 `recoGradient` / 推荐条同款 `linear-gradient(90deg, …)`，可在 Token 中拆开维护）。",
+          "- 实现上应为每条出站消息携带来源枚举（示例：`user_manual` / `ai_hosted` / `ai_auto_send`），渲染层据此刻意选用 `selfBubbleBg` 或 `selfAiBubbleGradient`。",
           "",
           "**交互**：",
           "- 点击推荐**文案**：写入下方模拟输入框并复制剪贴板。",
           "- **悬停**推荐行：右侧出现发送按钮（图标库 `sendIconName`）。",
-          "- 业务可配置是否展示头像、是否展示 AI 推荐（本 demo 用复选框预览）。",
+          "- 业务可配置是否展示头像、是否展示 AI 推荐；本 demo 用复选框预览。**「预览 AI 托管出站渐变」**用于切换己方气泡为渐变态，便于对照设计稿。",
           "",
           "**触发关键词**：`IM气泡` / `IM 气泡` / `ImBubble` / `气泡推荐`（兼容） / `吸附推荐`",
           "",
@@ -1766,7 +1776,8 @@
           "| Role | Token | Value |",
           "| --- | --- | --- |",
           `| 对方气泡底 | peerBubbleBg | ${mdToken("peerBubbleBg", t.peerBubbleBg)} |`,
-          `| 己方气泡底 | selfBubbleBg | ${mdToken("selfBubbleBg", t.selfBubbleBg)} |`,
+          `| 己方手动发送底（实心） | selfBubbleBg | ${mdToken("selfBubbleBg", t.selfBubbleBg)} |`,
+          `| 己方 AI 托管/自动发送底（渐变） | selfAiBubbleGradient | （见 §2.4 原文） |`,
           `| 推荐条渐变 | recoGradient | （见 §2.3 原文） |`,
           `| 推荐文字 | recoTextColor | ${mdToken("recoTextColor", t.recoTextColor)} |`,
           `| 对方气泡文字 | peerTextColor | ${mdToken("peerTextColor", t.peerTextColor)} |`,
@@ -1810,12 +1821,18 @@
           `background-image: ${t.recoGradient};`,
           "```",
           "",
+          "### 2.4 selfAiBubbleGradient（己方 AI 托管出站气泡，须原样使用）",
+          "",
+          "```css",
+          `background-image: ${t.selfAiBubbleGradient};`,
+          "```",
+          "",
           "---",
           "",
           "## §3 结构与圆角",
           "",
           "1. **入站气泡**：`border-radius` 为「左上 0、右上/右下/左下 = peerBubbleRadiusPx」（贴头像一侧为直角）。",
-          "2. **出站气泡**：镜像为「右上 0，其余三角 = peerBubbleRadiusPx」；左侧为已读图标 + 间距 readReceiptGapPx。",
+          "2. **出站气泡**：镜像为「右上 0，其余三角 = peerBubbleRadiusPx」；左侧为已读图标 + 间距 readReceiptGapPx。底色遵循 §1「己方气泡成色规则」：`selfBubbleBg` 或 `background-image: selfAiBubbleGradient`（勿混用半透明叠层导致偏色）。",
           "3. **AI 推荐行**：与末条入站气泡左缘对齐；若展示头像，推荐行 `margin-left = avatarSizePx + avatarGapPx`。",
           "",
           "---",
@@ -1823,6 +1840,7 @@
           "## §4 校验清单",
           "",
           "- [ ] 入站/出站底色与 Figma semi fill-0 / cyan-0 一致。",
+          "- [ ] 己方手动发送为实心 `selfBubbleBg`；AI 托管/自动发送为 §2.4 渐变，与 6146:89887 稿一致。",
           "- [ ] 已读标记尺寸 12px，颜色 readReceiptColor，图标库 readReceiptIconName。",
           "- [ ] 推荐渐变与发送钮行为符合 §2.3 / §1。",
           "",
@@ -4895,6 +4913,7 @@
         lastSentPreview,
         showAvatar = true,
         showAiRecommend = true,
+        previewAiHostedSelfBubble = false,
       }) {
         const t = tokens || IM_BUBBLE_TOKENS;
         const hi = (id) => highlightTarget === id;
@@ -4903,6 +4922,9 @@
         const peerBubbleRadius = `0 ${R}px ${R}px ${R}px`;
         const selfBubbleRadius = `${R}px 0 ${R}px ${R}px`;
         const rrName = t.readReceiptIconName || "im-read-receipt";
+        const selfOutboundFill = previewAiHostedSelfBubble
+          ? { background: t.selfAiBubbleGradient || t.recoGradient }
+          : { background: t.selfBubbleBg };
 
         function adopt(text) {
           onDraftChange(text);
@@ -4968,7 +4990,7 @@
               data-token-hint="bubbleDemoChrome"
             >
               <div className="text-[11px] leading-[16px]" style={{ color: "rgba(34,39,39,0.45)" }}>
-                IM 对话区（Figma 8285:154237）；可切换头像与气泡下 AI 推荐
+                IM 对话区（Figma 8285:154237）；己方 AI 托管渐变色见 Figma 6146:89887；可切换头像、推荐条与「AI 托管出站」预览
               </div>
 
               <div className="flex flex-col w-full min-w-0" style={{ gap: t.imSectionGapPx }} data-token-hint="bubbleStack">
@@ -5012,8 +5034,8 @@
                       style={{
                         maxWidth: t.peerBubbleMaxWidthPx,
                         padding: `${t.peerBubblePadYPx}px ${t.peerBubblePadXPx}px`,
-                        background: t.selfBubbleBg,
                         borderRadius: selfBubbleRadius,
+                        ...selfOutboundFill,
                       }}
                     >
                       <p
@@ -5024,7 +5046,9 @@
                           color: t.selfTextColor,
                         }}
                       >
-                        您好，小助手很高兴为您服务
+                        {previewAiHostedSelfBubble
+                          ? "尊敬的用户您好，很高兴为您服务（AI 托管/自动发送示例）"
+                          : "您好，这是我手动编辑发送的回复（实心浅绿）"}
                       </p>
                     </div>
                   </div>
@@ -5216,6 +5240,7 @@
         const [bubbleLastSent, setBubbleLastSent] = useState("");
         const [imShowAvatar, setImShowAvatar] = useState(true);
         const [imShowAiRecommend, setImShowAiRecommend] = useState(true);
+        const [imPreviewAiHostedSelfBubble, setImPreviewAiHostedSelfBubble] = useState(false);
         const imBubbleDemoText =
           "好的请稍等，我这面帮您查看一下你的账号异常信息";
 
@@ -5973,9 +5998,19 @@
                               />
                               显示 AI 推荐（末条对方气泡下）
                             </label>
+                            <label className="flex items-center gap-[6px] cursor-pointer">
+                              <input
+                                type="checkbox"
+                                className="accent-black"
+                                checked={imPreviewAiHostedSelfBubble}
+                                onChange={(e) => setImPreviewAiHostedSelfBubble(e.target.checked)}
+                              />
+                              预览 AI 托管出站渐变（己方气泡）
+                            </label>
                           </div>
                           <span className="text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
-                            点击推荐填入输入框；悬停推荐行右侧出现发送
+                            点击推荐填入输入框；悬停推荐行右侧出现发送。勾选最后一项时，出站气泡使用
+                            selfAiBubbleGradient（手动发送为实心 selfBubbleBg，规则见左侧 Design Skill 第一节）。
                           </span>
                         </div>
                       ) : null}
@@ -6037,6 +6072,7 @@
                             lastSentPreview={bubbleLastSent}
                             showAvatar={imShowAvatar}
                             showAiRecommend={imShowAiRecommend}
+                            previewAiHostedSelfBubble={imPreviewAiHostedSelfBubble}
                           />
                         </div>
                       ) : panelComponentId === "fusionWorkbench" ? (
@@ -6402,6 +6438,16 @@
                               ],
                             },
                             {
+                              title: "\u5df1\u65b9\u6c14\u6ce1",
+                              fields: [
+                                { label: "\u624b\u52a8\u53d1\u9001\u5e95\uff08\u5b9e\u5fc3\uff09", path: "selfBubbleBg", type: "css-color" },
+                                { label: "AI \u6258\u7ba1/\u81ea\u52a8\u53d1\u9001\u5e95\uff08\u6e10\u53d8 CSS\uff09", path: "selfAiBubbleGradient", type: "text" },
+                                { label: "\u5df1\u65b9\u6587\u5b57\u5b57\u53f7\uff08px\uff09", path: "selfTextFontPx", type: "number" },
+                                { label: "\u5df1\u65b9\u6587\u5b57\u884c\u9ad8\uff08px\uff09", path: "selfTextLinePx", type: "number" },
+                                { label: "\u5df1\u65b9\u6587\u5b57\u8272", path: "selfTextColor", type: "color" },
+                              ],
+                            },
+                            {
                               title: "\u6e10\u53d8\u63a8\u8350\u6761",
                               fields: [
                                 { label: "recoGradient CSS", path: "recoGradient", type: "text" },
@@ -6598,7 +6644,7 @@
                             : panelComponentId === "aiInput"
                               ? "用于强约束 AI 生成“AI输入框”。"
                               : panelComponentId === "imBubble"
-                                ? "用于强约束 AI 生成「IM气泡」：Figma 沟通区气泡样式 + 可选头像与气泡下 AI 推荐，点击采纳入框，悬停显发送。"
+                                ? "用于强约束 AI 生成「IM气泡」：沟通区气泡 + 己方手动/AI 托管成色 + 可选头像与气泡下推荐，点击采纳入框，悬停显发送。"
                                 : panelComponentId === "fusionWorkbench"
                                   ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
                                   : panelComponentId === "hiuiButton"
@@ -6801,15 +6847,17 @@
         }
 
         if (componentId === "imBubble") {
-          const gradMatch = md.match(/background-image:\s*([^;\n`]+)/);
-          const recoGrad = gradMatch
-            ? gradMatch[1].trim()
-            : "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(252, 243, 255) 100%)";
+          const gradMatches = Array.from(md.matchAll(/background-image:\s*([^;\n`]+)/g)).map((m) => m[1].trim());
+          const recoGrad =
+            gradMatches[0] ||
+            "linear-gradient(90deg, rgb(230, 247, 244) 0%, rgb(252, 243, 255) 100%)";
+          const selfAiGrad = gradMatches[1] || recoGrad;
           return {
             fontFamily:       col("fontFamily", '"PingFang SC",sans-serif'),
             focusRing:        col("focusRing", "#000000"),
             peerBubbleBg:     col("peerBubbleBg", "rgba(52,59,57,0.05)"),
             selfBubbleBg:       col("selfBubbleBg", "#e5f7f7"),
+            selfAiBubbleGradient: selfAiGrad,
             peerBubblePadX:   num("peerBubblePadXPx", 12),
             peerBubblePadY:   num("peerBubblePadYPx", 8),
             peerBubbleRadius: num("peerBubbleRadiusPx", 12),
@@ -7237,6 +7285,34 @@
                 </div>
                 <Av ch="我" />
               </div>
+              {v.selfAiBubbleGradient ? (
+                <div style={{ display: "flex", alignItems: "flex-start", gap: ag, justifyContent: "flex-end", paddingLeft: 16 }}>
+                  <div style={{ display: "flex", alignItems: "flex-end", gap: 4 }}>
+                    <span style={{ width: 12, height: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", color: v.readReceiptColor || "#00b3a4" }}>
+                      {renderIconFromLibrary({
+                        name: "im-read-receipt",
+                        size: 12,
+                        fallbackUrl: hiaiSvgUrl("annotation-check-stroked.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
+                    </span>
+                    <div
+                      style={{
+                        maxWidth: rowMax,
+                        padding: `${v.peerBubblePadY}px ${v.peerBubblePadX}px`,
+                        background: v.selfAiBubbleGradient,
+                        borderRadius: selfBR,
+                        boxSizing: "border-box",
+                      }}
+                    >
+                      <p style={{ margin: 0, fontSize: v.peerTextFont, lineHeight: `${v.peerTextLine}px`, color: v.peerTextColor }}>
+                        AI 托管出站渐变（§2.4）
+                      </p>
+                    </div>
+                  </div>
+                  <Av ch="我" />
+                </div>
+              ) : null}
               <div style={{ display: "flex", flexDirection: "column", gap: v.stackGap, alignItems: "stretch" }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: ag, paddingRight: 24 }}>
                   <Av ch="对" />
