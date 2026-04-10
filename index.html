@@ -2924,6 +2924,7 @@
           previewSizePx: 16,
           categories: [
             { id: "AIInput", label: "AI Input", count: 13, file: "AIInput.json" },
+            { id: "AIIcons", label: "AI图标", count: 1, file: "AIIcons.json" },
             { id: "Development", label: "Development", count: 59, file: "Development.json" },
             { id: "Users", label: "Users", count: 41, file: "Users.json" },
           ],
@@ -2946,6 +2947,15 @@
               { name: "refresh", url: resolveAssetUrl("./ai-input-assets/icon-reco-refresh.svg"), inset: "inset-[8.33%_8.33%_8.33%_4.17%]" },
               { name: "IconCopyStroked2", url: resolveAssetUrl("./ai-input-assets/icon-reco-copy.svg"), inset: "inset-[8.33%]" },
               { name: "send-filled", url: resolveAssetUrl("./ai-input-assets/icon-reco-send.svg"), inset: "inset-[7.87%_0%_0.14%_6.08%]" },
+            ],
+          },
+          AIIcons: {
+            icons: [
+              {
+                name: "hiai-2-mark",
+                url: resolveAssetUrl("./brand/hiai-logo.png"),
+                inset: "inset-[8.33%]",
+              },
             ],
           },
           Development: {
@@ -2986,11 +2996,11 @@
       // even if the user hasn't opened the Icon Library tab yet.
       (async () => {
         try {
-          const data = await loadIconLibraryCategory("AIInput.json");
-          const list = data?.icons || [];
           const dict = window.__ICON_LIBRARY__?.byName;
-          if (dict) {
-            list.forEach((ic) => {
+          if (!dict) return;
+          for (const file of ["AIInput.json", "AIIcons.json"]) {
+            const data = await loadIconLibraryCategory(file);
+            (data?.icons || []).forEach((ic) => {
               if (ic?.name) dict[String(ic.name)] = ic;
             });
           }

@@ -4,6 +4,7 @@
   "previewSizePx": 16,
   "categories": [
     { "id": "AIInput", "label": "AI Input", "count": 13, "file": "AIInput.json" },
+    { "id": "AIIcons", "label": "AI图标", "count": 1, "file": "AIIcons.json" },
     { "id": "Development", "label": "Development", "count": 0, "file": "Development.json" },
     { "id": "Users", "label": "Users", "count": 0, "file": "Users.json" },
     { "id": "Communication", "label": "Communication", "count": 0, "file": "Communication.json" },
