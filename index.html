@@ -199,6 +199,15 @@
     <div id="root" class="min-h-screen w-full"></div>
 
     <script type="text/babel" data-presets="react">
+      // Icon picker options (hydrated from icon library)
+      window.__ICON_NAME_CACHE__ = window.__ICON_NAME_CACHE__ || { list: [], version: 0 };
+      function getAllIconNames() {
+        const dict = window.__ICON_LIBRARY__?.byName || {};
+        const names = Object.keys(dict);
+        names.sort((a, b) => a.localeCompare(b));
+        return names;
+      }
+
       const { useEffect, useId, useMemo, useRef, useState } = React;
 
       function cx(...parts) {
@@ -316,6 +325,10 @@
         focusRing: "semi-brand-5",
         textMain: "semi-color-dark-text",
         textSub: "rgba(34,39,39,0.6)",
+        // Icons（可替换）
+        iconMarkName: "smart-summary-mark",
+        iconCopyName: "IconCopyStroked2",
+        iconRefreshName: "refresh",
         titleFontSizePx: 12,
         titleLineHeightPx: 16,
         titleFontWeight: 600,
@@ -2164,6 +2177,28 @@
                 inputMode="numeric"
                 onChange={(e) => onChange(parseMaybeNumber(e.target.value))}
               />
+            ) : type === "icon" ? (
+              <div className="flex items-center gap-[8px]">
+                <span className="shrink-0">
+                  {renderIconFromLibrary({
+                    name: String(value || ""),
+                    size: 16,
+                    fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                    fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                    imgStyle: { opacity: 0.9 },
+                  })}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <input
+                    className={cx(inputBase, mono)}
+                    value={String(value ?? "")}
+                    placeholder="搜索并选择图标 name…"
+                    list="__hiai_icon_names__"
+                    onFocus={() => window.__ENSURE_ICON_LIB_ALL__?.()}
+                    onChange={(e) => onChange(e.target.value)}
+                  />
+                </div>
+              </div>
             ) : type === "color" ? (
               <FoundationColorPicker
                 value={value}
@@ -3172,6 +3207,29 @@
           }
         } catch {}
       })();
+
+      // Ensure all icon categories are loaded (for icon picker search).
+      window.__ENSURE_ICON_LIB_ALL__ =
+        window.__ENSURE_ICON_LIB_ALL__ ||
+        (async () => {
+          if (window.__ICON_LIBRARY__?._allLoaded) return;
+          if (window.__ICON_LIBRARY__?._allLoading) return window.__ICON_LIBRARY__._allLoading;
+          const p = (async () => {
+            try {
+              const manifest = await loadIconLibraryManifest();
+              const files = (manifest?.categories || []).map((c) => c.file).filter(Boolean);
+              for (const f of files) {
+                const data = await loadIconLibraryCategory(f);
+                (data?.icons || []).forEach((ic) => {
+                  if (ic?.name) window.__ICON_LIBRARY__.byName[String(ic.name)] = ic;
+                });
+              }
+              window.__ICON_LIBRARY__._allLoaded = true;
+            } catch {}
+          })();
+          window.__ICON_LIBRARY__._allLoading = p;
+          return p;
+        });
 
       function insetClassToStyle(insetCls) {
         // inset-[top_right_bottom_left] (underscore-separated), supports 1/2/3/4 values like CSS shorthand.
@@ -4327,7 +4385,7 @@
             <div className={cx(`w-full rounded-[8px] px-[${t.headerPadX}px] py-[${t.headerPadY}px] flex items-center gap-[${t.headerGap}px]`, hl("header"))}>
               <span className={cx("shrink-0", hl("icon"))}>
                 {renderIconFromLibrary({
-                  name: "smart-summary-mark",
+                  name: t.iconMarkName || "smart-summary-mark",
                   size: t.iconSize,
                   fallbackUrl: resolveAssetUrl(SUMMARY_ICON_SRC),
                   fallbackInset: "inset-[0px]",
@@ -4352,7 +4410,7 @@
                     disabled={!isInteractive || isBusy || isError || isEmpty}
                   >
                     {renderIconFromLibrary({
-                      name: "IconCopyStroked2",
+                      name: t.iconCopyName || "IconCopyStroked2",
                       size: t.iconSize,
                       fallbackUrl: hiaiSvgUrl("copy-stroked2.svg"),
                       fallbackInset: "inset-[8.33%]",
@@ -4374,7 +4432,7 @@
                     disabled={!isInteractive || isBusy}
                   >
                     {renderIconFromLibrary({
-                      name: "refresh",
+                      name: t.iconRefreshName || "refresh",
                       size: t.iconSize,
                       fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
                       fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
@@ -6261,38 +6319,23 @@
                     panelComponentId === "smartSummary"
                       ? [
                           {
-                            title: "🎨 \u989c\u8272",
+                            title: "🎨 \u5173\u952e\u989c\u8272",
                             fields: [
                               { label: "\u4e3b\u8272 / Focus Ring", path: "focusRing", type: "color" },
                               { label: "\u6b63\u6587\u4e3b\u8272", path: "textMain", type: "color" },
                               { label: "\u6b21\u8981\u6587\u5b57\u8272", path: "textSub", type: "css-color" },
                               { label: "Hover \u586b\u5145", path: "hoverFill", type: "css-color" },
-                              { label: "\u56fe\u6807\u4e2d\u6027\u8272", path: "iconNeutral", type: "css-color" },
-                              { label: "\u56fe\u6807\u4e3b\u8272", path: "iconPrimary", type: "color" },
                               { label: "\u5916\u5c42\u8fb9\u6846\u8272", path: "borderOuter", type: "css-color" },
-                              { label: "Shimmer \u5e95\u8272", path: "shimmer.base", type: "css-color" },
-                              { label: "\u6309\u9215\u4e3b\u8272\u80cc\u666f", path: "button.primaryBg", type: "color" },
-                              { label: "\u6309\u9215\u4e3b\u8272\u6587\u5b57", path: "button.primaryFg", type: "color" },
-                              { label: "\u6309\u9215\u8fb9\u6846\u8272", path: "button.border", type: "css-color" },
-                              { label: "Tag Pink \u80cc\u666f", path: "tag.tones.pink.bg", type: "css-color" },
-                              { label: "Tag Pink \u6587\u5b57", path: "tag.tones.pink.fg", type: "color" },
-                              { label: "Tag Teal \u80cc\u666f", path: "tag.tones.teal.bg", type: "css-color" },
-                              { label: "Tag Teal \u6587\u5b57", path: "tag.tones.teal.fg", type: "color" },
-                              { label: "Tag Violet \u80cc\u666f", path: "tag.tones.violet.bg", type: "css-color" },
-                              { label: "Tag Violet \u6587\u5b57", path: "tag.tones.violet.fg", type: "color" },
                             ],
                           },
                           {
-                            title: "📝 \u5b57\u4f53\u6392\u7248",
+                            title: "📝 \u6587\u5b57 & \u5bc6\u5ea6",
                             fields: [
                               { label: "\u5b57\u4f53\u65cf", path: "fontFamily", type: "text" },
                               { label: "\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "titleFontSizePx", type: "number" },
                               { label: "\u6807\u9898\u884c\u9ad8\uff08px\uff09", path: "titleLineHeightPx", type: "number" },
-                              { label: "\u6807\u9898\u5b57\u91cd", path: "titleFontWeight", type: "number" },
-                              { label: "\u6b63\u6587\u5b57\u53f7\uff08px\uff09", path: "bodyFontSizePx", type: "number" },
-                              { label: "\u6b63\u6587\u884c\u9ad8\uff08px\uff09", path: "bodyLineHeightPx", type: "number" },
-                              { label: "\u6b63\u6587\u5b57\u91cd", path: "bodyFontWeight", type: "number" },
-                              { label: "\u6bb5\u843d\u95f4\u8ddd\uff08px\uff09", path: "paragraphGap", type: "number" },
+                              { label: "\u5916\u5c42 padding\uff08px\uff09", path: "paddingOuterPx", type: "number" },
+                              { label: "\u5185\u5bb9 gap\uff08px\uff09", path: "gapOuterPx", type: "number" },
                             ],
                           },
                           {
@@ -6300,37 +6343,25 @@
                             fields: [
                               { label: "\u5916\u5c42\u5361\u7247\u5706\u89d2\uff08px\uff09", path: "radiusOuterPx", type: "number" },
                               { label: "IconButton \u5706\u89d2\uff08px\uff09", path: "radiusIconButtonPx", type: "number" },
-                              { label: "Tag \u5706\u89d2\uff08px\uff09", path: "tag.radius", type: "number" },
-                              { label: "\u6309\u9215\u5706\u89d2\uff08px\uff09", path: "button.radius", type: "number" },
-                              { label: "Shimmer \u5706\u89d2\uff08px\uff09", path: "shimmer.radius", type: "number" },
+                            ],
+                          },
+                          {
+                            title: "🧩 Icons\uff08\u53ef\u4ece\u56fe\u6807\u5e93\u66ff\u6362\uff09",
+                            fields: [
+                              { label: "\u6807\u9898\u5de6\u4fa7 Mark", path: "iconMarkName", type: "icon" },
+                              { label: "\u590d\u5236\u6309\u94ae", path: "iconCopyName", type: "icon" },
+                              { label: "\u5237\u65b0\u6309\u94ae", path: "iconRefreshName", type: "icon" },
                             ],
                           },
                           {
                             title: "📏 \u95f4\u8ddd\u4e0e\u5c3a\u5bf8",
                             fields: [
-                              { label: "\u5916\u5c42 padding\uff08px\uff09", path: "paddingOuterPx", type: "number" },
-                              { label: "\u5185\u5bb9 gap\uff08px\uff09", path: "gapOuterPx", type: "number" },
                               { label: "Header padX\uff08px\uff09", path: "headerPadX", type: "number" },
                               { label: "Header padY\uff08px\uff09", path: "headerPadY", type: "number" },
                               { label: "Header gap\uff08px\uff09", path: "headerGap", type: "number" },
                               { label: "\u56fe\u6807\u5c3a\u5bf8\uff08px\uff09", path: "iconSize", type: "number" },
                               { label: "IconButton \u5c3a\u5bf8\uff08px\uff09", path: "iconButtonSize", type: "number" },
                               { label: "IconButton padding\uff08px\uff09", path: "iconButtonPad", type: "number" },
-                              { label: "Tag \u9ad8\u5ea6\uff08px\uff09", path: "tag.height", type: "number" },
-                              { label: "Tag padX\uff08px\uff09", path: "tag.padX", type: "number" },
-                              { label: "Tag padY\uff08px\uff09", path: "tag.padY", type: "number" },
-                              { label: "\u6309\u9215\u9ad8\u5ea6\uff08px\uff09", path: "button.height", type: "number" },
-                            ],
-                          },
-                          {
-                            title: "🌈 \u6e10\u53d8 & \u52a8\u6548",
-                            fields: [
-                              { label: "\u6e10\u53d8\u9ad8\u5ea6\u9608\u5024\uff08px\uff09", path: "gradientThresholdPx", type: "number" },
-                              { label: "\u5c0f\u9ad8\u5ea6 stop\uff08%\uff09", path: "gradientStopSmallPct", type: "number" },
-                              { label: "\u5927\u9ad8\u5ea6 stop\uff08%\uff09", path: "gradientStopLargePct", type: "number" },
-                              { label: "\u6e10\u53d8\u89d2\u5ea6\uff08deg\uff09", path: "gradientAngleDeg", type: "number" },
-                              { label: "\u6e10\u53d8\u7b2c\u4e8c\u5c42 CSS", path: "gradient2", type: "text" },
-                              { label: "Shimmer \u65f6\u957f\uff08s\uff09", path: "shimmer.durationSec", type: "number" },
                             ],
                           },
                         ]
@@ -6490,7 +6521,7 @@
                                 { label: "IconButton padding\uff08px\uff09", path: "iconBtnPadPx", type: "number" },
                                 { label: "\u53d1\u9001\u6309\u9215\u9ad8\u5ea6\uff08px\uff09", path: "sendBtnHeightPx", type: "number" },
                                 { label: "\u53d1\u9001\u6309\u9215 padding\uff08px\uff09", path: "sendBtnPadPx", type: "number" },
-                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "text" },
+                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "icon" },
                                 { label: "\u63a8\u8350\u5916\u5c42 padding\uff08px\uff09", path: "recoOuterPadPx", type: "number" },
                                 { label: "\u63a8\u8350\u5916\u5c42 gap\uff08px\uff09", path: "recoOuterGapPx", type: "number" },
                                 { label: "\u6807\u9898\u884c\u9ad8\u5ea6\uff08px\uff09", path: "recoHeaderHeightPx", type: "number" },
@@ -6586,7 +6617,7 @@
                                 { label: "\u6309\u94ae padding\uff08px\uff09", path: "sendBtnPadPx", type: "number" },
                                 { label: "\u6309\u94ae\u5706\u89d2\uff08px\uff09", path: "sendBtnRadiusPx", type: "number" },
                                 { label: "\u56fe\u6807\u8fb9\u957f\uff08px\uff09", path: "sendIconPx", type: "number" },
-                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "text" },
+                                { label: "\u53d1\u9001\u56fe\u6807\u5e93 name", path: "sendIconName", type: "icon" },
                               ],
                             },
                             {
@@ -7727,6 +7758,32 @@
       // ─────────────────────────────────────────────────────────────────────────
 
       ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+
+      // Datalist for icon picker (built once; refreshes after icon library hydration)
+      (function mountIconDatalist() {
+        try {
+          if (document.getElementById("__hiai_icon_names__")) return;
+          const dl = document.createElement("datalist");
+          dl.id = "__hiai_icon_names__";
+          document.body.appendChild(dl);
+          function refresh() {
+            const names = getAllIconNames();
+            dl.innerHTML = names.map((n) => `<option value="${escapeHtml(n)}"></option>`).join("");
+          }
+          // initial + delayed refresh (after async icon hydration)
+          refresh();
+          window.setTimeout(refresh, 600);
+          window.setTimeout(refresh, 1600);
+          const orig = window.__ENSURE_ICON_LIB_ALL__;
+          if (typeof orig === "function") {
+            window.__ENSURE_ICON_LIB_ALL__ = async () => {
+              const r = await orig();
+              refresh();
+              return r;
+            };
+          }
+        } catch {}
+      })();
     </script>
   </body>
 </html>
