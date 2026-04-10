@@ -5210,7 +5210,8 @@
         );
 
         const [activeComponentId, setActiveComponentId] = useState("smartSummary");
-        const [mainView, setMainView] = useState("business"); // "business" | "foundation" | "icons"
+        // 默认进入/刷新定位到「基础参数」
+        const [mainView, setMainView] = useState("foundation"); // "business" | "foundation" | "icons"
         const showComponentAside = mainView === "business";
         const panelComponentId = mainView === "icons" ? "iconLibrary" : activeComponentId;
         const [iconLibrarySelectedName, setIconLibrarySelectedName] = useState(null);
