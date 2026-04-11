@@ -4667,7 +4667,7 @@
 
             <div className="flex w-full shrink-0 items-center" style={{ ...ring(hi("convTabs")) }} data-token-hint="convTabs">
               <div
-                className="flex shrink-0 items-start"
+                className="flex shrink-0 items-stretch"
                 style={{
                   width: t.radioTrackWidthPx,
                   maxWidth: "100%",
@@ -4682,44 +4682,45 @@
                       key={x.id}
                       type="button"
                       onClick={() => setTab(x.id)}
-                      className="flex min-h-0 min-w-0 flex-1 cursor-pointer items-center justify-center border-0 bg-transparent outline-none"
+                      className="flex min-h-0 min-w-0 flex-1 cursor-pointer border-0 bg-transparent outline-none"
                       style={{
                         height: t.radioItemHeightPx,
                         padding: t.radioItemOuterPadPx,
                         borderRadius: t.radioTrackRadiusPx,
+                        boxSizing: "border-box",
                       }}
                     >
                       <div
-                        className="flex w-full flex-col items-start"
+                        className="flex w-full min-w-0 flex-1 items-center justify-center box-border"
                         style={{
                           background: active ? t.radioActiveBg : "transparent",
                           borderRadius: t.radioTrackRadiusPx,
-                          padding: `${t.radioSegmentPadYPx}px ${t.radioSegmentPadXPx}px`,
+                          paddingTop: t.radioSegmentPadYPx,
+                          paddingBottom: t.radioSegmentPadYPx,
+                          paddingLeft: t.radioSegmentPadXPx,
+                          paddingRight: t.radioSegmentPadXPx,
+                          boxSizing: "border-box",
                         }}
                       >
-                        <p className="m-0 whitespace-nowrap text-[0px] leading-none">
+                        <span
+                          className="inline-flex max-w-full items-center justify-center gap-[4px] whitespace-nowrap"
+                          style={{
+                            fontSize: t.radioLabelFontPx,
+                            lineHeight: `${t.radioLabelLinePx}px`,
+                          }}
+                        >
                           <span
-                            className="font-semibold"
+                            className="font-semibold shrink-0"
                             style={{
-                              fontSize: t.radioLabelFontPx,
-                              lineHeight: `${t.radioLabelLinePx}px`,
                               color: active ? t.radioActiveLabelColor : t.radioInactiveLabelColor,
                             }}
                           >
                             {x.label}
-                            {x.id === "end" ? "" : " "}
                           </span>
-                          <span
-                            className="font-normal"
-                            style={{
-                              fontSize: t.radioLabelFontPx,
-                              lineHeight: `${t.radioLabelLinePx}px`,
-                              color: t.radioCountColor,
-                            }}
-                          >
-                            {x.id === "end" ? ` ${x.count}` : x.count}
+                          <span className="font-normal shrink-0" style={{ color: t.radioCountColor }}>
+                            {x.count}
                           </span>
-                        </p>
+                        </span>
                       </div>
                     </button>
                   );
