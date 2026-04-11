@@ -571,6 +571,7 @@
       /** 会话列表：顶栏 / 分组 / 标签 / 状态点 — HiAI-Interface + HiAI-General（星标），在线点复用 fusion-online-dot */
       const CONVERSATION_LIST_ICON_NAMES = {
         layoutLeft: "hiai-layout-left-stroked",
+        layoutRight: "hiai-layout-right-stroked",
         refresh: "hiai-refresh-cw-01-stroked",
         filterLines: "hiai-filter-lines-stroked",
         trash: "hiai-trash-04-stroked",
@@ -822,6 +823,22 @@
         closeAllLinePx: 16,
         checkIconPx: 12,
         clockIconPx: 12,
+        // 纯头像收起 — Figma 6190:93899（spacing-base-tight=12, spacing-base=16, 列表轨道宽 64，整卡宽约 88）
+        collapsedShellWidthPx: 88,
+        collapsedShellPadXPx: 12,
+        collapsedShellPadYPx: 16,
+        collapsedShellGapPx: 16,
+        collapsedListTrackWidthPx: 64,
+        collapsedListGapPx: 4,
+        collapsedToggleRowHeightPx: 32,
+        collapsedToggleBtnPadPx: 4,
+        collapsedToggleBtnRadiusPx: 6,
+        collapsedToggleIconPx: 16,
+        collapsedRowHeightPx: 68,
+        collapsedRowPadXPx: 16,
+        collapsedRowPadYPx: 12,
+        shellCollapseTransitionMs: 240,
+        collapsedShellMinHeightPx: 520,
       };
 
       const ICON_LIBRARY_TOKENS = {
@@ -2093,8 +2110,8 @@
         return [
           "# DESIGN_SKILL — 会话列表（在线 Agent 列表）",
           "",
-          "> 设计来源：[Figma 6760:68494](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6760-68494)",
-          "> 资源：`conversation-list-assets/*`（与稿中头像、顶栏图标、状态点、角标矢量对齐）。",
+          "> 设计来源：[Figma 6760:68494](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6760-68494)（展开列表）、[Figma 6190:93899](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6190-93899)（纯头像收起）",
+          "> 资源：`conversation-list-assets/*`（头像位图）；图标走图标库（含收起态 **layout-right** 展开）。",
           "",
           "## 1) 容器",
           "",
@@ -2103,7 +2120,26 @@
           `| shellPadPx | ${mdToken("shellPadPx", `${t.shellPadPx}px`)} |`,
           `| shellGapPx | ${mdToken("shellGapPx", `${t.shellGapPx}px`)} | 顶栏 / Tab / 列表区间距 |`,
           `| shellBg | ${mdToken("shellBg", t.shellBg)} |`,
+          `| shellCollapseTransitionMs | ${t.shellCollapseTransitionMs} | 展开/收起容器宽度过渡 |`,
           `| listScrollGapPx | ${mdToken("listScrollGapPx", `${t.listScrollGapPx}px`)} | 分组标题与行之间 |`,
+          "",
+          "### 1.1 纯头像收起（Figma 6190:93899）",
+          "",
+          "无顶栏文案、无 Tab、无分组；全部分组会话 **纵向打平** 为单列头像。顶部居中 **展开** 按钮（`layout-right-stroked` 16px，padding 4、圆角 6）。",
+          "",
+          `| collapsedShellWidthPx | ${t.collapsedShellWidthPx}px | 外卡总宽（默认 12+64+12） |`,
+          `| collapsedShellPadXPx / collapsedShellPadYPx | ${t.collapsedShellPadXPx} / ${t.collapsedShellPadYPx} | 卡水平/垂直内边距 |`,
+          `| collapsedShellGapPx | ${t.collapsedShellGapPx} | 展开按钮区与列表区间距 |`,
+          `| collapsedListTrackWidthPx | ${t.collapsedListTrackWidthPx}px | 列表滚动区定宽 |`,
+          `| collapsedListGapPx | ${t.collapsedListGapPx}px | 头像行之间 |`,
+          `| collapsedToggleRowHeightPx | ${t.collapsedToggleRowHeightPx}px | 首行工具条高度 |`,
+          `| collapsedToggleBtnPadPx / collapsedToggleBtnRadiusPx | ${t.collapsedToggleBtnPadPx} / ${t.collapsedToggleBtnRadiusPx} | 展开按钮 |`,
+          `| collapsedToggleIconPx | ${t.collapsedToggleIconPx}px | layout-right 图标 |`,
+          `| collapsedRowHeightPx | ${t.collapsedRowHeightPx}px | 单行高（与选中左条同高 68） |`,
+          `| collapsedRowPadXPx / collapsedRowPadYPx | ${t.collapsedRowPadXPx} / ${t.collapsedRowPadYPx} | 行内边距（水平 16 使 32 头像在 64 轨内居中） |`,
+          `| collapsedShellMinHeightPx | ${t.collapsedShellMinHeightPx}px | 收起卡最小高度，保证列表区可滚动 |`,
+          "行交互与展开列表一致：默认透明、Hover fill-0、选中白底 + Agent 阴影 + 左 4px 品牌条。",
+          "",
           "",
           "## 2) 顶栏",
           "",
@@ -2156,6 +2192,7 @@
           "- [ ] 行 12px padding、圆角 12；默认透明；未选中 Hover 为 fill-0；选中白底 + 0 0 16 rgba(101,115,137,0.06) 阴影 + 左 4px 条",
           "- [ ] 头像 32；未读红点 16 圆、白描边",
           "- [ ] 副文案 12px text-3 单行省略；时间右对齐",
+          "- [ ] 收起态：总宽约 88px；顶 32px 行居中 layout-right；列表轨 64px、行距 4；会话打平无分组/Tab；行 68×圆角 12、内边距 16/12",
           "",
           `**Typography**：${mdToken("fontFamily", t.fontFamily)}`,
           "",
@@ -4067,12 +4104,18 @@
       }
 
       /** 会话列表 — Figma 6760:68494；头像用 conversation-list-assets，其余图标走图标库 + hiaiSvgUrl */
-      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId }) {
+      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId, avatarOnly, onRequestExpand }) {
         const t = tokens || CONVERSATION_LIST_TOKENS;
         const A = (file) => resolveAssetUrl(`./conversation-list-assets/${file}`);
         const ic = CONVERSATION_LIST_ICON_NAMES;
         const hi = (id) => highlightTarget === id;
         const ring = (on) => (on ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {});
+        const narrow = !!avatarOnly;
+        const trackW = t.collapsedListTrackWidthPx != null ? t.collapsedListTrackWidthPx : 64;
+        const shellNarrowW =
+          t.collapsedShellWidthPx != null ? t.collapsedShellWidthPx : trackW + (t.collapsedShellPadXPx != null ? t.collapsedShellPadXPx : 12) * 2;
+        const shellWideW = t.shellWidthPx;
+        const collapseTw = t.shellCollapseTransitionMs != null ? t.shellCollapseTransitionMs : 240;
 
         const [tab, setTab] = useState("all");
         const [open, setOpen] = useState({ g1: true, g2: true, g3: true });
@@ -4132,6 +4175,8 @@
             ],
           },
         ];
+
+        const flatRows = groups.flatMap((g) => g.rows);
 
         function toggleGroup(gid) {
           setOpen((o) => ({ ...o, [gid]: !o[gid] }));
@@ -4230,7 +4275,8 @@
           return null;
         }
 
-        function ListRow({ row }) {
+        function ListRow({ row, collapsed: collapsedRow }) {
+          const isCollapsed = !!collapsedRow;
           const isSel = row.id === sel;
           const [hover, setHover] = useState(false);
           const defaultBg = t.rowDefaultBg != null ? t.rowDefaultBg : "transparent";
@@ -4238,6 +4284,9 @@
           const rowBg = isSel ? t.rowSelectedBg : hover ? hoverBg : defaultBg;
           const rowShadow = isSel ? t.rowSelectedShadow : "none";
           const tr = typeof t.rowHoverTransitionMs === "number" ? t.rowHoverTransitionMs : 150;
+          const cPadX = t.collapsedRowPadXPx != null ? t.collapsedRowPadXPx : 16;
+          const cPadY = t.collapsedRowPadYPx != null ? t.collapsedRowPadYPx : 12;
+          const cH = t.collapsedRowHeightPx != null ? t.collapsedRowHeightPx : 68;
 
           return (
             <button
@@ -4249,8 +4298,11 @@
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: t.rowGapPx,
-                padding: t.rowPadPx,
+                justifyContent: isCollapsed ? "center" : undefined,
+                gap: isCollapsed ? 0 : t.rowGapPx,
+                padding: isCollapsed ? `${cPadY}px ${cPadX}px` : t.rowPadPx,
+                minHeight: isCollapsed ? cH : undefined,
+                height: isCollapsed ? cH : undefined,
                 borderRadius: t.rowRadiusPx,
                 overflow: "hidden",
                 position: "relative",
@@ -4347,65 +4399,117 @@
                 ) : null}
               </div>
 
-              <div className="flex min-w-0 flex-1 flex-col gap-[4px] items-start">
-                <div className="flex w-full min-w-0 items-center gap-[4px] shrink-0">
-                  <div
-                    className="min-w-0 flex-1 font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-                    style={{
-                      fontSize: t.nameFontPx,
-                      lineHeight: `${t.nameLinePx}px`,
-                      color: t.nameColor,
-                    }}
-                  >
-                    {row.name}
+              {!isCollapsed ? (
+                <div className="flex min-w-0 flex-1 flex-col gap-[4px] items-start">
+                  <div className="flex w-full min-w-0 items-center gap-[4px] shrink-0">
+                    <div
+                      className="min-w-0 flex-1 font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+                      style={{
+                        fontSize: t.nameFontPx,
+                        lineHeight: `${t.nameLinePx}px`,
+                        color: t.nameColor,
+                      }}
+                    >
+                      {row.name}
+                    </div>
+                    <div className="flex flex-wrap items-center justify-end gap-[4px] shrink-0">
+                      {(row.tags || []).map((x, i) => renderTagCell(x, i))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap items-center justify-end gap-[4px] shrink-0">
-                    {(row.tags || []).map((x, i) => renderTagCell(x, i))}
+                  <div className="flex w-full items-center gap-[8px] shrink-0">
+                    <p
+                      className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap font-normal m-0"
+                      style={{
+                        fontSize: t.previewFontPx,
+                        lineHeight: `${t.previewLinePx}px`,
+                        color: t.previewColor,
+                      }}
+                    >
+                      {row.preview}
+                    </p>
+                    <p
+                      className="shrink-0 m-0 overflow-hidden text-ellipsis whitespace-nowrap text-right font-normal"
+                      style={{
+                        fontSize: t.previewFontPx,
+                        lineHeight: `${t.previewLinePx}px`,
+                        color: t.timeColor,
+                      }}
+                    >
+                      {row.time}
+                    </p>
                   </div>
                 </div>
-                <div className="flex w-full items-center gap-[8px] shrink-0">
-                  <p
-                    className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap font-normal m-0"
-                    style={{
-                      fontSize: t.previewFontPx,
-                      lineHeight: `${t.previewLinePx}px`,
-                      color: t.previewColor,
-                    }}
-                  >
-                    {row.preview}
-                  </p>
-                  <p
-                    className="shrink-0 m-0 overflow-hidden text-ellipsis whitespace-nowrap text-right font-normal"
-                    style={{
-                      fontSize: t.previewFontPx,
-                      lineHeight: `${t.previewLinePx}px`,
-                      color: t.timeColor,
-                    }}
-                  >
-                    {row.time}
-                  </p>
-                </div>
-              </div>
+              ) : null}
             </button>
           );
         }
 
+        const shellPadY = narrow ? (t.collapsedShellPadYPx != null ? t.collapsedShellPadYPx : 16) : t.shellPadPx;
+        const shellPadX = narrow ? (t.collapsedShellPadXPx != null ? t.collapsedShellPadXPx : 12) : t.shellPadPx;
+        const shellGap = narrow ? (t.collapsedShellGapPx != null ? t.collapsedShellGapPx : 16) : t.shellGapPx;
+
         return (
           <div
-            className="flex flex-col items-start overflow-hidden shrink-0"
+            className={cx("flex flex-col overflow-hidden shrink-0", narrow ? "items-center" : "items-start")}
             style={{
               fontFamily: t.fontFamily,
-              width: t.shellWidthPx,
+              width: narrow ? shellNarrowW : shellWideW,
               maxWidth: "100%",
-              minHeight: 0,
+              minHeight: narrow ? (t.collapsedShellMinHeightPx != null ? t.collapsedShellMinHeightPx : 520) : 0,
               borderRadius: t.shellRadiusPx,
-              padding: t.shellPadPx,
-              gap: t.shellGapPx,
+              padding: `${shellPadY}px ${shellPadX}px`,
+              gap: shellGap,
               background: t.shellBg,
+              transition: `width ${collapseTw}ms ease`,
               ...ring(hi("convShell")),
             }}
             data-token-hint="convShell"
           >
+            {narrow ? (
+              <>
+                <div
+                  className="flex w-full shrink-0 items-center justify-center"
+                  style={{
+                    height: t.collapsedToggleRowHeightPx != null ? t.collapsedToggleRowHeightPx : 32,
+                    width: trackW,
+                    ...ring(hi("convCollapsedToggle")),
+                  }}
+                  data-token-hint="convCollapsedToggle"
+                >
+                  <button
+                    type="button"
+                    title="展开列表"
+                    onClick={() => onRequestExpand && onRequestExpand()}
+                    className="border-0 bg-transparent cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#24cda5]/45 focus-visible:ring-inset flex items-center justify-center"
+                    style={{
+                      padding: t.collapsedToggleBtnPadPx != null ? t.collapsedToggleBtnPadPx : 4,
+                      borderRadius: t.collapsedToggleBtnRadiusPx != null ? t.collapsedToggleBtnRadiusPx : 6,
+                    }}
+                  >
+                    {renderIconFromLibrary({
+                      name: ic.layoutRight,
+                      size: t.collapsedToggleIconPx != null ? t.collapsedToggleIconPx : 16,
+                      fallbackUrl: hiaiSvgUrl("layout-right-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </button>
+                </div>
+                <div
+                  className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden"
+                  style={{
+                    width: trackW,
+                    gap: t.collapsedListGapPx != null ? t.collapsedListGapPx : 4,
+                    ...ring(hi("convScroll")),
+                  }}
+                  data-token-hint="convScroll"
+                >
+                  {flatRows.map((row) => (
+                    <ListRow key={row.id} row={row} collapsed />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
             <div
               className="flex w-full shrink-0 items-center"
               style={{ height: t.headerRowHeightPx, gap: t.headerGapPx, ...ring(hi("convHeader")) }}
@@ -4538,6 +4642,8 @@
                 </React.Fragment>
               ))}
             </div>
+              </>
+            )}
           </div>
         );
       }
@@ -6243,6 +6349,7 @@
         );
         const [iconLibTokens, setIconLibTokens] = useState(() => loadSavedTokens("iconLibrary", ICON_LIBRARY_TOKENS));
         const [conversationSelectedId, setConversationSelectedId] = useState("r3");
+        const [conversationListAvatarOnly, setConversationListAvatarOnly] = useState(false);
 
         // Token edit snapshots (for Cancel). If snapshot exists → dirty.
         const [tokenEditSnapshots, setTokenEditSnapshots] = useState(() => ({}));
@@ -6618,6 +6725,8 @@
 
           if (panelComponentId === "conversationList") {
             if (p.startsWith("shell") || p === "fontFamily" || p === "componentName" || p === "focusRing") return "convShell";
+            if (p.startsWith("collapsedShell") || p.startsWith("collapsedList") || p === "shellCollapseTransitionMs") return "convShell";
+            if (p.startsWith("collapsedToggle")) return "convCollapsedToggle";
             if (p.startsWith("header") || p.startsWith("title")) return "convHeader";
             if (p.startsWith("radio")) return "convTabs";
             if (p.startsWith("listScroll") || p.startsWith("group")) return "convScroll";
@@ -7229,9 +7338,20 @@
                         </span>
                       ) : null}
                       {panelComponentId === "conversationList" ? (
-                        <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
-                          Figma 6760:68494 在线 Agent 会话列表；点击「杨娟」行可切换选中态（左条 + 阴影）。资源见 conversation-list-assets。
-                        </span>
+                        <div className="w-full flex flex-col gap-[8px]">
+                          <label className="flex items-center gap-[8px] text-sm cursor-pointer w-fit">
+                            <input
+                              type="checkbox"
+                              className="accent-black"
+                              checked={conversationListAvatarOnly}
+                              onChange={(e) => setConversationListAvatarOnly(e.target.checked)}
+                            />
+                            纯头像列表（收起）
+                          </label>
+                          <span className="text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                            展开：Figma 6760:68494；收起：Figma 6190:93899。收起时无分组与 Tab，仅头像列 + 顶栏展开（layout-right）。点击行或勾选切换。
+                          </span>
+                        </div>
                       ) : null}
                     </div>
 
@@ -7304,6 +7424,8 @@
                             highlightTarget={highlightTarget}
                             selectedId={conversationSelectedId}
                             onSelectId={setConversationSelectedId}
+                            avatarOnly={conversationListAvatarOnly}
+                            onRequestExpand={() => setConversationListAvatarOnly(false)}
                           />
                         </div>
                       ) : panelComponentId === "iconLibrary" ? (
@@ -7831,6 +7953,26 @@
                                 { label: "\u533a\u5757\u95f4\u8ddd\uff08px\uff09", path: "shellGapPx", type: "number" },
                                 { label: "\u80cc\u666f\u8272", path: "shellBg", type: "color" },
                                 { label: "\u5217\u8868\u533a\u5782\u76f4\u95f4\u8ddd\uff08px\uff09", path: "listScrollGapPx", type: "number" },
+                                { label: "\u5bbd\u5ea6\u8fc7\u6e21\uff08ms\uff09", path: "shellCollapseTransitionMs", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u7eaf\u5934\u50cf\u6536\u8d77\uff086190\uff09",
+                              fields: [
+                                { label: "\u6536\u8d77\u5361\u603b\u5bbd\uff08px\uff09", path: "collapsedShellWidthPx", type: "number" },
+                                { label: "\u6536\u8d77\u5361\u6700\u5c0f\u9ad8\uff08px\uff09", path: "collapsedShellMinHeightPx", type: "number" },
+                                { label: "\u6536\u8d77\u6c34\u5e73\u5185\u8fb9\u8ddd\uff08px\uff09", path: "collapsedShellPadXPx", type: "number" },
+                                { label: "\u6536\u8d77\u5782\u76f4\u5185\u8fb9\u8ddd\uff08px\uff09", path: "collapsedShellPadYPx", type: "number" },
+                                { label: "\u5c55\u5f00\u533a\u4e0e\u5217\u8868\u533a\u95f4\u8ddd\uff08px\uff09", path: "collapsedShellGapPx", type: "number" },
+                                { label: "\u5217\u8868\u8f68\u9053\u5bbd\uff08px\uff09", path: "collapsedListTrackWidthPx", type: "number" },
+                                { label: "\u5934\u50cf\u884c\u95f4\u8ddd\uff08px\uff09", path: "collapsedListGapPx", type: "number" },
+                                { label: "\u5c55\u5f00\u6309\u94ae\u884c\u9ad8\uff08px\uff09", path: "collapsedToggleRowHeightPx", type: "number" },
+                                { label: "\u5c55\u5f00\u6309\u94ae padding\uff08px\uff09", path: "collapsedToggleBtnPadPx", type: "number" },
+                                { label: "\u5c55\u5f00\u6309\u94ae\u5706\u89d2\uff08px\uff09", path: "collapsedToggleBtnRadiusPx", type: "number" },
+                                { label: "\u5c55\u5f00\u56fe\u6807\uff08px\uff09", path: "collapsedToggleIconPx", type: "number" },
+                                { label: "\u6536\u8d77\u884c\u9ad8\uff08px\uff09", path: "collapsedRowHeightPx", type: "number" },
+                                { label: "\u6536\u8d77\u884c\u6c34\u5e73 padding\uff08px\uff09", path: "collapsedRowPadXPx", type: "number" },
+                                { label: "\u6536\u8d77\u884c\u5782\u76f4 padding\uff08px\uff09", path: "collapsedRowPadYPx", type: "number" },
                               ],
                             },
                             {
