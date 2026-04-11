@@ -8,12 +8,12 @@ alwaysApply: true
 ## 单一注册表
 
 - 业务组件与 **综合 Skill** 的章节顺序、单组件 Skill 预览共用 **`PLATFORM_SKILL_BUSINESS_SECTIONS`**（`index.html` 内，紧挨 `buildUnifiedDesignSkillMarkdown`）。
-- 左侧导航 **`COMPONENTS`** 由该数组 `id` / `name` 映射生成，勿再手写重复列表。
+- 左侧导航由该数组 `id` / `name` / **`sidebarGroup`**（`business` | `basic`）驱动分组展示，勿再手写重复列表。
 
 ## 新增业务组件时的清单
 
 1. 实现 `buildYourComponentDesignSkillMarkdown(resolvedTokens)`（或等价命名），与现有 `buildDesignSkillMarkdown` 等并列。
-2. 在 **`PLATFORM_SKILL_BUSINESS_SECTIONS`** 追加一行：`id`、`name`（侧栏显示）、`tokenKey`（与 `buildUnifiedDesignSkillMarkdown` 的 `tokenBag` 字段一致）、`build`。
+2. 在 **`PLATFORM_SKILL_BUSINESS_SECTIONS`** 追加一行：`id`、`name`（侧栏显示）、`tokenKey`（与 `buildUnifiedDesignSkillMarkdown` 的 `tokenBag` 字段一致）、`sidebarGroup`（`business` 或 `basic`）、`build`。
 3. 在 **`Demo`** 中增加对应 `*Tokens` / `resolved*` / `loadSavedTokens` / `setActiveTokens` 分支（与现有组件同一模式）。
 4. 更新 **`buildUnifiedDesignSkillMarkdown`** 的解构参数与 **`tokenBag`**，为新 `tokenKey` 提供原始 token state。
 5. **`unifiedSkillBundle`** 的 `useMemo` 依赖数组需包含新 token state，保证综合文档随编辑实时重算。

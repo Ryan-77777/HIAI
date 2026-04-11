@@ -2188,7 +2188,7 @@
           "## 7) 校验清单",
           "",
           "- [ ] 宽 371px、圆角 12、内边距 16",
-          "- [ ] Tab 轨道宽 269、灰底圆角 6、选中白底",
+          "- [ ] Tab 轨道宽 269、灰底圆角 6、选中白底；药丸内文案+数字水平居中，`radioSegmentPadXPx` 左右对称",
           "- [ ] 行 12px padding、圆角 12；默认透明；未选中 Hover 为 fill-0；选中白底 + 0 0 16 rgba(101,115,137,0.06) 阴影 + 左 4px 条",
           "- [ ] 头像 32；未读红点 16 圆、白描边",
           "- [ ] 副文案 12px text-3 单行省略；时间右对齐",
@@ -2230,16 +2230,16 @@
 
       /**
        * 业务组件 → Design Skill 合并顺序（**综合 Skill** 与左侧单组件 Skill 预览共用数据源）。
-       * 新增或下线业务组件时：必须同步改此数组、Demo 内 `COMPONENTS`、各 `*Tokens` state 与 `resolved*` / 持久化 key。
+       * 新增或下线业务组件时：必须同步改此数组（含 `sidebarGroup`）、Demo 侧栏分组与各 `*Tokens` state、`resolved*` / 持久化 key。
        */
       const PLATFORM_SKILL_BUSINESS_SECTIONS = [
-        { id: "smartSummary", name: "智能摘要", tokenKey: "smartTokens", build: (t) => buildDesignSkillMarkdown(t) },
-        { id: "formRecommend", name: "表单推荐", tokenKey: "formTokens", build: (t) => buildFormRecommendDesignSkillMarkdown(t) },
-        { id: "aiInput", name: "AI输入框", tokenKey: "aiTokens", build: (t) => buildAiInputDesignSkillMarkdown(t) },
-        { id: "imBubble", name: "IM气泡", tokenKey: "bubbleTokens", build: (t) => buildImBubbleDesignSkillMarkdown(t) },
-        { id: "fusionWorkbench", name: "融合工作台框架", tokenKey: "fusionTokens", build: (t) => buildFusionWorkbenchDesignSkillMarkdown(t) },
-        { id: "hiuiButton", name: "按钮", tokenKey: "hiuiTokens", build: (t) => buildHiuiButtonDesignSkillMarkdown(t) },
-        { id: "conversationList", name: "会话列表", tokenKey: "conversationListTokens", build: (t) => buildConversationListDesignSkillMarkdown(t) },
+        { id: "smartSummary", name: "智能摘要", tokenKey: "smartTokens", sidebarGroup: "business", build: (t) => buildDesignSkillMarkdown(t) },
+        { id: "formRecommend", name: "表单推荐", tokenKey: "formTokens", sidebarGroup: "business", build: (t) => buildFormRecommendDesignSkillMarkdown(t) },
+        { id: "aiInput", name: "AI输入框", tokenKey: "aiTokens", sidebarGroup: "business", build: (t) => buildAiInputDesignSkillMarkdown(t) },
+        { id: "imBubble", name: "IM气泡", tokenKey: "bubbleTokens", sidebarGroup: "business", build: (t) => buildImBubbleDesignSkillMarkdown(t) },
+        { id: "fusionWorkbench", name: "融合工作台框架", tokenKey: "fusionTokens", sidebarGroup: "business", build: (t) => buildFusionWorkbenchDesignSkillMarkdown(t) },
+        { id: "hiuiButton", name: "按钮", tokenKey: "hiuiTokens", sidebarGroup: "basic", build: (t) => buildHiuiButtonDesignSkillMarkdown(t) },
+        { id: "conversationList", name: "会话列表", tokenKey: "conversationListTokens", sidebarGroup: "business", build: (t) => buildConversationListDesignSkillMarkdown(t) },
       ];
 
       /**
@@ -6413,10 +6413,19 @@
       }
 
       function Demo() {
-        const COMPONENTS = useMemo(
-          () => PLATFORM_SKILL_BUSINESS_SECTIONS.map((s) => ({ id: s.id, name: s.name })),
-          [],
-        );
+        const sidebarNavGroups = useMemo(() => {
+          const business = [];
+          const basic = [];
+          for (const s of PLATFORM_SKILL_BUSINESS_SECTIONS) {
+            const row = { id: s.id, name: s.name };
+            if (s.sidebarGroup === "basic") basic.push(row);
+            else business.push(row);
+          }
+          return [
+            { key: "business", label: "业务组件", items: business },
+            { key: "basic", label: "基础组件", items: basic },
+          ];
+        }, []);
 
         const [activeComponentId, setActiveComponentId] = useState("smartSummary");
         // 默认进入/刷新定位到「基础参数」
@@ -7183,28 +7192,40 @@
                     <div className="h-full min-h-0 flex flex-col overflow-hidden">
                       {/* 顶/左与右侧白卡片顶边、顶栏 logo 左缘对齐；右贴栏宽；底 12px；与主面板间距由 12px DragHandle 承担 */}
                       <div className="pt-0 pl-0 pr-0 pb-[12px] flex-1 min-h-0 overflow-auto flex flex-col gap-[4px] box-border">
-                        {COMPONENTS.map((c) => {
-                          const active = c.id === activeComponentId;
-                          return (
-                            <button
-                              key={c.id}
-                              type="button"
+                        {sidebarNavGroups.map((group, gi) => (
+                          <React.Fragment key={group.key}>
+                            <div
                               className={cx(
-                                "w-full text-left px-[16px] py-[8px] rounded-[8px] transition-colors border-0",
-                                active
-                                  ? "bg-[#E4E7EC] text-black shadow-none"
-                                  : "text-[#222727] hover:bg-[rgba(83,96,143,0.07)] bg-transparent",
-                                "outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
+                                "px-[16px] text-[12px] leading-[16px] font-medium text-[rgba(34,39,39,0.45)]",
+                                gi === 0 ? "pt-0 pb-[2px]" : "pt-[10px] pb-[2px]",
                               )}
-                              onClick={() => {
-                                setActiveComponentId(c.id);
-                                setHoverTokenPath(null);
-                              }}
                             >
-                              <div className="text-sm font-semibold">{c.name}</div>
-                            </button>
-                          );
-                        })}
+                              {group.label}
+                            </div>
+                            {group.items.map((c) => {
+                              const active = c.id === activeComponentId;
+                              return (
+                                <button
+                                  key={c.id}
+                                  type="button"
+                                  className={cx(
+                                    "w-full text-left px-[16px] py-[8px] rounded-[8px] transition-colors border-0",
+                                    active
+                                      ? "bg-[#E4E7EC] text-black shadow-none"
+                                      : "text-[#222727] hover:bg-[rgba(83,96,143,0.07)] bg-transparent",
+                                    "outline-none focus:outline-none focus:ring-0 focus-visible:ring-0",
+                                  )}
+                                  onClick={() => {
+                                    setActiveComponentId(c.id);
+                                    setHoverTokenPath(null);
+                                  }}
+                                >
+                                  <div className="text-sm font-semibold">{c.name}</div>
+                                </button>
+                              );
+                            })}
+                          </React.Fragment>
+                        ))}
                       </div>
                     </div>
                   </aside>
