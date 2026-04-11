@@ -738,10 +738,10 @@
         captionColor: "rgba(34,39,39,0.6)",
       };
 
-      // 会话列表 — Figma 6760:68494「在线Agent列表」（融合工作台文件）
+      // 会话列表 — Figma 6760:68494 外壳；列表行三态见 Figma 6144:86469（默认）/ 86485（Hover）/ 86501（选中）
       const CONVERSATION_LIST_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
-        componentName: "会话列表 / 在线 Agent 列表（Figma 6760:68494）",
+        componentName: "会话列表 / 在线 Agent 列表（Figma 6760:68494，行交互 6144:86469/86485/86501）",
         focusRing: "semi-brand-5",
         shellWidthPx: 371,
         shellRadiusPx: 12,
@@ -784,6 +784,9 @@
         rowPadPx: 12,
         rowRadiusPx: 12,
         rowGapPx: 12,
+        rowDefaultBg: "transparent",
+        rowHoverBg: "rgba(52,59,57,0.05)",
+        rowHoverTransitionMs: 150,
         rowSelectedBg: "semi-color-white",
         rowSelectedShadow: "0px 0px 16px 0px rgba(101,115,137,0.06)",
         rowActiveBarWpx: 4,
@@ -2128,6 +2131,9 @@
           "## 5) 会话行",
           "",
           `| rowPadPx / rowRadiusPx / rowGapPx | ${t.rowPadPx} / ${t.rowRadiusPx} / ${t.rowGapPx} |`,
+          `| rowDefaultBg | ${mdToken("rowDefaultBg", t.rowDefaultBg)} | 未选中默认（透明） |`,
+          `| rowHoverBg | ${mdToken("rowHoverBg", t.rowHoverBg)} | 未选中 Hover，对齐 semi-color-fill-0 |`,
+          `| rowHoverTransitionMs | ${t.rowHoverTransitionMs} | 背景/阴影过渡 |`,
           `| rowSelectedBg | ${mdToken("rowSelectedBg", t.rowSelectedBg)} |`,
           `| rowSelectedShadow | \`${t.rowSelectedShadow}\` | 选中行 Agent 工作台阴影 |`,
           `| rowActiveBarWpx × rowActiveBarHpx | ${t.rowActiveBarWpx}×${t.rowActiveBarHpx}px | 左侧品牌色竖条 |`,
@@ -2147,7 +2153,7 @@
           "",
           "- [ ] 宽 371px、圆角 12、内边距 16",
           "- [ ] Tab 轨道宽 269、灰底圆角 6、选中白底",
-          "- [ ] 行 12px padding、圆角 12；选中白底 + 0 0 16 rgba(101,115,137,0.06) 阴影 + 左 4px 条",
+          "- [ ] 行 12px padding、圆角 12；默认透明；未选中 Hover 为 fill-0；选中白底 + 0 0 16 rgba(101,115,137,0.06) 阴影 + 左 4px 条",
           "- [ ] 头像 32；未读红点 16 圆、白描边",
           "- [ ] 副文案 12px text-3 单行省略；时间右对齐",
           "",
@@ -4226,19 +4232,18 @@
 
         function ListRow({ row }) {
           const isSel = row.id === sel;
-          const Wrapper = isSel ? "button" : "div";
-          const wProps =
-            isSel
-              ? {
-                  type: "button",
-                  onClick: () => onSelectId && onSelectId(row.id),
-                  className: "border-0 w-full text-left cursor-pointer",
-                }
-              : { className: "w-full" };
+          const [hover, setHover] = useState(false);
+          const rowBg = isSel ? t.rowSelectedBg : hover ? t.rowHoverBg : t.rowDefaultBg;
+          const rowShadow = isSel ? t.rowSelectedShadow : "none";
+          const tr = typeof t.rowHoverTransitionMs === "number" ? t.rowHoverTransitionMs : 150;
 
           return (
-            <Wrapper
-              {...wProps}
+            <button
+              type="button"
+              onClick={() => onSelectId && onSelectId(row.id)}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              className="border-0 w-full text-left cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#24cda5]/45 focus-visible:ring-inset"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -4248,8 +4253,9 @@
                 overflow: "hidden",
                 position: "relative",
                 flexShrink: 0,
-                background: isSel ? t.rowSelectedBg : "transparent",
-                boxShadow: isSel ? t.rowSelectedShadow : "none",
+                background: rowBg,
+                boxShadow: rowShadow,
+                transition: `background-color ${tr}ms ease, box-shadow ${tr}ms ease`,
               }}
               data-token-hint="convRow"
             >
@@ -4378,7 +4384,7 @@
                   </p>
                 </div>
               </div>
-            </Wrapper>
+            </button>
           );
         }
 
@@ -7878,6 +7884,9 @@
                                 { label: "\u884c\u5185\u8fb9\u8ddd\uff08px\uff09", path: "rowPadPx", type: "number" },
                                 { label: "\u884c\u5706\u89d2\uff08px\uff09", path: "rowRadiusPx", type: "number" },
                                 { label: "\u5934\u50cf\u4e0e\u6587\u672c\u95f4\u8ddd\uff08px\uff09", path: "rowGapPx", type: "number" },
+                                { label: "\u672a\u9009\u4e2d\u9ed8\u8ba4\u80cc\u666f", path: "rowDefaultBg", type: "text" },
+                                { label: "\u672a\u9009\u4e2d Hover \u80cc\u666f", path: "rowHoverBg", type: "css-color" },
+                                { label: "Hover \u8fc7\u6e21\uff08ms\uff09", path: "rowHoverTransitionMs", type: "number" },
                                 { label: "\u9009\u4e2d\u884c\u80cc\u666f", path: "rowSelectedBg", type: "color" },
                                 { label: "\u9009\u4e2d\u884c\u9634\u5f71\uff08CSS\uff09", path: "rowSelectedShadow", type: "text" },
                                 { label: "\u5de6\u4fa7\u6311\u8272\u6761\u5bbd\uff08px\uff09", path: "rowActiveBarWpx", type: "number" },
