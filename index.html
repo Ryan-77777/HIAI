@@ -4233,7 +4233,9 @@
         function ListRow({ row }) {
           const isSel = row.id === sel;
           const [hover, setHover] = useState(false);
-          const rowBg = isSel ? t.rowSelectedBg : hover ? t.rowHoverBg : t.rowDefaultBg;
+          const defaultBg = t.rowDefaultBg != null ? t.rowDefaultBg : "transparent";
+          const hoverBg = t.rowHoverBg != null ? t.rowHoverBg : "rgba(52,59,57,0.05)";
+          const rowBg = isSel ? t.rowSelectedBg : hover ? hoverBg : defaultBg;
           const rowShadow = isSel ? t.rowSelectedShadow : "none";
           const tr = typeof t.rowHoverTransitionMs === "number" ? t.rowHoverTransitionMs : 150;
 
