@@ -724,6 +724,89 @@
         captionColor: "rgba(34,39,39,0.6)",
       };
 
+      // 会话列表 — Figma 6760:68494「在线Agent列表」（融合工作台文件）
+      const CONVERSATION_LIST_TOKENS = {
+        fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+        componentName: "会话列表 / 在线 Agent 列表（Figma 6760:68494）",
+        focusRing: "semi-brand-5",
+        shellWidthPx: 371,
+        shellRadiusPx: 12,
+        shellPadPx: 16,
+        shellGapPx: 16,
+        shellBg: "semi-color-white",
+        listScrollGapPx: 4,
+        headerRowHeightPx: 32,
+        headerGapPx: 8,
+        headerIconPlainPadPx: 4,
+        headerIconPlainRadiusPx: 6,
+        headerIconBorderedPadPx: 4,
+        headerIconBorderedRadiusPx: 6,
+        headerIconBorder: "rgba(34,39,39,0.09)",
+        headerIconSizePx: 16,
+        titleFontPx: 16,
+        titleLinePx: 22,
+        titleColor: "semi-color-text-0",
+        radioTrackWidthPx: 269,
+        radioTrackBg: "rgba(52,59,57,0.05)",
+        radioTrackRadiusPx: 6,
+        radioItemHeightPx: 32,
+        radioItemOuterPadPx: 4,
+        radioActiveBg: "semi-color-white",
+        radioActiveLabelColor: "semi-color-text-0",
+        radioInactiveLabelColor: "semi-color-text-2",
+        radioCountColor: "rgba(34,39,39,0.35)",
+        radioSegmentPadXPx: 16,
+        radioSegmentPadYPx: 4,
+        radioLabelFontPx: 12,
+        radioLabelLinePx: 16,
+        groupHeaderPadPx: 2,
+        groupHeaderRadiusPx: 6,
+        groupHeaderGapPx: 4,
+        groupTitleColor: "rgba(34,39,39,0.8)",
+        groupCountColor: "semi-color-text-2",
+        groupTitleFontPx: 12,
+        groupTitleLinePx: 16,
+        groupChevronPx: 16,
+        rowPadPx: 12,
+        rowRadiusPx: 12,
+        rowGapPx: 12,
+        rowSelectedBg: "semi-color-white",
+        rowSelectedShadow: "0px 0px 16px 0px rgba(101,115,137,0.06)",
+        rowActiveBarWpx: 4,
+        rowActiveBarHpx: 68,
+        rowActiveBarColor: "#24cda5",
+        avatarSizePx: 32,
+        unreadBadgeBg: "#e23e25",
+        unreadBadgeBorder: "semi-color-white",
+        unreadBadgeFontPx: 12,
+        unreadBadgeLinePx: 16,
+        unreadBadgeText: "semi-color-white",
+        onlineDotSizePx: 10,
+        starBadgeSizePx: 16,
+        starBadgeOffsetPx: 4,
+        nameFontPx: 14,
+        nameLinePx: 24,
+        nameColor: "semi-color-text-0",
+        previewFontPx: 12,
+        previewLinePx: 16,
+        previewColor: "semi-color-text-3",
+        timeColor: "semi-color-text-3",
+        tagBg: "rgba(52,59,57,0.05)",
+        tagRadiusPx: 3,
+        tagPadXPx: 8,
+        tagPadYPx: 2,
+        tagGapPx: 6,
+        tagInnerGapPx: 4,
+        tagTextFontPx: 12,
+        tagTextLinePx: 16,
+        tagTextColor: "#464e4d",
+        closeAllColor: "rgba(34,39,39,0.8)",
+        closeAllFontPx: 12,
+        closeAllLinePx: 16,
+        checkIconPx: 12,
+        clockIconPx: 12,
+      };
+
       const ICON_LIBRARY_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
         componentName: "图标库 / HiUI Icon Library",
@@ -1989,6 +2072,76 @@
         ].join("\n");
       }
 
+      function buildConversationListDesignSkillMarkdown(t) {
+        return [
+          "# DESIGN_SKILL — 会话列表（在线 Agent 列表）",
+          "",
+          "> 设计来源：[Figma 6760:68494](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6760-68494)",
+          "> 资源：`conversation-list-assets/*`（与稿中头像、顶栏图标、状态点、角标矢量对齐）。",
+          "",
+          "## 1) 容器",
+          "",
+          `| shellWidthPx | ${mdToken("shellWidthPx", `${t.shellWidthPx}px`)} | 列表卡固定宽，与稿一致 |`,
+          `| shellRadiusPx | ${mdToken("shellRadiusPx", `${t.shellRadiusPx}px`)} |`,
+          `| shellPadPx | ${mdToken("shellPadPx", `${t.shellPadPx}px`)} |`,
+          `| shellGapPx | ${mdToken("shellGapPx", `${t.shellGapPx}px`)} | 顶栏 / Tab / 列表区间距 |`,
+          `| shellBg | ${mdToken("shellBg", t.shellBg)} |`,
+          `| listScrollGapPx | ${mdToken("listScrollGapPx", `${t.listScrollGapPx}px`)} | 分组标题与行之间 |`,
+          "",
+          "## 2) 顶栏",
+          "",
+          `| headerRowHeightPx | ${mdToken("headerRowHeightPx", `${t.headerRowHeightPx}px`)} |`,
+          `| titleFontPx / titleLinePx | ${mdToken("titleFontPx", `${t.titleFontPx}px`)} / ${mdToken("titleLinePx", `${t.titleLinePx}px`)} | 「我的服务」 |`,
+          `| titleColor | ${mdToken("titleColor", t.titleColor)} |`,
+          `| headerIconSizePx | ${mdToken("headerIconSizePx", `${t.headerIconSizePx}px`)} |`,
+          "左侧 **layout** 按钮：仅 `padding` + 圆角，**无边框**；其余图标按钮：`1px` `headerIconBorder` + `headerIconBorderedRadiusPx`。",
+          "",
+          "## 3) 分段 Tab（RadioGroup）",
+          "",
+          `| radioTrackWidthPx | ${mdToken("radioTrackWidthPx", `${t.radioTrackWidthPx}px`)} |`,
+          `| radioTrackBg / radioTrackRadiusPx | ${mdToken("radioTrackBg", t.radioTrackBg)} / ${mdToken("radioTrackRadiusPx", `${t.radioTrackRadiusPx}px`)} |`,
+          `| radioItemHeightPx | ${mdToken("radioItemHeightPx", `${t.radioItemHeightPx}px`)} |`,
+          `| radioActiveBg | ${mdToken("radioActiveBg", t.radioActiveBg)} | 选中项药丸底 |`,
+          `| radioActiveLabelColor / radioInactiveLabelColor | 见 token |`,
+          `| radioCountColor | ${mdToken("radioCountColor", t.radioCountColor)} | 数字弱色 |`,
+          "",
+          "## 4) 分组标题行",
+          "",
+          `| groupTitleFontPx | ${mdToken("groupTitleFontPx", `${t.groupTitleFontPx}px`)} |`,
+          `| groupTitleColor / groupCountColor | ${mdToken("groupTitleColor", t.groupTitleColor)} / ${mdToken("groupCountColor", t.groupCountColor)} |`,
+          "已结束分组右侧可有 **全部关闭** 文案按钮（`closeAllColor`，12/16 Semibold）。",
+          "",
+          "## 5) 会话行",
+          "",
+          `| rowPadPx / rowRadiusPx / rowGapPx | ${t.rowPadPx} / ${t.rowRadiusPx} / ${t.rowGapPx} |`,
+          `| rowSelectedBg | ${mdToken("rowSelectedBg", t.rowSelectedBg)} |`,
+          `| rowSelectedShadow | \`${t.rowSelectedShadow}\` | 选中行 Agent 工作台阴影 |`,
+          `| rowActiveBarWpx × rowActiveBarHpx | ${t.rowActiveBarWpx}×${t.rowActiveBarHpx}px | 左侧品牌色竖条 |`,
+          `| rowActiveBarColor | ${mdToken("rowActiveBarColor", t.rowActiveBarColor)} |`,
+          `| avatarSizePx | ${mdToken("avatarSizePx", `${t.avatarSizePx}px`)} |`,
+          `| 未读角标 | unreadBadgeBg + 白边 unreadBadgeBorder |`,
+          `| nameFontPx / nameLinePx | ${t.nameFontPx} / ${t.nameLinePx} |`,
+          `| preview / time | ${t.previewFontPx}px / ${t.previewColor}；右对齐时间同色 |`,
+          "",
+          "## 6) 状态 Tag",
+          "",
+          `| tagBg / tagRadiusPx | ${mdToken("tagBg", t.tagBg)} / ${mdToken("tagRadiusPx", `${t.tagRadiusPx}px`)} |`,
+          `| tagTextColor | ${mdToken("tagTextColor", t.tagTextColor)} | semi-grey-7 |`,
+          "已回复：左侧 12px check 图标 + 文案；计时类：12px clock + 数字。",
+          "",
+          "## 7) 校验清单",
+          "",
+          "- [ ] 宽 371px、圆角 12、内边距 16",
+          "- [ ] Tab 轨道宽 269、灰底圆角 6、选中白底",
+          "- [ ] 行 12px padding、圆角 12；选中白底 + 0 0 16 rgba(101,115,137,0.06) 阴影 + 左 4px 条",
+          "- [ ] 头像 32；未读红点 16 圆、白描边",
+          "- [ ] 副文案 12px text-3 单行省略；时间右对齐",
+          "",
+          `**Typography**：${mdToken("fontFamily", t.fontFamily)}`,
+          "",
+        ].join("\n");
+      }
+
       function buildIconLibraryDesignSkillMarkdown() {
         return [
           "# DESIGN_SKILL — 图标库（Icon Library）",
@@ -2034,6 +2187,7 @@
           bubbleTokens,
           fusionTokens,
           hiuiTokens,
+          conversationListTokens,
         } = opts || {};
 
         const gen = generatedAt || new Date().toISOString();
@@ -2070,6 +2224,7 @@
           buildImBubbleDesignSkillMarkdown(r(bubbleTokens)),
           buildFusionWorkbenchDesignSkillMarkdown(r(fusionTokens)),
           buildHiuiButtonDesignSkillMarkdown(r(hiuiTokens)),
+          buildConversationListDesignSkillMarkdown(r(conversationListTokens)),
         ];
         if (includeIconLibrary) blocks.push(buildIconLibraryDesignSkillMarkdown());
 
@@ -3891,6 +4046,430 @@
         );
       }
 
+      /** 会话列表 — Figma 6760:68494，资源 conversation-list-assets */
+      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId }) {
+        const t = tokens || CONVERSATION_LIST_TOKENS;
+        const A = (file) => resolveAssetUrl(`./conversation-list-assets/${file}`);
+        const hi = (id) => highlightTarget === id;
+        const ring = (on) => (on ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {});
+
+        const [tab, setTab] = useState("all");
+        const [open, setOpen] = useState({ g1: true, g2: true, g3: true });
+        const sel = selectedId != null ? selectedId : "r3";
+
+        const tabs = [
+          { id: "all", label: "全部", count: 10 },
+          { id: "in", label: "会话中", count: 4 },
+          { id: "hold", label: "已挂起", count: 3 },
+          { id: "end", label: "已结束", count: 3 },
+        ];
+
+        const previewLong =
+          "亲爱的顾客，您好！请问有什么可以帮助您的吗？请您告诉我您遇到的问题，我会尽力为您解决的。感谢您的耐心等待和配合。";
+
+        const groups = [
+          {
+            id: "g1",
+            title: "会话中",
+            count: 4,
+            closeAll: false,
+            rows: [
+              { id: "r1", name: "山野赴秋", preview: previewLong, time: "13:32", av: 0, unread: 2, star: true, on: true, tags: ["replied"] },
+              { id: "r2", name: "雾里藏温柔", preview: previewLong, time: "13:32", av: 1, on: true, tags: ["replied"] },
+              { id: "r3", name: "杨娟", preview: previewLong, time: "13:32", av: 2, unread: 1, on: true, tags: [{ kind: "clock", val: "50" }] },
+              { id: "r4", name: "Sophia", preview: previewLong, time: "13:32", av: 3, on: true, tags: ["replied"] },
+            ],
+          },
+          {
+            id: "g2",
+            title: "已挂起",
+            count: 3,
+            closeAll: false,
+            rows: [
+              { id: "r5", name: "草莓邮递员", preview: previewLong, time: "13:32", av: 4, unread: 8, on: true },
+              {
+                id: "r6",
+                name: "Isaac",
+                preview: previewLong,
+                time: "13:32",
+                av: 5,
+                star: true,
+                on: true,
+                tags: [{ kind: "plain", text: "+2" }, { kind: "plain", text: "重复进线" }, "replied"],
+              },
+              { id: "r7", name: "张娟", preview: previewLong, time: "13:32", av: 6, on: false },
+            ],
+          },
+          {
+            id: "g3",
+            title: "已结束",
+            count: 2,
+            closeAll: true,
+            rows: [
+              { id: "r8", name: "Bodhi", preview: previewLong, time: "13:32", av: 5, on: false, tags: [{ kind: "plain", text: "系统完结" }] },
+              { id: "r9", name: "晚风叙旧", preview: previewLong, time: "13:32", av: 6, on: false, tags: [{ kind: "plain", text: "系统完结" }] },
+            ],
+          },
+        ];
+
+        function toggleGroup(gid) {
+          setOpen((o) => ({ ...o, [gid]: !o[gid] }));
+        }
+
+        function HeaderIcon({ bordered, src, label }) {
+          const base = {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: bordered ? t.headerIconBorderedPadPx : t.headerIconPlainPadPx,
+            borderRadius: bordered ? t.headerIconBorderedRadiusPx : t.headerIconPlainRadiusPx,
+            border: bordered ? `1px solid ${t.headerIconBorder}` : "none",
+            flexShrink: 0,
+            background: "transparent",
+            cursor: "pointer",
+          };
+          return (
+            <button type="button" title={label} className="outline-none" style={base}>
+              <span className="relative block overflow-hidden shrink-0" style={{ width: t.headerIconSizePx, height: t.headerIconSizePx }}>
+                <img alt="" src={src} className="absolute inset-0 w-full h-full max-w-none object-contain" />
+              </span>
+            </button>
+          );
+        }
+
+        function TagPill({ children, extra }) {
+          return (
+            <div
+              className="flex items-center shrink-0"
+              style={{
+                background: t.tagBg,
+                borderRadius: t.tagRadiusPx,
+                padding: `${t.tagPadYPx}px ${t.tagPadXPx}px`,
+                gap: t.tagInnerGapPx,
+                ...extra,
+              }}
+            >
+              {children}
+            </div>
+          );
+        }
+
+        function renderTagCell(x, key) {
+          if (x === "replied") {
+            return (
+              <TagPill key={key}>
+                <img alt="" src={A("check-icon.png")} style={{ width: t.checkIconPx, height: t.checkIconPx }} className="shrink-0 block" />
+                <span
+                  className="whitespace-nowrap"
+                  style={{ fontSize: t.tagTextFontPx, lineHeight: `${t.tagTextLinePx}px`, color: t.tagTextColor, fontWeight: 400 }}
+                >
+                  已回复
+                </span>
+              </TagPill>
+            );
+          }
+          if (x && x.kind === "clock") {
+            return (
+              <TagPill key={key}>
+                <img alt="" src={A("clock-icon.png")} style={{ width: t.clockIconPx, height: t.clockIconPx }} className="shrink-0 block" />
+                <span
+                  className="whitespace-nowrap"
+                  style={{ fontSize: t.tagTextFontPx, lineHeight: `${t.tagTextLinePx}px`, color: t.tagTextColor, fontWeight: 400 }}
+                >
+                  {x.val}
+                </span>
+              </TagPill>
+            );
+          }
+          if (x && x.kind === "plain") {
+            return (
+              <TagPill key={key}>
+                <span
+                  className="whitespace-nowrap"
+                  style={{ fontSize: t.tagTextFontPx, lineHeight: `${t.tagTextLinePx}px`, color: t.tagTextColor, fontWeight: 400 }}
+                >
+                  {x.text}
+                </span>
+              </TagPill>
+            );
+          }
+          return null;
+        }
+
+        function ListRow({ row }) {
+          const isSel = row.id === sel;
+          const Wrapper = isSel ? "button" : "div";
+          const wProps =
+            isSel
+              ? {
+                  type: "button",
+                  onClick: () => onSelectId && onSelectId(row.id),
+                  className: "border-0 w-full text-left cursor-pointer",
+                }
+              : { className: "w-full" };
+
+          return (
+            <Wrapper
+              {...wProps}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: t.rowGapPx,
+                padding: t.rowPadPx,
+                borderRadius: t.rowRadiusPx,
+                overflow: "hidden",
+                position: "relative",
+                flexShrink: 0,
+                background: isSel ? t.rowSelectedBg : "transparent",
+                boxShadow: isSel ? t.rowSelectedShadow : "none",
+              }}
+              data-token-hint="convRow"
+            >
+              {isSel ? (
+                <div
+                  className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{ width: t.rowActiveBarWpx, height: t.rowActiveBarHpx, background: t.rowActiveBarColor }}
+                />
+              ) : null}
+
+              <div className="relative shrink-0" style={{ width: t.avatarSizePx, height: t.avatarSizePx }} data-token-hint="convAvatar">
+                <img
+                  alt=""
+                  src={A(`avatar-${row.av}.png`)}
+                  className="absolute left-0 top-0 rounded-full block"
+                  style={{ width: t.avatarSizePx, height: t.avatarSizePx, objectFit: "cover" }}
+                />
+                {row.unread ? (
+                  <div
+                    className="absolute flex items-center justify-center rounded-full border border-solid"
+                    style={{
+                      left: 20,
+                      top: -4,
+                      minWidth: 16,
+                      width: 16,
+                      height: 16,
+                      background: t.unreadBadgeBg,
+                      borderColor: t.unreadBadgeBorder,
+                    }}
+                  >
+                    <span
+                      className="text-center font-normal"
+                      style={{
+                        fontSize: t.unreadBadgeFontPx,
+                        lineHeight: `${t.unreadBadgeLinePx}px`,
+                        color: t.unreadBadgeText,
+                        fontFamily: "Inter, sans-serif",
+                      }}
+                    >
+                      {row.unread}
+                    </span>
+                  </div>
+                ) : null}
+                <div className="absolute flex items-center justify-center" style={{ bottom: -0.33, right: 0, width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
+                  <span className="relative block" style={{ width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
+                    <img alt="" src={A(row.on ? "dot-online.png" : "dot-offline.png")} className="block w-full h-full max-w-none" style={{ margin: "-20%" }} />
+                  </span>
+                </div>
+                {row.star ? (
+                  <div className="absolute" style={{ left: -t.starBadgeOffsetPx, top: -t.starBadgeOffsetPx, width: t.starBadgeSizePx, height: t.starBadgeSizePx }}>
+                    <img alt="" src={A("star-badge-bg.png")} className="absolute inset-0 w-full h-full" />
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ width: 10, height: 10 }}>
+                      <img alt="" src={A("star-inner.png")} className="block w-full h-full" style={{ margin: "-36.36%" }} />
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+
+              <div className="flex min-w-0 flex-1 flex-col gap-[4px] items-start">
+                <div className="flex w-full min-w-0 items-center gap-[4px] shrink-0">
+                  <div
+                    className="min-w-0 flex-1 font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+                    style={{
+                      fontSize: t.nameFontPx,
+                      lineHeight: `${t.nameLinePx}px`,
+                      color: t.nameColor,
+                    }}
+                  >
+                    {row.name}
+                  </div>
+                  <div className="flex flex-wrap items-center justify-end gap-[4px] shrink-0">
+                    {(row.tags || []).map((x, i) => renderTagCell(x, i))}
+                  </div>
+                </div>
+                <div className="flex w-full items-center gap-[8px] shrink-0">
+                  <p
+                    className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap font-normal m-0"
+                    style={{
+                      fontSize: t.previewFontPx,
+                      lineHeight: `${t.previewLinePx}px`,
+                      color: t.previewColor,
+                    }}
+                  >
+                    {row.preview}
+                  </p>
+                  <p
+                    className="shrink-0 m-0 overflow-hidden text-ellipsis whitespace-nowrap text-right font-normal"
+                    style={{
+                      fontSize: t.previewFontPx,
+                      lineHeight: `${t.previewLinePx}px`,
+                      color: t.timeColor,
+                    }}
+                  >
+                    {row.time}
+                  </p>
+                </div>
+              </div>
+            </Wrapper>
+          );
+        }
+
+        return (
+          <div
+            className="flex flex-col items-start overflow-hidden shrink-0"
+            style={{
+              fontFamily: t.fontFamily,
+              width: t.shellWidthPx,
+              maxWidth: "100%",
+              minHeight: 0,
+              borderRadius: t.shellRadiusPx,
+              padding: t.shellPadPx,
+              gap: t.shellGapPx,
+              background: t.shellBg,
+              ...ring(hi("convShell")),
+            }}
+            data-token-hint="convShell"
+          >
+            <div
+              className="flex w-full shrink-0 items-center"
+              style={{ height: t.headerRowHeightPx, gap: t.headerGapPx, ...ring(hi("convHeader")) }}
+              data-token-hint="convHeader"
+            >
+              <div className="flex min-w-0 flex-1 items-center" style={{ gap: t.headerGapPx }}>
+                <HeaderIcon bordered={false} src={A("icon-layout.png")} label="侧栏" />
+                <p
+                  className="m-0 min-w-0 flex-1 font-semibold"
+                  style={{ fontSize: t.titleFontPx, lineHeight: `${t.titleLinePx}px`, color: t.titleColor }}
+                >
+                  我的服务
+                </p>
+                <HeaderIcon bordered src={A("icon-refresh.png")} label="刷新" />
+                <HeaderIcon bordered src={A("icon-filter-lines.png")} label="筛选" />
+                <HeaderIcon bordered src={A("icon-trash.png")} label="删除" />
+                <HeaderIcon bordered src={A("icon-funnel.png")} label="过滤" />
+              </div>
+            </div>
+
+            <div className="flex w-full shrink-0 items-center" style={{ ...ring(hi("convTabs")) }} data-token-hint="convTabs">
+              <div
+                className="flex shrink-0 items-start"
+                style={{
+                  width: t.radioTrackWidthPx,
+                  maxWidth: "100%",
+                  background: t.radioTrackBg,
+                  borderRadius: t.radioTrackRadiusPx,
+                }}
+              >
+                {tabs.map((x) => {
+                  const active = tab === x.id;
+                  return (
+                    <button
+                      key={x.id}
+                      type="button"
+                      onClick={() => setTab(x.id)}
+                      className="flex min-h-0 min-w-0 flex-1 cursor-pointer items-center justify-center border-0 bg-transparent outline-none"
+                      style={{
+                        height: t.radioItemHeightPx,
+                        padding: t.radioItemOuterPadPx,
+                        borderRadius: t.radioTrackRadiusPx,
+                      }}
+                    >
+                      <div
+                        className="flex w-full flex-col items-start"
+                        style={{
+                          background: active ? t.radioActiveBg : "transparent",
+                          borderRadius: t.radioTrackRadiusPx,
+                          padding: `${t.radioSegmentPadYPx}px ${t.radioSegmentPadXPx}px`,
+                        }}
+                      >
+                        <p className="m-0 whitespace-nowrap text-[0px] leading-none">
+                          <span
+                            className="font-semibold"
+                            style={{
+                              fontSize: t.radioLabelFontPx,
+                              lineHeight: `${t.radioLabelLinePx}px`,
+                              color: active ? t.radioActiveLabelColor : t.radioInactiveLabelColor,
+                            }}
+                          >
+                            {x.label}
+                            {x.id === "end" ? "" : " "}
+                          </span>
+                          <span
+                            className="font-normal"
+                            style={{
+                              fontSize: t.radioLabelFontPx,
+                              lineHeight: `${t.radioLabelLinePx}px`,
+                              color: t.radioCountColor,
+                            }}
+                          >
+                            {x.id === "end" ? ` ${x.count}` : x.count}
+                          </span>
+                        </p>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div
+              className="flex min-h-0 w-full flex-1 flex-col overflow-y-auto overflow-x-hidden"
+              style={{ gap: t.listScrollGapPx, ...ring(hi("convScroll")) }}
+              data-token-hint="convScroll"
+            >
+              {groups.map((g) => (
+                <React.Fragment key={g.id}>
+                  <button
+                    type="button"
+                    onClick={() => toggleGroup(g.id)}
+                    className="flex w-full shrink-0 cursor-pointer items-center border-0 bg-transparent p-0 outline-none"
+                    style={{
+                      gap: t.groupHeaderGapPx,
+                      padding: t.groupHeaderPadPx,
+                      borderRadius: t.groupHeaderRadiusPx,
+                    }}
+                  >
+                    <div className="flex min-w-0 flex-1 items-center font-normal" style={{ gap: t.groupHeaderGapPx, fontSize: t.groupTitleFontPx, lineHeight: `${t.groupTitleLinePx}px` }}>
+                      <span style={{ color: t.groupTitleColor }}>{g.title}</span>
+                      <span style={{ color: t.groupCountColor }}>{g.count}</span>
+                    </div>
+                    {g.closeAll ? (
+                      <span
+                        className="shrink-0 font-semibold whitespace-nowrap"
+                        style={{ fontSize: t.closeAllFontPx, lineHeight: `${t.closeAllLinePx}px`, color: t.closeAllColor }}
+                      >
+                        全部关闭
+                      </span>
+                    ) : null}
+                    <span className="relative block shrink-0 overflow-hidden" style={{ width: t.groupChevronPx, height: t.groupChevronPx }}>
+                      <img
+                        alt=""
+                        src={A("icon-chevron.png")}
+                        className="absolute inset-0 h-full w-full max-w-none object-contain"
+                        style={{
+                          transform: open[g.id] ? "none" : "rotate(180deg)",
+                          transition: "transform 160ms ease",
+                        }}
+                      />
+                    </span>
+                  </button>
+                  {open[g.id] ? g.rows.map((row) => <ListRow key={row.id} row={row} />) : null}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
       function FusionWorkbenchView({ tokens, highlightTarget, agentSegment, onAgentSegment }) {
         const t = tokens || FUSION_WORKBENCH_TOKENS;
         const hi = (id) => highlightTarget === id;
@@ -5528,6 +6107,7 @@
             { id: "imBubble", name: "IM气泡" },
             { id: "fusionWorkbench", name: "融合工作台框架" },
             { id: "hiuiButton", name: "按钮" },
+            { id: "conversationList", name: "会话列表" },
           ],
           [],
         );
@@ -5586,7 +6166,11 @@
         const [fusionTokens, setFusionTokens] = useState(() => loadSavedTokens("fusionWorkbench", FUSION_WORKBENCH_TOKENS));
         const [bubbleTokens, setBubbleTokens] = useState(() => loadSavedTokens("imBubble", IM_BUBBLE_TOKENS));
         const [hiuiButtonTokens, setHiuiButtonTokens] = useState(() => loadSavedTokens("hiuiButton", HIUI_BUTTON_TOKENS));
+        const [conversationListTokens, setConversationListTokens] = useState(() =>
+          loadSavedTokens("conversationList", CONVERSATION_LIST_TOKENS),
+        );
         const [iconLibTokens, setIconLibTokens] = useState(() => loadSavedTokens("iconLibrary", ICON_LIBRARY_TOKENS));
+        const [conversationSelectedId, setConversationSelectedId] = useState("r3");
 
         // Token edit snapshots (for Cancel). If snapshot exists → dirty.
         const [tokenEditSnapshots, setTokenEditSnapshots] = useState(() => ({}));
@@ -5598,6 +6182,10 @@
         const resolvedFusionTokens = useMemo(() => resolveAllTokenColors(fusionTokens, foundationPalette), [fusionTokens, foundationPalette]);
         const resolvedBubbleTokens = useMemo(() => resolveAllTokenColors(bubbleTokens, foundationPalette), [bubbleTokens, foundationPalette]);
         const resolvedHiuiButtonTokens = useMemo(() => resolveAllTokenColors(hiuiButtonTokens, foundationPalette), [hiuiButtonTokens, foundationPalette]);
+        const resolvedConversationListTokens = useMemo(
+          () => resolveAllTokenColors(conversationListTokens, foundationPalette),
+          [conversationListTokens, foundationPalette],
+        );
         const resolvedIconLibTokens = useMemo(() => resolveAllTokenColors(iconLibTokens, foundationPalette), [iconLibTokens, foundationPalette]);
         const [hoverTokenPath, setHoverTokenPath] = useState(null);
         const [showUpdatedAt, setShowUpdatedAt] = useState(true);
@@ -5633,7 +6221,9 @@
                   ? fusionTokens
                   : panelComponentId === "hiuiButton"
                     ? hiuiButtonTokens
-                    : iconLibTokens;
+                    : panelComponentId === "conversationList"
+                      ? conversationListTokens
+                      : iconLibTokens;
         // activeResolvedTokens: CSS-resolved values (for component rendering)
         const activeResolvedTokens =
           panelComponentId === "smartSummary"
@@ -5648,7 +6238,9 @@
                     ? resolvedFusionTokens
                     : panelComponentId === "hiuiButton"
                       ? resolvedHiuiButtonTokens
-                      : resolvedIconLibTokens;
+                      : panelComponentId === "conversationList"
+                        ? resolvedConversationListTokens
+                        : resolvedIconLibTokens;
         const setActiveTokens =
           panelComponentId === "smartSummary"
             ? setSmartTokens
@@ -5662,7 +6254,9 @@
                     ? setFusionTokens
                     : panelComponentId === "hiuiButton"
                       ? setHiuiButtonTokens
-                      : setIconLibTokens;
+                      : panelComponentId === "conversationList"
+                        ? setConversationListTokens
+                        : setIconLibTokens;
 
         const isActiveTokensDirty = Boolean(tokenEditSnapshots?.[panelComponentId]);
         function beginTokenEditIfNeeded() {
@@ -5708,6 +6302,8 @@
                     ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
                     : panelComponentId === "hiuiButton"
                       ? buildHiuiButtonDesignSkillMarkdown(activeResolvedTokens)
+                      : panelComponentId === "conversationList"
+                        ? buildConversationListDesignSkillMarkdown(activeResolvedTokens)
                 : buildIconLibraryDesignSkillMarkdown();
         }, [panelComponentId, activeResolvedTokens]);
 
@@ -5724,6 +6320,7 @@
             bubbleTokens,
             fusionTokens,
             hiuiTokens: hiuiButtonTokens,
+            conversationListTokens,
           });
         }, [
           mainView,
@@ -5736,6 +6333,7 @@
           bubbleTokens,
           fusionTokens,
           hiuiButtonTokens,
+          conversationListTokens,
         ]);
 
         const mdHtml = useMemo(() => {
@@ -5944,6 +6542,14 @@
             if (p === "previewBg" || p === "captionColor" || p === "fontFamily" || p === "componentName") return "hiuiBtnPreview";
             if (p === "focusRing") return "hiuiBtnPreview";
             return "hiuiBtnPreview";
+          }
+
+          if (panelComponentId === "conversationList") {
+            if (p.startsWith("shell") || p === "fontFamily" || p === "componentName" || p === "focusRing") return "convShell";
+            if (p.startsWith("header") || p.startsWith("title")) return "convHeader";
+            if (p.startsWith("radio")) return "convTabs";
+            if (p.startsWith("listScroll") || p.startsWith("group")) return "convScroll";
+            return "convRow";
           }
 
           return null;
@@ -6313,6 +6919,8 @@
                                   ? "融合工作台框架（UI）"
                                   : panelComponentId === "hiuiButton"
                                     ? "按钮（UI）"
+                                    : panelComponentId === "conversationList"
+                                      ? "会话列表（UI）"
                                   : "图标库（UI）"}
                       </div>
                       <div className="text-[rgba(34,39,39,0.6)] text-xs">用于预览与定位：hover tokens 会自动高亮对应区域。</div>
@@ -6548,6 +7156,11 @@
                           顶部 Tab 切换类型分区；尺寸切换仅作用于 Solid / Light / Borderless。色值与 Figma 187:846 MCP 导出一致。
                         </span>
                       ) : null}
+                      {panelComponentId === "conversationList" ? (
+                        <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                          Figma 6760:68494 在线 Agent 会话列表；点击「杨娟」行可切换选中态（左条 + 阴影）。资源见 conversation-list-assets。
+                        </span>
+                      ) : null}
                     </div>
 
                     <div
@@ -6612,6 +7225,15 @@
                         <div className={cx("w-full min-w-0", collapsed && "hidden")}>
                           <HiuiButtonShowcase tokens={activeResolvedTokens} highlightTarget={highlightTarget} />
                         </div>
+                      ) : panelComponentId === "conversationList" ? (
+                        <div className={cx("w-full min-w-0 flex justify-center", collapsed && "hidden")}>
+                          <ConversationListView
+                            tokens={activeResolvedTokens}
+                            highlightTarget={highlightTarget}
+                            selectedId={conversationSelectedId}
+                            onSelectId={setConversationSelectedId}
+                          />
+                        </div>
                       ) : panelComponentId === "iconLibrary" ? (
                         <div className={cx("w-full", collapsed && "hidden")}>
                           <IconLibraryView
@@ -6664,6 +7286,8 @@
                               ? "Tokens（融合工作台框架）"
                               : panelComponentId === "hiuiButton"
                                 ? "Tokens（按钮）"
+                                : panelComponentId === "conversationList"
+                                  ? "Tokens（会话列表）"
                               : iconLibrarySelectedName
                                 ? `Tokens（${iconLibrarySelectedName}）`
                                 : "Tokens（图标库）"
@@ -7116,6 +7740,102 @@
                               ],
                             },
                           ]
+                        : panelComponentId === "conversationList"
+                        ? [
+                            {
+                              title: "\u5143\u4fe1\u606f",
+                              fields: [
+                                { label: "\u7ec4\u4ef6\u540d\u79f0", path: "componentName", type: "text" },
+                                { label: "\u5b57\u4f53\u65cf", path: "fontFamily", type: "text" },
+                                { label: "Focus Ring", path: "focusRing", type: "color" },
+                              ],
+                            },
+                            {
+                              title: "\u5bb9\u5668",
+                              fields: [
+                                { label: "\u5361\u7247\u5bbd\uff08px\uff09", path: "shellWidthPx", type: "number" },
+                                { label: "\u5706\u89d2\uff08px\uff09", path: "shellRadiusPx", type: "number" },
+                                { label: "\u5185\u8fb9\u8ddd\uff08px\uff09", path: "shellPadPx", type: "number" },
+                                { label: "\u533a\u5757\u95f4\u8ddd\uff08px\uff09", path: "shellGapPx", type: "number" },
+                                { label: "\u80cc\u666f\u8272", path: "shellBg", type: "color" },
+                                { label: "\u5217\u8868\u533a\u5782\u76f4\u95f4\u8ddd\uff08px\uff09", path: "listScrollGapPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u9876\u680f",
+                              fields: [
+                                { label: "\u884c\u9ad8\uff08px\uff09", path: "headerRowHeightPx", type: "number" },
+                                { label: "\u5143\u7d20\u95f4\u8ddd\uff08px\uff09", path: "headerGapPx", type: "number" },
+                                { label: "\u65e0\u8fb9\u6846\u6309\u94ae padding\uff08px\uff09", path: "headerIconPlainPadPx", type: "number" },
+                                { label: "\u6709\u8fb9\u6846\u6309\u94ae padding\uff08px\uff09", path: "headerIconBorderedPadPx", type: "number" },
+                                { label: "\u6709\u8fb9\u6846\u5706\u89d2\uff08px\uff09", path: "headerIconBorderedRadiusPx", type: "number" },
+                                { label: "\u6309\u94ae\u8fb9\u6846\u8272", path: "headerIconBorder", type: "css-color" },
+                                { label: "\u56fe\u6807\u5c3a\u5bf8\uff08px\uff09", path: "headerIconSizePx", type: "number" },
+                                { label: "\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "titleFontPx", type: "number" },
+                                { label: "\u6807\u9898\u884c\u9ad8\uff08px\uff09", path: "titleLinePx", type: "number" },
+                                { label: "\u6807\u9898\u8272", path: "titleColor", type: "color" },
+                              ],
+                            },
+                            {
+                              title: "\u5206\u6bb5 Tab",
+                              fields: [
+                                { label: "\u8f68\u9053\u5bbd\uff08px\uff09", path: "radioTrackWidthPx", type: "number" },
+                                { label: "\u8f68\u9053\u80cc\u666f", path: "radioTrackBg", type: "css-color" },
+                                { label: "\u8f68\u9053\u5706\u89d2\uff08px\uff09", path: "radioTrackRadiusPx", type: "number" },
+                                { label: "\u9879\u9ad8\u5ea6\uff08px\uff09", path: "radioItemHeightPx", type: "number" },
+                                { label: "\u9879\u5916\u8fb9\u8ddd\uff08px\uff09", path: "radioItemOuterPadPx", type: "number" },
+                                { label: "\u9009\u4e2d\u5e95\u8272", path: "radioActiveBg", type: "color" },
+                                { label: "\u9009\u4e2d\u6587\u5b57\u8272", path: "radioActiveLabelColor", type: "color" },
+                                { label: "\u672a\u9009\u6587\u5b57\u8272", path: "radioInactiveLabelColor", type: "color" },
+                                { label: "\u6570\u5b57\u5f31\u8272", path: "radioCountColor", type: "css-color" },
+                                { label: "\u836f\u4e38\u6c34\u5e73 padding\uff08px\uff09", path: "radioSegmentPadXPx", type: "number" },
+                                { label: "\u836f\u4e38\u5782\u76f4 padding\uff08px\uff09", path: "radioSegmentPadYPx", type: "number" },
+                                { label: "\u6587\u5b57\u5b57\u53f7\uff08px\uff09", path: "radioLabelFontPx", type: "number" },
+                                { label: "\u6587\u5b57\u884c\u9ad8\uff08px\uff09", path: "radioLabelLinePx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u5206\u7ec4\u6807\u9898",
+                              fields: [
+                                { label: "\u5185\u8fb9\u8ddd\uff08px\uff09", path: "groupHeaderPadPx", type: "number" },
+                                { label: "\u5706\u89d2\uff08px\uff09", path: "groupHeaderRadiusPx", type: "number" },
+                                { label: "\u5143\u7d20\u95f4\u8ddd\uff08px\uff09", path: "groupHeaderGapPx", type: "number" },
+                                { label: "\u6807\u9898\u8272", path: "groupTitleColor", type: "css-color" },
+                                { label: "\u6570\u91cf\u8272", path: "groupCountColor", type: "color" },
+                                { label: "\u5b57\u53f7\uff08px\uff09", path: "groupTitleFontPx", type: "number" },
+                                { label: "\u4e0b\u62c9\u56fe\u6807\uff08px\uff09", path: "groupChevronPx", type: "number" },
+                                { label: "\u5168\u90e5\u5173\u95ed\u6587\u5b57\u8272", path: "closeAllColor", type: "css-color" },
+                                { label: "\u5168\u90e5\u5173\u95ed\u5b57\u53f7\uff08px\uff09", path: "closeAllFontPx", type: "number" },
+                              ],
+                            },
+                            {
+                              title: "\u4f1a\u8bdd\u884c",
+                              fields: [
+                                { label: "\u884c\u5185\u8fb9\u8ddd\uff08px\uff09", path: "rowPadPx", type: "number" },
+                                { label: "\u884c\u5706\u89d2\uff08px\uff09", path: "rowRadiusPx", type: "number" },
+                                { label: "\u5934\u50cf\u4e0e\u6587\u672c\u95f4\u8ddd\uff08px\uff09", path: "rowGapPx", type: "number" },
+                                { label: "\u9009\u4e2d\u884c\u80cc\u666f", path: "rowSelectedBg", type: "color" },
+                                { label: "\u9009\u4e2d\u884c\u9634\u5f71\uff08CSS\uff09", path: "rowSelectedShadow", type: "text" },
+                                { label: "\u5de6\u4fa7\u6311\u8272\u6761\u5bbd\uff08px\uff09", path: "rowActiveBarWpx", type: "number" },
+                                { label: "\u5de6\u4fa7\u6311\u8272\u6761\u9ad8\uff08px\uff09", path: "rowActiveBarHpx", type: "number" },
+                                { label: "\u6311\u8272\u6761\u8272", path: "rowActiveBarColor", type: "css-color" },
+                                { label: "\u5934\u50cf\u5c3a\u5bf8\uff08px\uff09", path: "avatarSizePx", type: "number" },
+                                { label: "\u672a\u8bfb\u89d2\u6807\u80cc\u666f", path: "unreadBadgeBg", type: "css-color" },
+                                { label: "\u672a\u8bfb\u89d2\u6807\u8fb9\u6846", path: "unreadBadgeBorder", type: "color" },
+                                { label: "\u5728\u7ebf\u70b9\u5c3a\u5bf8\uff08px\uff09", path: "onlineDotSizePx", type: "number" },
+                                { label: "\u661f\u6807\u8bb0\u8fb9\u957f\uff08px\uff09", path: "starBadgeSizePx", type: "number" },
+                                { label: "\u6635\u79f0\u5b57\u53f7\uff08px\uff09", path: "nameFontPx", type: "number" },
+                                { label: "\u526f\u6587\u6848\u5b57\u53f7\uff08px\uff09", path: "previewFontPx", type: "number" },
+                                { label: "\u526f\u6587\u6848\u8272", path: "previewColor", type: "color" },
+                                { label: "\u65f6\u95f4\u8272", path: "timeColor", type: "color" },
+                                { label: "Tag \u80cc\u666f", path: "tagBg", type: "css-color" },
+                                { label: "Tag \u5706\u89d2\uff08px\uff09", path: "tagRadiusPx", type: "number" },
+                                { label: "Tag \u6587\u5b57\u8272", path: "tagTextColor", type: "css-color" },
+                                { label: "\u5df2\u56de\u590d\u56fe\u6807\uff08px\uff09", path: "checkIconPx", type: "number" },
+                                { label: "\u8ba1\u65f6\u56fe\u6807\uff08px\uff09", path: "clockIconPx", type: "number" },
+                              ],
+                            },
+                          ]
                         : [
                             {
                               title: "\u5143\u4fe1\u606f",
@@ -7175,13 +7895,15 @@
                                   ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
                                   : panelComponentId === "hiuiButton"
                                     ? "HiUI 按钮（Figma 187:846）：深色 Solid / 浅色 Light / 无背景 / Text·Link；状态矩阵与尺寸与 MCP get_design_context 对齐。"
+                                    : panelComponentId === "conversationList"
+                                      ? "会话列表（Figma 6760:68494）：顶栏、分段 Tab、分组折叠、会话行、未读角标、星标、在线点、选中左条与阴影；与稿中间距与色值对齐。"
                                     : "平台统一图标注册表；所有业务组件图标必须按 name 从此处引用。"}
                       </div>
                     </div>
                     {/* Icon-only buttons — flex-none, wraps as a unit when narrow */}
                     <div className="flex items-center gap-[4px] flex-none">
                       {/* 沙盒测试 */}
-                      {panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && (
+                      {panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && panelComponentId !== "conversationList" && (
                         <button
                           type="button"
                           title="沙盒测试（模拟AI真实生成效果）"
@@ -7220,6 +7942,8 @@
                                       ? "DESIGN_SKILL_FUSION_WORKBENCH.md"
                                       : panelComponentId === "hiuiButton"
                                         ? "DESIGN_SKILL_HIUI_BUTTON.md"
+                                        : panelComponentId === "conversationList"
+                                          ? "DESIGN_SKILL_CONVERSATION_LIST.md"
                                         : "DESIGN_SKILL_ICON_LIBRARY.md";
                           document.body.appendChild(a);
                           a.click();
@@ -7273,7 +7997,7 @@
             </div>
               ) : null}
             {/* ── Sandbox Modal ──────────────────────────────── */}
-            {sandboxOpen && panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && (
+            {sandboxOpen && panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && panelComponentId !== "conversationList" && (
               <SandboxModal
                 componentId={panelComponentId}
                 mdText={designSkillMd}
