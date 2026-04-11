@@ -1989,6 +1989,93 @@
         ].join("\n");
       }
 
+      function buildIconLibraryDesignSkillMarkdown() {
+        return [
+          "# DESIGN_SKILL — 图标库（Icon Library）",
+          "",
+          "> **平台级约束**：HiAI 体系内**所有业务组件**（智能摘要、表单推荐、AI 输入框、IM气泡、融合工作台框架及未来新增组件）中出现的图标，**必须**通过本图标库按 `name` 引用；禁止自建 SVG、emoji、第三方图标字体或任意未注册资源，以保证视觉与交互一致性。",
+          "",
+          "## 0.1 文案生成原则（重要：文案非固定）",
+          "",
+          "- 图标库的名称/分类为固定的 design token/注册表；页面上的提示文案可根据场景动态生成。",
+          "",
+          "---",
+          "",
+          "## 1) 目标",
+          "",
+          "- 在任何 UI 组件中引用图标时，必须从本图标库按 name 精确引用，不得使用第三方 iconfont / emoji / 任意替代 SVG。",
+          "",
+          "## 2) 预览与引用",
+          "",
+          "- 预览尺寸：**16×16px**。",
+          "- 每个 icon 由 `{ name, url, inset }` 组成，其中 `inset` 用于像素级复现 Figma 中矢量在容器内的定位。",
+          "",
+          "## 3) 全局 API（本 demo）",
+          "",
+          "- `getIcon(name)`：返回 icon 元信息（或 `null`）。",
+          "- 组件渲染：用 `inset` 做绝对定位包裹 `<img>`，确保与 Figma 一致。",
+          "",
+        ].join("\n");
+      }
+
+      /**
+       * 合并全部业务组件 + 可选图标库为单一 Markdown，供外部模型单文件读取。
+       * 团队流程：导出 `DESIGN_SKILL_PLATFORM.md` → Git commit / PR（与 Skills Manager 类工具的「集中库 + 同步」思路一致）。
+       */
+      function buildUnifiedDesignSkillMarkdown(opts) {
+        const {
+          version = "1.0.0",
+          generatedAt,
+          includeIconLibrary = true,
+          foundationPalette,
+          smartTokens,
+          formTokens,
+          aiTokens,
+          bubbleTokens,
+          fusionTokens,
+          hiuiTokens,
+        } = opts || {};
+
+        const gen = generatedAt || new Date().toISOString();
+        const verSafe = JSON.stringify(String(version ?? "1.0.0"));
+        const genSafe = JSON.stringify(String(gen));
+
+        const r = (t) => resolveAllTokenColors(t, foundationPalette);
+
+        const sep = "\n\n---\n\n";
+
+        const header = [
+          "---",
+          "hiai_design_skill_kind: platform-unified",
+          `hiai_design_skill_version: ${verSafe}`,
+          `hiai_design_skill_generated_at: ${genSafe}`,
+          "---",
+          "",
+          "# DESIGN_SKILL — HiAI 平台（全业务组件汇总）",
+          "",
+          "> **单一入口**：将本文档整体提供给外部模型或工具，作为 HiAI 业务 UI 的**唯一综合约束**（各组件规范 + 图标引用规则）。",
+          "> **Token 来源**：正文数值来自当前 Demo 各组件 Tokens（含浏览器本地已保存覆盖）与基础色板；规范真源仍以仓库为准。",
+          "> **版本与协作**：更新组件后在本文档重新导出，将 `DESIGN_SKILL_PLATFORM.md` 提交到 Git，团队通过 PR 审阅与对比（可参考 [Skills Manager 说明](https://github.com/xingkongliang/skills-manager/blob/main/README.zh-CN.md) 的集中技能库与同步理念）。",
+          "",
+          "## 文档结构",
+          "",
+          "以下按模块依次拼接各组件完整 Design Skill 正文；实现某一功能时可在对应章节检索标题或关键词。",
+          "",
+        ].join("\n");
+
+        const blocks = [
+          buildDesignSkillMarkdown(r(smartTokens)),
+          buildFormRecommendDesignSkillMarkdown(r(formTokens)),
+          buildAiInputDesignSkillMarkdown(r(aiTokens)),
+          buildImBubbleDesignSkillMarkdown(r(bubbleTokens)),
+          buildFusionWorkbenchDesignSkillMarkdown(r(fusionTokens)),
+          buildHiuiButtonDesignSkillMarkdown(r(hiuiTokens)),
+        ];
+        if (includeIconLibrary) blocks.push(buildIconLibraryDesignSkillMarkdown());
+
+        return header + sep + blocks.join(sep);
+      }
+
       function getIn(obj, path) {
         return path.split(".").reduce((acc, key) => (acc == null ? acc : acc[key]), obj);
       }
@@ -5447,7 +5534,7 @@
 
         const [activeComponentId, setActiveComponentId] = useState("smartSummary");
         // 默认进入/刷新定位到「基础参数」
-        const [mainView, setMainView] = useState("foundation"); // "business" | "foundation" | "icons"
+        const [mainView, setMainView] = useState("foundation"); // "foundation" | "business" | "icons" | "platformSkill"
         const showComponentAside = mainView === "business";
         const panelComponentId = mainView === "icons" ? "iconLibrary" : activeComponentId;
         const [iconLibrarySelectedName, setIconLibrarySelectedName] = useState(null);
@@ -5460,6 +5547,34 @@
         const [disabled, setDisabled] = useState(false);
         const [collapsed, setCollapsed] = useState(false);
         const [copied, setCopied] = useState(false);
+        const [platformSkillVersion, setPlatformSkillVersion] = useState(() => {
+          try {
+            return localStorage.getItem("hiai.platformSkillVersion") || "1.0.0";
+          } catch {
+            return "1.0.0";
+          }
+        });
+        const [platformIncludeIcons, setPlatformIncludeIcons] = useState(() => {
+          try {
+            const v = localStorage.getItem("hiai.platformSkillIncludeIcons");
+            return v === null || v === "1" || v === "true";
+          } catch {
+            return true;
+          }
+        });
+        const [platformCopied, setPlatformCopied] = useState(false);
+
+        useEffect(() => {
+          try {
+            localStorage.setItem("hiai.platformSkillVersion", platformSkillVersion);
+          } catch {}
+        }, [platformSkillVersion]);
+
+        useEffect(() => {
+          try {
+            localStorage.setItem("hiai.platformSkillIncludeIcons", platformIncludeIcons ? "1" : "0");
+          } catch {}
+        }, [platformIncludeIcons]);
         // ── Foundation state (shared across all components) ──────────────────
         const [foundationPalette, setFoundationPalette] = useState(() => deepClone(FOUNDATION_COLORS_INIT));
         const [foundationSpacing, setFoundationSpacing] = useState(() => FOUNDATION_SPACING_INIT.map(s => ({ ...s })));
@@ -5593,40 +5708,48 @@
                     ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
                     : panelComponentId === "hiuiButton"
                       ? buildHiuiButtonDesignSkillMarkdown(activeResolvedTokens)
-                : [
-                    "# DESIGN_SKILL — 图标库（Icon Library）",
-                    "",
-                    "> **平台级约束**：HiAI 体系内**所有业务组件**（智能摘要、表单推荐、AI 输入框、IM气泡、融合工作台框架及未来新增组件）中出现的图标，**必须**通过本图标库按 `name` 引用；禁止自建 SVG、emoji、第三方图标字体或任意未注册资源，以保证视觉与交互一致性。",
-                    "",
-                    "## 0.1 文案生成原则（重要：文案非固定）",
-                    "",
-                    "- 图标库的名称/分类为固定的 design token/注册表；页面上的提示文案可根据场景动态生成。",
-                    "",
-                    "---",
-                    "",
-                    "## 1) 目标",
-                    "",
-                    "- 在任何 UI 组件中引用图标时，必须从本图标库按 name 精确引用，不得使用第三方 iconfont / emoji / 任意替代 SVG。",
-                    "",
-                    "## 2) 预览与引用",
-                    "",
-                    "- 预览尺寸：**16×16px**。",
-                    "- 每个 icon 由 `{ name, url, inset }` 组成，其中 `inset` 用于像素级复现 Figma 中矢量在容器内的定位。",
-                    "",
-                    "## 3) 全局 API（本 demo）",
-                    "",
-                    "- `getIcon(name)`：返回 icon 元信息（或 `null`）。",
-                    "- 组件渲染：用 `inset` 做绝对定位包裹 `<img>`，确保与 Figma 一致。",
-                    "",
-                  ].join("\n");
+                : buildIconLibraryDesignSkillMarkdown();
         }, [panelComponentId, activeResolvedTokens]);
+
+        const unifiedSkillMd = useMemo(() => {
+          if (mainView !== "platformSkill") return "";
+          return buildUnifiedDesignSkillMarkdown({
+            version: platformSkillVersion,
+            generatedAt: new Date().toISOString(),
+            includeIconLibrary: platformIncludeIcons,
+            foundationPalette,
+            smartTokens,
+            formTokens,
+            aiTokens,
+            bubbleTokens,
+            fusionTokens,
+            hiuiTokens: hiuiButtonTokens,
+          });
+        }, [
+          mainView,
+          platformSkillVersion,
+          platformIncludeIcons,
+          foundationPalette,
+          smartTokens,
+          formTokens,
+          aiTokens,
+          bubbleTokens,
+          fusionTokens,
+          hiuiButtonTokens,
+        ]);
 
         const mdHtml = useMemo(() => {
           if (!window.marked) return "";
           return window.marked.parse(designSkillMd);
         }, [designSkillMd]);
 
+        const unifiedMdHtml = useMemo(() => {
+          if (!window.marked || !unifiedSkillMd) return "";
+          return window.marked.parse(unifiedSkillMd);
+        }, [unifiedSkillMd]);
+
         const mdRef = useRef(null);
+        const unifiedMdRef = useRef(null);
         const [runtimeError, setRuntimeError] = useState(null);
 
         useEffect(() => {
@@ -5964,6 +6087,7 @@
                     { id: "foundation", label: "基础参数" },
                     { id: "business", label: "业务组件" },
                     { id: "icons", label: "图标库" },
+                    { id: "platformSkill", label: "综合 Skill" },
                   ].map(tab => (
                     <button
                       key={tab.id}
@@ -5990,6 +6114,120 @@
                   spacing={foundationSpacing} setSpacing={setFoundationSpacing}
                   radius={foundationRadius}  setRadius={setFoundationRadius}
                 />
+              ) : mainView === "platformSkill" ? (
+                <div className="w-full h-full min-h-0 flex flex-col gap-[12px] box-border">
+                  {runtimeError ? (
+                    <div className="shrink-0 max-w-[560px]">
+                      <div className="bg-[#ffffff] border border-[rgba(247,67,49,0.25)] rounded-[12px] overflow-hidden">
+                        <div className="px-[12px] py-[10px] bg-[rgba(247,67,49,0.08)] flex items-center justify-between gap-[8px]">
+                          <div className="text-[#f74331] text-sm font-bold">运行时错误（导致页面无法交互）</div>
+                          <button
+                            type="button"
+                            className="h-[28px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] text-sm font-semibold hover:bg-[rgba(83,96,143,0.07)] outline-none focus:ring-1 focus:ring-black"
+                            onClick={() => setRuntimeError(null)}
+                          >
+                            关闭
+                          </button>
+                        </div>
+                        <pre className="p-[12px] text-[11px] leading-[14px] text-[#222727] overflow-auto max-h-[240px] whitespace-pre-wrap">
+{String(runtimeError)}
+                        </pre>
+                      </div>
+                    </div>
+                  ) : null}
+                  <div className="flex-1 min-h-0">
+                    <div className="bg-[#ffffff] rounded-[12px] overflow-hidden h-full flex flex-col">
+                      <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] flex flex-col gap-[10px] shrink-0">
+                        <div className="flex flex-wrap items-start justify-between gap-[12px]">
+                          <div className="flex-1 min-w-[200px] flex flex-col gap-[2px]">
+                            <div className="text-[#222727] text-sm font-bold">平台综合 Design Skill（Markdown）</div>
+                            <div className="text-[rgba(34,39,39,0.6)] text-xs leading-[18px]">
+                              合并智能摘要、表单推荐、AI 输入框、IM 气泡、融合工作台、按钮与可选图标库章节；导出后作为对外的单一规范文件，建议纳入 Git 做版本与评审。
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-[4px] flex-none">
+                            <button
+                              type="button"
+                              title="下载 DESIGN_SKILL_PLATFORM.md"
+                              className="h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
+                              onClick={() => {
+                                const blob = new Blob([unifiedSkillMd], { type: "text/markdown;charset=utf-8" });
+                                const url = URL.createObjectURL(blob);
+                                const a = document.createElement("a");
+                                a.href = url;
+                                a.download = "DESIGN_SKILL_PLATFORM.md";
+                                document.body.appendChild(a);
+                                a.click();
+                                a.remove();
+                                URL.revokeObjectURL(url);
+                              }}
+                            >
+                              <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+                                <path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M3 12h10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+                              </svg>
+                            </button>
+                            <button
+                              type="button"
+                              title={platformCopied ? "已复制！" : "复制完整 Markdown"}
+                              className={cx(
+                                "h-[28px] w-[28px] rounded-[7px] flex items-center justify-center transition-all outline-none focus:ring-1 focus:ring-black",
+                                platformCopied
+                                  ? "bg-[rgba(0,0,0,0.07)] text-[#222727] border border-[rgba(45,66,107,0.14)]"
+                                  : "bg-black text-white hover:opacity-85 active:opacity-70",
+                              )}
+                              onClick={async () => {
+                                try {
+                                  await navigator.clipboard.writeText(unifiedSkillMd);
+                                  setPlatformCopied(true);
+                                  window.setTimeout(() => setPlatformCopied(false), 1400);
+                                } catch {
+                                  setPlatformCopied(false);
+                                }
+                              }}
+                            >
+                              {platformCopied ? (
+                                <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+                                  <path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                              ) : (
+                                <svg viewBox="0 0 14 14" width="12" height="12" fill="none">
+                                  <rect x="5" y="5" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
+                                  <path d="M9 5V3.5A1.5 1.5 0 0 0 7.5 2h-4A1.5 1.5 0 0 0 2 3.5v4A1.5 1.5 0 0 0 3.5 9H5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                                </svg>
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-[16px] text-[12px]">
+                          <label className="flex items-center gap-[6px] text-[rgba(34,39,39,0.75)]">
+                            <span className="shrink-0 text-[rgba(34,39,39,0.5)]">文档版本</span>
+                            <input
+                              type="text"
+                              value={platformSkillVersion}
+                              onChange={(e) => setPlatformSkillVersion(e.target.value)}
+                              className="h-[28px] w-[120px] px-[8px] rounded-[7px] border border-[rgba(45,66,107,0.12)] bg-white font-mono text-[11px] outline-none focus:ring-1 focus:ring-black"
+                              placeholder="例如 1.2.0"
+                              spellCheck={false}
+                            />
+                          </label>
+                          <label className="flex items-center gap-[6px] cursor-pointer text-[rgba(34,39,39,0.75)]">
+                            <input
+                              type="checkbox"
+                              className="accent-black"
+                              checked={platformIncludeIcons}
+                              onChange={(e) => setPlatformIncludeIcons(e.target.checked)}
+                            />
+                            合并图标库章节
+                          </label>
+                        </div>
+                      </div>
+                      <div className="p-[16px] flex-1 overflow-auto">
+                        <div ref={unifiedMdRef} className="md" dangerouslySetInnerHTML={{ __html: unifiedMdHtml }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ) : mainView === "business" || mainView === "icons" ? (
                 <div className="w-full h-full flex gap-[0px]">
               {runtimeError ? (
