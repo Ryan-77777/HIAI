@@ -568,6 +568,20 @@
         settings: "fusion-stat-settings",
       };
 
+      /** 会话列表：顶栏 / 分组 / 标签 / 状态点 — HiAI-Interface + HiAI-General（星标），在线点复用 fusion-online-dot */
+      const CONVERSATION_LIST_ICON_NAMES = {
+        layoutLeft: "hiai-layout-left-stroked",
+        refresh: "hiai-refresh-cw-01-stroked",
+        filterLines: "hiai-filter-lines-stroked",
+        trash: "hiai-trash-04-stroked",
+        funnel: "hiai-filter-funnel-01-stroked",
+        chevronUp: "hiai-chevron-up-stroked2",
+        check: "hiai-check-stroked",
+        clock: "hiai-alarm-clock-stroked",
+        starBadge: "hiai-star-06-stroked",
+        onlineDot: "fusion-online-dot",
+      };
+
       const FUSION_WORKBENCH_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
         componentName: "融合工作台框架 / 在线 Agent 外壳（Figma 8279:67909）",
@@ -3553,7 +3567,7 @@
         try {
           const dict = window.__ICON_LIBRARY__?.byName;
           if (!dict) return;
-          for (const file of ["AIInput.json", "AIIcons.json", "FusionWorkbench.json", "Development.json"]) {
+          for (const file of ["AIInput.json", "AIIcons.json", "FusionWorkbench.json", "Development.json", "HiAI-Interface.json"]) {
             const data = await loadIconLibraryCategory(file);
             (data?.icons || []).forEach((ic) => {
               if (ic?.name) dict[String(ic.name)] = ic;
@@ -4046,10 +4060,11 @@
         );
       }
 
-      /** 会话列表 — Figma 6760:68494，资源 conversation-list-assets */
+      /** 会话列表 — Figma 6760:68494；头像用 conversation-list-assets，其余图标走图标库 + hiaiSvgUrl */
       function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId }) {
         const t = tokens || CONVERSATION_LIST_TOKENS;
         const A = (file) => resolveAssetUrl(`./conversation-list-assets/${file}`);
+        const ic = CONVERSATION_LIST_ICON_NAMES;
         const hi = (id) => highlightTarget === id;
         const ring = (on) => (on ? { boxShadow: `0 0 0 2px ${t.focusRing}` } : {});
 
@@ -4116,7 +4131,7 @@
           setOpen((o) => ({ ...o, [gid]: !o[gid] }));
         }
 
-        function HeaderIcon({ bordered, src, label }) {
+        function HeaderIcon({ bordered, iconName, fallbackFile, label }) {
           const base = {
             display: "flex",
             alignItems: "center",
@@ -4130,9 +4145,12 @@
           };
           return (
             <button type="button" title={label} className="outline-none" style={base}>
-              <span className="relative block overflow-hidden shrink-0" style={{ width: t.headerIconSizePx, height: t.headerIconSizePx }}>
-                <img alt="" src={src} className="absolute inset-0 w-full h-full max-w-none object-contain" />
-              </span>
+              {renderIconFromLibrary({
+                name: iconName,
+                size: t.headerIconSizePx,
+                fallbackUrl: hiaiSvgUrl(fallbackFile),
+                fallbackInset: "inset-[8.33%]",
+              })}
             </button>
           );
         }
@@ -4158,7 +4176,12 @@
           if (x === "replied") {
             return (
               <TagPill key={key}>
-                <img alt="" src={A("check-icon.png")} style={{ width: t.checkIconPx, height: t.checkIconPx }} className="shrink-0 block" />
+                {renderIconFromLibrary({
+                  name: ic.check,
+                  size: t.checkIconPx,
+                  fallbackUrl: hiaiSvgUrl("check-stroked.svg"),
+                  fallbackInset: "inset-[8.33%]",
+                })}
                 <span
                   className="whitespace-nowrap"
                   style={{ fontSize: t.tagTextFontPx, lineHeight: `${t.tagTextLinePx}px`, color: t.tagTextColor, fontWeight: 400 }}
@@ -4171,7 +4194,12 @@
           if (x && x.kind === "clock") {
             return (
               <TagPill key={key}>
-                <img alt="" src={A("clock-icon.png")} style={{ width: t.clockIconPx, height: t.clockIconPx }} className="shrink-0 block" />
+                {renderIconFromLibrary({
+                  name: ic.clock,
+                  size: t.clockIconPx,
+                  fallbackUrl: hiaiSvgUrl("alarm-clock-stroked.svg"),
+                  fallbackInset: "inset-[8.33%]",
+                })}
                 <span
                   className="whitespace-nowrap"
                   style={{ fontSize: t.tagTextFontPx, lineHeight: `${t.tagTextLinePx}px`, color: t.tagTextColor, fontWeight: 400 }}
@@ -4266,16 +4294,47 @@
                   </div>
                 ) : null}
                 <div className="absolute flex items-center justify-center" style={{ bottom: -0.33, right: 0, width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
-                  <span className="relative block" style={{ width: t.onlineDotSizePx, height: t.onlineDotSizePx }}>
-                    <img alt="" src={A(row.on ? "dot-online.png" : "dot-offline.png")} className="block w-full h-full max-w-none" style={{ margin: "-20%" }} />
+                  <span
+                    className="relative block overflow-hidden"
+                    style={{
+                      width: t.onlineDotSizePx,
+                      height: t.onlineDotSizePx,
+                      transform: "scale(1.35)",
+                      transformOrigin: "center",
+                    }}
+                  >
+                    {renderIconFromLibrary({
+                      name: ic.onlineDot,
+                      size: t.onlineDotSizePx,
+                      fallbackUrl: hiaiSvgUrl("dot_stroked.svg"),
+                      fallbackInset: "inset-[15%]",
+                      imgStyle: {
+                        objectFit: "cover",
+                        ...(row.on
+                          ? {
+                              filter:
+                                "brightness(0) saturate(100%) invert(58%) sepia(45%) saturate(495%) hue-rotate(117deg) brightness(96%) contrast(89%)",
+                            }
+                          : { filter: "grayscale(1) opacity(0.42)" }),
+                      },
+                    })}
                   </span>
                 </div>
                 {row.star ? (
-                  <div className="absolute" style={{ left: -t.starBadgeOffsetPx, top: -t.starBadgeOffsetPx, width: t.starBadgeSizePx, height: t.starBadgeSizePx }}>
-                    <img alt="" src={A("star-badge-bg.png")} className="absolute inset-0 w-full h-full" />
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ width: 10, height: 10 }}>
-                      <img alt="" src={A("star-inner.png")} className="block w-full h-full" style={{ margin: "-36.36%" }} />
-                    </div>
+                  <div
+                    className="absolute flex items-center justify-center"
+                    style={{ left: -t.starBadgeOffsetPx, top: -t.starBadgeOffsetPx, width: t.starBadgeSizePx, height: t.starBadgeSizePx }}
+                  >
+                    {renderIconFromLibrary({
+                      name: ic.starBadge,
+                      size: t.starBadgeSizePx,
+                      fallbackUrl: hiaiSvgUrl("star-06-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                      imgStyle: {
+                        filter:
+                          "brightness(0) saturate(100%) invert(72%) sepia(48%) saturate(605%) hue-rotate(5deg) brightness(98%) contrast(92%)",
+                      },
+                    })}
                   </div>
                 ) : null}
               </div>
@@ -4345,17 +4404,17 @@
               data-token-hint="convHeader"
             >
               <div className="flex min-w-0 flex-1 items-center" style={{ gap: t.headerGapPx }}>
-                <HeaderIcon bordered={false} src={A("icon-layout.png")} label="侧栏" />
+                <HeaderIcon bordered={false} iconName={ic.layoutLeft} fallbackFile="layout-left-stroked.svg" label="侧栏" />
                 <p
                   className="m-0 min-w-0 flex-1 font-semibold"
                   style={{ fontSize: t.titleFontPx, lineHeight: `${t.titleLinePx}px`, color: t.titleColor }}
                 >
                   我的服务
                 </p>
-                <HeaderIcon bordered src={A("icon-refresh.png")} label="刷新" />
-                <HeaderIcon bordered src={A("icon-filter-lines.png")} label="筛选" />
-                <HeaderIcon bordered src={A("icon-trash.png")} label="删除" />
-                <HeaderIcon bordered src={A("icon-funnel.png")} label="过滤" />
+                <HeaderIcon bordered iconName={ic.refresh} fallbackFile="refresh-cw-01-stroked.svg" label="刷新" />
+                <HeaderIcon bordered iconName={ic.filterLines} fallbackFile="filter-lines-stroked.svg" label="筛选" />
+                <HeaderIcon bordered iconName={ic.trash} fallbackFile="trash-04-stroked.svg" label="删除" />
+                <HeaderIcon bordered iconName={ic.funnel} fallbackFile="filter-funnel-01-stroked.svg" label="过滤" />
               </div>
             </div>
 
@@ -4450,16 +4509,21 @@
                         全部关闭
                       </span>
                     ) : null}
-                    <span className="relative block shrink-0 overflow-hidden" style={{ width: t.groupChevronPx, height: t.groupChevronPx }}>
-                      <img
-                        alt=""
-                        src={A("icon-chevron.png")}
-                        className="absolute inset-0 h-full w-full max-w-none object-contain"
-                        style={{
-                          transform: open[g.id] ? "none" : "rotate(180deg)",
-                          transition: "transform 160ms ease",
-                        }}
-                      />
+                    <span
+                      className="relative block shrink-0 overflow-hidden"
+                      style={{
+                        width: t.groupChevronPx,
+                        height: t.groupChevronPx,
+                        transform: open[g.id] ? "none" : "rotate(180deg)",
+                        transition: "transform 160ms ease",
+                      }}
+                    >
+                      {renderIconFromLibrary({
+                        name: ic.chevronUp,
+                        size: t.groupChevronPx,
+                        fallbackUrl: hiaiSvgUrl("chevron-up-stroked2.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
                     </span>
                   </button>
                   {open[g.id] ? g.rows.map((row) => <ListRow key={row.id} row={row} />) : null}
