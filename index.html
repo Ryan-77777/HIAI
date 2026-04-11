@@ -3671,6 +3671,109 @@
         );
       }
 
+      /** HiUI Button 图标按钮（Figma 187:846）— 与 HiuiButtonShowcase `appearance()` 中 icon 行一致，供业务组件复用 */
+      const HIUI_BTN_CHROME = {
+        pri: "#1aa38a",
+        priH: "#148875",
+        priA: "#0f6d5f",
+        sec: "#222727",
+        secH: "#000000",
+        secA: "#000000",
+        white: "#ffffff",
+        bdr: "rgba(45,66,107,0.12)",
+        t1: "rgba(34,39,39,0.8)",
+        t0: "#222727",
+        disBg: "#e6e7ea",
+        disTx: "rgba(34,39,39,0.35)",
+        f0: "rgba(83,96,143,0.07)",
+        f1: "rgba(83,96,143,0.12)",
+      };
+
+      function hiuiToolbarIconButtonStyle({ group, variant, state, size }) {
+        const C = HIUI_BTN_CHROME;
+        const isSm = size === "small";
+        const h = isSm ? 24 : 36;
+        const padX = isSm ? 4 : 8;
+        const padY = isSm ? 4 : 8;
+        const radius = 8;
+
+        if (state === "disabled") {
+          if (group === "light") {
+            return { bg: C.disBg, border: `1px solid ${C.bdr}`, radius, h, padX, padY };
+          }
+          return { bg: "transparent", border: "none", radius, h, padX, padY };
+        }
+
+        if (group === "solid") {
+          let bg = variant === "primary" ? C.pri : C.sec;
+          if (state === "hover") bg = variant === "primary" ? C.priH : C.secH;
+          else if (state === "active") bg = variant === "primary" ? C.priA : C.secA;
+          return { bg, border: "none", radius, h, padX, padY };
+        }
+
+        if (group === "light") {
+          let bg = C.white;
+          const border = `1px solid ${C.bdr}`;
+          if (variant === "primary") {
+            if (state === "hover") bg = C.f0;
+            else if (state === "active") bg = C.f1;
+          } else {
+            if (state === "hover") bg = C.f0;
+            else if (state === "active") bg = C.f1;
+          }
+          return { bg, border, radius, h, padX, padY };
+        }
+
+        let bg = "transparent";
+        const border = "none";
+        if (variant === "primary") {
+          if (state === "hover") bg = C.f0;
+        } else {
+          if (state === "hover") bg = C.f0;
+        }
+        return { bg, border, radius, h, padX, padY };
+      }
+
+      function HiuiToolbarIconButton({ group, variant, size, title, onClick, disabled, fontFamily, children }) {
+        const [st, setSt] = useState("default");
+        const eff = disabled ? "disabled" : st;
+        const s = hiuiToolbarIconButtonStyle({
+          group,
+          variant,
+          state: eff,
+          size: size || "small",
+        });
+        return (
+          <button
+            type="button"
+            title={title}
+            disabled={!!disabled}
+            onClick={onClick}
+            onMouseEnter={() => !disabled && setSt("hover")}
+            onMouseLeave={() => !disabled && setSt("default")}
+            onMouseDown={() => !disabled && setSt("active")}
+            onMouseUp={() => !disabled && setSt("hover")}
+            onBlur={() => setSt("default")}
+            className={cx(
+              "inline-flex items-center justify-center shrink-0 box-border outline-none",
+              disabled ? "cursor-not-allowed" : "cursor-pointer",
+              !disabled && "focus-visible:ring-2 focus-visible:ring-[#24cda5]/45 focus-visible:ring-inset",
+            )}
+            style={{
+              fontFamily: fontFamily || HIUI_BUTTON_TOKENS.fontFamily,
+              backgroundColor: s.bg,
+              border: s.border,
+              borderRadius: s.radius,
+              minHeight: s.h,
+              height: s.h,
+              padding: `${s.padY}px ${s.padX}px`,
+            }}
+          >
+            {children}
+          </button>
+        );
+      }
+
       /** HiUI 按钮展示：色值与尺寸自 Figma node 187:846（get_design_context） */
       function HiuiButtonShowcase({ tokens, highlightTarget }) {
         const t = tokens || HIUI_BUTTON_TOKENS;
@@ -4103,8 +4206,8 @@
         );
       }
 
-      /** 会话列表 — Figma 6760:68494；头像用 conversation-list-assets，其余图标走图标库 + hiaiSvgUrl */
-      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId, avatarOnly, onRequestExpand }) {
+      /** 会话列表 — Figma 6760:68494（展开）、6190:93899（纯头像收起）；头像用 conversation-list-assets，图标走图标库 + hiaiSvgUrl */
+      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId, avatarOnly, onToggleAvatarOnly }) {
         const t = tokens || CONVERSATION_LIST_TOKENS;
         const A = (file) => resolveAssetUrl(`./conversation-list-assets/${file}`);
         const ic = CONVERSATION_LIST_ICON_NAMES;
@@ -4180,30 +4283,6 @@
 
         function toggleGroup(gid) {
           setOpen((o) => ({ ...o, [gid]: !o[gid] }));
-        }
-
-        function HeaderIcon({ bordered, iconName, fallbackFile, label }) {
-          const base = {
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: bordered ? t.headerIconBorderedPadPx : t.headerIconPlainPadPx,
-            borderRadius: bordered ? t.headerIconBorderedRadiusPx : t.headerIconPlainRadiusPx,
-            border: bordered ? `1px solid ${t.headerIconBorder}` : "none",
-            flexShrink: 0,
-            background: "transparent",
-            cursor: "pointer",
-          };
-          return (
-            <button type="button" title={label} className="outline-none" style={base}>
-              {renderIconFromLibrary({
-                name: iconName,
-                size: t.headerIconSizePx,
-                fallbackUrl: hiaiSvgUrl(fallbackFile),
-                fallbackInset: "inset-[8.33%]",
-              })}
-            </button>
-          );
         }
 
         function TagPill({ children, extra }) {
@@ -4476,23 +4555,21 @@
                   }}
                   data-token-hint="convCollapsedToggle"
                 >
-                  <button
-                    type="button"
+                  <HiuiToolbarIconButton
+                    group="borderless"
+                    variant="tertiary"
+                    size="small"
                     title="展开列表"
-                    onClick={() => onRequestExpand && onRequestExpand()}
-                    className="border-0 bg-transparent cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#24cda5]/45 focus-visible:ring-inset flex items-center justify-center"
-                    style={{
-                      padding: t.collapsedToggleBtnPadPx != null ? t.collapsedToggleBtnPadPx : 4,
-                      borderRadius: t.collapsedToggleBtnRadiusPx != null ? t.collapsedToggleBtnRadiusPx : 6,
-                    }}
+                    fontFamily={t.fontFamily}
+                    onClick={() => onToggleAvatarOnly && onToggleAvatarOnly()}
                   >
                     {renderIconFromLibrary({
                       name: ic.layoutRight,
-                      size: t.collapsedToggleIconPx != null ? t.collapsedToggleIconPx : 16,
+                      size: t.headerIconSizePx,
                       fallbackUrl: hiaiSvgUrl("layout-right-stroked.svg"),
                       fallbackInset: "inset-[8.33%]",
                     })}
-                  </button>
+                  </HiuiToolbarIconButton>
                 </div>
                 <div
                   className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden"
@@ -4516,17 +4593,59 @@
               data-token-hint="convHeader"
             >
               <div className="flex min-w-0 flex-1 items-center" style={{ gap: t.headerGapPx }}>
-                <HeaderIcon bordered={false} iconName={ic.layoutLeft} fallbackFile="layout-left-stroked.svg" label="侧栏" />
+                <HiuiToolbarIconButton
+                  group="borderless"
+                  variant="tertiary"
+                  size="small"
+                  title="收起为纯头像"
+                  fontFamily={t.fontFamily}
+                  onClick={() => onToggleAvatarOnly && onToggleAvatarOnly()}
+                >
+                  {renderIconFromLibrary({
+                    name: ic.layoutLeft,
+                    size: t.headerIconSizePx,
+                    fallbackUrl: hiaiSvgUrl("layout-left-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                  })}
+                </HiuiToolbarIconButton>
                 <p
                   className="m-0 min-w-0 flex-1 font-semibold"
                   style={{ fontSize: t.titleFontPx, lineHeight: `${t.titleLinePx}px`, color: t.titleColor }}
                 >
                   我的服务
                 </p>
-                <HeaderIcon bordered iconName={ic.refresh} fallbackFile="refresh-cw-01-stroked.svg" label="刷新" />
-                <HeaderIcon bordered iconName={ic.filterLines} fallbackFile="filter-lines-stroked.svg" label="筛选" />
-                <HeaderIcon bordered iconName={ic.trash} fallbackFile="trash-04-stroked.svg" label="删除" />
-                <HeaderIcon bordered iconName={ic.funnel} fallbackFile="filter-funnel-01-stroked.svg" label="过滤" />
+                <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="刷新" fontFamily={t.fontFamily} onClick={() => {}}>
+                  {renderIconFromLibrary({
+                    name: ic.refresh,
+                    size: t.headerIconSizePx,
+                    fallbackUrl: hiaiSvgUrl("refresh-cw-01-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                  })}
+                </HiuiToolbarIconButton>
+                <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="筛选" fontFamily={t.fontFamily} onClick={() => {}}>
+                  {renderIconFromLibrary({
+                    name: ic.filterLines,
+                    size: t.headerIconSizePx,
+                    fallbackUrl: hiaiSvgUrl("filter-lines-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                  })}
+                </HiuiToolbarIconButton>
+                <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="删除" fontFamily={t.fontFamily} onClick={() => {}}>
+                  {renderIconFromLibrary({
+                    name: ic.trash,
+                    size: t.headerIconSizePx,
+                    fallbackUrl: hiaiSvgUrl("trash-04-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                  })}
+                </HiuiToolbarIconButton>
+                <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="过滤" fontFamily={t.fontFamily} onClick={() => {}}>
+                  {renderIconFromLibrary({
+                    name: ic.funnel,
+                    size: t.headerIconSizePx,
+                    fallbackUrl: hiaiSvgUrl("filter-funnel-01-stroked.svg"),
+                    fallbackInset: "inset-[8.33%]",
+                  })}
+                </HiuiToolbarIconButton>
               </div>
             </div>
 
@@ -7425,7 +7544,7 @@
                             selectedId={conversationSelectedId}
                             onSelectId={setConversationSelectedId}
                             avatarOnly={conversationListAvatarOnly}
-                            onRequestExpand={() => setConversationListAvatarOnly(false)}
+                            onToggleAvatarOnly={() => setConversationListAvatarOnly((v) => !v)}
                           />
                         </div>
                       ) : panelComponentId === "iconLibrary" ? (
