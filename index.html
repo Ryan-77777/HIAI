@@ -5740,12 +5740,22 @@
 
         const mdHtml = useMemo(() => {
           if (!window.marked) return "";
-          return window.marked.parse(designSkillMd);
+          try {
+            return window.marked.parse(designSkillMd);
+          } catch (e) {
+            const msg = (e && e.message) || String(e);
+            return `<p class="text-[#c0174a] text-sm">Markdown 渲染失败（Design Skill 预览）：${String(msg).replace(/</g, "&lt;")}</p>`;
+          }
         }, [designSkillMd]);
 
         const unifiedMdHtml = useMemo(() => {
           if (!window.marked || !unifiedSkillMd) return "";
-          return window.marked.parse(unifiedSkillMd);
+          try {
+            return window.marked.parse(unifiedSkillMd);
+          } catch (e) {
+            const msg = (e && e.message) || String(e);
+            return `<p class="text-[#c0174a] text-sm">Markdown 渲染失败（综合 Skill）：${String(msg).replace(/</g, "&lt;")}</p>`;
+          }
         }, [unifiedSkillMd]);
 
         const mdRef = useRef(null);
@@ -8128,6 +8138,31 @@
       ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
 
       // Icon picker now uses custom grid dropdown (no datalist needed).
+    </script>
+    <script>
+      (function () {
+        function showBootHint() {
+          var root = document.getElementById("root");
+          if (!root || root.children.length > 0) return;
+          var issues = [];
+          if (!window.React) issues.push("React");
+          if (!window.ReactDOM) issues.push("ReactDOM");
+          if (!window.Babel) issues.push("Babel");
+          if (!window.marked) issues.push("marked");
+          var detail = issues.length
+            ? "<p><strong>未加载的脚本：</strong>" + issues.join("、") + "。请确认在项目根目录用 HTTP 访问（勿用 file://），并检查 <code>vendor/</code> 是否完整。</p>"
+            : "<p>脚本已加载，但界面未渲染。请打开开发者工具 (F12) → Console 查看报错，并尝试强制刷新（Cmd+Shift+R / Ctrl+Shift+R）。</p>";
+          root.innerHTML =
+            '<div style="padding:24px;max-width:640px;margin:0 auto;font:14px/1.6 system-ui,-apple-system,sans-serif;color:#222727;background:#fff;border-radius:12px;border:1px solid rgba(45,66,107,0.15)">' +
+            "<h1 style=\"font-size:16px;margin:0 0 10px\">HiAI Design.MD 未能启动</h1>" +
+            detail +
+            "<p style=\"opacity:.65;font-size:12px;margin-top:14px\">本地示例：<code style=\"background:#f2f4f7;padding:2px 6px;border-radius:4px\">python3 -m http.server 8080</code> → 浏览器打开 <code>http://127.0.0.1:8080/index.html</code></p>" +
+            "</div>";
+        }
+        window.addEventListener("load", function () {
+          setTimeout(showBootHint, 12000);
+        });
+      })();
     </script>
   </body>
 </html>
