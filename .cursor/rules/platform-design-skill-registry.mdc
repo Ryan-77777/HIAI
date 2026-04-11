@@ -1,0 +1,25 @@
+---
+description: 新增或修改业务组件 Design Skill 时，必须同步维护综合 Skill 数据源与 UI 行为
+alwaysApply: true
+---
+
+# 综合 Design Skill 与业务组件同步
+
+## 单一注册表
+
+- 业务组件与 **综合 Skill** 的章节顺序、单组件 Skill 预览共用 **`PLATFORM_SKILL_BUSINESS_SECTIONS`**（`index.html` 内，紧挨 `buildUnifiedDesignSkillMarkdown`）。
+- 左侧导航 **`COMPONENTS`** 由该数组 `id` / `name` 映射生成，勿再手写重复列表。
+
+## 新增业务组件时的清单
+
+1. 实现 `buildYourComponentDesignSkillMarkdown(resolvedTokens)`（或等价命名），与现有 `buildDesignSkillMarkdown` 等并列。
+2. 在 **`PLATFORM_SKILL_BUSINESS_SECTIONS`** 追加一行：`id`、`name`（侧栏显示）、`tokenKey`（与 `buildUnifiedDesignSkillMarkdown` 的 `tokenBag` 字段一致）、`build`。
+3. 在 **`Demo`** 中增加对应 `*Tokens` / `resolved*` / `loadSavedTokens` / `setActiveTokens` 分支（与现有组件同一模式）。
+4. 更新 **`buildUnifiedDesignSkillMarkdown`** 的解构参数与 **`tokenBag`**，为新 `tokenKey` 提供原始 token state。
+5. **`unifiedSkillBundle`** 的 `useMemo` 依赖数组需包含新 token state，保证综合文档随编辑实时重算。
+6. 若有独立导出文件名，更新 Skill 侧栏文件名映射等与 `panelComponentId` 相关的分支。
+
+## 行为说明（给用户）
+
+- **综合 Skill** 正文与 **单组件 Skill** 来自同一 `build*` 与当前 Token（含本地持久化），任意 Token 或基础色板变更都会触发综合文档重算；页面标题旁 **更新时间** 对应该次计算时间（ISO 写入 Markdown 头 `hiai_design_skill_generated_at`）。
+- 在「综合 Skill」Tab 外也会重算 Markdown（便于切换 Tab 即见最新）；Markdown 渲染仅在进入该 Tab 时执行，减轻性能压力。

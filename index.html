@@ -2146,8 +2146,8 @@
           `| headerRowHeightPx | ${mdToken("headerRowHeightPx", `${t.headerRowHeightPx}px`)} |`,
           `| titleFontPx / titleLinePx | ${mdToken("titleFontPx", `${t.titleFontPx}px`)} / ${mdToken("titleLinePx", `${t.titleLinePx}px`)} | 「我的服务」 |`,
           `| titleColor | ${mdToken("titleColor", t.titleColor)} |`,
-          `| headerIconSizePx | ${mdToken("headerIconSizePx", `${t.headerIconSizePx}px`)} |`,
-          "左侧 **layout** 按钮：仅 `padding` + 圆角，**无边框**；其余图标按钮：`1px` `headerIconBorder` + `headerIconBorderedRadiusPx`。",
+          `| headerIconSizePx | ${mdToken("headerIconSizePx", `${t.headerIconSizePx}px`)} | 图标栅格 16px，置于 HiUI **仅图标** Small（24×24，padding 4，圆角 8）内 |`,
+          "顶栏操作钮遵循 **业务组件 · 按钮**（Figma 187:846）：左侧收起为 **Borderless · Tertiary · Small**；刷新/筛选/删除/过滤为 **Light · Tertiary · Small**（白底 + `rgba(45,66,107,0.12)` 边）。左侧钮点击切换 **纯头像收起**（与预览勾选一致）。",
           "",
           "## 3) 分段 Tab（RadioGroup）",
           "",
@@ -2229,6 +2229,20 @@
       }
 
       /**
+       * 业务组件 → Design Skill 合并顺序（**综合 Skill** 与左侧单组件 Skill 预览共用数据源）。
+       * 新增或下线业务组件时：必须同步改此数组、Demo 内 `COMPONENTS`、各 `*Tokens` state 与 `resolved*` / 持久化 key。
+       */
+      const PLATFORM_SKILL_BUSINESS_SECTIONS = [
+        { id: "smartSummary", name: "智能摘要", tokenKey: "smartTokens", build: (t) => buildDesignSkillMarkdown(t) },
+        { id: "formRecommend", name: "表单推荐", tokenKey: "formTokens", build: (t) => buildFormRecommendDesignSkillMarkdown(t) },
+        { id: "aiInput", name: "AI输入框", tokenKey: "aiTokens", build: (t) => buildAiInputDesignSkillMarkdown(t) },
+        { id: "imBubble", name: "IM气泡", tokenKey: "bubbleTokens", build: (t) => buildImBubbleDesignSkillMarkdown(t) },
+        { id: "fusionWorkbench", name: "融合工作台框架", tokenKey: "fusionTokens", build: (t) => buildFusionWorkbenchDesignSkillMarkdown(t) },
+        { id: "hiuiButton", name: "按钮", tokenKey: "hiuiTokens", build: (t) => buildHiuiButtonDesignSkillMarkdown(t) },
+        { id: "conversationList", name: "会话列表", tokenKey: "conversationListTokens", build: (t) => buildConversationListDesignSkillMarkdown(t) },
+      ];
+
+      /**
        * 合并全部业务组件 + 可选图标库为单一 Markdown，供外部模型单文件读取。
        * 团队流程：导出 `DESIGN_SKILL_PLATFORM.md` → Git commit / PR（与 Skills Manager 类工具的「集中库 + 同步」思路一致）。
        */
@@ -2253,6 +2267,16 @@
 
         const r = (t) => resolveAllTokenColors(t, foundationPalette);
 
+        const tokenBag = {
+          smartTokens,
+          formTokens,
+          aiTokens,
+          bubbleTokens,
+          fusionTokens,
+          hiuiTokens,
+          conversationListTokens,
+        };
+
         const sep = "\n\n---\n\n";
 
         const header = [
@@ -2265,7 +2289,7 @@
           "# DESIGN_SKILL — HiAI 平台（全业务组件汇总）",
           "",
           "> **单一入口**：将本文档整体提供给外部模型或工具，作为 HiAI 业务 UI 的**唯一综合约束**（各组件规范 + 图标引用规则）。",
-          "> **Token 来源**：正文数值来自当前 Demo 各组件 Tokens（含浏览器本地已保存覆盖）与基础色板；规范真源仍以仓库为准。",
+          "> **Token 来源**：正文数值来自当前 Demo 各组件 Tokens（含浏览器本地已保存覆盖）与基础色板；正文由 `PLATFORM_SKILL_BUSINESS_SECTIONS` 顺序拼接，与单组件 Skill 预览同源、随编辑实时一致。",
           "> **版本与协作**：更新组件后在本文档重新导出，将 `DESIGN_SKILL_PLATFORM.md` 提交到 Git，团队通过 PR 审阅与对比（可参考 [Skills Manager 说明](https://github.com/xingkongliang/skills-manager/blob/main/README.zh-CN.md) 的集中技能库与同步理念）。",
           "",
           "## 文档结构",
@@ -2274,15 +2298,7 @@
           "",
         ].join("\n");
 
-        const blocks = [
-          buildDesignSkillMarkdown(r(smartTokens)),
-          buildFormRecommendDesignSkillMarkdown(r(formTokens)),
-          buildAiInputDesignSkillMarkdown(r(aiTokens)),
-          buildImBubbleDesignSkillMarkdown(r(bubbleTokens)),
-          buildFusionWorkbenchDesignSkillMarkdown(r(fusionTokens)),
-          buildHiuiButtonDesignSkillMarkdown(r(hiuiTokens)),
-          buildConversationListDesignSkillMarkdown(r(conversationListTokens)),
-        ];
+        const blocks = PLATFORM_SKILL_BUSINESS_SECTIONS.map((sec) => sec.build(r(tokenBag[sec.tokenKey])));
         if (includeIconLibrary) blocks.push(buildIconLibraryDesignSkillMarkdown());
 
         return header + sep + blocks.join(sep);
@@ -6397,15 +6413,7 @@
 
       function Demo() {
         const COMPONENTS = useMemo(
-          () => [
-            { id: "smartSummary", name: "智能摘要" },
-            { id: "formRecommend", name: "表单推荐" },
-            { id: "aiInput", name: "AI输入框" },
-            { id: "imBubble", name: "IM气泡" },
-            { id: "fusionWorkbench", name: "融合工作台框架" },
-            { id: "hiuiButton", name: "按钮" },
-            { id: "conversationList", name: "会话列表" },
-          ],
+          () => PLATFORM_SKILL_BUSINESS_SECTIONS.map((s) => ({ id: s.id, name: s.name })),
           [],
         );
 
@@ -6588,28 +6596,16 @@
         }
 
         const designSkillMd = useMemo(() => {
-          return panelComponentId === "smartSummary"
-            ? buildDesignSkillMarkdown(activeResolvedTokens)
-            : panelComponentId === "formRecommend"
-              ? buildFormRecommendDesignSkillMarkdown(activeResolvedTokens)
-              : panelComponentId === "aiInput"
-                ? buildAiInputDesignSkillMarkdown(activeResolvedTokens)
-                : panelComponentId === "imBubble"
-                  ? buildImBubbleDesignSkillMarkdown(activeResolvedTokens)
-                  : panelComponentId === "fusionWorkbench"
-                    ? buildFusionWorkbenchDesignSkillMarkdown(activeResolvedTokens)
-                    : panelComponentId === "hiuiButton"
-                      ? buildHiuiButtonDesignSkillMarkdown(activeResolvedTokens)
-                      : panelComponentId === "conversationList"
-                        ? buildConversationListDesignSkillMarkdown(activeResolvedTokens)
-                : buildIconLibraryDesignSkillMarkdown();
+          if (panelComponentId === "iconLibrary") return buildIconLibraryDesignSkillMarkdown();
+          const sec = PLATFORM_SKILL_BUSINESS_SECTIONS.find((s) => s.id === panelComponentId);
+          return sec ? sec.build(activeResolvedTokens) : "";
         }, [panelComponentId, activeResolvedTokens]);
 
-        const unifiedSkillMd = useMemo(() => {
-          if (mainView !== "platformSkill") return "";
-          return buildUnifiedDesignSkillMarkdown({
+        const unifiedSkillBundle = useMemo(() => {
+          const generatedAtISO = new Date().toISOString();
+          const md = buildUnifiedDesignSkillMarkdown({
             version: platformSkillVersion,
-            generatedAt: new Date().toISOString(),
+            generatedAt: generatedAtISO,
             includeIconLibrary: platformIncludeIcons,
             foundationPalette,
             smartTokens,
@@ -6620,8 +6616,8 @@
             hiuiTokens: hiuiButtonTokens,
             conversationListTokens,
           });
+          return { md, generatedAtISO };
         }, [
-          mainView,
           platformSkillVersion,
           platformIncludeIcons,
           foundationPalette,
@@ -6644,15 +6640,24 @@
           }
         }, [designSkillMd]);
 
-        const unifiedMdHtml = useMemo(() => {
-          if (!window.marked || !unifiedSkillMd) return "";
+        const unifiedSkillUpdatedLabel = useMemo(() => {
           try {
-            return window.marked.parse(unifiedSkillMd);
+            const d = new Date(unifiedSkillBundle.generatedAtISO);
+            return d.toLocaleString("zh-CN", { dateStyle: "medium", timeStyle: "medium", hour12: false });
+          } catch {
+            return unifiedSkillBundle.generatedAtISO;
+          }
+        }, [unifiedSkillBundle.generatedAtISO]);
+
+        const unifiedMdHtml = useMemo(() => {
+          if (mainView !== "platformSkill" || !window.marked || !unifiedSkillBundle.md) return "";
+          try {
+            return window.marked.parse(unifiedSkillBundle.md);
           } catch (e) {
             const msg = (e && e.message) || String(e);
             return `<p class="text-[#c0174a] text-sm">Markdown 渲染失败（综合 Skill）：${String(msg).replace(/</g, "&lt;")}</p>`;
           }
-        }, [unifiedSkillMd]);
+        }, [mainView, unifiedSkillBundle.md]);
 
         const mdRef = useRef(null);
         const unifiedMdRef = useRef(null);
@@ -7056,9 +7061,14 @@
                       <div className="px-[16px] py-[12px] border-b border-[rgba(45,66,107,0.12)] flex flex-col gap-[10px] shrink-0">
                         <div className="flex flex-wrap items-start justify-between gap-[12px]">
                           <div className="flex-1 min-w-[200px] flex flex-col gap-[2px]">
-                            <div className="text-[#222727] text-sm font-bold">平台综合 Design Skill（Markdown）</div>
+                            <div className="flex flex-wrap items-baseline gap-x-[10px] gap-y-[4px]">
+                              <span className="text-[#222727] text-sm font-bold">平台综合 Design Skill（Markdown）</span>
+                              <span className="text-[11px] leading-[16px] text-[rgba(34,39,39,0.45)] font-normal whitespace-nowrap" title={unifiedSkillBundle.generatedAtISO}>
+                                更新时间 {unifiedSkillUpdatedLabel}
+                              </span>
+                            </div>
                             <div className="text-[rgba(34,39,39,0.6)] text-xs leading-[18px]">
-                              合并智能摘要、表单推荐、AI 输入框、IM 气泡、融合工作台、按钮与可选图标库章节；导出后作为对外的单一规范文件，建议纳入 Git 做版本与评审。
+                              内容由 <code className="text-[11px] px-[4px] py-[1px] rounded bg-[rgba(83,96,143,0.08)]">PLATFORM_SKILL_BUSINESS_SECTIONS</code> 与各组件 Token 实时生成（与左侧单组件 Skill 同源）；含可选图标库章节。导出后建议纳入 Git 做版本与评审。
                             </div>
                           </div>
                           <div className="flex items-center gap-[4px] flex-none">
@@ -7067,7 +7077,7 @@
                               title="下载 DESIGN_SKILL_PLATFORM.md"
                               className="h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[rgba(34,39,39,0.55)] hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
                               onClick={() => {
-                                const blob = new Blob([unifiedSkillMd], { type: "text/markdown;charset=utf-8" });
+                                const blob = new Blob([unifiedSkillBundle.md], { type: "text/markdown;charset=utf-8" });
                                 const url = URL.createObjectURL(blob);
                                 const a = document.createElement("a");
                                 a.href = url;
@@ -7094,7 +7104,7 @@
                               )}
                               onClick={async () => {
                                 try {
-                                  await navigator.clipboard.writeText(unifiedSkillMd);
+                                  await navigator.clipboard.writeText(unifiedSkillBundle.md);
                                   setPlatformCopied(true);
                                   window.setTimeout(() => setPlatformCopied(false), 1400);
                                 } catch {
@@ -7468,7 +7478,7 @@
                             纯头像列表（收起）
                           </label>
                           <span className="text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
-                            展开：Figma 6760:68494；收起：Figma 6190:93899。收起时无分组与 Tab，仅头像列 + 顶栏展开（layout-right）。点击行或勾选切换。
+                            展开：Figma 6760:68494；收起：Figma 6190:93899。顶栏按钮均为 HiUI 图标钮（Small）。点「我的服务」左侧 **layout-left** 或收起态顶栏 **layout-right** 可切换展开/收起；亦可勾选本项。
                           </span>
                         </div>
                       ) : null}
