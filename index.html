@@ -528,7 +528,7 @@
         textColorValue: "semi-color-dark-text",
         // Actions row
         actionsGapPx: 8,
-        iconBtnRadiusPx: 6,
+        iconBtnRadiusPx: 8,
         iconBtnPadPx: 4,
         iconSizePx: 16,
         // Icons（可替换，必须来自图标库）
@@ -547,9 +547,9 @@
         iconToolPaletteName: "palette-stroked",
         // Send button
         sendBtnBgDisabled: "semi-grey-1",
-        sendBtnBgEnabled: "semi-brand-6",
+        sendBtnBgEnabled: "semi-brand-5",
         sendBtnHeightPx: 24,
-        sendBtnRadiusPx: 6,
+        sendBtnRadiusPx: 8,
         sendBtnPadPx: 4,
         sendIconName: "hiai-send",
         // Interaction
@@ -585,7 +585,7 @@
 
       const FUSION_WORKBENCH_TOKENS = {
         fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
-        componentName: "融合工作台框架 / 在线 Agent 外壳（Figma 8279:67909）",
+        componentName: "融合工作台框架 · 客服融合工作台布局骨架（列表槽 + 详情槽 + 顶栏能力区）",
         focusRing: "semi-brand-5",
         // 外框 Agent 容器
         shellBg: "semi-bluegrey-2",
@@ -839,6 +839,113 @@
         collapsedRowPadYPx: 12,
         shellCollapseTransitionMs: 240,
         collapsedShellMinHeightPx: 520,
+      };
+
+      const AGENT_STATUS_TOKENS = {
+        fontFamily: '"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
+        componentName: "Agent状态栏 / Agent Status Bar",
+        focusRing: "semi-brand-5",
+        shellBg: "semi-bluegrey-2",
+        shellExpandedGradient: "linear-gradient(180deg, #f7f8f9 0%, #f2f4f7 100%)",
+        shellBorder: "rgba(34,39,39,0.09)",
+        shellRadiusPx: 16,
+        shellPadPx: 8,
+        shellGapPx: 8,
+        shellShadow: "0px 0px 30px 0px rgba(101,115,137,0.07)",
+        headerPadPx: 4,
+        headerGapPx: 8,
+        headerTitleFontPx: 12,
+        headerTitleLinePx: 16,
+        headerTitleColor: "semi-color-text-1",
+        actionFontPx: 14,
+        actionLinePx: 20,
+        actionTextColor: "semi-color-text-1",
+        actionGapPx: 8,
+        actionPadXPx: 8,
+        actionPadYPx: 2,
+        actionRadiusPx: 6,
+        actionIconSizePx: 16,
+        actionHoverBg: "rgba(83,96,143,0.07)",
+        cardBg: "rgba(255,255,255,0.8)",
+        cardBorder: "semi-color-white",
+        cardRadiusPx: 12,
+        cardPadXPx: 16,
+        cardPadYPx: 12,
+        cardSectionGapPx: 16,
+        cardShadow: "0px 0px 30px 0px rgba(101,115,137,0.07)",
+        statusTagRadiusPx: 3,
+        statusTagPadXPx: 8,
+        statusTagPadYPx: 2,
+        tagGapPx: 6,
+        tagIconGapPx: 4,
+        tagTextFontPx: 12,
+        tagTextLinePx: 16,
+        hostedStatusBg: "rgba(59,179,70,0.15)",
+        hostedStatusFg: "semi-green-8",
+        manualStatusBg: "rgba(249,57,32,0.15)",
+        manualStatusFg: "semi-red-8",
+        completedStatusBg: "rgba(0,119,250,0.15)",
+        completedStatusFg: "semi-blue-8",
+        neutralTagBg: "rgba(52,59,57,0.05)",
+        neutralTagFg: "semi-bluegrey-7",
+        metaTextColor: "semi-color-text-3",
+        metaGapPx: 12,
+        metaIconGapPx: 4,
+        metaIconSizePx: 12,
+        primaryIconBtnSizePx: 32,
+        primaryIconBtnRadiusPx: 12,
+        primaryIconBtnBg: "#0b877d",
+        primaryIconBtnHoverBg: "#09796f",
+        primaryIconColor: "semi-color-white",
+        lightButtonHeightPx: 32,
+        lightButtonRadiusPx: 12,
+        lightButtonBorder: "rgba(34,39,39,0.09)",
+        lightButtonBg: "semi-color-white",
+        splitButtonDivider: "rgba(34,39,39,0.09)",
+        switchWidthPx: 28,
+        switchHeightPx: 16,
+        switchRadiusPx: 8,
+        switchTrackOn: "#0b877d",
+        switchTrackOff: "rgba(52,59,57,0.05)",
+        switchKnobBg: "semi-color-white",
+        switchKnobSizePx: 12,
+        planningMaxHeightPx: 110,
+        planningGapPx: 12,
+        planningNodeSizePx: 14,
+        planningLineColor: "rgba(34,39,39,0.12)",
+        planningDoneBg: "rgba(36,205,165,0.16)",
+        planningDoneFg: "#0b877d",
+        planningCurrentBg: "rgba(11,135,125,0.12)",
+        planningCurrentRing: "rgba(11,135,125,0.24)",
+        planningPendingBg: "rgba(52,59,57,0.05)",
+        planningTagBg: "rgba(52,59,57,0.05)",
+        planningTagFg: "#0b877d",
+        summaryTitleGradient:
+          "linear-gradient(109.07578053578423deg, rgb(22, 218, 203) 0%, rgb(49, 134, 212) 20%, rgb(111, 88, 227) 69.65%, rgb(231, 116, 221) 100%)",
+        summaryLabelWidthPx: 56,
+        summaryParagraphGapPx: 12,
+        summaryBodyColor: "semi-color-text-1",
+        summaryLabelColor: "semi-color-text-1",
+        summaryDividerColor: "rgba(34,39,39,0.09)",
+        errorTextColor: "semi-color-text-0",
+        accentTextColor: "#0b877d",
+        flowStripHeightPx: 20,
+        flowStripOpacity: 0.5,
+        flowStripGradient:
+          "linear-gradient(90deg, rgba(63,226,213,0.12) 0%, rgba(64,147,224,0.16) 37.358%, rgba(122,97,250,0.14) 69.65%, rgba(214,130,235,0.12) 100%)",
+        flowStripDurationSec: 3,
+        iconDetailName: "hiai-flex-align-right-stroked",
+        iconExpandName: "hiai-chevron-up-stroked2",
+        iconCollapseName: "hiai-chevron-down-stroked2",
+        iconFileName: "hiai-file-05-stroked",
+        iconClockName: "hiai-alarm-clock-stroked",
+        iconBookmarkName: "hiai-bookmark-add-stroked2",
+        iconStopName: "hiai-stop-stroked",
+        iconRetryName: "hiai-refresh-cw-01-stroked",
+        iconToolsName: "hiai-grid-01-stroked",
+        iconPlayName: "hiai-play-stroked",
+        iconFallbackAvatarName: "hiai-user-stroked",
+        iconCloseName: "x-close-stroked",
       };
 
       const ICON_LIBRARY_TOKENS = {
@@ -1529,6 +1636,10 @@
           "",
           "> \u7ec4\u4ef6\u5185\u6240\u6709\u56fe\u6807\u5fc5\u987b\u4ece\u5e73\u53f0\u300cDESIGN_SKILL \u2014 \u56fe\u6807\u5e93\u300d\u6ce8\u518c\u8868\u6309 `name` \u5f15\u7528\uff08\u5982 `getIcon(name)`\uff09\uff1b\u7981\u6b62 emoji\u3001\u4e34\u65f6 SVG\u3001\u7b2c\u4e09\u65b9 iconfont \u6216\u4efb\u610f\u672a\u5165\u5e93\u8d44\u6e90\u3002",
           "",
+          "> **\u6309\u94ae\uff08HiUI Button\uff0c\u4e0e\u57fa\u7840\u7ec4\u4ef6\u300c\u6309\u94ae\u300d\u540c\u6b65\uff09**",
+          "",
+          "> \u56de\u590d\u63a8\u8350\u533a\u53f3\u4fa7\u64cd\u4f5c\u94ae\u3001\u5e95\u90e8\u5de5\u5177\u680f\u56fe\u6807\u94ae\u5747\u987b\u4e3a **Light \u00b7 Tertiary \u00b7 Small** \u56fe\u6807\u6309\u94ae\uff08Figma 187:846\uff1a\u5bb9\u5668 24\u00d724\u3001padding 4\u3001\u5706\u89d2 8\u3001\u767d\u5e95 + \u8fb9 `rgba(45,66,107,0.12)`\uff0chover/active \u586b\u5145\u4e0e\u300cDESIGN_SKILL \u2014 \u6309\u94ae\u300d\u4e00\u81f4\uff09\u3002\u53d1\u9001\u94ae\uff1a\u6709\u8f93\u5165\u5185\u5bb9\u65f6\u4e3a **Solid \u00b7 Primary \u00b7 Small**\uff08\u4e3b\u8272\u5e95 + \u767d\u56fe\u6807\uff09\uff1b\u65e0\u5185\u5bb9\u65f6\u4e3a\u7981\u7528\u6001 **Light** \u56fe\u6807\u6309\u94ae\uff08\u7070\u5e95 + \u8fb9\uff0c\u4e0e HiUI disabled \u4e00\u81f4\uff09\u3002\u7981\u6b62\u81ea\u5b9a\u4e49\u8d64\u9732\u56fe\u6807\u65e0\u6309\u94ae\u5bb9\u5668\u3002",
+          "",
           "---",
           "",
           "## \u00a72 Global Design Tokens\uff08\u5168\u5c40\u8bbe\u8ba1\u53d8\u91cf\uff09",
@@ -1545,7 +1656,7 @@
           `| \u63a8\u8350\u533a\u80cc\u666f | recoOuterBg | ${mdToken("recoOuterBg", t.recoOuterBg)} | \u8bdd\u672f\u63a8\u8350\u7070\u5e95\u5bb9\u5668 |`,
           `| \u53d1\u9001\u6309\u9215\uff08\u6709\u5185\u5bb9\uff09 | sendBtnBgEnabled | ${mdToken("sendBtnBgEnabled", t.sendBtnBgEnabled)} | \u6709\u8f93\u5165\u5185\u5bb9\u65f6\u53d1\u9001\u952e\u5e95\u8272 |`,
           `| \u53d1\u9001\u6309\u9215\uff08\u7981\u7528\uff09 | sendBtnBgDisabled | ${mdToken("sendBtnBgDisabled", t.sendBtnBgDisabled)} | \u65e0\u5185\u5bb9\u65f6\u53d1\u9001\u952e\u5e95\u8272 |`,
-          `| Hover \u586b\u5145 | hoverFill | ${mdToken("hoverFill", t.hoverFill)} | \u6240\u6709\u56fe\u6807\u6309\u9215 hover \u80cc\u666f |`,
+          `| Hover \u586b\u5145 | hoverFill | ${mdToken("hoverFill", t.hoverFill)} | \u4e0e HiUI Light \u56fe\u6807\u6309\u9215 hover \u586b\u5145\u5bf9\u9f50\u53c2\u8003\uff08\u63a8\u8350\u6761\u76ee\u7b49\u975e\u6309\u94ae\u533a\u57df\uff09 |`,
           `| Focus Ring | focusRing | ${mdToken("focusRing", t.focusRing)} | \u7126\u70b9\u73af\u989c\u8272 |`,
           `| Tooltip \u80cc\u666f | tooltipBg | ${mdToken("tooltipBg", t.tooltipBg)} | \u63a8\u8350\u6761\u76ee hover tooltip |`,
           `| Tooltip \u6587\u5b57 | tooltipTextColor | ${mdToken("tooltipTextColor", t.tooltipTextColor)} | Tooltip \u6587\u5b57 |`,
@@ -1577,9 +1688,9 @@
           `| InputCard padding | cardPadPx | ${mdToken("cardPadPx", `${t.cardPadPx}px`)} |`,
           `| InputCard gap | cardGapPx | ${mdToken("cardGapPx", `${t.cardGapPx}px`)} |`,
           `| ActionsRow gap | actionsGapPx | ${mdToken("actionsGapPx", `${t.actionsGapPx}px`)} |`,
-          `| IconButton padding | iconBtnPadPx | ${mdToken("iconBtnPadPx", `${t.iconBtnPadPx}px`)} |`,
-          `| SendButton padding | sendBtnPadPx | ${mdToken("sendBtnPadPx", `${t.sendBtnPadPx}px`)} |`,
-          `| SendButton height | sendBtnHeightPx | ${mdToken("sendBtnHeightPx", `${t.sendBtnHeightPx}px`)} |`,
+          `| IconButton padding\uff08\u5bf9\u9f50\u53c2\u8003\uff0c\u5b9e\u73b0\u4ee5 HiUI Small \u56fe\u6807\u6309\u94ae\u4e3a\u51c6\uff09 | iconBtnPadPx | ${mdToken("iconBtnPadPx", `${t.iconBtnPadPx}px`)} |`,
+          `| SendButton padding\uff08\u5bf9\u9f50\u53c2\u8003\uff09 | sendBtnPadPx | ${mdToken("sendBtnPadPx", `${t.sendBtnPadPx}px`)} |`,
+          `| SendButton height\uff08\u5bf9\u9f50\u53c2\u8003\uff09 | sendBtnHeightPx | ${mdToken("sendBtnHeightPx", `${t.sendBtnHeightPx}px`)} |`,
           `| RecoOuter padding | recoOuterPadPx | ${mdToken("recoOuterPadPx", `${t.recoOuterPadPx}px`)} |`,
           `| RecoOuter gap | recoOuterGapPx | ${mdToken("recoOuterGapPx", `${t.recoOuterGapPx}px`)} |`,
           `| RecoHeader padX | recoHeaderPadX | ${mdToken("recoHeaderPadX", `${t.recoHeaderPadX}px`)} |`,
@@ -1819,19 +1930,29 @@
 
       function buildFusionWorkbenchDesignSkillMarkdown(t) {
         return [
-          "# DESIGN_SKILL — 融合工作台 · 在线 Agent 外壳（HiAI）",
+          "# DESIGN_SKILL — 融合工作台框架 · 客服融合工作台布局骨架（HiAI）",
           "",
-          "> 设计来源：[Figma 在线Agent 帧](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8279-67909)（Semi Design 变量落地）；历史三栏稿见 [6347:160598](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6347-160598)。",
+          "> **定位**：当模型或工程需要生成「客服场景下的融合工作台」整页布局时，**必须**采用本文件定义的**固定骨架**（顶栏能力区 + 左列表槽 + 右详情槽）。本规范描述**框架结构与视觉层级**，不规定列表/详情内的业务文案；左槽**标准实现为「会话列表」组件**（须同时遵守《DESIGN_SKILL — 会话列表》）。",
+          "",
+          "> **设计来源（骨架）**：[Figma 在线 Agent 外壳 8279:67909](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=8279-67909)（Semi Design 变量落地）。",
+          "> **参考（该骨架上的真实业务页面）**：[Figma 6144:31445](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6144-31445)。历史三栏稿见 [6347:160598](https://www.figma.com/design/AJ6QTEGI8aYSdfJ3H0mkJP/?node-id=6347-160598)。",
           "",
           "---",
           "",
           "## §1 系统角色与指令",
           "",
-          "**角色**：实现「在线 Agent」托管视图的**外壳**（顶栏 + 列表槽 + 详情白卡片）。业务列表、会话、Tab 内容由 slot 注入；本规范只锁布局、色值、圆角、间距与阴影。",
+          "**角色**：定义**客服融合工作台**外层的**唯一布局框架**——任何 AI 生成或手工实现的该场景页面，均应复用此结构，以保证与 HiAI 设计体系一致。",
           "",
-          "**最高指令**：所有视觉数值必须来自 §2 Token；禁止魔法数。顶栏内图标须与稿一致（实现时可用设计导出资源或图标库中等价 `name`）。",
+          "**骨架组成（自上而下）**：",
           "",
-          "**触发关键词**：`在线 Agent` / `融合工作台` / `FusionWorkbench` / `8279:67909`",
+          "1. **顶栏（TopBar）**：左侧展示当前服务者/用户昵称与**在线状态**；中部为**指标数据区**（半透明白底条，图标 + 数值由业务注入）；右侧为 **Agent 模式分段**（融合工作台 / 在线 Agent / 工单 Agent），仅切换产品模式，不改变下方槽位结构。",
+          "2. **主行（MainFrostRow）**：半透明白底槽（`mainFrostBg` + 白描边 + `mainFrostRadiusPx`），内部左右分栏。",
+          "3. **左槽 `slot:list`（固定列宽）**：宽度 = `listColumnWidthPx`（默认 407px）。**此处应嵌入「会话列表」组件**（会话分组、Tab、行样式等全部遵循会话列表独立 Skill）。",
+          "4. **右槽 `slot:detail`（弹性扩展）**：白卡片（`detailCardBg`、`detailCardRadiusPx`、`detailCardPadPx`、`detailCardShadow`）。用于 **IM 沟通区**、业务 **Tab**、工单/平台侧信息等；内容由业务注入，本框架只锁定卡片容器视觉与层级。",
+          "",
+          "**最高指令**：所有间距、圆角、背景、描边、阴影、字号层级必须来自 §2 Token；禁止在框架层写死与 Token 不一致的魔法数。顶栏与指标条内图标须使用图标库注册的 `name`（见 FusionWorkbench 分组）。",
+          "",
+          "**触发关键词**：`融合工作台框架` / `客服融合工作台` / `FusionWorkbench` / `在线 Agent` / `8279:67909` / `6144:31445`",
           "",
           "---",
           "",
@@ -1871,8 +1992,8 @@
           `| 指标条 | statsBarPad/Gap/Radius + statsIconSizePx | 见 Token 面板 |`,
           `| 分段控件高 | segmentItemHeightPx | ${mdToken("segmentItemHeightPx", String(t.segmentItemHeightPx) + "px")} |`,
           `| 主槽圆角 | mainFrostRadiusPx | ${mdToken("mainFrostRadiusPx", String(t.mainFrostRadiusPx) + "px")} |`,
-          `| 列表列宽 | listColumnWidthPx | ${mdToken("listColumnWidthPx", String(t.listColumnWidthPx) + "px")} |`,
-          `| 占位标题 36 / 副标 24 | listTitle* / detailTitle* | 见 Token 面板 |`,
+          `| 列表列宽（左槽，嵌入会话列表） | listColumnWidthPx | ${mdToken("listColumnWidthPx", String(t.listColumnWidthPx) + "px")} |`,
+          `| 详情卡片圆角 | detailCardRadiusPx | ${mdToken("detailCardRadiusPx", String(t.detailCardRadiusPx) + "px")} |`,
           `| 详情卡片内边距 | detailCardPadPx | ${mdToken("detailCardPadPx", String(t.detailCardPadPx) + "px")} |`,
           `| 详情卡片阴影 | detailCardShadow | ${mdToken("detailCardShadow", String(t.detailCardShadow))} |`,
           "",
@@ -1880,38 +2001,40 @@
           "",
           "---",
           "",
-          "## §3 信息架构（固定骨架）",
+          "## §3 信息架构（固定骨架，须原样复现）",
           "",
-          "1. **Shell**：`shellBg` + `shellRadiusPx` + `overflow:hidden`。",
-          "2. **Workspace 列**：`padding` = 左/右/上/下 Token；`gap` = `workspaceColumnGapPx`（顶栏与主槽之间）。",
-          "3. **TopBar**（`justify-content: space-between` 三列）：左「用户昵称 + 在线状态」；中「指标条」半透明白底、白描边、`statsBarGapPx` 分组；右「融合工作台 / 在线Agent / 工单Agent」分段控件，选中项 `segmentSelectedBg` + 轻阴影。",
-          "4. **MainFrostRow**：`mainFrostBg` + 白实线边框 + `mainFrostRadiusPx`；左固定 `listColumnWidthPx` 列表槽；右 `flex:1` 详情白卡片：`detailCardBg`、`detailCardRadiusPx`、`detailCardPadPx`、`box-shadow: detailCardShadow`（Agent 工作台阴影 #657389 @ 16 blur）。",
+          "1. **Shell**：最外层 Agent 容器；`shellBg` + `shellRadiusPx` + `overflow:hidden`。",
+          "2. **Workspace**：内边距为 `workspacePadLeftPx` / `workspacePadRightPx` / `workspacePadYPx`；顶栏与主行间距 = `workspaceColumnGapPx`。",
+          "3. **TopBar**：三列 `space-between` — 左：昵称（`topBarTitleFontPx` / `textPrimary`）+ 在线胶囊（`onlinePill*`、`onlineDotSizePx`）；中：指标条（`statsBarBg`、`statsBarBorder`、`statsBarGapPx` …）；右：分段（`segmentTrackBg`、`segmentItemHeightPx`、选中 `segmentSelectedBg`）。",
+          "4. **MainFrostRow**：左列定宽 `listColumnWidthPx`，内嵌**会话列表**；右列 `flex:1` 为详情白卡片，样式仅来自 `detailCard*` Token。",
           "",
           "---",
           "",
           "## §4 交互说明",
           "",
-          "- 分段切换仅切换产品模式状态，不改变槽位 DOM 结构。",
-          "- 指标条右侧三个图标按钮：`padding` = `statsActionPadPx`，图标 `statsActionIconPx`。",
+          "- 分段切换：仅改变当前 Agent 模式状态（UI 选中态），**不**增删左/右槽 DOM。",
+          "- 指标条：中间区为数据与图标槽位；右侧 `statsActionPadPx` / `statsActionIconPx` 为工具图标按钮。",
+          "- 左槽内会话列表的展开/收起、行选中等交互遵循《会话列表》Skill，不在本文重复。",
           "",
           "---",
           "",
           "## §5 嵌入约定（Slot）",
           "",
-          "| 区域 | 约定 |",
-          "| --- | --- |",
-          "| `slot:list` | 列表与卡片内容 |",
-          "| `slot:detail` | 会话容器、Tab 容器及业务详情 |",
-          "| `slot:topMetrics` | 可选：替换中间指标条数据与图标 |",
+          "| Slot | 用途 | 强制约定 |",
+          "| --- | --- | --- |",
+          "| `slot:list` | 会话与队列列表 | **须**实现为「会话列表」组件；宽度不超过 `listColumnWidthPx`；视觉子 Token 全部引用会话列表 Design Skill。 |",
+          "| `slot:detail` | 详情主工作区 | 注入 IM 气泡流、Tab 栏、表单/工单详情等；外层必须使用 `detailCardBg` / `detailCardRadiusPx` / `detailCardPadPx` / `detailCardShadow`。 |",
+          "| `slot:topMetrics` | 顶栏中部指标 | 数值、文案、风险点等均由业务/API 注入；结构与间距遵循 `statsBar*` Token。 |",
           "",
           "---",
           "",
           "## §6 校验清单",
           "",
-          "- [ ] 外框圆角 6px、主槽圆角 16px、详情卡圆角 16px 与稿一致。",
-          "- [ ] 工作区内边距 8 / 12 / 12 与列间距 12 与稿一致。",
-          "- [ ] 列表列宽 407px；详情区为白底 + 指定 drop shadow。",
-          "- [ ] 顶栏 blur 10px；指标条 rgba(255,255,255,0.6) + 白边框。",
+          "- [ ] 外框圆角、主槽圆角、详情卡圆角与 §2 Token 及 Figma 8279:67909 一致。",
+          "- [ ] 工作区内边距与顶栏-主行间距与 Token 一致。",
+          "- [ ] 左槽宽度 = `listColumnWidthPx`；左槽内为会话列表（非任意自定义列表 UI）。",
+          "- [ ] 右槽为白底卡片 + `detailCardShadow`，IM/Tab 内容在卡片内滚动，不破坏卡片投影与圆角。",
+          "- [ ] 顶栏 `backdrop-filter: blur(topBarBackdropBlurPx)`；指标条半透底 + 白描边与 Token 一致。",
           "",
         ].join("\n");
       }
@@ -2100,8 +2223,10 @@
           "",
           "## 4) 预览区 Token",
           "",
-          `| previewBg | ${t.previewBg} |`,
-          `| captionColor | ${t.captionColor} |`,
+          "| Token | Value |",
+          "| --- | --- |",
+          `| previewBg | ${mdToken("previewBg", t.previewBg)} |`,
+          `| captionColor | ${mdToken("captionColor", t.captionColor)} |`,
           "",
         ].join("\n");
       }
@@ -2199,6 +2324,120 @@
         ].join("\n");
       }
 
+      function buildAgentStatusBarDesignSkillMarkdown(t) {
+        return [
+          "# DESIGN_SKILL — Agent状态栏",
+          "",
+          "> 设计来源：[Figma 底部状态栏](https://www.figma.com/design/HavPAfBhiJbSk4ythwW8zf/%E5%B7%A5%E5%8D%95-HiAgent?node-id=289-111926)",
+          "",
+          "## §1 系统角色与指令",
+          "",
+          "> Agent状态栏用于承接工单 Agent 的实时工作态，必须支持 **托管中 / 展开 / 展开-不显示规划 / 处理完成 / 加载失败 / 人工干预** 六种状态。允许文案动态变化，但卡片层级、色彩语义、按钮编排与信息骨架不得随意改写。",
+          "",
+          "- 托管中/展开：底部主操作为品牌色停止按钮，语义为“暂停托管”。",
+          "- 人工干预：右侧操作区切为“工具 / 完结 / 恢复托管”。",
+          "- 加载失败：正文收缩为错误提示 + 重试文案按钮，头像切灰底用户图标。",
+          "- 展开态允许切换“显示规划”开关；关闭后只保留工单总结与底部状态信息。",
+          "",
+          "## §2 Global Tokens",
+          "",
+          "### 2.1 容器与色彩",
+          "",
+          "| Role | Token | Value |",
+          "| --- | --- | --- |",
+          `| 外层背景 | shellBg | ${mdToken("shellBg", t.shellBg)} |`,
+          `| 展开态背景渐变 | shellExpandedGradient | ${mdToken("shellExpandedGradient", t.shellExpandedGradient)} |`,
+          `| 外层描边 | shellBorder | ${mdToken("shellBorder", t.shellBorder)} |`,
+          `| 外层阴影 | shellShadow | ${mdToken("shellShadow", t.shellShadow)} |`,
+          `| 内容卡背景 | cardBg | ${mdToken("cardBg", t.cardBg)} |`,
+          `| 内容卡描边 | cardBorder | ${mdToken("cardBorder", t.cardBorder)} |`,
+          `| 内容卡阴影 | cardShadow | ${mdToken("cardShadow", t.cardShadow)} |`,
+          `| 操作 hover 填充 | actionHoverBg | ${mdToken("actionHoverBg", t.actionHoverBg)} |`,
+          `| 焦点环 | focusRing | ${mdToken("focusRing", t.focusRing)} |`,
+          `| 托管中状态底/字 | hostedStatusBg / hostedStatusFg | ${mdToken("hostedStatusBg", t.hostedStatusBg)} / ${mdToken("hostedStatusFg", t.hostedStatusFg)} |`,
+          `| 人工干预状态底/字 | manualStatusBg / manualStatusFg | ${mdToken("manualStatusBg", t.manualStatusBg)} / ${mdToken("manualStatusFg", t.manualStatusFg)} |`,
+          `| 处理完成状态底/字 | completedStatusBg / completedStatusFg | ${mdToken("completedStatusBg", t.completedStatusBg)} / ${mdToken("completedStatusFg", t.completedStatusFg)} |`,
+          `| 中性 Tag 底/字 | neutralTagBg / neutralTagFg | ${mdToken("neutralTagBg", t.neutralTagBg)} / ${mdToken("neutralTagFg", t.neutralTagFg)} |`,
+          `| 主操作按钮底色 | primaryIconBtnBg | ${mdToken("primaryIconBtnBg", t.primaryIconBtnBg)} |`,
+          `| 次级按钮边框 | lightButtonBorder | ${mdToken("lightButtonBorder", t.lightButtonBorder)} |`,
+          `| 次级按钮底色 | lightButtonBg | ${mdToken("lightButtonBg", t.lightButtonBg)} |`,
+          `| 开关开启/关闭轨道 | switchTrackOn / switchTrackOff | ${mdToken("switchTrackOn", t.switchTrackOn)} / ${mdToken("switchTrackOff", t.switchTrackOff)} |`,
+          `| 总结标题渐变 | summaryTitleGradient | ${mdToken("summaryTitleGradient", t.summaryTitleGradient)} |`,
+          `| 分隔线 | summaryDividerColor | ${mdToken("summaryDividerColor", t.summaryDividerColor)} |`,
+          `| 底部流动带 | flowStripGradient | ${mdToken("flowStripGradient", t.flowStripGradient)} |`,
+          `| 底部流动带透明度 | flowStripOpacity | ${mdToken("flowStripOpacity", String(t.flowStripOpacity))} |`,
+          "",
+          "### 2.2 排版与尺寸",
+          "",
+          `**Typography**：${mdToken("fontFamily", t.fontFamily)}`,
+          "",
+          "| 含义 | Token | Value |",
+          "| --- | --- | --- |",
+          `| 外层圆角 | shellRadiusPx | ${mdToken("shellRadiusPx", `${t.shellRadiusPx}px`)} |`,
+          `| 外层 padding / gap | shellPadPx / shellGapPx | ${mdToken("shellPadPx", `${t.shellPadPx}px`)} / ${mdToken("shellGapPx", `${t.shellGapPx}px`)} |`,
+          `| 标题字号/行高 | headerTitleFontPx / headerTitleLinePx | ${mdToken("headerTitleFontPx", `${t.headerTitleFontPx}px`)} / ${mdToken("headerTitleLinePx", `${t.headerTitleLinePx}px`)} |`,
+          `| 标题文字色 | headerTitleColor | ${mdToken("headerTitleColor", t.headerTitleColor)} |`,
+          `| 操作文案字号/行高 | actionFontPx / actionLinePx | ${mdToken("actionFontPx", `${t.actionFontPx}px`)} / ${mdToken("actionLinePx", `${t.actionLinePx}px`)} |`,
+          `| 操作按钮 padding / 圆角 | actionPadXPx / actionPadYPx / actionRadiusPx | ${mdToken("actionPadXPx", `${t.actionPadXPx}px`)} / ${mdToken("actionPadYPx", `${t.actionPadYPx}px`)} / ${mdToken("actionRadiusPx", `${t.actionRadiusPx}px`)} |`,
+          `| 内容卡圆角 | cardRadiusPx | ${mdToken("cardRadiusPx", `${t.cardRadiusPx}px`)} |`,
+          `| 内容卡 padding | cardPadXPx / cardPadYPx | ${mdToken("cardPadXPx", `${t.cardPadXPx}px`)} / ${mdToken("cardPadYPx", `${t.cardPadYPx}px`)} |`,
+          `| 内容卡段落间距 | cardSectionGapPx | ${mdToken("cardSectionGapPx", `${t.cardSectionGapPx}px`)} |`,
+          `| 状态 Tag 圆角/内边距 | statusTagRadiusPx / statusTagPadXPx / statusTagPadYPx | ${mdToken("statusTagRadiusPx", `${t.statusTagRadiusPx}px`)} / ${mdToken("statusTagPadXPx", `${t.statusTagPadXPx}px`)} / ${mdToken("statusTagPadYPx", `${t.statusTagPadYPx}px`)} |`,
+          `| Meta 行间距 | metaGapPx / metaIconGapPx | ${mdToken("metaGapPx", `${t.metaGapPx}px`)} / ${mdToken("metaIconGapPx", `${t.metaIconGapPx}px`)} |`,
+          `| 主操作按钮边长 | primaryIconBtnSizePx | ${mdToken("primaryIconBtnSizePx", `${t.primaryIconBtnSizePx}px`)} |`,
+          `| 次级按钮高/圆角 | lightButtonHeightPx / lightButtonRadiusPx | ${mdToken("lightButtonHeightPx", `${t.lightButtonHeightPx}px`)} / ${mdToken("lightButtonRadiusPx", `${t.lightButtonRadiusPx}px`)} |`,
+          `| 开关宽/高/knob | switchWidthPx / switchHeightPx / switchKnobSizePx | ${mdToken("switchWidthPx", `${t.switchWidthPx}px`)} / ${mdToken("switchHeightPx", `${t.switchHeightPx}px`)} / ${mdToken("switchKnobSizePx", `${t.switchKnobSizePx}px`)} |`,
+          `| 规划区最大高 | planningMaxHeightPx | ${mdToken("planningMaxHeightPx", `${t.planningMaxHeightPx}px`)} |`,
+          `| 总结标签列宽 | summaryLabelWidthPx | ${mdToken("summaryLabelWidthPx", `${t.summaryLabelWidthPx}px`)} |`,
+          `| 底部流动带高度/时长 | flowStripHeightPx / flowStripDurationSec | ${mdToken("flowStripHeightPx", `${t.flowStripHeightPx}px`)} / ${mdToken("flowStripDurationSec", `${t.flowStripDurationSec}s`)} |`,
+          "",
+          "### 2.3 图标注册（必须走图标库）",
+          "",
+          `- 查看详情：${mdToken("iconDetailName", t.iconDetailName)}`,
+          `- 展开/收起：${mdToken("iconExpandName", t.iconExpandName)} / ${mdToken("iconCollapseName", t.iconCollapseName)}`,
+          `- 附件/时钟/书签：${mdToken("iconFileName", t.iconFileName)} / ${mdToken("iconClockName", t.iconClockName)} / ${mdToken("iconBookmarkName", t.iconBookmarkName)}`,
+          `- 停止/重试/工具/恢复：${mdToken("iconStopName", t.iconStopName)} / ${mdToken("iconRetryName", t.iconRetryName)} / ${mdToken("iconToolsName", t.iconToolsName)} / ${mdToken("iconPlayName", t.iconPlayName)}`,
+          `- 失败头像占位：${mdToken("iconFallbackAvatarName", t.iconFallbackAvatarName)}`,
+          `- 可关闭标签：${mdToken("iconCloseName", t.iconCloseName)}`,
+          "",
+          "## §3 信息骨架（必须保留）",
+          "",
+          "```html",
+          "<section class='agent-status-shell'>",
+          "  <header>Agent头像 + 状态文案 + 右侧文本操作组</header>",
+          "  <div class='agent-status-card'>",
+          "    <div class='summary-or-error'>状态标签 / 规划区 / 工单总结 / Meta / 右侧操作</div>",
+          "  </div>",
+          "  <div class='flow-strip'></div>",
+          "</section>",
+          "```",
+          "",
+          "- 折叠态正文必须保留“状态标签 + Meta + 右侧操作”三层。",
+          "- 展开态必须先渲染规划区（可关闭），再渲染工单总结，再渲染底部状态信息。",
+          "- 工单总结标题必须为渐变文字，不可退化成纯色。",
+          "",
+          "## §4 状态机",
+          "",
+          "| 状态 | 头部文案 | 正文主体 | 右侧操作 |",
+          "| --- | --- | --- | --- |",
+          "| 托管中 | 已完成任务规划 | 托管中标签 + Meta + 停止托管按钮 | 查看详情 / 展开 |",
+          "| 展开 | 已完成任务规划 | 规划区 + 工单总结 + Meta + 停止托管按钮 | 显示规划 / 查看详情 / 收起 |",
+          "| 展开-不显示规划 | 已完成任务规划 | 仅工单总结 + Meta + 停止托管按钮 | 显示规划 / 查看详情 / 收起 |",
+          "| 处理完成 | 工单已处理完成 | 处理完成标签 + Meta | 查看详情 / 展开 |",
+          "| 加载失败 | 空头像灰底 | 错误提示 + 重试文案按钮 | 查看详情 / 展开 |",
+          "| 人工干预 | 人工客服已暂停托管 | 待干预标签 + Meta | 查看详情 / 展开；正文右侧切 工具 / 完结 / 恢复托管 |",
+          "",
+          "## §5 校验清单",
+          "",
+          "- [ ] 外层圆角 = 16px，内容卡圆角 = 12px。",
+          "- [ ] 托管中 / 人工干预 / 处理完成三种状态色语义稳定，不得互换。",
+          "- [ ] 展开态背景为灰白渐变 + 1px 描边 + 工作台阴影。",
+          "- [ ] 失败态头像切换为灰底用户图标，正文右侧出现品牌色重试文案。",
+          "- [ ] 底部流动带高度 20px，透明度 0.5，使用 flowStripGradient 往返流动。",
+          "",
+        ].join("\n");
+      }
+
       function buildIconLibraryDesignSkillMarkdown() {
         return [
           "# DESIGN_SKILL — 图标库（Icon Library）",
@@ -2238,6 +2477,7 @@
         { id: "aiInput", name: "AI输入框", tokenKey: "aiTokens", sidebarGroup: "business", build: (t) => buildAiInputDesignSkillMarkdown(t) },
         { id: "imBubble", name: "IM气泡", tokenKey: "bubbleTokens", sidebarGroup: "business", build: (t) => buildImBubbleDesignSkillMarkdown(t) },
         { id: "fusionWorkbench", name: "融合工作台框架", tokenKey: "fusionTokens", sidebarGroup: "business", build: (t) => buildFusionWorkbenchDesignSkillMarkdown(t) },
+        { id: "agentStatusBar", name: "Agent状态栏", tokenKey: "agentStatusTokens", sidebarGroup: "business", build: (t) => buildAgentStatusBarDesignSkillMarkdown(t) },
         { id: "hiuiButton", name: "按钮", tokenKey: "hiuiTokens", sidebarGroup: "basic", build: (t) => buildHiuiButtonDesignSkillMarkdown(t) },
         { id: "conversationList", name: "会话列表", tokenKey: "conversationListTokens", sidebarGroup: "business", build: (t) => buildConversationListDesignSkillMarkdown(t) },
       ];
@@ -2257,6 +2497,7 @@
           aiTokens,
           bubbleTokens,
           fusionTokens,
+          agentStatusTokens,
           hiuiTokens,
           conversationListTokens,
         } = opts || {};
@@ -2273,6 +2514,7 @@
           aiTokens,
           bubbleTokens,
           fusionTokens,
+          agentStatusTokens,
           hiuiTokens,
           conversationListTokens,
         };
@@ -3112,6 +3354,24 @@
 
         const isEmpty = !String(value || "").trim();
         const sendDisabled = isEmpty;
+        const lightButtonChrome = {
+          radiusPx: t.iconBtnRadiusPx,
+          padXPx: t.iconBtnPadPx,
+          padYPx: t.iconBtnPadPx,
+        };
+        const sendButtonChrome = {
+          radiusPx: t.sendBtnRadiusPx,
+          heightPx: t.sendBtnHeightPx,
+          padXPx: t.sendBtnPadPx,
+          padYPx: t.sendBtnPadPx,
+          bgByState: sendDisabled
+            ? { disabled: t.sendBtnBgDisabled }
+            : {
+                default: t.sendBtnBgEnabled,
+                hover: t.sendBtnBgEnabled,
+                active: t.sendBtnBgEnabled,
+              },
+        };
         const [recoDismissed, setRecoDismissed] = useState(false);
         const [recoHoverTipIndex, setRecoHoverTipIndex] = useState(null);
         const [toast, setToast] = useState(null);
@@ -3151,28 +3411,6 @@
           setToast(message);
           window.clearTimeout(showToast._t);
           showToast._t = window.setTimeout(() => setToast(null), 1400);
-        }
-
-        function IconBtn({ iconName, fallbackSrc, label, tokenKey, fallbackInsetCls }) {
-          return (
-            <button
-              type="button"
-              className={cx(
-                "shrink-0",
-                `p-[${t.iconBtnPadPx}px] rounded-[${t.iconBtnRadiusPx}px]`,
-                !sendDisabled && `hover:bg-[${t.hoverFill}]`,
-                hl(tokenKey || "iconButton"),
-              )}
-              aria-label={label}
-            >
-              {renderIconFromLibrary({
-                name: iconName,
-                size: t.iconSizePx,
-                fallbackUrl: fallbackSrc,
-                fallbackInset: fallbackInsetCls,
-              })}
-            </button>
-          );
         }
 
         return (
@@ -3269,10 +3507,14 @@
                     </div>
 
                     <div className={cx("flex items-center gap-[8px] shrink-0", hl("replyRecommendActions"))}>
-                      <button
-                        type="button"
-                        className={cx(`p-[4px] rounded-[${t.iconBtnRadiusPx}px] hover:bg-[${t.hoverFill}]`, hl("replyRecommendActionButton"))}
-                        aria-label="关闭推荐"
+                      <HiuiToolbarIconButton
+                        group="light"
+                        variant="tertiary"
+                        size="small"
+                        title="关闭推荐"
+                        fontFamily={t.fontFamily}
+                        className={hl("replyRecommendActionButton")}
+                        chrome={lightButtonChrome}
                         onClick={() => setRecoDismissed(true)}
                       >
                         {renderIconFromLibrary({
@@ -3281,16 +3523,17 @@
                           fallbackUrl: hiaiSvgUrl("x-close-stroked.svg"),
                           fallbackInset: "inset-[20.83%]",
                         })}
-                      </button>
+                      </HiuiToolbarIconButton>
                       <div className={cx("shrink-0 w-[1px] h-[12px]", hl("replyRecommendDivider"))} style={{ backgroundColor: t.recoDividerColor }} />
-                      <button
-                        type="button"
-                        className={cx(`p-[4px] rounded-[${t.iconBtnRadiusPx}px] hover:bg-[${t.hoverFill}]`, hl("replyRecommendActionButton"))}
-                        aria-label="刷新推荐"
-                        onClick={() => {
-                          // 仅用于 demo：触发一次“重新生成”
-                          showToast("已刷新推荐");
-                        }}
+                      <HiuiToolbarIconButton
+                        group="light"
+                        variant="tertiary"
+                        size="small"
+                        title="刷新推荐"
+                        fontFamily={t.fontFamily}
+                        className={hl("replyRecommendActionButton")}
+                        chrome={lightButtonChrome}
+                        onClick={() => showToast("已刷新推荐")}
                       >
                         {renderIconFromLibrary({
                           name: t.iconRecoRefreshName || "refresh",
@@ -3298,14 +3541,18 @@
                           fallbackUrl: hiaiSvgUrl("refresh-ccw-02-stroked.svg"),
                           fallbackInset: "inset-[8.33%_8.33%_8.33%_4.17%]",
                         })}
-                      </button>
+                      </HiuiToolbarIconButton>
                       {replyRecommendClick === "adopt" ? (
                         <>
                           <div className={cx("shrink-0 w-[1px] h-[12px]", hl("replyRecommendDivider"))} style={{ backgroundColor: t.recoDividerColor }} />
-                          <button
-                            type="button"
-                            className={cx(`p-[4px] rounded-[${t.iconBtnRadiusPx}px] hover:bg-[${t.hoverFill}]`, hl("replyRecommendActionButton"))}
-                            aria-label="复制到输入框"
+                          <HiuiToolbarIconButton
+                            group="light"
+                            variant="tertiary"
+                            size="small"
+                            title="复制到输入框"
+                            fontFamily={t.fontFamily}
+                            className={hl("replyRecommendActionButton")}
+                            chrome={lightButtonChrome}
                             onClick={() => {
                               const first = recos?.[0] || "";
                               onChangeValue?.(first);
@@ -3319,14 +3566,18 @@
                               fallbackUrl: hiaiSvgUrl("copy-stroked2.svg"),
                               fallbackInset: "inset-[8.33%]",
                             })}
-                          </button>
+                          </HiuiToolbarIconButton>
                         </>
                       ) : null}
                       <div className={cx("shrink-0 w-[1px] h-[12px]", hl("replyRecommendDivider"))} style={{ backgroundColor: t.recoDividerColor }} />
-                      <button
-                        type="button"
-                        className={cx(`p-[4px] rounded-[${t.iconBtnRadiusPx}px] hover:bg-[${t.hoverFill}]`, hl("replyRecommendActionButton"))}
-                        aria-label="直接发送"
+                      <HiuiToolbarIconButton
+                        group="light"
+                        variant="tertiary"
+                        size="small"
+                        title="直接发送"
+                        fontFamily={t.fontFamily}
+                        className={hl("replyRecommendActionButton")}
+                        chrome={lightButtonChrome}
                         onClick={() => {
                           const first = recos?.[0] || "";
                           showToast(first ? "已发送" : "无可发送内容");
@@ -3339,7 +3590,7 @@
                           fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
                           fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
                         })}
-                      </button>
+                      </HiuiToolbarIconButton>
                     </div>
                   </div>
 
@@ -3433,81 +3684,94 @@
 
               {/* Actions row */}
               <div className={cx("w-full flex items-center", `gap-[${t.actionsGapPx}px]`, hl("actionsRow"))}>
-                <div className={cx("flex-1 flex items-center min-w-0", `gap-[${t.actionsGapPx}px]`, hl("leftActions"))}>
-                  <IconBtn
-                    iconName={t.iconToolMagicWandName || "magic-wand"}
-                    fallbackSrc={hiaiSvgUrl("magic-wand-stroked.svg")}
-                    label="AI 功能"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolEmojiName || "IconFaceSmileStroked"}
-                    fallbackSrc={hiaiSvgUrl("face_smile_stroked.svg")}
-                    label="表情"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolImageName || "image-01-stroked"}
-                    fallbackSrc={hiaiSvgUrl("image-01-stroked.svg")}
-                    label="图片"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolUnderlineName || "underline-01-stroked"}
-                    fallbackSrc={hiaiSvgUrl("underline-01-stroked.svg")}
-                    label="下划线"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolBoldName || "bold-01-stroked"}
-                    fallbackSrc={hiaiSvgUrl("bold-01-stroked.svg")}
-                    label="加粗"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolOrderedListName || "icon_order-list_outlined"}
-                    fallbackSrc={hiaiSvgUrl("order-list-outlined.svg")}
-                    label="有序列表"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolUnorderedListName || "icon_disorder-list_outlined"}
-                    fallbackSrc={hiaiSvgUrl("disorder-list-outlined.svg")}
-                    label="无序列表"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolLinkName || "link-03-stroked"}
-                    fallbackSrc={hiaiSvgUrl("link-03-stroked.svg")}
-                    label="链接"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
-                  <IconBtn
-                    iconName={t.iconToolPaletteName || "palette-stroked"}
-                    fallbackSrc={hiaiSvgUrl("palette-stroked.svg")}
-                    label="调色板"
-                    tokenKey="iconButton"
-                    fallbackInsetCls="inset-[8.33%]"
-                  />
+                <div className={cx("flex-1 flex items-center min-w-0 flex-wrap", `gap-[${t.actionsGapPx}px]`, hl("leftActions"))}>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="AI 功能" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolMagicWandName || "magic-wand",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("magic-wand-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="表情" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolEmojiName || "IconFaceSmileStroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("face_smile_stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="图片" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolImageName || "image-01-stroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("image-01-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="下划线" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolUnderlineName || "underline-01-stroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("underline-01-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="加粗" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolBoldName || "bold-01-stroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("bold-01-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="有序列表" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolOrderedListName || "icon_order-list_outlined",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("order-list-outlined.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="无序列表" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolUnorderedListName || "icon_disorder-list_outlined",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("disorder-list-outlined.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="链接" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolLinkName || "link-03-stroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("link-03-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                  <HiuiToolbarIconButton group="light" variant="tertiary" size="small" title="调色板" fontFamily={t.fontFamily} className={hl("iconButton")} chrome={lightButtonChrome} onClick={() => {}}>
+                    {renderIconFromLibrary({
+                      name: t.iconToolPaletteName || "palette-stroked",
+                      size: t.iconSizePx,
+                      fallbackUrl: hiaiSvgUrl("palette-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
                 </div>
 
-                <button
-                  type="button"
-                  className={cx(
-                    "shrink-0 flex items-center justify-center overflow-hidden",
-                    `h-[${t.sendBtnHeightPx}px] rounded-[${t.sendBtnRadiusPx}px] p-[${t.sendBtnPadPx}px]`,
-                    hl("sendButton"),
-                  )}
-                  style={{ backgroundColor: sendDisabled ? t.sendBtnBgDisabled : t.sendBtnBgEnabled }}
-                  aria-disabled={sendDisabled ? "true" : "false"}
+                <HiuiToolbarIconButton
+                  group={sendDisabled ? "light" : "solid"}
+                  variant={sendDisabled ? "tertiary" : "primary"}
+                  size="small"
+                  title="发送"
+                  disabled={sendDisabled}
+                  fontFamily={t.fontFamily}
+                  className={hl("sendButton")}
+                  chrome={sendButtonChrome}
+                  onClick={() => {
+                    if (sendDisabled) return;
+                    showToast("已发送");
+                  }}
                 >
                   {renderIconFromLibrary({
                     name: sendIconLibName,
@@ -3516,7 +3780,7 @@
                     fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
                     imgStyle: sendDisabled ? undefined : { filter: "brightness(0) invert(1)" },
                   })}
-                </button>
+                </HiuiToolbarIconButton>
               </div>
             </div>
 
@@ -3705,26 +3969,40 @@
         f1: "rgba(83,96,143,0.12)",
       };
 
-      function hiuiToolbarIconButtonStyle({ group, variant, state, size }) {
+      function hiuiToolbarIconButtonStyle({ group, variant, state, size, chrome }) {
         const C = HIUI_BTN_CHROME;
         const isSm = size === "small";
         const h = isSm ? 24 : 36;
         const padX = isSm ? 4 : 8;
         const padY = isSm ? 4 : 8;
         const radius = 8;
+        const applyChrome = (base) => {
+          const next = { ...base };
+          if (chrome && typeof chrome === "object") {
+            if (chrome.radiusPx != null) next.radius = chrome.radiusPx;
+            if (chrome.heightPx != null) next.h = chrome.heightPx;
+            if (chrome.padXPx != null) next.padX = chrome.padXPx;
+            if (chrome.padYPx != null) next.padY = chrome.padYPx;
+            if (chrome.border !== undefined) next.border = chrome.border;
+            if (chrome.bgByState && Object.prototype.hasOwnProperty.call(chrome.bgByState, state)) {
+              next.bg = chrome.bgByState[state];
+            }
+          }
+          return next;
+        };
 
         if (state === "disabled") {
           if (group === "light") {
-            return { bg: C.disBg, border: `1px solid ${C.bdr}`, radius, h, padX, padY };
+            return applyChrome({ bg: C.disBg, border: `1px solid ${C.bdr}`, radius, h, padX, padY });
           }
-          return { bg: "transparent", border: "none", radius, h, padX, padY };
+          return applyChrome({ bg: "transparent", border: "none", radius, h, padX, padY });
         }
 
         if (group === "solid") {
           let bg = variant === "primary" ? C.pri : C.sec;
           if (state === "hover") bg = variant === "primary" ? C.priH : C.secH;
           else if (state === "active") bg = variant === "primary" ? C.priA : C.secA;
-          return { bg, border: "none", radius, h, padX, padY };
+          return applyChrome({ bg, border: "none", radius, h, padX, padY });
         }
 
         if (group === "light") {
@@ -3737,7 +4015,7 @@
             if (state === "hover") bg = C.f0;
             else if (state === "active") bg = C.f1;
           }
-          return { bg, border, radius, h, padX, padY };
+          return applyChrome({ bg, border, radius, h, padX, padY });
         }
 
         let bg = "transparent";
@@ -3747,10 +4025,10 @@
         } else {
           if (state === "hover") bg = C.f0;
         }
-        return { bg, border, radius, h, padX, padY };
+        return applyChrome({ bg, border, radius, h, padX, padY });
       }
 
-      function HiuiToolbarIconButton({ group, variant, size, title, onClick, disabled, fontFamily, children }) {
+      function HiuiToolbarIconButton({ group, variant, size, title, onClick, disabled, fontFamily, children, className, chrome }) {
         const [st, setSt] = useState("default");
         const eff = disabled ? "disabled" : st;
         const s = hiuiToolbarIconButtonStyle({
@@ -3758,6 +4036,7 @@
           variant,
           state: eff,
           size: size || "small",
+          chrome,
         });
         return (
           <button
@@ -3774,6 +4053,7 @@
               "inline-flex items-center justify-center shrink-0 box-border outline-none",
               disabled ? "cursor-not-allowed" : "cursor-pointer",
               !disabled && "focus-visible:ring-2 focus-visible:ring-[#24cda5]/45 focus-visible:ring-inset",
+              className,
             )}
             style={{
               fontFamily: fontFamily || HIUI_BUTTON_TOKENS.fontFamily,
@@ -4223,8 +4503,9 @@
       }
 
       /** 会话列表 — Figma 6760:68494（展开）、6190:93899（纯头像收起）；头像用 conversation-list-assets，图标走图标库 + hiaiSvgUrl */
-      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId, avatarOnly, onToggleAvatarOnly }) {
+      function ConversationListView({ tokens, highlightTarget, selectedId, onSelectId, avatarOnly, onToggleAvatarOnly, fusionSlotEmbed }) {
         const t = tokens || CONVERSATION_LIST_TOKENS;
+        const embed = !!fusionSlotEmbed;
         const A = (file) => resolveAssetUrl(`./conversation-list-assets/${file}`);
         const ic = CONVERSATION_LIST_ICON_NAMES;
         const hi = (id) => highlightTarget === id;
@@ -4545,17 +4826,23 @@
 
         return (
           <div
-            className={cx("flex flex-col overflow-hidden shrink-0", narrow ? "items-center" : "items-start")}
+            className={cx(
+              "flex flex-col overflow-hidden",
+              embed ? "flex-1 min-h-0 w-full max-w-full items-stretch" : "shrink-0",
+              !embed && (narrow ? "items-center" : "items-start"),
+            )}
             style={{
               fontFamily: t.fontFamily,
-              width: narrow ? shellNarrowW : shellWideW,
+              width: embed ? "100%" : narrow ? shellNarrowW : shellWideW,
+              height: embed ? "100%" : undefined,
+              flex: embed ? "1 1 0%" : undefined,
               maxWidth: "100%",
-              minHeight: narrow ? (t.collapsedShellMinHeightPx != null ? t.collapsedShellMinHeightPx : 520) : 0,
+              minHeight: embed ? 0 : narrow ? (t.collapsedShellMinHeightPx != null ? t.collapsedShellMinHeightPx : 520) : 0,
               borderRadius: t.shellRadiusPx,
               padding: `${shellPadY}px ${shellPadX}px`,
               gap: shellGap,
               background: t.shellBg,
-              transition: `width ${collapseTw}ms ease`,
+              transition: embed ? undefined : `width ${collapseTw}ms ease`,
               ...ring(hi("convShell")),
             }}
             data-token-hint="convShell"
@@ -4609,21 +4896,23 @@
               data-token-hint="convHeader"
             >
               <div className="flex min-w-0 flex-1 items-center" style={{ gap: t.headerGapPx }}>
-                <HiuiToolbarIconButton
-                  group="borderless"
-                  variant="tertiary"
-                  size="small"
-                  title="收起为纯头像"
-                  fontFamily={t.fontFamily}
-                  onClick={() => onToggleAvatarOnly && onToggleAvatarOnly()}
-                >
-                  {renderIconFromLibrary({
-                    name: ic.layoutLeft,
-                    size: t.headerIconSizePx,
-                    fallbackUrl: hiaiSvgUrl("layout-left-stroked.svg"),
-                    fallbackInset: "inset-[8.33%]",
-                  })}
-                </HiuiToolbarIconButton>
+                {!embed ? (
+                  <HiuiToolbarIconButton
+                    group="borderless"
+                    variant="tertiary"
+                    size="small"
+                    title="收起为纯头像"
+                    fontFamily={t.fontFamily}
+                    onClick={() => onToggleAvatarOnly && onToggleAvatarOnly()}
+                  >
+                    {renderIconFromLibrary({
+                      name: ic.layoutLeft,
+                      size: t.headerIconSizePx,
+                      fallbackUrl: hiaiSvgUrl("layout-left-stroked.svg"),
+                      fallbackInset: "inset-[8.33%]",
+                    })}
+                  </HiuiToolbarIconButton>
+                ) : null}
                 <p
                   className="m-0 min-w-0 flex-1 font-semibold"
                   style={{ fontSize: t.titleFontPx, lineHeight: `${t.titleLinePx}px`, color: t.titleColor }}
@@ -4784,7 +5073,7 @@
         );
       }
 
-      function FusionWorkbenchView({ tokens, highlightTarget, agentSegment, onAgentSegment }) {
+      function FusionWorkbenchView({ tokens, highlightTarget, agentSegment, onAgentSegment, conversationTokens, conversationSelectedId, onSelectConversationId }) {
         const t = tokens || FUSION_WORKBENCH_TOKENS;
         const hi = (id) => highlightTarget === id;
         const ic = FUSION_ONLINE_AGENT_ICON_NAMES;
@@ -4899,7 +5188,17 @@
                         color: "rgba(34,39,39,0.8)",
                       }}
                     >
-                      在线 02:27:58
+                      在线
+                      <span
+                        style={{
+                          fontWeight: 400,
+                          fontSize: t.statsLabelFontPx,
+                          color: t.textSubtitle,
+                          marginLeft: 6,
+                        }}
+                      >
+                        （时长由业务注入）
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -4941,7 +5240,7 @@
                         color: t.textPrimary,
                       }}
                     >
-                      2
+                      —
                     </span>
                   </div>
                   <StatDivider />
@@ -4962,7 +5261,7 @@
                         color: t.textPrimary,
                       }}
                     >
-                      12
+                      —
                     </span>
                   </div>
                   <div className="flex items-center gap-[4px] shrink-0 min-w-0">
@@ -4982,7 +5281,7 @@
                         color: t.textPrimary,
                       }}
                     >
-                      36
+                      —
                     </span>
                   </div>
                   <div className="flex items-center gap-[4px] shrink-0 min-w-0">
@@ -5002,7 +5301,7 @@
                         color: t.textPrimary,
                       }}
                     >
-                      7/23
+                      —
                     </span>
                   </div>
                   <StatDivider />
@@ -5082,41 +5381,38 @@
                 data-token-hint="fusionMainRow"
               >
                 <div
-                  className="shrink-0 flex flex-col items-center justify-center h-full overflow-hidden"
+                  className="shrink-0 flex flex-col min-h-0 h-full overflow-hidden"
                   style={{
                     width: t.listColumnWidthPx,
                     ...(hi("fusionListZone") ? { boxShadow: `inset 0 0 0 2px ${t.focusRing}` } : {}),
                   }}
                   data-token-hint="fusionListZone"
                 >
-                  <div
-                    className="flex flex-col items-center"
-                    style={{ gap: t.listPlaceholderGapPx }}
-                  >
-                    <p
-                      className="m-0 font-semibold"
-                      style={{
-                        fontSize: t.listTitleFontPx,
-                        lineHeight: "normal",
-                        color: t.textPrimary,
-                      }}
+                  {conversationTokens ? (
+                    <ConversationListView
+                      tokens={conversationTokens}
+                      highlightTarget={null}
+                      selectedId={conversationSelectedId}
+                      onSelectId={onSelectConversationId}
+                      avatarOnly={false}
+                      fusionSlotEmbed
+                    />
+                  ) : (
+                    <div
+                      className="flex flex-1 min-h-0 flex-col items-center justify-center px-[12px] text-center"
+                      style={{ gap: t.listPlaceholderGapPx }}
                     >
-                      列表区
-                    </p>
-                    <p
-                      className="m-0 font-normal"
-                      style={{
-                        fontSize: t.listSubtitleFontPx,
-                        lineHeight: "normal",
-                        color: t.textSubtitle,
-                      }}
-                    >
-                      列表＆卡片
-                    </p>
-                  </div>
+                      <p className="m-0 font-semibold" style={{ fontSize: 12, lineHeight: "16px", color: t.textSubtitle }}>
+                        slot:list · 会话列表
+                      </p>
+                      <p className="m-0 font-normal" style={{ fontSize: 11, lineHeight: "15px", color: t.textSubtitle }}>
+                        须嵌入《会话列表》组件；宽度由 listColumnWidthPx 约束
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div
-                  className="flex flex-1 min-w-0 flex-col items-center justify-center overflow-hidden"
+                  className="flex flex-1 min-w-0 min-h-0 flex-col overflow-hidden"
                   style={{
                     background: t.detailCardBg,
                     borderRadius: t.detailCardRadiusPx,
@@ -5126,26 +5422,17 @@
                   }}
                   data-token-hint="fusionDetailCard"
                 >
-                  <div className="flex flex-col items-center" style={{ gap: t.detailPlaceholderGapPx }}>
-                    <p
-                      className="m-0 font-semibold"
-                      style={{
-                        fontSize: t.detailTitleFontPx,
-                        lineHeight: "normal",
-                        color: t.textPrimary,
-                      }}
-                    >
-                      详情区
-                    </p>
+                  <div className="flex flex-1 min-h-0 flex-col items-center justify-center px-[12px] text-center">
                     <p
                       className="m-0 font-normal"
                       style={{
-                        fontSize: t.detailSubtitleFontPx,
-                        lineHeight: "normal",
+                        fontSize: 11,
+                        lineHeight: "16px",
                         color: t.textSubtitle,
+                        maxWidth: 280,
                       }}
                     >
-                      会话容器、Tab容器
+                      slot:detail — 由业务注入 IM 沟通区、多 Tab、工单/平台侧信息等；本框架仅锁定白卡片底色、圆角、内边距与阴影层级。
                     </p>
                   </div>
                 </div>
@@ -5709,6 +5996,780 @@
               </div>
             ) : null}
           </section>
+        );
+      }
+
+      const AGENT_STATUS_SUMMARY_FLAGS = ["重复进线3次", "有风险", "转交2次", "外呼商家3次"];
+      const AGENT_STATUS_SUMMARY_ROWS = [
+        {
+          label: "问题诉求",
+          value: "用户反馈 dou+ 投放显示异常，对处理结果存疑，称只接到一次电话却被告知多次联系，并询问某视频能否发布，希望通过电话联系告知处理结果。",
+        },
+        {
+          label: "服务历程",
+          value: "2025 年 7 月 1 日 14:32 系统创建工单，14:33 工单转交至新工单 IM_安全风控_一线_BPO_抖音社区，承接人叶玲于 16:47 创建升级，16:57 得出作品可能涉嫌违反规范、暂不支持投放 DOU+ 的结论。",
+        },
+        {
+          label: "解决方案",
+          value: "7 月 1 日受理用户 dou+ 投放异常及视频发布咨询问题，升级处理组建议更换视频后重投；因用户希望电话同步处理结果，需补充外呼说明并记录工单处置结果。",
+        },
+      ];
+      const AGENT_STATUS_PLAN_STEPS = [
+        { tone: "done", title: "对工单进行问题诊断，明确处理内容", owner: "@ 方案研判 | 研判 Ryan" },
+        { tone: "current", title: "结合历史服务记录，总结问题诉求与风险", owner: "@ 工单助手 Ticko" },
+        { tone: "pending", title: "完成工单处理并记录工单", owner: "@ 工单助手 Ticko" },
+      ];
+
+      function AgentStatusBar({ tokens, scenario = "hosted", interactive = true, highlightTarget = null }) {
+        const t = useMemo(
+          () => resolveAllTokenColors({ ...AGENT_STATUS_TOKENS, ...(tokens || {}) }, FOUNDATION_COLORS_INIT),
+          [tokens],
+        );
+        const [viewState, setViewState] = useState(scenario);
+        const hi = (key) => highlightTarget === key;
+
+        function withHighlight(key, style) {
+          if (!hi(key)) return style;
+          const base = style || {};
+          return {
+            ...base,
+            boxShadow: base.boxShadow ? `${base.boxShadow}, 0 0 0 2px ${t.focusRing}` : `0 0 0 2px ${t.focusRing}`,
+          };
+        }
+
+        useEffect(() => {
+          setViewState(scenario);
+        }, [scenario]);
+
+        const isExpanded = viewState === "expanded" || viewState === "expandedNoPlan";
+        const showPlanning = viewState === "expanded";
+        const isManual = viewState === "manual";
+        const isCompleted = viewState === "completed";
+        const isFailed = viewState === "failed";
+        const statusTone = isManual ? "manual" : isCompleted ? "completed" : "hosted";
+        const rootBg = isExpanded ? t.shellExpandedGradient : t.shellBg;
+        const headerText = isManual
+          ? "人工客服已暂停托管"
+          : isCompleted
+            ? "工单已处理完成"
+            : isFailed
+              ? ""
+              : "已完成任务规划";
+        const baseTags = isManual
+          ? [
+              { label: "待干预", tone: "manual" },
+              { label: "自定义标签", closable: true },
+              { label: "催4" },
+              { label: "重复" },
+              { label: "24时30分", icon: "clock" },
+              { label: "+2" },
+              { iconOnly: "bookmark" },
+            ]
+          : [
+              { label: statusTone === "completed" ? "处理完成" : "托管中", tone: statusTone },
+              { label: "自定义标签", closable: true },
+              { label: "催4" },
+              { label: "24时30分", icon: "clock" },
+              { iconOnly: "bookmark" },
+            ];
+
+        function maybeSet(next) {
+          if (!interactive) return;
+          setViewState(next);
+        }
+
+        function renderLibraryIcon(tokenKey, fallbackFile, size, inset, imgStyle) {
+          return renderIconFromLibrary({
+            name: t[tokenKey],
+            size: size || t.actionIconSizePx,
+            fallbackUrl: hiaiSvgUrl(fallbackFile),
+            fallbackInset: inset || "inset-[8.33%]",
+            imgStyle,
+          });
+        }
+
+        function renderStatusTag(item, idx) {
+          const toneBg =
+            item.tone === "manual"
+              ? t.manualStatusBg
+              : item.tone === "completed"
+                ? t.completedStatusBg
+                : t.hostedStatusBg;
+          const toneFg =
+            item.tone === "manual"
+              ? t.manualStatusFg
+              : item.tone === "completed"
+                ? t.completedStatusFg
+                : t.hostedStatusFg;
+          const isStatus = Boolean(item.tone);
+          const bg = isStatus ? toneBg : t.neutralTagBg;
+          const fg = isStatus ? toneFg : t.neutralTagFg;
+          return (
+            <div
+              key={`${item.label || item.iconOnly || "tag"}-${idx}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: `${t.tagIconGapPx}px`,
+                padding: `${t.statusTagPadYPx}px ${item.iconOnly ? 6 : t.statusTagPadXPx}px`,
+                minHeight: 20,
+                borderRadius: t.statusTagRadiusPx,
+                background: bg,
+                color: fg,
+                flexShrink: 0,
+              }}
+            >
+              {item.icon ? (
+                <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+                  {item.icon === "clock"
+                    ? renderLibraryIcon("iconClockName", "alarm-clock-stroked.svg", 12)
+                    : renderLibraryIcon("iconBookmarkName", "bookmark-add-stroked2.svg", 12)}
+                </span>
+              ) : null}
+              {item.iconOnly ? renderLibraryIcon("iconBookmarkName", "bookmark-add-stroked2.svg", 12) : null}
+              {item.label ? (
+                <span
+                  style={{
+                    fontSize: t.tagTextFontPx,
+                    lineHeight: `${t.tagTextLinePx}px`,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {item.label}
+                </span>
+              ) : null}
+              {item.closable ? renderLibraryIcon("iconCloseName", "x-close-stroked.svg", 12, "inset-[15.76%]") : null}
+            </div>
+          );
+        }
+
+        function renderTextButton({ label, iconToken, iconFile, iconAfter = false, accent = false, onClick }) {
+          return (
+            <button
+              type="button"
+              onClick={onClick}
+              disabled={!interactive}
+              className={cx(
+                "outline-none transition-colors",
+                interactive ? "cursor-pointer" : "cursor-default",
+                interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+              )}
+              style={withHighlight("agentActions", {
+                display: "inline-flex",
+                alignItems: "center",
+                gap: `${t.actionGapPx}px`,
+                padding: `${t.actionPadYPx}px ${t.actionPadXPx}px`,
+                borderRadius: t.actionRadiusPx,
+                border: "none",
+                background: "transparent",
+                color: accent ? t.accentTextColor : t.actionTextColor,
+                fontFamily: t.fontFamily,
+                fontSize: t.actionFontPx,
+                lineHeight: `${t.actionLinePx}px`,
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              })}
+            >
+              {!iconAfter && iconToken ? renderLibraryIcon(iconToken, iconFile, t.actionIconSizePx) : null}
+              <span>{label}</span>
+              {iconAfter && iconToken ? renderLibraryIcon(iconToken, iconFile, t.actionIconSizePx) : null}
+            </button>
+          );
+        }
+
+        function renderMetaRow() {
+          return (
+            <div
+              style={withHighlight("agentMeta", {
+                display: "flex",
+                alignItems: "center",
+                gap: `${t.metaGapPx}px`,
+                flexWrap: "wrap",
+                color: t.metaTextColor,
+                fontSize: t.tagTextFontPx,
+                lineHeight: `${t.tagTextLinePx}px`,
+              })}
+            >
+              <div style={{ display: "inline-flex", alignItems: "center", gap: `${t.metaIconGapPx}px`, minWidth: 0 }}>
+                <span
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: 9999,
+                    background: "linear-gradient(135deg, rgba(36,205,165,0.2), rgba(122,97,250,0.16))",
+                    flexShrink: 0,
+                  }}
+                />
+                <span style={{ whiteSpace: "nowrap" }}>海阔**天空</span>
+              </div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: `${t.metaIconGapPx}px`, minWidth: 0 }}>
+                {renderLibraryIcon("iconFileName", "file-05-stroked.svg", t.metaIconSizePx, "inset-[4.17%_12.5%]")}
+                <span style={{ whiteSpace: "nowrap" }}>2918575148379876</span>
+              </div>
+            </div>
+          );
+        }
+
+        function renderPrimaryAction(iconToken, iconFile, onClick, label) {
+          return (
+            <button
+              type="button"
+              aria-label={label}
+              onClick={onClick}
+              disabled={!interactive}
+              className={cx(
+                "outline-none transition-colors",
+                interactive ? "cursor-pointer" : "cursor-default",
+                interactive && `hover:bg-[${t.primaryIconBtnHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+              )}
+              style={withHighlight("agentActions", {
+                width: t.primaryIconBtnSizePx,
+                height: t.primaryIconBtnSizePx,
+                borderRadius: t.primaryIconBtnRadiusPx,
+                border: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: t.primaryIconBtnBg,
+                color: t.primaryIconColor,
+                flexShrink: 0,
+              })}
+            >
+              {renderLibraryIcon(iconToken, iconFile, 16)}
+            </button>
+          );
+        }
+
+        function renderExpandedSummary() {
+          return (
+            <div style={withHighlight("agentSummary", { display: "flex", flexDirection: "column", gap: `${t.cardSectionGapPx}px`, width: "100%" })}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <span
+                  style={{
+                    fontSize: 12,
+                    lineHeight: "16px",
+                    fontWeight: 600,
+                    backgroundImage: t.summaryTitleGradient,
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    color: "transparent",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  工单总结
+                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: `${t.tagGapPx}px`, flexWrap: "wrap", marginLeft: "auto" }}>
+                  {AGENT_STATUS_SUMMARY_FLAGS.map((flag, idx) => renderStatusTag({ label: flag }, idx))}
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: `${t.summaryParagraphGapPx}px` }}>
+                {AGENT_STATUS_SUMMARY_ROWS.map((row) => (
+                  <div key={row.label} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                    <div
+                      style={{
+                        width: t.summaryLabelWidthPx,
+                        flexShrink: 0,
+                        fontSize: 12,
+                        lineHeight: "16px",
+                        fontWeight: 600,
+                        color: t.summaryLabelColor,
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {row.label}
+                    </div>
+                    <div
+                      style={{
+                        flex: 1,
+                        minWidth: 0,
+                        fontSize: 12,
+                        lineHeight: "16px",
+                        color: t.summaryBodyColor,
+                      }}
+                    >
+                      {row.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        }
+
+        function renderPlanningStep(step, idx) {
+          const isCurrent = step.tone === "current";
+          const isDone = step.tone === "done";
+          return (
+            <div key={`${step.title}-${idx}`} style={{ display: "flex", gap: 8, width: "100%" }}>
+              <div style={{ width: 16, display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 2 }}>
+                <span
+                  style={{
+                    width: t.planningNodeSizePx,
+                    height: t.planningNodeSizePx,
+                    borderRadius: 9999,
+                    boxSizing: "border-box",
+                    background: isDone ? t.planningDoneBg : isCurrent ? t.planningCurrentBg : t.planningPendingBg,
+                    border: `1px solid ${isDone ? t.planningDoneFg : isCurrent ? t.planningCurrentRing : t.planningLineColor}`,
+                    boxShadow: isCurrent ? `0 0 0 3px ${t.planningCurrentRing}` : "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: 9999,
+                      background: isDone ? t.planningDoneFg : isCurrent ? t.accentTextColor : "rgba(34,39,39,0.35)",
+                    }}
+                  />
+                </span>
+                {idx < AGENT_STATUS_PLAN_STEPS.length - 1 ? (
+                  <span
+                    style={{
+                      width: 1,
+                      flex: 1,
+                      minHeight: 24,
+                      marginTop: 6,
+                      background: t.planningLineColor,
+                    }}
+                  />
+                ) : null}
+              </div>
+              <div style={{ flex: 1, minWidth: 0, paddingBottom: idx < AGENT_STATUS_PLAN_STEPS.length - 1 ? 16 : 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                  <span
+                    style={{
+                      fontSize: 12,
+                      lineHeight: "16px",
+                      color: t.errorTextColor,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {step.title}
+                  </span>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      padding: "4px 8px",
+                      borderRadius: 9999,
+                      background: t.planningTagBg,
+                      color: t.planningTagFg,
+                      fontSize: 12,
+                      lineHeight: "16px",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {step.owner}
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <section
+              style={withHighlight("agentShell", {
+                width: "100%",
+                maxWidth: 700,
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: t.shellRadiusPx,
+                padding: t.shellPadPx,
+                boxSizing: "border-box",
+                background: rootBg,
+                border: isExpanded ? `1px solid ${t.shellBorder}` : "none",
+                boxShadow: isExpanded ? t.shellShadow : "none",
+                fontFamily: t.fontFamily,
+              })}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: `${t.shellGapPx}px`,
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                <div
+                  style={withHighlight("agentHeader", {
+                    display: "flex",
+                    alignItems: "center",
+                    gap: `${t.headerGapPx}px`,
+                    padding: t.headerPadPx,
+                    width: "100%",
+                    boxSizing: "border-box",
+                  })}
+                >
+                  <div
+                    style={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 9999,
+                      overflow: "hidden",
+                      flexShrink: 0,
+                      background: isFailed ? "rgba(208,213,221,1)" : "linear-gradient(135deg, rgba(36,205,165,0.92), rgba(122,97,250,0.78))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {isFailed ? (
+                      renderLibraryIcon("iconFallbackAvatarName", "user_stroked.svg", 12, "inset-[4.17%_11.65%_8.33%_11.65%]")
+                    ) : (
+                      <span
+                        style={{
+                          width: 14,
+                          height: 14,
+                          borderRadius: 9999,
+                          background: "rgba(255,255,255,0.22)",
+                          boxShadow: "0 0 0 6px rgba(255,255,255,0.08)",
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  <div
+                    style={{
+                      flex: 1,
+                      minWidth: 0,
+                      fontSize: t.headerTitleFontPx,
+                      lineHeight: `${t.headerTitleLinePx}px`,
+                      color: t.headerTitleColor,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {headerText || "\u00A0"}
+                  </div>
+
+                  {isExpanded ? (
+                    <>
+                      <div
+                        style={withHighlight("agentActions", {
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: `${t.actionGapPx}px`,
+                          padding: `${t.actionPadYPx}px ${t.actionPadXPx}px`,
+                          borderRadius: t.actionRadiusPx,
+                        })}
+                      >
+                        <span
+                          style={{
+                            fontSize: t.actionFontPx,
+                            lineHeight: `${t.actionLinePx}px`,
+                            color: t.actionTextColor,
+                            fontWeight: 600,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          显示规划
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => maybeSet(showPlanning ? "expandedNoPlan" : "expanded")}
+                          disabled={!interactive}
+                          className={cx(
+                            "outline-none transition-colors",
+                            interactive ? "cursor-pointer" : "cursor-default",
+                            interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+                          )}
+                          style={withHighlight("agentActions", {
+                            width: t.switchWidthPx,
+                            height: t.switchHeightPx,
+                            padding: 2,
+                            borderRadius: t.switchRadiusPx,
+                            border: "none",
+                            background: showPlanning ? t.switchTrackOn : t.switchTrackOff,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: showPlanning ? "flex-end" : "flex-start",
+                            boxSizing: "border-box",
+                          })}
+                        >
+                          <span
+                            style={{
+                              width: t.switchKnobSizePx,
+                              height: t.switchKnobSizePx,
+                              borderRadius: 9999,
+                              background: t.switchKnobBg,
+                              boxShadow: "0px 0px 1px rgba(0,0,0,0.3), 0px 4px 6px rgba(0,0,0,0.1)",
+                              flexShrink: 0,
+                            }}
+                          />
+                        </button>
+                      </div>
+                      {renderTextButton({
+                        label: "查看详情",
+                        iconToken: "iconDetailName",
+                        iconFile: "flex-align-right-stroked.svg",
+                        iconAfter: true,
+                        onClick: () => {},
+                      })}
+                      {renderTextButton({
+                        label: "收起",
+                        iconToken: "iconCollapseName",
+                        iconFile: "chevron-down-stroked2.svg",
+                        iconAfter: true,
+                        onClick: () => maybeSet("hosted"),
+                      })}
+                    </>
+                  ) : isFailed ? (
+                    <>
+                      {renderTextButton({
+                        label: "查看详情",
+                        iconToken: "iconDetailName",
+                        iconFile: "flex-align-right-stroked.svg",
+                        iconAfter: true,
+                        onClick: () => {},
+                      })}
+                      {renderTextButton({
+                        label: "展开",
+                        iconToken: "iconExpandName",
+                        iconFile: "chevron-up-stroked2.svg",
+                        iconAfter: true,
+                        onClick: () => maybeSet("expandedNoPlan"),
+                      })}
+                    </>
+                  ) : (
+                    <>
+                      {renderTextButton({
+                        label: "查看详情",
+                        iconToken: "iconDetailName",
+                        iconFile: "flex-align-right-stroked.svg",
+                        iconAfter: viewState === "manual" || viewState === "completed",
+                        onClick: () => {},
+                      })}
+                      {renderTextButton({
+                        label: "展开",
+                        iconToken: "iconExpandName",
+                        iconFile: "chevron-up-stroked2.svg",
+                        iconAfter: true,
+                        onClick: () => maybeSet(viewState === "completed" ? "expandedNoPlan" : "expanded"),
+                      })}
+                    </>
+                  )}
+                </div>
+
+                <div
+                  style={withHighlight("agentCard", {
+                    width: "100%",
+                    minHeight: isFailed ? 68 : "auto",
+                    padding: `${isExpanded ? 16 : t.cardPadYPx}px ${t.cardPadXPx}px ${t.cardPadYPx}px`,
+                    boxSizing: "border-box",
+                    borderRadius: t.cardRadiusPx,
+                    border: `1px solid ${t.cardBorder}`,
+                    background: t.cardBg,
+                    boxShadow: t.cardShadow,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: `${isExpanded ? t.cardSectionGapPx : 0}px`,
+                    position: "relative",
+                    zIndex: 1,
+                  })}
+                >
+                  {isExpanded && showPlanning ? (
+                    <>
+                      <div
+                        style={withHighlight("agentPlanning", {
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: `${t.planningGapPx}px`,
+                          maxHeight: t.planningMaxHeightPx,
+                          overflowY: "auto",
+                        })}
+                      >
+                        {AGENT_STATUS_PLAN_STEPS.map(renderPlanningStep)}
+                      </div>
+                      <div style={{ width: "100%", height: 1, background: t.summaryDividerColor, opacity: 0.5 }} />
+                    </>
+                  ) : null}
+
+                  {isExpanded ? renderExpandedSummary() : null}
+
+                  {isExpanded ? <div style={{ width: "100%", height: 1, background: t.summaryDividerColor, opacity: 0.5 }} /> : null}
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 16,
+                      justifyContent: isManual ? "space-between" : "flex-start",
+                    }}
+                  >
+                    <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: `${isFailed ? 0 : 8}px` }}>
+                      {isFailed ? (
+                        <div
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 4,
+                            minHeight: 20,
+                            color: t.errorTextColor,
+                            fontSize: 14,
+                            lineHeight: "20px",
+                            width: "100%",
+                          }}
+                        >
+                          <span>工单内容加载失败</span>
+                        </div>
+                      ) : (
+                        <>
+                          <div style={withHighlight("agentTags", { display: "flex", alignItems: "center", gap: `${t.tagGapPx}px`, flexWrap: "wrap" })}>
+                            {baseTags.map(renderStatusTag)}
+                          </div>
+                          {renderMetaRow()}
+                        </>
+                      )}
+                    </div>
+
+                    {isFailed ? (
+                      <button
+                        type="button"
+                        onClick={() => maybeSet("hosted")}
+                        disabled={!interactive}
+                        className={cx(
+                          "outline-none transition-colors",
+                          interactive ? "cursor-pointer" : "cursor-default",
+                          interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+                        )}
+                        style={withHighlight("agentActions", {
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: 4,
+                          border: "none",
+                          background: "transparent",
+                          color: t.accentTextColor,
+                          fontFamily: t.fontFamily,
+                          fontSize: 14,
+                          lineHeight: "20px",
+                          fontWeight: 600,
+                          flexShrink: 0,
+                        })}
+                      >
+                        {renderLibraryIcon("iconRetryName", "refresh-cw-01-stroked.svg", 16, "inset-[8.33%_8.33%_8.33%_4.17%]")}
+                        <span>重试</span>
+                      </button>
+                    ) : isManual ? (
+                      <div style={withHighlight("agentActions", { display: "inline-flex", alignItems: "center", gap: 12, flexShrink: 0 })}>
+                        <button
+                          type="button"
+                          onClick={() => {}}
+                          disabled={!interactive}
+                          className={cx(
+                            "outline-none transition-colors",
+                            interactive ? "cursor-pointer" : "cursor-default",
+                            interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+                          )}
+                          style={withHighlight("agentActions", {
+                            height: t.lightButtonHeightPx,
+                            padding: "6px 12px",
+                            borderRadius: t.lightButtonRadiusPx,
+                            border: `1px solid ${t.lightButtonBorder}`,
+                            background: t.lightButtonBg,
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 8,
+                            color: t.actionTextColor,
+                            fontSize: 14,
+                            lineHeight: "20px",
+                            fontWeight: 600,
+                          })}
+                        >
+                          {renderLibraryIcon("iconToolsName", "grid-01-stroked.svg", 16)}
+                          <span>工具</span>
+                        </button>
+                        <div
+                          style={withHighlight("agentActions", {
+                            display: "inline-flex",
+                            alignItems: "stretch",
+                            borderRadius: t.lightButtonRadiusPx,
+                            overflow: "hidden",
+                            border: `1px solid ${t.lightButtonBorder}`,
+                            background: t.lightButtonBg,
+                          })}
+                        >
+                          <button
+                            type="button"
+                            onClick={() => maybeSet("completed")}
+                            disabled={!interactive}
+                            className={cx(
+                              "outline-none transition-colors",
+                              interactive ? "cursor-pointer" : "cursor-default",
+                              interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+                            )}
+                            style={{
+                              height: t.lightButtonHeightPx,
+                              padding: "6px 12px",
+                              border: "none",
+                              background: "transparent",
+                              color: t.actionTextColor,
+                              fontSize: 14,
+                              lineHeight: "20px",
+                              fontWeight: 600,
+                            }}
+                          >
+                            完结
+                          </button>
+                          <span style={{ width: 1, background: t.splitButtonDivider }} />
+                          <button
+                            type="button"
+                            onClick={() => {}}
+                            disabled={!interactive}
+                            className={cx(
+                              "outline-none transition-colors",
+                              interactive ? "cursor-pointer" : "cursor-default",
+                              interactive && `hover:bg-[${t.actionHoverBg}] focus-visible:ring-1 focus-visible:ring-[${t.focusRing}]`,
+                            )}
+                            style={{
+                              width: t.lightButtonHeightPx,
+                              height: t.lightButtonHeightPx,
+                              border: "none",
+                              background: "transparent",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {renderLibraryIcon("iconCollapseName", "chevron-down-stroked2.svg", 16)}
+                          </button>
+                        </div>
+                        <span style={{ width: 1, height: 20, background: t.splitButtonDivider, flexShrink: 0 }} />
+                        {renderPrimaryAction("iconPlayName", "play_stroked.svg", () => maybeSet("hosted"), "恢复托管")}
+                      </div>
+                    ) : isCompleted ? null : (
+                      renderPrimaryAction("iconStopName", "stop-stroked.svg", () => maybeSet("manual"), "暂停托管")
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: t.flowStripHeightPx,
+                  opacity: t.flowStripOpacity,
+                  backgroundImage: t.flowStripGradient,
+                  backgroundSize: "200% 100%",
+                  animation: `aiStripeFlow ${t.flowStripDurationSec}s ease-in-out infinite`,
+                  zIndex: 0,
+                }}
+              />
+            </section>
+          </div>
         );
       }
       
@@ -6480,6 +7541,7 @@
         const [aiTokens, setAiTokens] = useState(() => loadSavedTokens("aiInput", AI_INPUT_TOKENS));
         const [fusionTokens, setFusionTokens] = useState(() => loadSavedTokens("fusionWorkbench", FUSION_WORKBENCH_TOKENS));
         const [bubbleTokens, setBubbleTokens] = useState(() => loadSavedTokens("imBubble", IM_BUBBLE_TOKENS));
+        const [agentStatusTokens, setAgentStatusTokens] = useState(() => loadSavedTokens("agentStatusBar", AGENT_STATUS_TOKENS));
         const [hiuiButtonTokens, setHiuiButtonTokens] = useState(() => loadSavedTokens("hiuiButton", HIUI_BUTTON_TOKENS));
         const [conversationListTokens, setConversationListTokens] = useState(() =>
           loadSavedTokens("conversationList", CONVERSATION_LIST_TOKENS),
@@ -6497,6 +7559,10 @@
         const resolvedAiTokens    = useMemo(() => resolveAllTokenColors(aiTokens, foundationPalette),    [aiTokens,    foundationPalette]);
         const resolvedFusionTokens = useMemo(() => resolveAllTokenColors(fusionTokens, foundationPalette), [fusionTokens, foundationPalette]);
         const resolvedBubbleTokens = useMemo(() => resolveAllTokenColors(bubbleTokens, foundationPalette), [bubbleTokens, foundationPalette]);
+        const resolvedAgentStatusTokens = useMemo(
+          () => resolveAllTokenColors(agentStatusTokens, foundationPalette),
+          [agentStatusTokens, foundationPalette],
+        );
         const resolvedHiuiButtonTokens = useMemo(() => resolveAllTokenColors(hiuiButtonTokens, foundationPalette), [hiuiButtonTokens, foundationPalette]);
         const resolvedConversationListTokens = useMemo(
           () => resolveAllTokenColors(conversationListTokens, foundationPalette),
@@ -6515,6 +7581,7 @@
         const [aiRecoClick, setAiRecoClick] = useState("adopt"); // adopt | send
         const [aiRecoHideAfterPick, setAiRecoHideAfterPick] = useState(true);
         const [fusionAgentSegment, setFusionAgentSegment] = useState("online"); // fusion | online | ticket（对齐 Figma 8279:67909）
+        const [agentStatusScenario, setAgentStatusScenario] = useState("hosted");
         const [bubbleDraft, setBubbleDraft] = useState("");
         const [bubbleLastSent, setBubbleLastSent] = useState("");
         const [imShowAvatar, setImShowAvatar] = useState(true);
@@ -6531,6 +7598,8 @@
               ? formTokens
               : panelComponentId === "aiInput"
                 ? aiTokens
+                : panelComponentId === "agentStatusBar"
+                  ? agentStatusTokens
                 : panelComponentId === "imBubble"
                   ? bubbleTokens
                 : panelComponentId === "fusionWorkbench"
@@ -6548,6 +7617,8 @@
               ? resolvedFormTokens
               : panelComponentId === "aiInput"
                 ? resolvedAiTokens
+                : panelComponentId === "agentStatusBar"
+                  ? resolvedAgentStatusTokens
                 : panelComponentId === "imBubble"
                   ? resolvedBubbleTokens
                   : panelComponentId === "fusionWorkbench"
@@ -6564,6 +7635,8 @@
               ? setFormTokens
               : panelComponentId === "aiInput"
                 ? setAiTokens
+                : panelComponentId === "agentStatusBar"
+                  ? setAgentStatusTokens
                 : panelComponentId === "imBubble"
                   ? setBubbleTokens
                   : panelComponentId === "fusionWorkbench"
@@ -6623,6 +7696,7 @@
             aiTokens,
             bubbleTokens,
             fusionTokens,
+            agentStatusTokens,
             hiuiTokens: hiuiButtonTokens,
             conversationListTokens,
           });
@@ -6636,6 +7710,7 @@
           aiTokens,
           bubbleTokens,
           fusionTokens,
+          agentStatusTokens,
           hiuiButtonTokens,
           conversationListTokens,
         ]);
@@ -6762,6 +7837,7 @@
         }, [mode]);
 
         const [sandboxOpen, setSandboxOpen] = useState(false);
+        const [sandboxSession, setSandboxSession] = useState(0);
 
         const [asidePx, setAsidePx] = useState(160); // Component nav
         const [leftPx, setLeftPx] = useState(520);   // UI
@@ -6837,6 +7913,38 @@
             if (p === "textPrimary" || p === "textSubtitle") return "fusionMainRow";
             if (p === "focusRing" || p === "componentName" || p === "fontFamily") return "fusionShell";
             return "fusionMainRow";
+          }
+
+          if (panelComponentId === "agentStatusBar") {
+            if (p === "focusRing" || p === "fontFamily" || p === "componentName" || p.startsWith("shell") || p.startsWith("flowStrip"))
+              return "agentShell";
+            if (p.startsWith("header")) return "agentHeader";
+            if (
+              p.startsWith("action") ||
+              p.startsWith("switch") ||
+              p.startsWith("primaryIcon") ||
+              p.startsWith("lightButton") ||
+              p === "splitButtonDivider" ||
+              (p.startsWith("icon") && !["iconFileName", "iconClockName", "iconBookmarkName", "iconCloseName"].includes(p))
+            )
+              return "agentActions";
+            if (p.startsWith("card")) return "agentCard";
+            if (
+              p.startsWith("hostedStatus") ||
+              p.startsWith("manualStatus") ||
+              p.startsWith("completedStatus") ||
+              p.startsWith("neutralTag") ||
+              p.startsWith("statusTag") ||
+              p.startsWith("tag") ||
+              p === "iconClockName" ||
+              p === "iconBookmarkName" ||
+              p === "iconCloseName"
+            )
+              return "agentTags";
+            if (p.startsWith("meta") || p === "iconFileName") return "agentMeta";
+            if (p.startsWith("planning")) return "agentPlanning";
+            if (p.startsWith("summary")) return "agentSummary";
+            return "agentCard";
           }
 
           if (panelComponentId === "aiInput") {
@@ -7016,7 +8124,7 @@
                 >
                   {[
                     { id: "foundation", label: "基础参数" },
-                    { id: "business", label: "业务组件" },
+                    { id: "business", label: "组件" },
                     { id: "icons", label: "图标库" },
                     { id: "platformSkill", label: "综合 Skill" },
                   ].map(tab => (
@@ -7185,7 +8293,7 @@
                   </div>
                 </div>
               ) : null}
-              {/* Nav: component switcher（仅业务组件 Tab） */}
+              {/* Nav: component switcher（仅「组件」Tab） */}
               {showComponentAside ? (
                 <>
                   <aside className="shrink-0 h-full min-h-0 flex flex-col" style={{ width: asidePx }}>
@@ -7441,6 +8549,28 @@
                           </div>
                         </>
                       ) : null}
+                      {panelComponentId === "agentStatusBar" ? (
+                        <div className="w-full flex flex-col gap-[10px]">
+                          <div className="flex items-center gap-[8px] text-sm">
+                            <span className="text-[rgba(34,39,39,0.6)]">预览状态：</span>
+                            <select
+                              className="h-[36px] px-[10px] rounded-[8px] border border-[rgba(45,66,107,0.12)] bg-[#ffffff] outline-none focus:ring-1 focus:ring-black"
+                              value={agentStatusScenario}
+                              onChange={(e) => setAgentStatusScenario(e.target.value)}
+                            >
+                              <option value="hosted">托管中</option>
+                              <option value="expanded">展开（显示规划）</option>
+                              <option value="expandedNoPlan">展开（不显示规划）</option>
+                              <option value="completed">处理完成</option>
+                              <option value="failed">加载失败</option>
+                              <option value="manual">人工干预</option>
+                            </select>
+                          </div>
+                          <span className="text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
+                            托管中/展开态右侧为品牌色暂停托管按钮；人工干预态切换为工具、完结与恢复托管操作；失败态头像改为灰底占位并显示重试文案。
+                          </span>
+                        </div>
+                      ) : null}
                       {panelComponentId === "imBubble" ? (
                         <div className="w-full flex flex-col gap-[10px]">
                           <div className="flex flex-wrap items-center gap-[16px] text-sm">
@@ -7480,7 +8610,7 @@
                       ) : null}
                       {panelComponentId === "fusionWorkbench" ? (
                         <span className="w-full text-[11px] text-[rgba(34,39,39,0.45)] leading-[16px]">
-                          顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent
+                          本组件定义客服融合工作台布局骨架：顶栏为用户昵称、在线状态、指标数据与 Agent 模式切换；左槽嵌入会话列表（与「会话列表」Tab 共用当前会话列表 Token）；右槽为详情白卡片，供 IM 与业务 Tab 注入。顶栏右侧可切换 融合工作台 / 在线Agent / 工单Agent。
                         </span>
                       ) : null}
                       {panelComponentId === "hiuiButton" ? (
@@ -7540,6 +8670,14 @@
                             tokens={activeResolvedTokens}
                           />
                         </div>
+                      ) : panelComponentId === "agentStatusBar" ? (
+                        <div className={cx("w-full min-w-0", collapsed && "hidden")}>
+                          <AgentStatusBar
+                            tokens={activeResolvedTokens}
+                            scenario={agentStatusScenario}
+                            highlightTarget={highlightTarget}
+                          />
+                        </div>
                       ) : panelComponentId === "imBubble" ? (
                         <div className={cx("w-full min-w-0", collapsed && "hidden")}>
                           <ImBubbleView
@@ -7562,6 +8700,9 @@
                             highlightTarget={highlightTarget}
                             agentSegment={fusionAgentSegment}
                             onAgentSegment={setFusionAgentSegment}
+                            conversationTokens={resolvedConversationListTokens}
+                            conversationSelectedId={conversationSelectedId}
+                            onSelectConversationId={setConversationSelectedId}
                           />
                         </div>
                       ) : panelComponentId === "hiuiButton" ? (
@@ -7623,6 +8764,8 @@
                       ? "Tokens（智能摘要）"
                       : panelComponentId === "formRecommend"
                         ? "Tokens（表单推荐）"
+                        : panelComponentId === "agentStatusBar"
+                          ? "Tokens（Agent状态栏）"
                         : panelComponentId === "aiInput"
                           ? "Tokens（AI输入框）"
                           : panelComponentId === "imBubble"
@@ -7778,6 +8921,99 @@
                               ],
                             },
                           ]
+                        : panelComponentId === "agentStatusBar"
+                          ? [
+                              {
+                                title: "🎨 关键颜色",
+                                fields: [
+                                  { label: "外层背景", path: "shellBg", type: "color" },
+                                  { label: "展开态渐变", path: "shellExpandedGradient", type: "text" },
+                                  { label: "外层描边", path: "shellBorder", type: "css-color" },
+                                  { label: "内容卡背景", path: "cardBg", type: "css-color" },
+                                  { label: "内容卡描边", path: "cardBorder", type: "color" },
+                                  { label: "Focus Ring", path: "focusRing", type: "color" },
+                                  { label: "操作 Hover", path: "actionHoverBg", type: "css-color" },
+                                  { label: "主操作按钮底色", path: "primaryIconBtnBg", type: "css-color" },
+                                  { label: "失败/强调文字", path: "accentTextColor", type: "css-color" },
+                                ],
+                              },
+                              {
+                                title: "🏷️ 状态语义",
+                                fields: [
+                                  { label: "托管中底色", path: "hostedStatusBg", type: "css-color" },
+                                  { label: "托管中文字色", path: "hostedStatusFg", type: "color" },
+                                  { label: "人工干预底色", path: "manualStatusBg", type: "css-color" },
+                                  { label: "人工干预字色", path: "manualStatusFg", type: "color" },
+                                  { label: "处理完成底色", path: "completedStatusBg", type: "css-color" },
+                                  { label: "处理中完成字色", path: "completedStatusFg", type: "color" },
+                                  { label: "中性 Tag 底色", path: "neutralTagBg", type: "css-color" },
+                                  { label: "中性 Tag 字色", path: "neutralTagFg", type: "color" },
+                                  { label: "总结标题渐变", path: "summaryTitleGradient", type: "text" },
+                                ],
+                              },
+                              {
+                                title: "📝 文字排版",
+                                fields: [
+                                  { label: "字体族", path: "fontFamily", type: "text" },
+                                  { label: "头部字号（px）", path: "headerTitleFontPx", type: "number" },
+                                  { label: "头部行高（px）", path: "headerTitleLinePx", type: "number" },
+                                  { label: "头部文字色", path: "headerTitleColor", type: "color" },
+                                  { label: "操作字号（px）", path: "actionFontPx", type: "number" },
+                                  { label: "操作行高（px）", path: "actionLinePx", type: "number" },
+                                  { label: "Meta 文字色", path: "metaTextColor", type: "color" },
+                                  { label: "正文标签色", path: "summaryBodyColor", type: "color" },
+                                ],
+                              },
+                              {
+                                title: "📐 圆角与尺寸",
+                                fields: [
+                                  { label: "外层圆角（px）", path: "shellRadiusPx", type: "number" },
+                                  { label: "内容卡圆角（px）", path: "cardRadiusPx", type: "number" },
+                                  { label: "状态 Tag 圆角（px）", path: "statusTagRadiusPx", type: "number" },
+                                  { label: "主操作按钮边长（px）", path: "primaryIconBtnSizePx", type: "number" },
+                                  { label: "主操作按钮圆角（px）", path: "primaryIconBtnRadiusPx", type: "number" },
+                                  { label: "次级按钮高度（px）", path: "lightButtonHeightPx", type: "number" },
+                                  { label: "次级按钮圆角（px）", path: "lightButtonRadiusPx", type: "number" },
+                                  { label: "开关宽度（px）", path: "switchWidthPx", type: "number" },
+                                  { label: "开关高度（px）", path: "switchHeightPx", type: "number" },
+                                  { label: "开关 knob（px）", path: "switchKnobSizePx", type: "number" },
+                                ],
+                              },
+                              {
+                                title: "📏 间距与结构",
+                                fields: [
+                                  { label: "外层 padding（px）", path: "shellPadPx", type: "number" },
+                                  { label: "外层 gap（px）", path: "shellGapPx", type: "number" },
+                                  { label: "操作钮 padX（px）", path: "actionPadXPx", type: "number" },
+                                  { label: "操作钮 padY（px）", path: "actionPadYPx", type: "number" },
+                                  { label: "内容卡 padX（px）", path: "cardPadXPx", type: "number" },
+                                  { label: "内容卡 padY（px）", path: "cardPadYPx", type: "number" },
+                                  { label: "内容卡分区间距（px）", path: "cardSectionGapPx", type: "number" },
+                                  { label: "Meta 间距（px）", path: "metaGapPx", type: "number" },
+                                  { label: "规划区最大高（px）", path: "planningMaxHeightPx", type: "number" },
+                                  { label: "总结标签列宽（px）", path: "summaryLabelWidthPx", type: "number" },
+                                  { label: "底部流带高度（px）", path: "flowStripHeightPx", type: "number" },
+                                  { label: "底部流带时长（s）", path: "flowStripDurationSec", type: "number" },
+                                ],
+                              },
+                              {
+                                title: "🧩 Icons",
+                                fields: [
+                                  { label: "查看详情", path: "iconDetailName", type: "icon" },
+                                  { label: "展开", path: "iconExpandName", type: "icon" },
+                                  { label: "收起", path: "iconCollapseName", type: "icon" },
+                                  { label: "附件", path: "iconFileName", type: "icon" },
+                                  { label: "时钟", path: "iconClockName", type: "icon" },
+                                  { label: "书签", path: "iconBookmarkName", type: "icon" },
+                                  { label: "暂停托管", path: "iconStopName", type: "icon" },
+                                  { label: "重试", path: "iconRetryName", type: "icon" },
+                                  { label: "工具", path: "iconToolsName", type: "icon" },
+                                  { label: "恢复托管", path: "iconPlayName", type: "icon" },
+                                  { label: "失败头像", path: "iconFallbackAvatarName", type: "icon" },
+                                  { label: "关闭标签", path: "iconCloseName", type: "icon" },
+                                ],
+                              },
+                            ]
                         : panelComponentId === "aiInput"
                         ? [
                             {
@@ -8064,22 +9300,16 @@
                               ],
                             },
                             {
-                              title: "\u5217\u8868\u533a\u4e0e\u8be6\u60c5\u5361\u7247",
+                              title: "\u4e3b\u69fd\u4e0e\u8be6\u60c5\u5361\u7247\uff08\u5de6\u69fd\u5d4c\u5165\u4f1a\u8bdd\u5217\u8868\uff09",
                               fields: [
                                 { label: "\u4e3b\u69fd\u534a\u900f\u660e\u5e95", path: "mainFrostBg", type: "css-color" },
                                 { label: "\u4e3b\u69fd\u8fb9\u6846\u8272", path: "mainFrostBorder", type: "color" },
                                 { label: "\u4e3b\u69fd\u5706\u89d2\uff08px\uff09", path: "mainFrostRadiusPx", type: "number" },
-                                { label: "\u5217\u8868\u5217\u5bbd\uff08px\uff09", path: "listColumnWidthPx", type: "number" },
-                                { label: "\u5217\u8868\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "listTitleFontPx", type: "number" },
-                                { label: "\u5217\u8868\u526f\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "listSubtitleFontPx", type: "number" },
-                                { label: "\u5217\u8868\u5360\u4f4d\u7ad6\u95f4\u8ddd\uff08px\uff09", path: "listPlaceholderGapPx", type: "number" },
+                                { label: "\u5de6\u69fd\u5217\u5bbd listColumnWidthPx\uff08px\uff09", path: "listColumnWidthPx", type: "number" },
                                 { label: "\u8be6\u60c5\u5361\u7247\u80cc\u666f", path: "detailCardBg", type: "color" },
                                 { label: "\u8be6\u60c5\u5361\u7247\u5706\u89d2\uff08px\uff09", path: "detailCardRadiusPx", type: "number" },
                                 { label: "\u8be6\u60c5\u5361\u7247\u5185\u8fb9\u8ddd\uff08px\uff09", path: "detailCardPadPx", type: "number" },
                                 { label: "\u8be6\u60c5\u5361\u7247\u9634\u5f71 CSS", path: "detailCardShadow", type: "text" },
-                                { label: "\u8be6\u60c5\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "detailTitleFontPx", type: "number" },
-                                { label: "\u8be6\u60c5\u526f\u6807\u9898\u5b57\u53f7\uff08px\uff09", path: "detailSubtitleFontPx", type: "number" },
-                                { label: "\u8be6\u60c5\u5360\u4f4d\u7ad6\u95f4\u8ddd\uff08px\uff09", path: "detailPlaceholderGapPx", type: "number" },
                                 { label: "\u6807\u9898\u6587\u5b57\u8272", path: "textPrimary", type: "color" },
                                 { label: "\u526f\u6807\u9898\u6587\u5b57\u8272", path: "textSubtitle", type: "color" },
                               ],
@@ -8260,7 +9490,7 @@
                               : panelComponentId === "imBubble"
                                 ? "用于强约束 AI 生成「IM气泡」：沟通区气泡 + 己方手动/AI 托管成色 + 可选头像与气泡下推荐，点击采纳入框，悬停显发送。"
                                 : panelComponentId === "fusionWorkbench"
-                                  ? "在线 Agent 外壳（Figma 8279:67909）：顶栏 + 列表区 407px + 详情白卡片；与稿中间距、圆角、色值对齐。"
+                                  ? "客服融合工作台布局骨架（8279:67909；应用参考 6144:31445）：顶栏能力区 + 左槽嵌入会话列表（listColumnWidthPx）+ 右槽详情白卡片；间距、圆角、色值与层级与 Token 一致。"
                                   : panelComponentId === "hiuiButton"
                                     ? "HiUI 按钮（Figma 187:846）：深色 Solid / 浅色 Light / 无背景 / Text·Link；状态矩阵与尺寸与 MCP get_design_context 对齐。"
                                     : panelComponentId === "conversationList"
@@ -8270,22 +9500,17 @@
                     </div>
                     {/* Icon-only buttons — flex-none, wraps as a unit when narrow */}
                     <div className="flex items-center gap-[4px] flex-none">
-                      {/* 沙盒测试 */}
-                      {panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && panelComponentId !== "conversationList" && (
+                      {/* 单测（全组件除图标库；预览 = Skill Markdown 解析） */}
+                      {panelComponentId !== "iconLibrary" && (
                         <button
                           type="button"
-                          title="沙盒测试（模拟AI真实生成效果）"
-                          className="h-[28px] w-[28px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[rgba(34,39,39,0.65)] hover:bg-[rgba(83,96,143,0.07)] hover:text-[#222727] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
-                          onClick={() => setSandboxOpen(true)}
-                        >
-                          {/* Beaker / sandbox icon */}
-                          <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
-                            <path d="M6 2v5L3.5 12.5A1 1 0 0 0 4.4 14h7.2a1 1 0 0 0 .9-1.5L10 7V2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M5.5 2h5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
-                            <circle cx="6.5" cy="10.5" r="0.7" fill="currentColor"/>
-                            <circle cx="9" cy="12" r="0.7" fill="currentColor"/>
-                          </svg>
-                        </button>
+                          title="单测：按当前 Skill 解析预览 UI，并生成可编辑 Prompt 供外部模型从 0 到 1 对照"
+                          className="h-[28px] px-[10px] rounded-[7px] border border-[rgba(45,66,107,0.14)] bg-white flex items-center justify-center text-[12px] font-semibold text-[#222727] hover:bg-[rgba(83,96,143,0.07)] active:opacity-80 transition-colors outline-none focus:ring-1 focus:ring-black"
+                          onClick={() => {
+                            setSandboxSession((s) => s + 1);
+                            setSandboxOpen(true);
+                          }}
+                        >单测</button>
                       )}
                       {/* 下载 .md */}
                       <button
@@ -8365,8 +9590,9 @@
             </div>
               ) : null}
             {/* ── Sandbox Modal ──────────────────────────────── */}
-            {sandboxOpen && panelComponentId !== "iconLibrary" && panelComponentId !== "fusionWorkbench" && panelComponentId !== "hiuiButton" && panelComponentId !== "conversationList" && (
+            {sandboxOpen && panelComponentId !== "iconLibrary" && (
               <SandboxModal
+                key={sandboxSession}
                 componentId={panelComponentId}
                 mdText={designSkillMd}
                 onClose={() => setSandboxOpen(false)}
@@ -8464,6 +9690,75 @@
           };
         }
 
+        if (componentId === "agentStatusBar") {
+          return {
+            fontFamily: col("fontFamily", AGENT_STATUS_TOKENS.fontFamily),
+            focusRing: col("focusRing", "#1aa38a"),
+            shellBg: col("shellBg", "#f2f4f7"),
+            shellExpandedGradient: col("shellExpandedGradient", AGENT_STATUS_TOKENS.shellExpandedGradient),
+            shellBorder: col("shellBorder", "rgba(34,39,39,0.09)"),
+            shellRadiusPx: num("shellRadiusPx", 16),
+            shellPadPx: num("shellPadPx", 8),
+            shellGapPx: num("shellGapPx", 8),
+            shellShadow: col("shellShadow", AGENT_STATUS_TOKENS.shellShadow),
+            headerTitleFontPx: num("headerTitleFontPx", 12),
+            headerTitleLinePx: num("headerTitleLinePx", 16),
+            headerTitleColor: col("headerTitleColor", "rgba(34,39,39,0.8)"),
+            actionFontPx: num("actionFontPx", 14),
+            actionLinePx: num("actionLinePx", 20),
+            actionTextColor: col("actionTextColor", "rgba(34,39,39,0.8)"),
+            actionHoverBg: col("actionHoverBg", "rgba(83,96,143,0.07)"),
+            cardBg: col("cardBg", "rgba(255,255,255,0.8)"),
+            cardBorder: col("cardBorder", "#ffffff"),
+            cardRadiusPx: num("cardRadiusPx", 12),
+            cardPadXPx: num("cardPadXPx", 16),
+            cardPadYPx: num("cardPadYPx", 12),
+            cardSectionGapPx: num("cardSectionGapPx", 16),
+            cardShadow: col("cardShadow", AGENT_STATUS_TOKENS.cardShadow),
+            hostedStatusBg: col("hostedStatusBg", "rgba(59,179,70,0.15)"),
+            hostedStatusFg: col("hostedStatusFg", "#1c5a27"),
+            manualStatusBg: col("manualStatusBg", "rgba(249,57,32,0.15)"),
+            manualStatusFg: col("manualStatusFg", "#770c09"),
+            completedStatusBg: col("completedStatusBg", "rgba(0,119,250,0.15)"),
+            completedStatusFg: col("completedStatusFg", "#003278"),
+            neutralTagBg: col("neutralTagBg", "rgba(52,59,57,0.05)"),
+            neutralTagFg: col("neutralTagFg", "#475467"),
+            metaTextColor: col("metaTextColor", "rgba(34,39,39,0.35)"),
+            primaryIconBtnBg: col("primaryIconBtnBg", "#0b877d"),
+            primaryIconBtnSizePx: num("primaryIconBtnSizePx", 32),
+            primaryIconBtnRadiusPx: num("primaryIconBtnRadiusPx", 12),
+            lightButtonBorder: col("lightButtonBorder", "rgba(34,39,39,0.09)"),
+            lightButtonBg: col("lightButtonBg", "#ffffff"),
+            lightButtonHeightPx: num("lightButtonHeightPx", 32),
+            lightButtonRadiusPx: num("lightButtonRadiusPx", 12),
+            switchTrackOn: col("switchTrackOn", "#0b877d"),
+            switchTrackOff: col("switchTrackOff", "rgba(52,59,57,0.05)"),
+            switchWidthPx: num("switchWidthPx", 28),
+            switchHeightPx: num("switchHeightPx", 16),
+            switchKnobSizePx: num("switchKnobSizePx", 12),
+            planningMaxHeightPx: num("planningMaxHeightPx", 110),
+            summaryLabelWidthPx: num("summaryLabelWidthPx", 56),
+            summaryTitleGradient: col("summaryTitleGradient", AGENT_STATUS_TOKENS.summaryTitleGradient),
+            summaryDividerColor: col("summaryDividerColor", "rgba(34,39,39,0.09)"),
+            flowStripGradient: col("flowStripGradient", AGENT_STATUS_TOKENS.flowStripGradient),
+            flowStripOpacity: num("flowStripOpacity", 0.5),
+            flowStripHeightPx: num("flowStripHeightPx", 20),
+            flowStripDurationSec: num("flowStripDurationSec", 3),
+            iconDetailName: col("iconDetailName", "hiai-flex-align-right-stroked"),
+            iconExpandName: col("iconExpandName", "hiai-chevron-up-stroked2"),
+            iconCollapseName: col("iconCollapseName", "hiai-chevron-down-stroked2"),
+            iconFileName: col("iconFileName", "hiai-file-05-stroked"),
+            iconClockName: col("iconClockName", "hiai-alarm-clock-stroked"),
+            iconBookmarkName: col("iconBookmarkName", "hiai-bookmark-add-stroked2"),
+            iconStopName: col("iconStopName", "hiai-stop-stroked"),
+            iconRetryName: col("iconRetryName", "hiai-refresh-cw-01-stroked"),
+            iconToolsName: col("iconToolsName", "hiai-grid-01-stroked"),
+            iconPlayName: col("iconPlayName", "hiai-play-stroked"),
+            iconFallbackAvatarName: col("iconFallbackAvatarName", "hiai-user-stroked"),
+            iconCloseName: col("iconCloseName", "x-close-stroked"),
+          };
+        }
+
         if (componentId === "imBubble") {
           const gradMatches = Array.from(md.matchAll(/background-image:\s*([^;\n`]+)/g)).map((m) => m[1].trim());
           const recoGrad =
@@ -8508,22 +9803,105 @@
           };
         }
 
+        if (componentId === "fusionWorkbench") {
+          return {
+            shellBg: col("shellBg", "#f6f7f9"),
+            shellRadiusPx: num("shellRadiusPx", 6),
+            workspacePadLeftPx: num("workspacePadLeftPx", 8),
+            workspacePadRightPx: num("workspacePadRightPx", 12),
+            workspacePadYPx: num("workspacePadYPx", 12),
+            workspaceColumnGapPx: num("workspaceColumnGapPx", 12),
+            textPrimary: col("textPrimary", "#222727"),
+            textSubtitle: col("textSubtitle", "rgba(34,39,39,0.55)"),
+            fontFamily: col("fontFamily", '"PingFang SC",sans-serif'),
+            focusRing: col("focusRing", "#000000"),
+            topBarTitleFontPx: num("topBarTitleFontPx", 14),
+            topBarTitleLinePx: num("topBarTitleLinePx", 20),
+            statsBarBg: col("statsBarBg", "rgba(255,255,255,0.6)"),
+            statsBarBorder: col("statsBarBorder", "#ffffff"),
+            segmentTrackBg: col("segmentTrackBg", "rgba(52,59,57,0.05)"),
+            segmentSelectedBg: col("segmentSelectedBg", "#ffffff"),
+            segmentItemHeightPx: num("segmentItemHeightPx", 32),
+            mainFrostBg: col("mainFrostBg", "rgba(255,255,255,0.5)"),
+            mainFrostBorder: col("mainFrostBorder", "#ffffff"),
+            mainFrostRadiusPx: num("mainFrostRadiusPx", 16),
+            listColumnWidthPx: num("listColumnWidthPx", 407),
+            detailCardBg: col("detailCardBg", "#ffffff"),
+            detailCardRadiusPx: num("detailCardRadiusPx", 16),
+            detailCardPadPx: num("detailCardPadPx", 16),
+            detailCardShadow: col("detailCardShadow", "0px 0px 16px 0px rgba(101,115,137,0.06)"),
+          };
+        }
+
+        if (componentId === "hiuiButton") {
+          return {
+            previewBg: col("previewBg", "#f6f7f9"),
+            captionColor: col("captionColor", "rgba(34,39,39,0.45)"),
+          };
+        }
+
+        if (componentId === "conversationList") {
+          return {
+            fontFamily: col("fontFamily", '"PingFang SC",sans-serif'),
+            focusRing: col("focusRing", "#000000"),
+            shellWidthPx: num("shellWidthPx", 371),
+            shellRadiusPx: num("shellRadiusPx", 12),
+            shellPadPx: num("shellPadPx", 16),
+            shellGapPx: num("shellGapPx", 16),
+            shellBg: col("shellBg", "#ffffff"),
+            headerRowHeightPx: num("headerRowHeightPx", 32),
+            titleFontPx: num("titleFontPx", 16),
+            titleLinePx: num("titleLinePx", 22),
+            titleColor: col("titleColor", "#222727"),
+            headerIconSizePx: num("headerIconSizePx", 16),
+            radioTrackBg: col("radioTrackBg", "rgba(52,59,57,0.05)"),
+            radioTrackRadiusPx: num("radioTrackRadiusPx", 6),
+            radioItemHeightPx: num("radioItemHeightPx", 32),
+            radioActiveBg: col("radioActiveBg", "#ffffff"),
+            groupTitleFontPx: num("groupTitleFontPx", 12),
+            groupTitleColor: col("groupTitleColor", "rgba(34,39,39,0.8)"),
+            groupCountColor: col("groupCountColor", "rgba(34,39,39,0.45)"),
+            rowPadPx: num("rowPadPx", 12),
+            rowRadiusPx: num("rowRadiusPx", 12),
+            rowGapPx: num("rowGapPx", 12),
+            rowSelectedBg: col("rowSelectedBg", "#ffffff"),
+            rowSelectedShadow: col("rowSelectedShadow", "0px 0px 16px 0px rgba(101,115,137,0.06)"),
+            rowActiveBarWpx: num("rowActiveBarWpx", 4),
+            rowActiveBarHpx: num("rowActiveBarHpx", 68),
+            rowActiveBarColor: col("rowActiveBarColor", "#24cda5"),
+            avatarSizePx: num("avatarSizePx", 32),
+            nameFontPx: num("nameFontPx", 14),
+            nameLinePx: num("nameLinePx", 24),
+            nameColor: col("nameColor", "#222727"),
+            previewFontPx: num("previewFontPx", 12),
+            previewLinePx: num("previewLinePx", 16),
+            previewColor: col("previewColor", "rgba(34,39,39,0.55)"),
+            timeColor: col("timeColor", "rgba(34,39,39,0.45)"),
+            tagBg: col("tagBg", "rgba(52,59,57,0.05)"),
+            tagRadiusPx: num("tagRadiusPx", 3),
+            tagTextColor: col("tagTextColor", "#464e4d"),
+          };
+        }
+
         // aiInput（默认分支，含未知 componentId）
         return {
-          outerRadius:     num("outerRadiusPx", 12),
-          outerPadding:    num("outerPadPx", 12),
-          outerGap:        num("outerGapPx", 8),
-          outerBg:         col("outerBg", "rgba(83,96,143,0.07)"),
+          outerRadius:     num("outerRadiusPx", 14),
+          outerPadding:    num("outerPadPx", 6),
+          outerGap:        num("outerGapPx", 6),
+          outerBg:         col("outerBg", "#F2F4F7"),
           cardRadius:      num("cardRadiusPx", 12),
           cardBg:          col("cardBg", "#ffffff"),
           cardBorder:      col("cardBorder", "#ffffff"),
           cardPad:         num("cardPadPx", 12),
           iconSize:        num("iconSizePx", 16),
-          sendBtnHeight:   num("sendBtnHeightPx", 36),
+          iconBtnPad:      num("iconBtnPadPx", 4),
+          iconBtnRadius:   num("iconBtnRadiusPx", 8),
+          sendBtnHeight:   num("sendBtnHeightPx", 24),
+          sendBtnPad:      num("sendBtnPadPx", 4),
           sendBtnRadius:   num("sendBtnRadiusPx", 8),
-          sendBtnBgDis:    col("sendBtnBgDisabled", "rgba(45,66,107,0.12)"),
-          sendBtnBgEn:     col("sendBtnBgEnabled", "#000000"),
-          focusRing:       col("focusRing", "#000000"),
+          sendBtnBgDis:    col("sendBtnBgDisabled", "#E6E7EA"),
+          sendBtnBgEn:     col("sendBtnBgEnabled", "#1AA38A"),
+          focusRing:       col("focusRing", "#1AA38A"),
           recoTitleGrad:   col("recoTitleGradient", "linear-gradient(90deg,#16DACB,#E774DD)"),
           motionOpacity:   num("motionOpacity", 0.4),
           statusColor:     col("statusColor", "rgba(34,39,39,0.6)"),
@@ -8758,6 +10136,18 @@
 
       function SpecAiInput({ v, scenario }) {
         const FF = '"PingFang SC",-apple-system,sans-serif';
+        const toolbarBorder = "rgba(45,66,107,0.12)";
+        const toolIcons = [
+          "magic-wand",
+          "IconFaceSmileStroked",
+          "image-01-stroked",
+          "underline-01-stroked",
+          "bold-01-stroked",
+          "icon_order-list_outlined",
+          "icon_disorder-list_outlined",
+          "link-03-stroked",
+          "palette-stroked",
+        ];
         const recos = scenario === "single"
           ? ["理解您的心情～麻烦您提供下相关页面截图/提示文案，我们这边马上帮您核实处理～（已结合您当前对话内容生成）"]
           : scenario === "multi"
@@ -8824,20 +10214,51 @@
               </div>
 
               {/* Actions */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", gap: 4 }}>
-                  {["✨", "😊", "🖼", "U", "B", "≡₁", "≡", "🔗", "🎨"].map((ic, i) => (
-                    <span key={i} style={{ fontSize: 13, width: v.iconSize, height: v.iconSize, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{ic}</span>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", flex: 1, minWidth: 0 }}>
+                  {toolIcons.map((name) => (
+                    <span
+                      key={name}
+                      style={{
+                        height: 24,
+                        minWidth: 24,
+                        padding: v.iconBtnPad,
+                        borderRadius: v.iconBtnRadius,
+                        border: `1px solid ${toolbarBorder}`,
+                        background: "#ffffff",
+                        boxSizing: "border-box",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {renderIconFromLibrary({
+                        name,
+                        size: v.iconSize,
+                        fallbackUrl: hiaiSvgUrl("magic-wand-stroked.svg"),
+                        fallbackInset: "inset-[8.33%]",
+                      })}
+                    </span>
                   ))}
                 </div>
                 <div style={{
-                  height: v.sendBtnHeight, padding: `0 ${v.cardPad}px`,
+                  height: v.sendBtnHeight,
+                  minWidth: v.sendBtnHeight,
+                  padding: v.sendBtnPad,
                   borderRadius: v.sendBtnRadius,
                   background: v.sendBtnBgDis,
-                  display: "flex", alignItems: "center",
-                  fontSize: 14, color: "rgba(34,39,39,0.4)",
+                  border: `1px solid ${toolbarBorder}`,
+                  boxSizing: "border-box",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  flexShrink: 0,
                 }}>
-                  ➤
+                  {renderIconFromLibrary({
+                    name: "hiai-send",
+                    size: v.iconSize,
+                    fallbackUrl: hiaiSvgUrl("send_stroked.svg"),
+                    fallbackInset: "inset-[8.66%_8.66%_3.54%_3.54%]",
+                  })}
                 </div>
               </div>
             </div>
@@ -9011,17 +10432,341 @@
         );
       }
 
+      function sandboxModalComponentLabel(componentId) {
+        switch (componentId) {
+          case "smartSummary": return "智能摘要";
+          case "formRecommend": return "表单推荐";
+          case "agentStatusBar": return "Agent状态栏";
+          case "aiInput": return "AI 输入框";
+          case "imBubble": return "IM 气泡";
+          case "fusionWorkbench": return "融合工作台框架";
+          case "hiuiButton": return "按钮";
+          case "conversationList": return "会话列表";
+          default: return String(componentId || "");
+        }
+      }
+
+      function defaultSandboxSingleTestPrompt(componentId) {
+        const name = sandboxModalComponentLabel(componentId);
+        return (
+          "请严格按照当前 Design Skill 全文中的颜色、字体、间距、圆角、阴影等全部 UI 参数，从 0 到 1 生成「" +
+          name +
+          "」的页面代码样式，使其与 HiAI 组件 UI 规范、样式规范一致，用于对照检验 Design Skill 与实现是否完全匹配。"
+        );
+      }
+
+      function SpecAgentStatusBarSandbox({ v, scenario }) {
+        return (
+          <div style={{ width: "100%", maxWidth: 760, margin: "0 auto" }}>
+            <AgentStatusBar tokens={v} scenario={scenario} interactive={false} />
+          </div>
+        );
+      }
+
+      function SpecFusionWorkbenchSandbox({ v }) {
+        const FF = v.fontFamily || '"PingFang SC",sans-serif';
+        const pad = `${v.workspacePadYPx}px ${v.workspacePadRightPx}px ${v.workspacePadYPx}px ${v.workspacePadLeftPx}px`;
+        return (
+          <div style={{ width: "100%", maxWidth: 960, margin: "0 auto", fontFamily: FF }}>
+            <div style={{
+              background: v.shellBg,
+              borderRadius: v.shellRadiusPx,
+              padding: pad,
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: "column",
+              gap: v.workspaceColumnGapPx,
+            }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                <div style={{
+                  fontSize: v.topBarTitleFontPx,
+                  lineHeight: `${v.topBarTitleLinePx}px`,
+                  fontWeight: 600,
+                  color: v.textPrimary,
+                }}>用户昵称</div>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  height: v.segmentItemHeightPx,
+                  padding: "0 4px",
+                  borderRadius: 6,
+                  background: v.segmentTrackBg,
+                }}>
+                  <span style={{
+                    padding: "4px 12px",
+                    borderRadius: 6,
+                    background: v.segmentSelectedBg,
+                    fontSize: 12,
+                    boxShadow: "0 1px 4px rgba(34,39,39,0.08)",
+                  }}>工单 Agent</span>
+                  <span style={{ fontSize: 12, color: v.textSubtitle }}>在线 Agent</span>
+                </div>
+              </div>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: v.workspaceColumnGapPx,
+                padding: "4px 16px",
+                borderRadius: 6,
+                border: `1px solid ${v.statsBarBorder}`,
+                background: v.statsBarBg,
+                fontSize: 12,
+                color: v.textSubtitle,
+              }}>
+                <span style={{ color: v.textPrimary, fontWeight: 600 }}>15</span>
+                <span>昨日进线</span>
+                <span style={{ width: 1, height: 12, background: "rgba(34,39,39,0.12)" }} />
+                <span>指标条槽位</span>
+              </div>
+              <div style={{
+                display: "flex",
+                border: `1px solid ${v.mainFrostBorder}`,
+                borderRadius: v.mainFrostRadiusPx,
+                background: v.mainFrostBg,
+                padding: 8,
+                gap: 8,
+                minHeight: 160,
+                boxSizing: "border-box",
+              }}>
+                <div style={{
+                  width: v.listColumnWidthPx,
+                  flexShrink: 0,
+                  borderRadius: 8,
+                  background: "rgba(255,255,255,0.35)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 12,
+                  color: v.textSubtitle,
+                  textAlign: "center",
+                }}>slot:list<br />会话列表（列宽 listColumnWidthPx）</div>
+                <div style={{
+                  flex: 1,
+                  minWidth: 0,
+                  borderRadius: v.detailCardRadiusPx,
+                  padding: v.detailCardPadPx,
+                  background: v.detailCardBg,
+                  boxShadow: v.detailCardShadow,
+                  fontSize: v.topBarTitleFontPx,
+                  color: v.textSubtitle,
+                  boxSizing: "border-box",
+                }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: v.textPrimary, marginBottom: 6 }}>slot:detail</div>
+                  <div style={{ fontSize: 11, lineHeight: "15px" }}>IM · Tab · 工单/平台信息（业务注入）</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      function SpecHiuiButtonSandbox({ v }) {
+        const FF = '"PingFang SC",-apple-system,sans-serif';
+        return (
+          <div style={{
+            minHeight: 200,
+            padding: 20,
+            borderRadius: 12,
+            background: v.previewBg,
+            fontFamily: FF,
+            boxSizing: "border-box",
+          }}>
+            <div style={{ fontSize: 12, lineHeight: "16px", color: v.captionColor, marginBottom: 16, fontWeight: 600 }}>
+              HiUI 按钮 · 单测示意（Solid / Light / Borderless / Text）
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center" }}>
+              <div style={{
+                height: 36,
+                padding: "0 12px",
+                borderRadius: 8,
+                background: "#1aa38a",
+                color: "#fff",
+                fontSize: 14,
+                fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+              }}>Primary</div>
+              <div style={{
+                height: 36,
+                padding: "0 12px",
+                borderRadius: 8,
+                background: "#fff",
+                color: "rgba(34,39,39,0.8)",
+                border: "1px solid rgba(45,66,107,0.12)",
+                fontSize: 14,
+                fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+              }}>Light</div>
+              <div style={{
+                height: 24,
+                padding: "0 8px",
+                borderRadius: 8,
+                background: "transparent",
+                color: "rgba(34,39,39,0.8)",
+                fontSize: 14,
+                fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+              }}>Small</div>
+              <div style={{
+                fontSize: 14,
+                fontWeight: 600,
+                color: "#1aa38a",
+                padding: "4px 8px",
+                borderRadius: 6,
+              }}>Text / Link</div>
+            </div>
+          </div>
+        );
+      }
+
+      function SpecConversationListSandbox({ v }) {
+        const FF = v.fontFamily || '"PingFang SC",sans-serif';
+        const w = Math.min(v.shellWidthPx, 420);
+        return (
+          <div style={{ width: "100%", display: "flex", justifyContent: "center", fontFamily: FF }}>
+            <div style={{
+              width: w,
+              maxWidth: "100%",
+              borderRadius: v.shellRadiusPx,
+              padding: v.shellPadPx,
+              background: v.shellBg,
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: "column",
+              gap: v.shellGapPx,
+            }}>
+              <div style={{
+                height: v.headerRowHeightPx,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}>
+                <span style={{
+                  fontSize: v.titleFontPx,
+                  lineHeight: `${v.titleLinePx}px`,
+                  fontWeight: 600,
+                  color: v.titleColor,
+                }}>我的服务</span>
+                <div style={{ width: v.headerIconSizePx, height: v.headerIconSizePx, borderRadius: 6, background: "rgba(52,59,57,0.05)" }} />
+              </div>
+              <div style={{
+                height: v.radioItemHeightPx,
+                padding: "4px",
+                borderRadius: v.radioTrackRadiusPx,
+                background: v.radioTrackBg,
+                display: "flex",
+                alignItems: "center",
+                gap: 4,
+              }}>
+                <span style={{
+                  flex: 1,
+                  textAlign: "center",
+                  fontSize: 12,
+                  lineHeight: "16px",
+                  padding: "4px 0",
+                  borderRadius: 6,
+                  background: v.radioActiveBg,
+                  fontWeight: 600,
+                  color: v.titleColor,
+                }}>排队中 3</span>
+                <span style={{ flex: 1, textAlign: "center", fontSize: 12, color: v.groupCountColor }}>服务中 2</span>
+              </div>
+              <div style={{ fontSize: v.groupTitleFontPx, lineHeight: "16px", color: v.groupTitleColor, fontWeight: 600 }}>
+                今天 <span style={{ color: v.groupCountColor, fontWeight: 500 }}>5</span>
+              </div>
+              <div style={{
+                position: "relative",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: v.rowGapPx,
+                padding: v.rowPadPx,
+                borderRadius: v.rowRadiusPx,
+                background: v.rowSelectedBg,
+                boxShadow: v.rowSelectedShadow,
+                boxSizing: "border-box",
+              }}>
+                <div style={{
+                  position: "absolute",
+                  left: 0,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: v.rowActiveBarWpx,
+                  height: v.rowActiveBarHpx,
+                  borderRadius: "0 2px 2px 0",
+                  background: v.rowActiveBarColor,
+                }} />
+                <div style={{
+                  marginLeft: v.rowActiveBarWpx,
+                  width: v.avatarSizePx,
+                  height: v.avatarSizePx,
+                  borderRadius: 9999,
+                  background: "linear-gradient(135deg, #e5f7f7, #e8edff)",
+                  flexShrink: 0,
+                }} />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{
+                    fontSize: v.nameFontPx,
+                    lineHeight: `${v.nameLinePx}px`,
+                    fontWeight: 600,
+                    color: v.nameColor,
+                  }}>会话语料示例</div>
+                  <div style={{
+                    fontSize: v.previewFontPx,
+                    lineHeight: `${v.previewLinePx}px`,
+                    color: v.previewColor,
+                    marginTop: 2,
+                  }}>预览文案对齐 previewFont / previewColor…</div>
+                  <span style={{
+                    display: "inline-block",
+                    marginTop: 6,
+                    fontSize: 11,
+                    padding: "2px 8px",
+                    borderRadius: v.tagRadiusPx,
+                    background: v.tagBg,
+                    color: v.tagTextColor,
+                  }}>已回复</span>
+                </div>
+                <div style={{ fontSize: v.previewFontPx, color: v.timeColor, flexShrink: 0 }}>14:32</div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
       // ─── Sandbox Modal (markdown-driven) ──────────────────────────────────────
       function SandboxModal({ componentId, mdText, onClose }) {
         const defaultTab =
           componentId === "smartSummary"  ? "ready"  :
           componentId === "formRecommend" ? "multi"  :
-          componentId === "imBubble" ? "im" : "single";
+          componentId === "agentStatusBar" ? "hosted" :
+          componentId === "imBubble" ? "im" :
+          (componentId === "fusionWorkbench" || componentId === "hiuiButton" || componentId === "conversationList") ? "a" :
+          "single";
         const [activeTab, setActiveTab] = React.useState(defaultTab);
+        const [refreshTick, setRefreshTick] = React.useState(0);
+        const [promptText, setPromptText] = React.useState(() => defaultSandboxSingleTestPrompt(componentId));
+
+        React.useEffect(() => {
+          setActiveTab(
+            componentId === "smartSummary"  ? "ready"  :
+            componentId === "formRecommend" ? "multi"  :
+            componentId === "agentStatusBar" ? "hosted" :
+            componentId === "imBubble" ? "im" :
+            (componentId === "fusionWorkbench" || componentId === "hiuiButton" || componentId === "conversationList") ? "a" :
+            "single",
+          );
+        }, [componentId]);
+
+        React.useEffect(() => {
+          setPromptText(defaultSandboxSingleTestPrompt(componentId));
+        }, [componentId]);
 
         const v = React.useMemo(
           () => parseMdDesignValues(mdText, componentId),
-          [mdText, componentId],
+          [mdText, componentId, refreshTick],
         );
 
         const scenarios =
@@ -9031,8 +10776,23 @@
             : componentId === "formRecommend"
             ? [{ id: "loading", label: "加载中" }, { id: "single", label: "单条推荐" },
                { id: "multi",   label: "多条推荐" }]
+            : componentId === "agentStatusBar"
+            ? [
+                { id: "hosted", label: "托管中" },
+                { id: "expanded", label: "展开" },
+                { id: "expandedNoPlan", label: "展开-不显示规划" },
+                { id: "completed", label: "处理完成" },
+                { id: "failed", label: "加载失败" },
+                { id: "manual", label: "人工干预" },
+              ]
             : componentId === "imBubble"
             ? [{ id: "im", label: "对话预览" }]
+            : componentId === "fusionWorkbench"
+            ? [{ id: "a", label: "在线 Agent 外壳" }]
+            : componentId === "hiuiButton"
+            ? [{ id: "a", label: "类型示意" }]
+            : componentId === "conversationList"
+            ? [{ id: "a", label: "展开列表" }]
             : [{ id: "off", label: "无推荐" }, { id: "single", label: "单条推荐" },
                { id: "multi", label: "多条推荐" }];
 
@@ -9061,6 +10821,18 @@
             { id: "r9",  label: "推荐列表圆角 ∈ [4,8,12,16]px", pass: [4,8,12,16].includes(v.recoWrapRadius) },
             { id: "r10", label: "推荐条圆角 > 0",               pass: v.recoBarRadius > 0 },
           ];
+          if (componentId === "agentStatusBar") return [
+            { id: "a1", label: "外层圆角 = 16px", pass: v.shellRadiusPx === 16 },
+            { id: "a2", label: "内容卡圆角 = 12px", pass: v.cardRadiusPx === 12 },
+            { id: "a3", label: "托管中状态色已定义", pass: Boolean(v.hostedStatusBg) && Boolean(v.hostedStatusFg) },
+            { id: "a4", label: "人工干预状态色已定义", pass: Boolean(v.manualStatusBg) && Boolean(v.manualStatusFg) },
+            { id: "a5", label: "处理完成状态色已定义", pass: Boolean(v.completedStatusBg) && Boolean(v.completedStatusFg) },
+            { id: "a6", label: "总结标题渐变已定义", pass: Boolean(v.summaryTitleGradient) },
+            { id: "a7", label: "主操作按钮背景已定义", pass: Boolean(v.primaryIconBtnBg) },
+            { id: "a8", label: "次级按钮边框已定义", pass: Boolean(v.lightButtonBorder) },
+            { id: "a9", label: "底部流带渐变已定义", pass: Boolean(v.flowStripGradient) },
+            { id: "a10", label: "底部流带高度 = 20px", pass: v.flowStripHeightPx === 20 },
+          ];
           if (componentId === "imBubble") return [
             { id: "r1",  label: "对方气泡圆角已定义",           pass: v.peerBubbleRadius > 0 },
             { id: "r2",  label: "气泡与推荐间距已定义",         pass: v.stackGap >= 0 },
@@ -9079,6 +10851,31 @@
                 /data-token-path="imAvatarPeerUrl"/.test(String(mdText || "")) &&
                 /data-token-path="imAvatarSelfUrl"/.test(String(mdText || "")),
             },
+          ];
+          if (componentId === "fusionWorkbench") return [
+            { id: "f1", label: "Shell 背景色已定义", pass: Boolean(v.shellBg) },
+            { id: "f2", label: "主槽圆角 > 0", pass: v.mainFrostRadiusPx > 0 },
+            { id: "f3", label: "列表列宽 > 0", pass: v.listColumnWidthPx > 0 },
+            { id: "f4", label: "详情卡片圆角 > 0", pass: v.detailCardRadiusPx > 0 },
+            { id: "f5", label: "详情卡片内边距 > 0", pass: v.detailCardPadPx > 0 },
+            { id: "f6", label: "详情卡片阴影已定义", pass: Boolean(v.detailCardShadow) },
+            { id: "f7", label: "主标题字色已定义", pass: Boolean(v.textPrimary) },
+            { id: "f8", label: "Focus ring 已定义", pass: Boolean(v.focusRing) },
+          ];
+          if (componentId === "hiuiButton") return [
+            { id: "h1", label: "预览区背景 previewBg 已定义", pass: Boolean(v.previewBg) },
+            { id: "h2", label: "说明文字色 captionColor 已定义", pass: Boolean(v.captionColor) },
+            { id: "h3", label: "Skill 含 HiUI 按钮章节", pass: /DESIGN_SKILL — 按钮/.test(String(mdText || "")) },
+          ];
+          if (componentId === "conversationList") return [
+            { id: "c1", label: "外壳宽度 > 0", pass: v.shellWidthPx > 0 },
+            { id: "c2", label: "外壳圆角 > 0", pass: v.shellRadiusPx > 0 },
+            { id: "c3", label: "外壳背景已定义", pass: Boolean(v.shellBg) },
+            { id: "c4", label: "选中行背景已定义", pass: Boolean(v.rowSelectedBg) },
+            { id: "c5", label: "选中左条宽度 > 0", pass: v.rowActiveBarWpx > 0 },
+            { id: "c6", label: "头像尺寸 > 0", pass: v.avatarSizePx > 0 },
+            { id: "c7", label: "标题字色已定义", pass: Boolean(v.titleColor) },
+            { id: "c8", label: "Skill 含 shellWidthPx 标记", pass: /data-token-path="shellWidthPx"/.test(String(mdText || "")) },
           ];
           return [
             { id: "r1",  label: "外层圆角 = 12px",              pass: v.outerRadius === 12 },
@@ -9100,14 +10897,23 @@
         function renderPreview() {
           if (componentId === "smartSummary")  return <SpecSmartSummary v={v} scenario={activeTab} />;
           if (componentId === "formRecommend") return <SpecFormRecommend v={v} scenario={activeTab} />;
+          if (componentId === "agentStatusBar") return <SpecAgentStatusBarSandbox v={v} scenario={activeTab} />;
           if (componentId === "imBubble") return <SpecImBubble v={v} />;
+          if (componentId === "fusionWorkbench") return <SpecFusionWorkbenchSandbox v={v} />;
+          if (componentId === "hiuiButton") return <SpecHiuiButtonSandbox v={v} />;
+          if (componentId === "conversationList") return <SpecConversationListSandbox v={v} />;
           return <SpecAiInput v={v} scenario={activeTab} />;
         }
 
         const compLabel =
           componentId === "smartSummary"  ? "智能摘要组件面板" :
           componentId === "formRecommend" ? "表单推荐" :
-          componentId === "imBubble" ? "IM气泡" : "AI 输入框";
+          componentId === "agentStatusBar" ? "Agent状态栏" :
+          componentId === "imBubble" ? "IM气泡" :
+          componentId === "fusionWorkbench" ? "融合工作台框架" :
+          componentId === "hiuiButton" ? "按钮（HiUI）" :
+          componentId === "conversationList" ? "会话列表" :
+          "AI 输入框";
 
         return (
           <div
@@ -9126,17 +10932,17 @@
               }
             `}</style>
             <div
-              className="bg-[#ffffff] rounded-[16px] flex flex-col overflow-hidden"
+              className="bg-[#ffffff] rounded-[16px] flex flex-col overflow-hidden min-h-0"
               style={{
-                width: "min(980px, 95vw)", height: "min(740px, 93vh)",
+                width: "min(980px, 95vw)", height: "min(820px, 92vh)", maxHeight: "92vh",
                 boxShadow: "0 32px 80px rgba(34,39,39,0.22), 0 0 0 1px rgba(45,66,107,0.10)",
               }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-[24px] py-[16px] border-b border-[rgba(45,66,107,0.12)] shrink-0">
-                <div className="flex flex-col gap-[3px]">
-                  <div className="flex items-center gap-[10px]">
-                    <span className="text-[15px] font-bold text-[#222727]">🧪 沙盒测试</span>
+              <div className="flex items-center justify-between px-[24px] py-[14px] border-b border-[rgba(45,66,107,0.12)] shrink-0">
+                <div className="flex flex-col gap-[3px] min-w-0 pr-[8px]">
+                  <div className="flex items-center gap-[10px] flex-wrap">
+                    <span className="text-[15px] font-bold text-[#222727]">单测</span>
                     <span className={cx(
                       "px-[8px] py-[2px] rounded-[99px] text-[11px] font-semibold",
                       allPass ? "bg-[rgba(0,0,0,0.07)] text-black" : "bg-[rgba(233,30,99,0.10)] text-[#c0174a]",
@@ -9145,19 +10951,40 @@
                     </span>
                     <span className="text-[12px] text-[rgba(34,39,39,0.45)]">— {compLabel}</span>
                   </div>
-                  <div className="text-[12px] text-[rgba(34,39,39,0.45)]">
-                    仅读取 Design Skill Markdown 中的约束值，模拟 LLM 阅读 Skill 后生成的真实 UI 效果
+                  <div className="text-[12px] text-[rgba(34,39,39,0.45)] leading-[18px]">
+                    下方预览按 Skill Markdown 解析还原 UI 参数；右侧校验约束是否可追溯。顶部 Prompt 供复制到外部模型，检验从 0 到 1 生成是否与规范一致。
                   </div>
                 </div>
                 <button
                   type="button"
-                  className="flex items-center justify-center w-[30px] h-[30px] rounded-[8px] hover:bg-[rgba(83,96,143,0.09)] text-[rgba(34,39,39,0.4)] text-[20px] font-light outline-none focus:ring-1 focus:ring-black"
-                  onClick={onClose} aria-label="关闭沙盒"
+                  className="flex items-center justify-center w-[30px] h-[30px] rounded-[8px] hover:bg-[rgba(83,96,143,0.09)] text-[rgba(34,39,39,0.4)] text-[20px] font-light outline-none focus:ring-1 focus:ring-black shrink-0"
+                  onClick={onClose} aria-label="关闭单测"
                 >×</button>
               </div>
 
+              {/* 单测 Prompt：对外部 LLM 的指令模板（站内预览仍只读 Skill 解析） */}
+              <div className="shrink-0 px-[24px] py-[12px] border-b border-[rgba(45,66,107,0.08)] bg-[rgba(83,96,143,0.03)]">
+                <div className="flex items-center justify-between gap-[12px] mb-[8px]">
+                  <span className="text-[11px] font-semibold text-[rgba(34,39,39,0.45)] tracking-wide">单测 Prompt（可编辑 · 可复制）</span>
+                  <button
+                    type="button"
+                    className="h-[28px] px-[12px] rounded-[6px] text-[12px] font-semibold bg-black text-white hover:opacity-90 active:opacity-80 outline-none focus:ring-1 focus:ring-black shrink-0"
+                    onClick={() => setRefreshTick((t) => t + 1)}
+                  >重新单测</button>
+                </div>
+                <textarea
+                  value={promptText}
+                  onChange={(e) => setPromptText(e.target.value)}
+                  className="w-full min-h-[76px] max-h-[160px] resize-y rounded-[8px] border border-[rgba(45,66,107,0.14)] px-[12px] py-[8px] text-[12px] leading-[18px] text-[#222727] bg-white outline-none focus:ring-1 focus:ring-black box-border"
+                  spellCheck={false}
+                />
+                <div className="text-[11px] text-[rgba(34,39,39,0.42)] mt-[6px] leading-[16px]">
+                  Prompt 不参与站内解析；修改 Token 或 Skill 正文后可点「重新单测」刷新左侧预览与右侧校验。
+                </div>
+              </div>
+
               {/* Body */}
-              <div className="flex flex-1 overflow-hidden">
+              <div className="flex flex-1 min-h-0 overflow-hidden">
                 {/* Left: Spec-driven preview */}
                 <div className="flex-1 flex flex-col overflow-hidden border-r border-[rgba(45,66,107,0.10)]">
                   <div className="flex items-center gap-[4px] px-[16px] py-[10px] border-b border-[rgba(45,66,107,0.08)] shrink-0" style={{ background: "rgba(83,96,143,0.025)" }}>
@@ -9189,7 +11016,7 @@
                 {/* Right: Validation checklist */}
                 <div className="w-[268px] flex flex-col overflow-hidden shrink-0">
                   <div className="px-[16px] py-[10px] border-b border-[rgba(45,66,107,0.08)] shrink-0" style={{ background: "rgba(83,96,143,0.025)" }}>
-                    <span className="text-[11px] font-semibold text-[rgba(34,39,39,0.4)] tracking-wide">SKILL 内容校验</span>
+                    <span className="text-[11px] font-semibold text-[rgba(34,39,39,0.4)] tracking-wide">Skill 内容校验</span>
                   </div>
                   <div className="flex-1 overflow-auto p-[12px] flex flex-col gap-[4px]">
                     {checks.map(check => (
@@ -9212,10 +11039,10 @@
                     allPass ? "bg-[rgba(0,0,0,0.04)]" : "bg-[rgba(233,30,99,0.05)]",
                   )}>
                     <div className={cx("text-[12px] font-semibold", allPass ? "text-black" : "text-[#c0174a]")}>
-                      {allPass ? "✅ Skill 约束完整，可安全交付 AI 使用" : `❌ Skill 中有 ${checks.length - passCount} 项约束缺失或异常`}
+                      {allPass ? "✅ Skill 约束完整，可配合单测 Prompt 做外部生成对照" : `❌ Skill 中有 ${checks.length - passCount} 项约束缺失或异常`}
                     </div>
                     <div className="text-[11px] text-[rgba(34,39,39,0.45)] mt-[3px]">
-                      {allPass ? "所有设计约束均已在 Markdown 中明确定义" : "请在左侧 Token 面板调整对应参数，Skill 将同步更新"}
+                      {allPass ? "颜色、字体、圆角等参数已在 Markdown 中可追溯" : "请在左侧 Token 面板修正对应参数，Skill 将同步更新"}
                     </div>
                   </div>
                 </div>
