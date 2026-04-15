@@ -12,7 +12,8 @@
     { "name": "hiai-send", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
     { "name": "semi-icons-send_stroked", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
     { "name": "semi-icons-send_stroked_enabled", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" },
-    { "name": "x-close-stroked", "url": "./hiai%20icon%20svg/x-close-stroked.svg", "inset": "inset-[20.83%]" },
+    { "name": "hiai-x-close-stroked", "url": "./hiai%20icon%20svg/x-close-stroked.svg", "inset": "inset-[8.33%]" },
+    { "name": "x-close-stroked", "url": "./hiai%20icon%20svg/x-close-stroked.svg", "inset": "inset-[8.33%]" },
     { "name": "refresh", "url": "./hiai%20icon%20svg/refresh-ccw-02-stroked.svg", "inset": "inset-[8.33%_8.33%_8.33%_4.17%]" },
     { "name": "IconCopyStroked2", "url": "./hiai%20icon%20svg/copy-stroked2.svg", "inset": "inset-[8.33%]" },
     { "name": "send-filled", "url": "./hiai%20icon%20svg/hiai-send.svg", "inset": "inset-[8.33%]" }

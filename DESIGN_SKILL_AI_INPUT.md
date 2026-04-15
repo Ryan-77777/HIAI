@@ -1,126 +1,150 @@
 # DESIGN_SKILL — AI输入框（HiAI）
 
-> 目的：让任何 AI 在生成涉及“AI输入框 / HiAI 输入框 / AI Chat Input”的网页 UI 时，做到 **像素级一致**。
-> 本文件为强约束规范；**不得自行发挥**。
+> 目的：让任何 AI 在生成「AI输入框 / HiAI输入框 / AI Chat Input」时，按最新 UI 交互样式进行像素级还原。  
+> 本文件为强约束规范；不得自行发挥。
 
 ---
 
-## 0.1 文案生成原则（重要：文案非固定）
+## 0) 组件触发规则
 
-- **所有组件的文案/示例内容必须视为动态内容**：应根据当前网页主题、业务场景与组件上下文实时生成或由业务数据驱动。
-- **严禁把示例文案当成固定规范**：示例仅用于演示布局与交互，不约束具体措辞。
-- **固定不变的只有**：组件的交互能力、状态划分与视觉样式框架（字号/间距/颜色/圆角/按钮尺寸/图标尺寸/动效层等）。
+命中以下任一关键词必须使用本规范：
 
----
+- `AI输入框`
+- `HiAI输入框`
+- `AI Chat Input`
+- `对话输入框`
+- `富文本输入区`
 
-## 0) 组件触发规则（最重要）
+强制要求：
 
-只要出现以下任意关键词，就必须使用本规范：
-
-- `AI输入框` / `HiAI输入框` / `AI Chat Input` / `对话输入框` / `富文本输入区`
-
-命中后必须满足：
-
-- **宽度**：必须自适应撑满容器（`width: 100%`）。
-- **高度**：随内容自适应撑高（禁止固定高度）。
+- 组件宽度必须 `width: 100%`，默认撑满父容器。
+- 组件高度随内容自适应，禁止固定高度。
 
 ---
 
-## 1) 结构骨架（必须保持层级与顺序）
+## 1) 结构骨架（必须保持）
 
-外层结构固定为 3 段：
+固定三层：
 
-1. **OuterShell（灰底容器）**：承载整体圆角与内边距，并包含底部“动效层”。
-2. **StatusRow（顶部状态行）**：一行 12px 灰色提示文案。
-3. **InputCard（白底输入卡片）**：包含“输入文本区”与“底部操作栏”。
-
----
-
-## 1.1 状态与交互（必须覆盖）
-
-- **默认/空态**：输入区展示 placeholder（示例：`托管中`），发送按钮为 disabled。
-- **输入中**：输入区为 value 文案；发送按钮可用（实现上允许由业务控制）。
-- **发送 disabled**：当 value 为空或被业务禁用时，发送按钮必须使用 disabled 背景色（见 Tokens）。
-- **图标按钮 hover**：仅允许使用 `hoverFill` 作为 hover 背景反馈（不允许额外阴影或缩放）。
-- **动效层**：底部存在一层 40px 高的“动效蒙层”，覆盖在 OuterShell 底部区域（不影响交互点击）。
+1. `OuterShell`（灰底外壳）
+2. `StatusRow`（顶部提示文案）
+3. `InputCard`（白底输入卡片，包含推荐区/输入区/操作栏）
 
 ---
 
-## 2) Typography（字体）
+## 2) 产品定义：StatusRow 提醒文案（重点）
 
-- Font family：`"PingFang SC", "PingFangSC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif`
+- 该位置文案定义为：**AI 基于当前聊天内容自动生成的提醒文案**，用于提示当前回复状态/下一步动作。
+- 文案必须支持按输入框使用场景动态生成，不得写死为固定句子。
+- 文案默认限制在 **20 个字以内**（中文口径）；超出时应自动压缩语义，优先保留动作信息。
+- 该行始终保留结构占位，即使无文案也保留 `StatusRow` 容器。
 
-| Part | Size | Line-height | Weight | Color |
-| --- | --- | --- | --- | --- |
-| 顶部状态文案 | 12px | 16px | 400 | rgba(34,39,39,0.6) |
-| 输入区 placeholder | 14px | 20px | 400 | rgba(34,39,39,0.35) |
-| 输入区 value | 14px | 20px | 400 | #222727 |
+生成策略（执行规则）：
 
----
+- 优先级顺序：`风险提醒` > `发送状态` > `推荐状态` > `常规引导`。
+- 单条文案只表达一个主动作，禁止并列两个以上动作指令。
+- 推荐模板：`{主体}{状态}，{下一动作}`（示例：`AI已生成回复，待发送`）。
+- 词汇建议：状态词优先使用 `已生成/待审核/可发送/需复核/已匹配`，动作词优先使用 `发送/采纳/复核/补充`。
+- 长度裁剪顺序：先删修饰词，再删次要分句，最后保留“状态 + 动作”主干。
+- 兜底文案（无明确状态时）：`可继续输入，AI将辅助生成`（需按 20 字规则压缩到可展示版本）。
 
-## 3) Layout & Geometry（布局与几何）
+推荐语气示例（仅示例，不是固定文案）：
 
-- **OuterShell**：`bg #f2f4f7`；`radius 14px`；`padding 6px`；`gap 6px`
-- **StatusRow padding**：`x 8px / y 4px`
-- **InputCard**：`bg #ffffff`；`border #ffffff`；`radius 12px`；`padding 12px`；`gap 12px`
-- **ActionsRow gap**：`8px`
-- **IconButton**：`padding 4px`；`radius 6px`；icon size `16px`
-- **SendButton**：`height 24px`；`padding 4px`；`radius 6px`
-
----
-
-## 4) Motion Layer（动效层）
-
-- 位置：绝对定位于 OuterShell 底部区域（bottom: 0）。
-- 高度：`40px`；透明度：`0.4`
-- 水平内缩（百分比 inset，与设计稿一致）：
-  - left：`1.24%`
-  - right：`1.15%`
-- 交互：动效层必须 `pointer-events: none`，不可遮挡输入与按钮。
+- `AI已生成回复，待发送`
+- `检测到风险词，建议复核`
+- `已匹配话术，可一键采纳`
 
 ---
 
-## 5) Icon Assets（图标资源：必须使用同一套）
+## 3) 样式 Tokens（与当前实现对齐）
 
-- 图标尺寸固定为 **16×16px**。
-- **必须使用以下本地资源路径（禁止替换）**：
+- `OuterShell`：`bg semi-bluegrey-2`，`radius 14px`，`padding 6px`，`gap 6px`
+- `StatusRow`：`padding x=8px y=4px`，`font 12/16`，`color rgba(34,39,39,0.6)`
+- `InputCard`：`bg #fff`，`border 1px #fff`，`radius 12px`，`padding 12px`，`gap 12px`
+- 文本区：`font 14/20`，placeholder `rgba(34,39,39,0.35)`，value `#222727`
+- 动效层：`height 40px`，`opacity 0.4`，`left inset 2.11%`，`right inset 2.02%`
 
+---
+
+## 4) 推荐区（回复推荐）规范
+
+- 推荐区容器：`bg semi-bluegrey-1`，`radius 12px`，`padding 8px`，`gap 4px`
+- 标题：`回复推荐`，`12/16`，`600`，渐变文字（保留渐变）
+- 条目：`radius 6px`，`padding 4px`，hover 底 `rgba(52,59,57,0.05)`
+- hover tooltip：深灰底、白字、上方悬浮，文案随交互模式变化
+
+右上角操作区（关闭/刷新/复制/发送）必须满足：
+
+- 使用平台基础组件 `HiUI Button` 的 **`borderless + tertiary + small + icon-only`**
+- 容器尺寸固定 `24x24`
+- icon 尺寸 `16x16`，居中
+- 竖分割线 `1x12`，颜色 `rgba(34,39,39,0.09)`
+
+图标库 name（必须）：
+
+- 关闭：`hiai-x-close-stroked`
+- 刷新：`refresh`
+- 复制：`IconCopyStroked2`
+- 发送：`hiai-send-stroked`
+
+---
+
+## 5) 底部操作栏按钮规范
+
+左侧工具按钮（如表情、图片）：
+
+- 使用平台基础组件 `HiUI Button` 的 **`borderless + tertiary + default + icon-only`**
+- 容器尺寸固定 `36x36`
+- icon 尺寸 `16x16`，居中
+
+右下角发送按钮：
+
+- 使用平台基础组件 `HiUI Button` 的 **`solid + secondary + small + icon-only`**
+- 容器尺寸固定 `24x24`
+- 圆角 `8px`
+- 有效态背景：`#222727`（黑底）
+- 禁用态背景：`semi-grey-1`
+- 发送 icon 使用图标库 `hiai-send-stroked`
+
+---
+
+## 6) 图标资源约束
+
+- 组件内所有 icon 必须来自平台图标库（`getIcon(name)` 语义）。
+- 禁止 emoji、临时 SVG、第三方 iconfont、未入库资源。
+- 推荐区关闭 icon 必须使用 `hiai-x-close-stroked`，不得退回旧别名导致视觉尺寸偏差。
+- icon 基准尺寸固定 `16px`，禁止随意改成 14/18/20。
+
+---
+
+## 7) 状态与交互
+
+- `Default/空态`：value 为空，发送按钮禁用。
+- `Typing`：value 非空，发送按钮可用（黑底）。
+- 推荐区可选显示；关闭后本轮隐藏。
+- 推荐条点击支持两种模式：`adopt`（采纳到输入框）与 `send`（直接发送）。
+
+---
+
+## 8) 禁止项（必须遵守）
+
+- 禁止将状态行文案写死为固定句子。
+- 禁止状态文案超过 20 字仍直接展示（需压缩）。
+- 禁止把推荐区右上角按钮做成 `light` 类型或 `36x36`。
+- 禁止将底部左侧工具按钮错误改成 `small`。
+- 禁止发送按钮出现绿色背景（深色类型统一黑底体系）。
+- 禁止使用 `filter: brightness(0) invert(1)` 作为强依赖规则。
+
+---
+
+## 9) Agent Prompt Guide
+
+```text
+请严格遵循 DESIGN_SKILL「AI输入框（HiAI）」规范生成 UI。
+必须输出：OuterShell + StatusRow + InputCard 三层结构，宽度100%，高度自适应。
+StatusRow 文案定义为 AI 根据聊天内容自动生成的提醒文案，按场景动态变化，默认不超过20个字。
+推荐区右上角四个按钮必须为 borderless+tertiary+small+icon-only（24x24）。
+底部左侧工具按钮必须为 borderless+tertiary+default+icon-only（36x36）。
+右下发送按钮必须为 solid+secondary+small+icon-only（24x24，黑底）。
+所有图标必须来自图标库 name，不得使用未入库资源。
 ```
-motion: ./ai-input-assets/ai-input-motion.png
-magicWand: ./ai-input-assets/icon-magic-wand.png
-smile: ./ai-input-assets/icon-smile.png
-image: ./ai-input-assets/icon-image.png
-underline: ./ai-input-assets/icon-underline.png
-bold: ./ai-input-assets/icon-bold.png
-orderedList: ./ai-input-assets/icon-ol.png
-unorderedList: ./ai-input-assets/icon-ul.png
-link: ./ai-input-assets/icon-link.png
-palette: ./ai-input-assets/icon-palette.png
-send: ./ai-input-assets/icon-send.png
-```
-
----
-
-## 6) Do’s & Don’ts（强约束护栏）
-
-### Do
-
-- 必须保持“灰底外壳 + 白底输入卡片 + 底部操作栏”的骨架与层级
-- 必须保持所有圆角、间距、字体规格为明确数值（px/rgba/hex）
-- hover 只允许 `hoverFill`，禁止阴影/缩放/发光
-
-### Don’t
-
-- 不得引入额外边框体系（除 InputCard 的白色边框）
-- 不得引入默认 Tailwind 色板（例如 `text-gray-500`）
-- 不得替换图标资源或改变 icon 尺寸
-
----
-
-## 7) Agent Prompt Guide（给 AI 的提示模板）
-
-```
-请严格遵循 DESIGN_SKILL 中的“AI输入框（HiAI）”规范生成 UI。
-只要出现 AI输入框/HiAI输入框/对话输入框/富文本输入区，就必须输出 width=100%（撑满父容器）的 AI 输入框；并且必须包含底部动效层、顶部状态行、白底输入卡片与底部操作栏。所有字号/间距/圆角/颜色必须按规范的明确数值实现，禁止自由设计。
-```
-
